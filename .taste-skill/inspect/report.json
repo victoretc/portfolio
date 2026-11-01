@@ -1,0 +1,3663 @@
+{
+ "url": "public/index.html",
+ "at": "2026-10-31T22:40:54.809Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.2,
+    1,
+    0.98,
+    0.54,
+    1,
+    1,
+    0.36,
+    0.97,
+    0.49,
+    0.6,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 22,
+    "css": 5,
+    "transitions": 17,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 9990,
+     "screens": 11.1,
+     "words": 633,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Architecural_Cut_Of_The_Facade_%28213732329%29.j"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/800",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/800px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/320",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/320px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-"
+     ],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "chars": 30,
+     "lines": 4,
+     "size": 72,
+     "vw": 5,
+     "font": "Libre Franklin",
+     "weight": 700,
+     "tracking": -0.035,
+     "leading": 0.92,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.43,
+     "top": 215,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "lines": 4,
+     "size": 72,
+     "font": "Libre Franklin"
+    },
+    "headings": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "words": 4,
+      "chars": 30,
+      "lines": 4,
+      "size": 72,
+      "vw": 5,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 215,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Что мы делаем",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 955,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Мы делаем сайты,",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 63.4,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1070,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "лендинги и",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 63.4,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1136,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "магазины —",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 63.4,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1202,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "проектируем их",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 63.4,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1268,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "под вашу задачу.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 63.4,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1334,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "ПОЧЕМУ МЫ",
+      "words": 2,
+      "chars": 9,
+      "lines": 2,
+      "size": 95,
+      "vw": 6.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1755,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Услуги и цены",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 37.4,
+      "vw": 2.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 3093,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Кейсы",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 37.4,
+      "vw": 2.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3615,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DROPSTOP",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 100.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 3743,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "DIGITALDAYBEARUS",
+      "words": 1,
+      "chars": 16,
+      "lines": 2,
+      "size": 100.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 4310,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "−30%",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 100.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 4889,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "О студии",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 37.4,
+      "vw": 2.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 5559,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "КАК МЫ РАБОТАЕМ",
+      "words": 3,
+      "chars": 15,
+      "lines": 2,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 6332,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Бриф",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.55,
+      "top": 6487,
+      "tag": "summary",
+      "kind": "heading"
+     },
+     {
+      "text": "ЧАСТЫЕ ВОПРОСЫ",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 100.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 7729,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Сколько стоит сайт?",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 31.7,
+      "vw": 2.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 8023,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Вы делаете на шаблонах?",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 31.7,
+      "vw": 2.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 8180,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Что с ИИ — это не «один промпт»?",
+      "words": 8,
+      "chars": 32,
+      "lines": 2,
+      "size": 31.7,
+      "vw": 2.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 8338,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "А если не понравится?",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 31.7,
+      "vw": 2.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 8520,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Делаете поддержку после сдачи?",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 31.7,
+      "vw": 2.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 8678,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "НАПИШИТЕ НАМ",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 9182,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "БОГАТОВ DEV",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 158.4,
+      "vw": 11,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 9677,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 24,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 9,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Serif 4",
+       "share": 0.83,
+       "mono": false
+      },
+      {
+       "family": "Libre Franklin",
+       "share": 0.17,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      23,
+      24,
+      26,
+      30,
+      32,
+      37,
+      40,
+      58,
+      63,
+      64,
+      72,
+      95,
+      101,
+      158
+     ],
+     "sizeCount": 20,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Serif 4",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 95,
+     "max": {
+      "size": 158.4,
+      "vw": 11,
+      "font": "Libre Franklin",
+      "text": "Богатов Dev"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f7f5",
+     "bodyBgHsl": {
+      "h": 60,
+      "s": 0.11,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f7f7f5",
+       "top": 0,
+       "hsl": {
+        "h": 60,
+        "s": 0.11,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#97aaf6",
+       "top": -85,
+       "hsl": {
+        "h": 228,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#000000",
+       "top": 828,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0
+       }
+      },
+      {
+       "color": "#bbf697",
+       "top": 1656,
+       "hsl": {
+        "h": 97,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#fed878",
+       "top": 3516,
+       "hsl": {
+        "h": 43,
+        "s": 0.99,
+        "l": 0.73
+       }
+      },
+      {
+       "color": "#6ef8fb",
+       "top": 3687,
+       "hsl": {
+        "h": 181,
+        "s": 0.95,
+        "l": 0.71
+       }
+      },
+      {
+       "color": "#0f7a80",
+       "top": 6487,
+       "hsl": {
+        "h": 183,
+        "s": 0.79,
+        "l": 0.28
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#000000",
+       "share": 0.64
+      },
+      {
+       "color": "#666662",
+       "share": 0.18
+      },
+      {
+       "color": "#f7f7f5",
+       "share": 0.06
+      },
+      {
+       "color": "#2b3a78",
+       "share": 0.05
+      },
+      {
+       "color": "#b9b9b4",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#d0106f",
+      "hsl": {
+       "h": 330,
+       "s": 0.86,
+       "l": 0.44
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 62,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Рассказать о проекте"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 12,
+     "squareMedia": 9,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 3687
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 90,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libre franklin",
+     "source serif 4"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 9990,
+    "margins": {
+     "left": 115,
+     "right": 115
+    },
+    "sections": [
+     {
+      "sel": "section#top.chapter.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 828,
+      "words": 33,
+      "media": 0,
+      "middle": 558,
+      "heading": {
+       "text": "Сайты, которые",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 115,
+      "right": 115,
+      "textLeft": 115,
+      "textRight": 115,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#intro.chapter.intro",
+      "tag": "section",
+      "top": 828,
+      "height": 828,
+      "words": 37,
+      "media": 1,
+      "middle": 72,
+      "heading": {
+       "text": "Что мы делаем",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 115,
+      "textLeft": 115,
+      "textRight": 475,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.chapter.features",
+      "tag": "section",
+      "top": 1656,
+      "height": 1338,
+      "words": 90,
+      "media": 3,
+      "middle": 134,
+      "heading": {
+       "text": "Почему мы",
+       "size": 95,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 115,
+      "textLeft": 115,
+      "textRight": 126,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#services.chapter.pricing",
+      "tag": "section",
+      "top": 2994,
+      "height": 522,
+      "words": 110,
+      "media": 0,
+      "middle": 65,
+      "heading": {
+       "text": "Услуги и цены",
+       "size": 37,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 115,
+      "textLeft": 115,
+      "textRight": 115,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#work.chapter.work",
+      "tag": "section",
+      "top": 3516,
+      "height": 1944,
+      "words": 73,
+      "media": 0,
+      "middle": 135,
+      "heading": {
+       "text": "dropstop",
+       "size": 101,
+       "tag": "p"
+      },
+      "left": 115,
+      "right": 171,
+      "textLeft": 115,
+      "textRight": 171,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section#about.chapter.about",
+      "tag": "section",
+      "top": 5460,
+      "height": 774,
+      "words": 92,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "О студии",
+       "size": 37,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 743,
+      "textLeft": 115,
+      "textRight": 743,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#process.chapter.process",
+      "tag": "section",
+      "top": 6233,
+      "height": 1252,
+      "words": 34,
+      "media": 0,
+      "middle": 250,
+      "heading": {
+       "text": "Как мы работаем",
+       "size": 58,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 155,
+      "textLeft": 115,
+      "textRight": 155,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#faq.chapter.faq",
+      "tag": "section",
+      "top": 7486,
+      "height": 1411,
+      "words": 111,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Частые вопросы",
+       "size": 101,
+       "tag": "h2"
+      },
+      "left": 115,
+      "right": 297,
+      "textLeft": 115,
+      "textRight": 297,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.chapter.contact",
+      "tag": "section",
+      "top": 8897,
+      "height": 725,
+      "words": 30,
+      "media": 7,
+      "middle": 8,
+      "heading": {
+       "text": "Напишите нам",
+       "size": 58,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 115,
+      "textRight": 221,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 9623,
+      "height": 367,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Богатов Dev",
+       "size": 158,
+       "tag": "p"
+      },
+      "left": 115,
+      "right": 223,
+      "textLeft": 115,
+      "textRight": 223,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 6584,
+      "height": 652
+     },
+     {
+      "top": 7364,
+      "height": 348
+     }
+    ],
+    "h1s": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "size": 72,
+      "top": 215,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 115,
+      "n": 22
+     },
+     {
+      "x": 653,
+      "n": 8
+     },
+     {
+      "x": 461,
+      "n": 3
+     },
+     {
+      "x": 891,
+      "n": 3
+     },
+     {
+      "x": 922,
+      "n": 3
+     },
+     {
+      "x": 696,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 40,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.54,
+    "voidBox": {
+     "x": 540,
+     "y": 120,
+     "w": 900,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.22,
+    1,
+    0.98,
+    0.54,
+    1,
+    0.77,
+    0.61,
+    0.93,
+    0.42,
+    0.78,
+    1
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 5,
+    "transitions": 19,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 10744,
+     "screens": 10.5,
+     "words": 633,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Architecural_Cut_Of_The_Facade_%28213732329%29.j"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/800",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/800px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/320",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/320px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-"
+     ],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "chars": 30,
+     "lines": 2,
+     "size": 44,
+     "vw": 5.7,
+     "font": "Libre Franklin",
+     "weight": 700,
+     "tracking": -0.035,
+     "leading": 0.92,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.57,
+     "top": 361,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "lines": 2,
+     "size": 44,
+     "font": "Libre Franklin"
+    },
+    "headings": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 44,
+      "vw": 5.7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.57,
+      "top": 361,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Что мы делаем",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1207,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Мы делаем сайты,",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1312,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "лендинги и",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1347,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "магазины —",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1382,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "проектируем их",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1417,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "под вашу задачу.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 1452,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "ПОЧЕМУ МЫ",
+      "words": 2,
+      "chars": 9,
+      "lines": 2,
+      "size": 50.7,
+      "vw": 6.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1997,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Услуги и цены",
+      "words": 3,
+      "chars": 13,
+      "lines": 2,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 3258,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Кейсы",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3929,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DROPSTOP",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 53.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 4091,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "DIGITALDAYBEARUS",
+      "words": 1,
+      "chars": 16,
+      "lines": 2,
+      "size": 53.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 4657,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "−30%",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 53.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 5298,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "О студии",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 5967,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "КАК МЫ РАБОТАЕМ",
+      "words": 3,
+      "chars": 15,
+      "lines": 2,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 6853,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Бриф",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.55,
+      "top": 6965,
+      "tag": "summary",
+      "kind": "heading"
+     },
+     {
+      "text": "ЧАСТЫЕ ВОПРОСЫ",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 53.8,
+      "vw": 7,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 8375,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "НАПИШИТЕ НАМ",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 9911,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "БОГАТОВ DEV",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 84.5,
+      "vw": 11,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 10488,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 19,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 9,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Serif 4",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "Libre Franklin",
+       "share": 0.19,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      24,
+      28,
+      32,
+      34,
+      44,
+      45,
+      51,
+      54,
+      85
+     ],
+     "sizeCount": 16,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Serif 4",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.7
+     },
+     "measureChars": 28,
+     "max": {
+      "size": 84.5,
+      "vw": 11,
+      "font": "Libre Franklin",
+      "text": "Богатов Dev"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f7f5",
+     "bodyBgHsl": {
+      "h": 60,
+      "s": 0.11,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f7f7f5",
+       "top": 0,
+       "hsl": {
+        "h": 60,
+        "s": 0.11,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#97aaf6",
+       "top": -96,
+       "hsl": {
+        "h": 228,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#000000",
+       "top": 942,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0
+       }
+      },
+      {
+       "color": "#bbf697",
+       "top": 1884,
+       "hsl": {
+        "h": 97,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#fed878",
+       "top": 3817,
+       "hsl": {
+        "h": 43,
+        "s": 0.99,
+        "l": 0.73
+       }
+      },
+      {
+       "color": "#6ef8fb",
+       "top": 4001,
+       "hsl": {
+        "h": 181,
+        "s": 0.95,
+        "l": 0.71
+       }
+      },
+      {
+       "color": "#0f7a80",
+       "top": 6965,
+       "hsl": {
+        "h": 183,
+        "s": 0.79,
+        "l": 0.28
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#000000",
+       "share": 0.61
+      },
+      {
+       "color": "#666662",
+       "share": 0.19
+      },
+      {
+       "color": "#f7f7f5",
+       "share": 0.07
+      },
+      {
+       "color": "#2b3a78",
+       "share": 0.05
+      },
+      {
+       "color": "#b9b9b4",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#d0106f",
+      "hsl": {
+       "h": 330,
+       "s": 0.86,
+       "l": 0.44
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 62,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Рассказать о проекте"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 12,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 4001
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 92,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libre franklin",
+     "source serif 4"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 10744,
+    "margins": {
+     "left": 61,
+     "right": 61
+    },
+    "sections": [
+     {
+      "sel": "section#top.chapter.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 942,
+      "words": 33,
+      "media": 0,
+      "middle": 19,
+      "heading": {
+       "text": "Сайты, которые",
+       "size": 44,
+       "tag": "h1"
+      },
+      "left": 61,
+      "right": 61,
+      "textLeft": 61,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#intro.chapter.intro",
+      "tag": "section",
+      "top": 942,
+      "height": 942,
+      "words": 37,
+      "media": 0,
+      "middle": 38,
+      "heading": {
+       "text": "Что мы делаем",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 61,
+      "textLeft": 61,
+      "textRight": 253,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.chapter.features",
+      "tag": "section",
+      "top": 1884,
+      "height": 1262,
+      "words": 90,
+      "media": 3,
+      "middle": 72,
+      "heading": {
+       "text": "Почему мы",
+       "size": 51,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 61,
+      "textLeft": 61,
+      "textRight": 65,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#services.chapter.pricing",
+      "tag": "section",
+      "top": 3146,
+      "height": 671,
+      "words": 110,
+      "media": 0,
+      "middle": 35,
+      "heading": {
+       "text": "Услуги и цены",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 61,
+      "textLeft": 61,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#work.chapter.work",
+      "tag": "section",
+      "top": 3817,
+      "height": 2038,
+      "words": 73,
+      "media": 0,
+      "middle": 71,
+      "heading": {
+       "text": "dropstop",
+       "size": 54,
+       "tag": "p"
+      },
+      "left": 61,
+      "right": 92,
+      "textLeft": 61,
+      "textRight": 92,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section#about.chapter.about",
+      "tag": "section",
+      "top": 5855,
+      "height": 851,
+      "words": 92,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "О студии",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 406,
+      "textLeft": 61,
+      "textRight": 406,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#process.chapter.process",
+      "tag": "section",
+      "top": 6706,
+      "height": 1396,
+      "words": 34,
+      "media": 0,
+      "middle": 126,
+      "heading": {
+       "text": "Как мы работаем",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 62,
+      "textLeft": 61,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#faq.chapter.faq",
+      "tag": "section",
+      "top": 8102,
+      "height": 1505,
+      "words": 111,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Частые вопросы",
+       "size": 54,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 62,
+      "textLeft": 61,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.chapter.contact",
+      "tag": "section",
+      "top": 9607,
+      "height": 819,
+      "words": 30,
+      "media": 7,
+      "middle": 622,
+      "heading": {
+       "text": "Напишите нам",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 61,
+      "textRight": 97,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 10426,
+      "height": 318,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Богатов Dev",
+       "size": 84,
+       "tag": "p"
+      },
+      "left": 61,
+      "right": 67,
+      "textLeft": 61,
+      "textRight": 67,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 652,
+      "height": 432
+     },
+     {
+      "top": 1620,
+      "height": 372
+     },
+     {
+      "top": 7028,
+      "height": 808
+     },
+     {
+      "top": 7968,
+      "height": 396
+     }
+    ],
+    "h1s": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "size": 44,
+      "top": 361,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 61,
+      "n": 21
+     },
+     {
+      "x": 348,
+      "n": 8
+     },
+     {
+      "x": 247,
+      "n": 3
+     },
+     {
+      "x": 475,
+      "n": 3
+     },
+     {
+      "x": 493,
+      "n": 3
+     },
+     {
+      "x": 371,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 39,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.37,
+    1,
+    0.97,
+    0.86,
+    0.5,
+    0.82,
+    0.75,
+    0.83,
+    0.63,
+    0.68,
+    0.78,
+    1
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 5,
+    "transitions": 19,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 9928,
+     "screens": 11.8,
+     "words": 633,
+     "img": 15,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "Architecural_Cut_Of_The_Facade_%28213732329%29.j"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/800",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/800px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03.",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/320",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/320px-Sculpture._Budape",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-"
+     ],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "chars": 30,
+     "lines": 3,
+     "size": 37.1,
+     "vw": 9.5,
+     "font": "Libre Franklin",
+     "weight": 700,
+     "tracking": -0.035,
+     "leading": 0.92,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 296,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+     "words": 4,
+     "lines": 3,
+     "size": 37.1,
+     "font": "Libre Franklin"
+    },
+    "headings": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "words": 4,
+      "chars": 30,
+      "lines": 3,
+      "size": 37.1,
+      "vw": 9.5,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 296,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Что мы делаем",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 903,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Мы делаем сайты,",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 985,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "лендинги и",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1018,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "магазины —",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1050,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "проектируем их",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1083,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "под вашу задачу.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 31.2,
+      "vw": 8,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1115,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "ПОЧЕМУ МЫ",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 42.9,
+      "vw": 11,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1600,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Дизайн под задачу, не под шаблон",
+      "words": 6,
+      "chars": 32,
+      "lines": 2,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1664,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "ИИ помогает — мы решаем",
+      "words": 5,
+      "chars": 23,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2245,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Нам важно, чтобы работало после сдачи",
+      "words": 6,
+      "chars": 37,
+      "lines": 2,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2779,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Услуги и цены",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3438,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Сайты ₽",
+      "words": 2,
+      "chars": 7,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3659,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Магазины и редизайн ₽",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3998,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Кейсы",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4475,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DROPSTOP",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 39,
+      "vw": 10,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 4652,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "DIGITALDAYBEARUS",
+      "words": 1,
+      "chars": 16,
+      "lines": 2,
+      "size": 39,
+      "vw": 10,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 4983,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "−30%",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 39,
+      "vw": 10,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 5350,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "О студии",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5748,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "КАК МЫ РАБОТАЕМ",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6430,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Бриф",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6623,
+      "tag": "summary",
+      "kind": "heading"
+     },
+     {
+      "text": "ЧАСТЫЕ ВОПРОСЫ",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 50.7,
+      "vw": 13,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7341,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Сколько стоит сайт?",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7544,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Вы делаете на шаблонах?",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7757,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Что с ИИ — это не «один промпт»?",
+      "words": 8,
+      "chars": 32,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7945,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "А если не понравится?",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8208,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Делаете поддержку после сдачи?",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8421,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "НАПИШИТЕ НАМ",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.035,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8913,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "БОГАТОВ DEV",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 50.7,
+      "vw": 13,
+      "font": "Libre Franklin",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9645,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 29,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 9,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Serif 4",
+       "share": 0.83,
+       "mono": false
+      },
+      {
+       "family": "Libre Franklin",
+       "share": 0.17,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      24,
+      31,
+      32,
+      33,
+      37,
+      39,
+      43,
+      51
+     ],
+     "sizeCount": 16,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Serif 4",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.6
+     },
+     "measureChars": 36,
+     "max": {
+      "size": 50.7,
+      "vw": 13,
+      "font": "Libre Franklin",
+      "text": "Частые вопросы"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "В работе",
+      "above": "DROPSTOP",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 15,
+      "top": 4616
+     },
+     {
+      "text": "В работе",
+      "above": "DIGITALDAYBEARUS",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 15,
+      "top": 4948
+     },
+     {
+      "text": "Скидка 30%",
+      "above": "−30%",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 15,
+      "top": 5315
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f7f5",
+     "bodyBgHsl": {
+      "h": 60,
+      "s": 0.11,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f7f7f5",
+       "top": 0,
+       "hsl": {
+        "h": 60,
+        "s": 0.11,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#97aaf6",
+       "top": 489,
+       "hsl": {
+        "h": 228,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#000000",
+       "top": 810,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0
+       }
+      },
+      {
+       "color": "#bbf697",
+       "top": 1507,
+       "hsl": {
+        "h": 97,
+        "s": 0.84,
+        "l": 0.78
+       }
+      },
+      {
+       "color": "#fed878",
+       "top": 4383,
+       "hsl": {
+        "h": 43,
+        "s": 0.99,
+        "l": 0.73
+       }
+      },
+      {
+       "color": "#6ef8fb",
+       "top": 6337,
+       "hsl": {
+        "h": 181,
+        "s": 0.95,
+        "l": 0.71
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#000000",
+       "share": 0.64
+      },
+      {
+       "color": "#666662",
+       "share": 0.18
+      },
+      {
+       "color": "#f7f7f5",
+       "share": 0.06
+      },
+      {
+       "color": "#2b3a78",
+       "share": 0.05
+      },
+      {
+       "color": "#b9b9b4",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#d0106f",
+      "hsl": {
+       "h": 330,
+       "s": 0.86,
+       "l": 0.44
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 62,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Рассказать о проекте"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 50,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 63,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libre franklin",
+     "source serif 4"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 9928,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section#top.chapter.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 810,
+      "words": 33,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Сайты, которые",
+       "size": 37,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#intro.chapter.intro",
+      "tag": "section",
+      "top": 810,
+      "height": 696,
+      "words": 37,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Что мы делаем",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 48,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.chapter.features",
+      "tag": "section",
+      "top": 1507,
+      "height": 1838,
+      "words": 90,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Почему мы",
+       "size": 43,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#services.chapter.pricing",
+      "tag": "section",
+      "top": 3345,
+      "height": 1038,
+      "words": 110,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Услуги и цены",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#work.chapter.work",
+      "tag": "section",
+      "top": 4383,
+      "height": 1273,
+      "words": 73,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "dropstop",
+       "size": 39,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 44,
+      "textLeft": 16,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.chapter.about",
+      "tag": "section",
+      "top": 5655,
+      "height": 682,
+      "words": 92,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "О студии",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#process.chapter.process",
+      "tag": "section",
+      "top": 6337,
+      "height": 855,
+      "words": 47,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Как мы работаем",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 19,
+      "textLeft": 16,
+      "textRight": 19,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--head",
+      "tag": "div",
+      "top": 7285,
+      "height": 208,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Частые вопросы",
+       "size": 51,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 111,
+      "textLeft": 16,
+      "textRight": 111,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--a",
+      "tag": "div",
+      "top": 7494,
+      "height": 213,
+      "words": 21,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Сколько стоит сайт?",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 31,
+      "textLeft": 16,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--b",
+      "tag": "div",
+      "top": 7707,
+      "height": 188,
+      "words": 17,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Вы делаете на шаблонах?",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 37,
+      "textLeft": 16,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--a",
+      "tag": "div",
+      "top": 7895,
+      "height": 263,
+      "words": 33,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Что с ИИ — это не «один промпт»?",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 20,
+      "textLeft": 16,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--b",
+      "tag": "div",
+      "top": 8157,
+      "height": 213,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "А если не понравится?",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 67,
+      "textLeft": 16,
+      "textRight": 67,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.faq-band.faq-band--a",
+      "tag": "div",
+      "top": 8370,
+      "height": 213,
+      "words": 16,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Делаете поддержку после сдачи?",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.chapter.contact",
+      "tag": "section",
+      "top": 8676,
+      "height": 918,
+      "words": 30,
+      "media": 0,
+      "middle": 640,
+      "heading": {
+       "text": "Напишите нам",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": 19,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 9594,
+      "height": 334,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Богатов Dev",
+       "size": 51,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 21,
+      "textLeft": 16,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 592,
+      "height": 304
+     }
+    ],
+    "h1s": [
+     {
+      "text": "САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ",
+      "size": 37,
+      "top": 296,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 36
+     },
+     {
+      "x": 32,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 40,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ\" → 4 lines (4 words, 72px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "20 different font sizes (14, 15, 16, 17, 19, 20, 23, 24, 26, 30, 32, 37, 40, 58, 63, 64, 72, 95, 101, 158).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 1440,
+   "message": "Longest paragraph runs about 95 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch)."
+  },
+  {
+   "level": "FAIL",
+   "id": "broken-image",
+   "width": 1440,
+   "message": "Broken image(s): https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berlin%2C_Mitte%2C_Friedrichstrasse%2C_Haus_Friedrichstadt_03., https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dallas_7-27-2026_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg/800, https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sculpture._Budapest_Marriott_Hotel.JPG/800px-Sculpture._Budape, https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/D%C3%BClmen%2C_Kirchspiel%2C_Sondermunitionslager_D%C3%BClmen-",
+   "fix": "Fix the URL or replace the asset.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "lopsided",
+   "width": 1440,
+   "message": "A section keeps its content on one side and leaves 743px of the width empty: \"О студии\".",
+   "fix": "Fill the other side with what the section has (its picture, a second column, the figure), or defend the void in one sentence.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "blank-gap",
+   "width": 1440,
+   "message": "1 stretch(es) of the page hold nothing at all: 652px at 6584px (the screen is 900px tall).",
+   "fix": "Close the gap: a section gap is 120–240px on desktop and 72–112px on a phone. Look for a min-height: 100vh on a short section, an empty grid row, a hidden element still holding its space, or a reveal that never fired. A deliberate rest is a placed picture or colour field, not nothing.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "hero-void",
+   "width": 1440,
+   "message": "54% of the first screen is one empty block (900×780px at 540,120).",
+   "fix": "Place the void on purpose or fill it: move the picture, the film or one fact into it, grow the headline to meet it, or shrink the screen to its content. A void reads as placed only when something closes it on the far side and it is the screen's one rest."
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"DROPSTOP\" (screen 6, 100% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "empty-middle",
+   "width": 768,
+   "message": "1 section(s) have content at both edges and 622px of nothing between: \"Напишите нам\"",
+   "fix": "Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"САЙТЫ, КОТОРЫЕ ПРИНОСЯТ ЗАЯВКИ\" → 3 lines (4 words, 37.1px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 390,
+   "message": "3 eyebrow/kicker label(s) above headings: \"В работе\" above \"DROPSTOP\"; \"В работе\" above \"DIGITALDAYBEARUS\"; \"Скидка 30%\" above \"−30%\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/desktop-fold.jpg",
+   "pages": [
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/desktop-page-01.jpg",
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/desktop-page-02.jpg",
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/tablet-fold.jpg",
+   "pages": [
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/tablet-page-01.jpg",
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/mobile-fold.jpg",
+   "pages": [
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/mobile-page-01.jpg",
+    "/Users/vitaarosuk/Documents/victoretc/studio/portfolio/.taste-skill/inspect/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

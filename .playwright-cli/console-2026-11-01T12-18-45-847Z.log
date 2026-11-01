@@ -1,0 +1,9 @@
+[     172ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Feather.ttf:0
+[     174ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Wing.ttf:0
+[     175ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Body.ttf:0
+[     175ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/handil_pro/HandilPro-Medium.otf:0
+[     226ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/favicon.ico:0
+[  235742ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/handil_pro/HandilPro-Medium.otf:0
+[  235744ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Feather.ttf:0
+[  235744ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Wing.ttf:0
+[  235745ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/fonts/czizh/Czizh%20Body.ttf:0

@@ -1,0 +1,32 @@
+[  730970ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[  730992ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[  731033ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[  731115ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[  731277ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[  731599ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 1961174ms] ReferenceError: WHITE is not defined
+    at tick (http://localhost:1414/js/orb.js:233:27)
+[ 1961193ms] ReferenceError: WHITE is not defined
+    at tick (http://localhost:1414/js/orb.js:233:27)
+[ 3770423ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/js/doodle.js:0
+[ 3770423ms] [ERROR] Refused to execute script from 'http://localhost:1414/js/doodle.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled. @ http://localhost:1414/:0
+[ 3905338ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/js/doodle.js:0
+[ 3905338ms] [ERROR] Refused to execute script from 'http://localhost:1414/js/doodle.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled. @ http://localhost:1414/:0
+[ 5604591ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5604613ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5604656ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5604740ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5604903ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5605230ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5784760ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5784783ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5784829ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5784913ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5785080ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5785410ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5786072ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5787430ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5790022ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5795164ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5805471ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[ 5826093ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1414/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1

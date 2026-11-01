@@ -1,0 +1,42 @@
+baseURL = 'http://localhost:1414/'
+languageCode = 'ru-ru'
+title = 'Богатов Dev'
+hasCJKLanguage = false
+enableRobotsTXT = true
+
+[module]
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+  [[module.mounts]]
+    source = 'i18n'
+    target = 'i18n'
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'fonts'
+    target = 'static/fonts'
+
+[params]
+  description = 'Богатов Dev — веб-студия для малого и среднего бизнеса: сайты, лендинги и интернет-магазины без шаблонов, с честными сроками и поддержкой после сдачи.'
+  email = 'hello@example.com'
+  telegram = 'https://t.me/example'
+  phone = '+7 (000) 000-00-00'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
