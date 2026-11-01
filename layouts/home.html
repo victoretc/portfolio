@@ -18,6 +18,16 @@
     <h1 class="hero-title"><span class="hero-script">Богатов</span>Студия разработки для малого и среднего бизнеса</h1>
     <p class="hero-lead">Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.</p>
 
+    <!-- Декоративные «головы» по бокам текста: только десктоп -->
+    <span class="orb hero-orb hero-orb--lg" data-orb aria-hidden="true">
+      <span class="orb-fallback"><span></span><span></span></span>
+      <canvas></canvas>
+    </span>
+    <span class="orb hero-orb hero-orb--md" data-orb data-color="#FFFFFF" aria-hidden="true">
+      <span class="orb-fallback"><span></span><span></span></span>
+      <canvas></canvas>
+    </span>
+
     <div class="cta-wrap">
       <div class="callout" data-callout data-loop="8000">
         <span class="callout-label">Говорят что на большие кнопки хочется кликнуть</span>
@@ -28,13 +38,7 @@
 
       <a class="cta" href="#services">
       <span class="cta-glow" aria-hidden="true"></span>
-      <!-- Отпечатки убраны -->
-      <!-- «Голова», следящая за курсором, — выключена
-      <span class="orb cta-orb" data-orb aria-hidden="true">
-        <span class="orb-fallback"><span></span><span></span></span>
-        <canvas></canvas>
-      </span>
-      -->
+      <!-- Отпечатки убраны, «голова» в кнопке убрана — живём по бокам текста -->
       <span class="cta-label">Связаться</span>
     </a>
   </div>

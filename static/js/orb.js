@@ -230,7 +230,7 @@
         else if (bt < 0.18) b = 1 - (bt - 0.1) / 0.08;
       }
 
-      var body = hexToRgb(ORB.color);
+      var body = hexToRgb(root.getAttribute("data-color") || ORB.color);
       var eye = hexToRgb(ORB.eyeColor);
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);

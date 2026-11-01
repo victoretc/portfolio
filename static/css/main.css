@@ -87,7 +87,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent;
+  background: #000;
 }
 .head-bar {
   display: flex;
@@ -138,10 +138,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: #f5f5f5;
   min-height: 100svh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   /* reserve room for the absolutely-positioned CTA at the bottom */
-  padding-block: clamp(80px, 14vh, 160px) calc(clamp(180px, 26vw, 320px) + clamp(24px, 5vh, 64px) + 24px + clamp(48px, 9vh, 110px));
+  padding-block: clamp(96px, 17vh, 200px) calc(clamp(180px, 26vw, 320px) + clamp(24px, 5vh, 64px) + 24px + clamp(48px, 9vh, 110px));
   position: relative;
   overflow: hidden;
 }
@@ -171,7 +171,18 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .orb-fallback span:first-child { left: 31%; }
 .orb-fallback span:last-child { left: 56%; }
-.cta-orb { margin-right: clamp(14px, 1.8vw, 24px); }
+/* Декоративные «головы» по бокам текста героя — десктоп, три размера */
+.hero-orb {
+  position: absolute;
+  display: none;
+  width: var(--o-size);
+}
+.hero-orb--lg { --o-size: clamp(96px, 11vw, 150px); left: 4vw; top: 20%; }
+.hero-orb--md { --o-size: clamp(64px, 7.5vw, 104px); right: 5vw; top: 28%; }
+.hero-orb--md .orb-fallback { background: linear-gradient(135deg, #fff, #d6d6de); }
+@media (min-width: 960px) {
+  .hero-orb { display: block; }
+}
 .hero-inner {
   width: 100%;
   max-width: 1200px;
@@ -536,6 +547,9 @@ html.js .callout.is-in .callout-label span {
   font-size: clamp(28px, 3vw, 40px);
   letter-spacing: -0.015em;
   margin-bottom: clamp(28px, 5vh, 56px);
+  /* тот же левый край колонки 1200px, что и у .cases-title — не по центру */
+  align-self: flex-start;
+  text-align: left;
 }
 /* «Клавиша» — копия CTA из героя: тёмный градиент, фаска, свечение */
 .service-offer {
