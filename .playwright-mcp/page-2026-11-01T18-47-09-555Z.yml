@@ -1,0 +1,122 @@
+- generic [active] [ref=f9e1]:
+  - generic [ref=f9e3]:
+    - generic [ref=f9e4]:
+      - heading "Богатов Студия разработки для малого и среднего бизнеса" [level=1] [ref=f9e5]:
+        - generic [ref=f9e6]: Богатов
+        - text: Студия разработки для малого и среднего бизнеса
+      - paragraph [ref=f9e7]: Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.
+    - link "Связаться" [ref=f9e9] [cursor=pointer]:
+      - /url: "#services"
+  - generic [ref=f9e12]:
+    - heading "Кейсы" [level=2] [ref=f9e13]
+    - article [ref=f9e14]:
+      - generic [ref=f9e15]:
+        - link "Открыть сайт «Читка»" [ref=f9e16] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=f9e17]
+        - generic [ref=f9e18]:
+          - generic [ref=f9e19]:
+            - heading "Читка" [level=3] [ref=f9e20]
+            - paragraph [ref=f9e21]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=f9e22]:
+              - generic [ref=f9e23]: "Стэк:"
+              - generic [ref=f9e24]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=f9e25] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=f9e27]:
+    - heading "Услуги" [level=2] [ref=f9e28]
+    - generic [ref=f9e29]:
+      - paragraph [ref=f9e30]: Лендинг
+      - paragraph [ref=f9e31]: Дизайн и разработка сайта за 3 дня
+      - paragraph [ref=f9e32]:
+        - text: 900 Br
+        - generic [ref=f9e33]: за дизайн и разработку
+      - paragraph [ref=f9e34]: "Мы делаем лендинги под конкретную услугу или акцию: структура, тексты, дизайн и вёрстка. Показываем готовый результат за три дня."
+    - generic [ref=f9e35]:
+      - heading "Что ещё нужно для запуска" [level=3] [ref=f9e36]
+      - paragraph [ref=f9e37]: Кроме самого сайта понадобится хостинг, домен и, как правило, юридические документы — оферта и политика конфиденциальности. Мы подскажем, где всё это оформить, и запустим сайт на боевом адресе.
+    - generic [ref=f9e38]:
+      - heading "Мы также можем реализовать более сложные решения" [level=3] [ref=f9e39]
+      - paragraph [ref=f9e40]: Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.
+      - generic [ref=f9e41]:
+        - generic [ref=f9e42]:
+          - generic [ref=f9e43]: Ваше имя
+          - textbox "Ваше имя" [ref=f9e44]:
+            - /placeholder: Имя
+        - generic [ref=f9e45]:
+          - generic [ref=f9e46]: Как с вами связаться
+          - textbox "Как с вами связаться" [ref=f9e47]:
+            - /placeholder: Почта или телефон
+        - generic [ref=f9e48]:
+          - generic [ref=f9e49]: Что хотите сделать
+          - textbox "Что хотите сделать" [ref=f9e50]
+        - button "Отправить" [ref=f9e51] [cursor=pointer]
+  - generic [ref=f9e53]:
+    - generic [ref=f9e54]:
+      - paragraph [ref=f9e55]: FAQ
+      - heading "Вопросы, которые задают чаще всего" [level=2] [ref=f9e56]
+      - paragraph [ref=f9e57]: Коротко и без мелкого шрифта. Если вашего вопроса здесь нет — напишите нам, ответим в течение рабочего дня.
+    - generic [ref=f9e58]:
+      - group [ref=f9e59]:
+        - generic "Сколько стоит лендинг и что входит в цену?" [ref=f9e60] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e61]: "01"
+      - group [ref=f9e64]:
+        - generic "Сколько времени занимает разработка?" [ref=f9e65] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e66]: "02"
+      - group [ref=f9e69]:
+        - generic "Вы работаете на шаблонах?" [ref=f9e70] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e71]: "03"
+      - group [ref=f9e74]:
+        - generic "Что вы делаете с ИИ — сайт не собирается одним промптом?" [ref=f9e75] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e76]: "04"
+      - group [ref=f9e79]:
+        - generic "У меня нет текстов и фотографий. Что делать?" [ref=f9e80] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e81]: "05"
+      - group [ref=f9e84]:
+        - generic "Что нужно для запуска сайта?" [ref=f9e85] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e86]: "06"
+      - group [ref=f9e89]:
+        - generic "А если результат мне не понравится?" [ref=f9e90] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e91]: "07"
+      - group [ref=f9e94]:
+        - generic "Что происходит после сдачи сайта?" [ref=f9e95] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e96]: "08"
+      - group [ref=f9e99]:
+        - generic "Как начать работу?" [ref=f9e100] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e101]: "09"
+    - generic [ref=f9e104]:
+      - paragraph [ref=f9e105]: Не нашли ответ?
+      - link "Написать нам" [ref=f9e106] [cursor=pointer]:
+        - /url: https://t.me/victor_aqa
+  - contentinfo [ref=f9e109]:
+    - generic [ref=f9e110]:
+      - generic [ref=f9e111]:
+        - paragraph [ref=f9e112]: Расскажите о задаче — ответим в течение рабочего дня
+        - link "Написать" [ref=f9e113] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+      - generic [ref=f9e115]:
+        - navigation "Разделы сайта" [ref=f9e116]:
+          - paragraph [ref=f9e117]: Разделы
+          - link "Кейсы" [ref=f9e118] [cursor=pointer]:
+            - /url: "#cases"
+          - link "Услуги и цены" [ref=f9e119] [cursor=pointer]:
+            - /url: "#services"
+          - link "Вопросы и ответы" [ref=f9e120] [cursor=pointer]:
+            - /url: "#faq"
+          - link "Наверх" [ref=f9e121] [cursor=pointer]:
+            - /url: "#top"
+        - navigation "Контакты" [ref=f9e122]:
+          - paragraph [ref=f9e123]: Контакты
+          - link "Telegram" [ref=f9e124] [cursor=pointer]:
+            - /url: https://t.me/victor_aqa
+          - link "hello@example.com" [ref=f9e125] [cursor=pointer]:
+            - /url: mailto:hello@example.com
+          - link "+7 (000) 000-00-00" [ref=f9e126] [cursor=pointer]:
+            - /url: tel:+70000000000
+        - generic [ref=f9e127]:
+          - paragraph [ref=f9e128]: Студия
+          - paragraph [ref=f9e129]: "Делаем сайты для малого и среднего бизнеса: без шаблонов, с честными сроками и поддержкой после сдачи."
+      - paragraph [aria-hidden] [ref=f9e130]: Богатов Dev
+      - generic [ref=f9e131]:
+        - paragraph [ref=f9e132]: © 2026 Богатов Dev
+        - paragraph [ref=f9e133]: Дизайн и вёрстка — вручную, без готовых тем

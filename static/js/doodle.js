@@ -5,14 +5,25 @@
   var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function splitLabel(label) {
-    var text = label.textContent;
+    var words = label.textContent.trim().split(/\s+/);
     label.textContent = "";
-    var chars = Array.from(text);
-    for (var i = 0; i < chars.length; i++) {
-      var s = document.createElement("span");
-      s.textContent = chars[i] === " " ? "\u00A0" : chars[i];
-      s.style.setProperty("--i", i);
-      label.appendChild(s);
+    var idx = 0;
+    for (var w = 0; w < words.length; w++) {
+      if (w > 0) {
+        label.appendChild(document.createTextNode(" "));
+        idx++;
+      }
+      var wordEl = document.createElement("span");
+      wordEl.className = "callout-word";
+      var chars = Array.from(words[w]);
+      for (var i = 0; i < chars.length; i++) {
+        var s = document.createElement("span");
+        s.className = "callout-char";
+        s.textContent = chars[i];
+        s.style.setProperty("--i", idx++);
+        wordEl.appendChild(s);
+      }
+      label.appendChild(wordEl);
     }
   }
 

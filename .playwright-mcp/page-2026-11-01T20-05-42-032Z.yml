@@ -1,0 +1,233 @@
+- generic [active] [ref=f9e1]:
+  - banner [ref=f9e2]:
+    - navigation "Основная навигация" [ref=f9e3]:
+      - generic [ref=f9e4]:
+        - link "Кейсы" [ref=f9e5] [cursor=pointer]:
+          - /url: "#cases"
+        - link "Услуги" [ref=f9e6] [cursor=pointer]:
+          - /url: "#services"
+        - link "Вопросы" [ref=f9e7] [cursor=pointer]:
+          - /url: "#faq"
+      - link "Связаться" [ref=f9e8] [cursor=pointer]:
+        - /url: https://t.me/victor_aqa
+  - generic [ref=f9e12]:
+    - generic [aria-hidden]:
+      - generic:
+        - generic: С
+        - generic: ю
+        - generic: д
+        - generic: а
+        - generic: т
+        - generic: о
+        - generic: ж
+        - generic: е
+    - generic [aria-hidden]:
+      - generic:
+        - generic: С
+        - generic: ю
+        - generic: д
+        - generic: а
+        - generic: т
+        - generic: о
+        - generic: ч
+        - generic: н
+        - generic: о
+        - generic: м
+        - generic: о
+        - generic: ж
+        - generic: н
+        - generic: о
+        - generic: к
+        - generic: л
+        - generic: и
+        - generic: к
+        - generic: н
+        - generic: у
+        - generic: т
+        - generic: ь
+    - generic [aria-hidden]:
+      - generic:
+        - generic: И
+        - generic: с
+        - generic: ю
+        - generic: д
+        - generic: а
+    - generic [ref=f9e13]:
+      - generic [ref=f9e14]:
+        - heading "Богатов Студия разработки для малого и среднего бизнеса" [level=1] [ref=f9e15]:
+          - generic [ref=f9e16]: Богатов
+          - text: Студия разработки для малого и среднего бизнеса
+        - paragraph [ref=f9e17]: Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.
+      - generic [ref=f9e19]:
+        - generic [aria-hidden]:
+          - generic:
+            - generic: Б
+            - generic: о
+            - generic: л
+            - generic: ь
+            - generic: ш
+            - generic: а
+            - generic: я
+            - generic: к
+            - generic: н
+            - generic: о
+            - generic: п
+            - generic: к
+            - generic: а
+            - generic: д
+            - generic: л
+            - generic: я
+            - generic: б
+            - generic: о
+            - generic: л
+            - generic: ь
+            - generic: ш
+            - generic: и
+            - generic: х
+            - generic: к
+            - generic: о
+            - generic: н
+            - generic: в
+            - generic: е
+            - generic: р
+            - generic: с
+            - generic: и
+            - generic: й
+        - link "Услуги" [ref=f9e20] [cursor=pointer]:
+          - /url: "#services"
+  - generic [ref=f9e23]:
+    - heading "Кейсы" [level=2] [ref=f9e24]
+    - article [ref=f9e25]:
+      - generic [ref=f9e26]:
+        - link "Открыть сайт «Читка»" [ref=f9e27] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=f9e28]
+        - generic [ref=f9e29]:
+          - generic [ref=f9e30]:
+            - heading "Читка" [level=3] [ref=f9e31]
+            - paragraph [ref=f9e32]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=f9e33]:
+              - generic [ref=f9e34]: "Стэк:"
+              - generic [ref=f9e35]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=f9e36] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=f9e38]:
+    - heading "Услуги" [level=2] [ref=f9e40]
+    - generic [ref=f9e41]:
+      - generic [ref=f9e42]:
+        - paragraph [ref=f9e43]: Лендинг
+        - heading "Дизайн и разработка сайта за 3 дня" [level=3] [ref=f9e44]
+        - paragraph [ref=f9e45]: Под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.
+      - generic [ref=f9e46]:
+        - paragraph [ref=f9e47]: 900 Br
+        - paragraph [ref=f9e48]: за дизайн и разработку
+        - link "Обсудить проект" [ref=f9e49] [cursor=pointer]:
+          - /url: "#brief"
+    - generic [ref=f9e50]:
+      - heading "Что входит в цену" [level=3] [ref=f9e51]
+      - list [ref=f9e52]:
+        - listitem [ref=f9e53]:
+          - generic [aria-hidden] [ref=f9e54]: "01"
+          - paragraph [ref=f9e55]: Структура
+          - paragraph [ref=f9e56]: Выясняем, кто ваш клиент и что мешает ему купить
+        - listitem [ref=f9e57]:
+          - generic [aria-hidden] [ref=f9e58]: "02"
+          - paragraph [ref=f9e59]: Тексты
+          - paragraph [ref=f9e60]: Пишем под ваш бизнес, без чужих формулировок
+        - listitem [ref=f9e61]:
+          - generic [aria-hidden] [ref=f9e62]: "03"
+          - paragraph [ref=f9e63]: Дизайн
+          - paragraph [ref=f9e64]: Рисуем под вашу компанию, без готовых тем
+        - listitem [ref=f9e65]:
+          - generic [aria-hidden] [ref=f9e66]: "04"
+          - paragraph [ref=f9e67]: Вёрстка и запуск
+          - paragraph [ref=f9e68]: Собираем вручную и ставим на ваш домен
+    - generic [ref=f9e69]:
+      - generic [ref=f9e70]:
+        - heading "Что ещё нужно для запуска" [level=3] [ref=f9e71]
+        - paragraph [ref=f9e72]: Мы подскажем, где всё это оформить, и запустим сайт на вашем домене
+      - list [ref=f9e73]:
+        - listitem [ref=f9e74]:
+          - paragraph [ref=f9e79]: Хостинг
+          - paragraph [ref=f9e80]: Где разместить сайт дешевле и без лишних тарифов
+        - listitem [ref=f9e81]:
+          - paragraph [ref=f9e85]: Домен
+          - paragraph [ref=f9e86]: Привяжем к сайту сами
+        - listitem [ref=f9e87]:
+          - paragraph [ref=f9e92]: Документы
+          - paragraph [ref=f9e93]: Оферта и политика конфиденциальности
+    - generic [ref=f9e94]:
+      - generic [ref=f9e95]:
+        - heading "Мы также можем реализовать более сложные решения" [level=3] [ref=f9e96]
+        - paragraph [ref=f9e97]: Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.
+      - link "Написать в Telegram" [ref=f9e98] [cursor=pointer]:
+        - /url: https://t.me/victor_aqa
+  - generic [ref=f9e103]:
+    - generic [ref=f9e104]:
+      - paragraph [ref=f9e105]: FAQ
+      - heading "Вопросы, которые задают чаще всего" [level=2] [ref=f9e106]
+      - paragraph [ref=f9e107]: Коротко и без мелкого шрифта. Если вашего вопроса здесь нет — напишите нам, ответим в течение рабочего дня.
+    - generic [ref=f9e108]:
+      - group [ref=f9e109]:
+        - generic "Сколько стоит лендинг и что входит в цену?" [ref=f9e110] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e111]: "01"
+      - group [ref=f9e114]:
+        - generic "Сколько времени занимает разработка?" [ref=f9e115] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e116]: "02"
+      - group [ref=f9e119]:
+        - generic "Вы работаете на шаблонах?" [ref=f9e120] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e121]: "03"
+      - group [ref=f9e124]:
+        - generic "Что вы делаете с ИИ — сайт не собирается одним промптом?" [ref=f9e125] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e126]: "04"
+      - group [ref=f9e129]:
+        - generic "У меня нет текстов и фотографий. Что делать?" [ref=f9e130] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e131]: "05"
+      - group [ref=f9e134]:
+        - generic "Что нужно для запуска сайта?" [ref=f9e135] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e136]: "06"
+      - group [ref=f9e139]:
+        - generic "А если результат мне не понравится?" [ref=f9e140] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e141]: "07"
+      - group [ref=f9e144]:
+        - generic "Что происходит после сдачи сайта?" [ref=f9e145] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e146]: "08"
+      - group [ref=f9e149]:
+        - generic "Как начать работу?" [ref=f9e150] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e151]: "09"
+    - generic [ref=f9e154]:
+      - paragraph [ref=f9e155]: Не нашли ответ?
+      - link "Написать нам" [ref=f9e156] [cursor=pointer]:
+        - /url: https://t.me/victor_aqa
+  - contentinfo [ref=f9e159]:
+    - generic [ref=f9e160]:
+      - generic [ref=f9e161]:
+        - paragraph [ref=f9e162]: Расскажите о задаче — ответим в течение рабочего дня
+        - link "Написать" [ref=f9e163] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+      - generic [ref=f9e165]:
+        - navigation "Разделы сайта" [ref=f9e166]:
+          - paragraph [ref=f9e167]: Разделы
+          - link "Кейсы" [ref=f9e168] [cursor=pointer]:
+            - /url: "#cases"
+          - link "Услуги и цены" [ref=f9e169] [cursor=pointer]:
+            - /url: "#services"
+          - link "Вопросы и ответы" [ref=f9e170] [cursor=pointer]:
+            - /url: "#faq"
+          - link "Наверх" [ref=f9e171] [cursor=pointer]:
+            - /url: "#top"
+        - navigation "Контакты" [ref=f9e172]:
+          - paragraph [ref=f9e173]: Контакты
+          - link "Telegram" [ref=f9e174] [cursor=pointer]:
+            - /url: https://t.me/victor_aqa
+          - link "hello@example.com" [ref=f9e175] [cursor=pointer]:
+            - /url: mailto:hello@example.com
+          - link "+7 (000) 000-00-00" [ref=f9e176] [cursor=pointer]:
+            - /url: tel:+70000000000
+        - generic [ref=f9e177]:
+          - paragraph [ref=f9e178]: Студия
+          - paragraph [ref=f9e179]: "Делаем сайты для малого и среднего бизнеса: без шаблонов, с честными сроками и поддержкой после сдачи."
+      - paragraph [aria-hidden] [ref=f9e180]: Богатов Dev
+      - generic [ref=f9e181]:
+        - paragraph [ref=f9e182]: © 2026 Богатов Dev
+        - paragraph [ref=f9e183]: Дизайн и вёрстка — вручную, без готовых тем

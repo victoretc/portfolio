@@ -1,46 +1,68 @@
 {{ define "main" }}
 
-<!-- HEADER — full-width bar, same wrap and flat surfaces as the page -->
-<header class="site-head">
+<!-- HEADER — фиксированный бар: вордмарк, ссылки со скролл-спаем, CTA, бургер на телефоне -->
+<header class="site-head" data-head>
   <nav class="head-bar" aria-label="Основная навигация">
-    <div class="head-links">
-      <a href="#cases">Кейсы</a>
-      <a href="#services">Услуги</a>
-      <a href="#faq">Вопросы</a>
+    <div class="head-links" id="head-nav">
+      <a href="#cases" data-navlink>Кейсы</a>
+      <a href="#services" data-navlink>Услуги</a>
+      <a href="#faq" data-navlink>Вопросы</a>
     </div>
+
     <a class="head-cta" href="https://t.me/victor_aqa"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>Связаться</span></a>
+
+    <button class="head-burger" type="button" aria-expanded="false" aria-controls="head-nav" aria-label="Показать меню" data-burger>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </nav>
 </header>
 
-<!-- 1. HERO — black ground, centered type (ref: v-a-d-i-m.ru), 1200px column -->
+<!-- 1. HERO — чёрный фон, текст слева, орбы справа (ref: zorigto.ru), кейсы выглядывают снизу -->
 <section class="hero" id="top">
+  <!-- Doodle-callout: стрелки на кликабельные элементы, в пределах полей хедера -->
+  <div class="callout callout--nav" data-callout aria-hidden="true">
+    <span class="callout-label">Сюда тоже</span>
+    <svg class="callout-stroke" viewBox="0 0 120 96" fill="none" preserveAspectRatio="xMidYMid meet">
+      <path pathLength="1" d="M102 8 C 94 42 76 58 46 80 M46 80 l 3 -20 M46 80 l 20 -3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="callout callout--head" data-callout aria-hidden="true">
+    <span class="callout-label">Сюда точно можно кликнуть</span>
+    <svg class="callout-stroke" viewBox="0 0 120 96" fill="none" preserveAspectRatio="xMidYMid meet">
+      <path pathLength="1" d="M102 8 C 94 42 76 58 46 80 M46 80 l 3 -20 M46 80 l 20 -3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
-    <h1 class="hero-title"><span class="hero-script">Богатов</span>Студия разработки для малого и среднего бизнеса</h1>
-    <p class="hero-lead">Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.</p>
+    <div class="hero-text">
+      <h1 class="hero-title"><span class="hero-script">Богатов</span>Студия разработки для малого и среднего бизнеса</h1>
+      <p class="hero-lead">Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.</p>
+    </div>
 
-    <!-- Декоративные «головы» по бокам текста: только десктоп -->
-    <span class="orb hero-orb hero-orb--lg" data-orb aria-hidden="true">
-      <span class="orb-fallback"><span></span><span></span></span>
-      <canvas></canvas>
-    </span>
-    <span class="orb hero-orb hero-orb--md" data-orb data-color="#FFFFFF" aria-hidden="true">
-      <span class="orb-fallback"><span></span><span></span></span>
-      <canvas></canvas>
-    </span>
+    <div class="hero-side" aria-hidden="true">
+      <span class="orb hero-orb hero-orb--lg" data-orb>
+        <span class="orb-fallback"><span></span><span></span></span>
+        <canvas></canvas>
+      </span>
+      <span class="orb hero-orb hero-orb--sm" data-orb data-color="#FFFFFF">
+        <span class="orb-fallback"><span></span><span></span></span>
+        <canvas></canvas>
+      </span>
+    </div>
 
-    <div class="cta-wrap">
-      <div class="callout" data-callout data-loop="8000">
-        <span class="callout-label">Говорят что на большие кнопки хочется кликнуть</span>
-        <svg class="callout-stroke" viewBox="0 0 120 96" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <div class="hero-actions">
+      <div class="callout callout--cta" data-callout aria-hidden="true">
+        <span class="callout-label">Большая кнопка для больших конверсий</span>
+        <svg class="callout-stroke" viewBox="0 0 120 96" fill="none" preserveAspectRatio="xMidYMid meet">
           <path pathLength="1" d="M102 8 C 94 42 76 58 46 80 M46 80 l 3 -20 M46 80 l 20 -3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </div>
-
       <a class="cta" href="#services">
-      <span class="cta-glow" aria-hidden="true"></span>
-      <!-- Отпечатки убраны, «голова» в кнопке убрана — живём по бокам текста -->
-      <span class="cta-label">Связаться</span>
-    </a>
+        <span class="cta-glow" aria-hidden="true"></span>
+        <span class="cta-label">Услуги</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -82,33 +104,92 @@
   </div>
 </section>
 
-<!-- 4. SERVICES — black ground, centered type, same design language as hero + cases -->
+<!-- 4. SERVICES — чёрное поле: шапка как в FAQ, «клавиша»-оффер с ценой и кнопкой,
+     состав цены по колонкам, что нужно для запуска, панель брифа -->
 <section class="chapter services" id="services">
   <div class="services-inner">
-    <h2 class="services-title">Услуги</h2>
-
-    <!-- Главный оффер: та же «клавиша», что и CTA в герое -->
-    <div class="service-offer" data-reveal>
-      <p class="service-script">Лендинг</p>
-      <p class="service-headline">Дизайн и разработка сайта за 3&nbsp;дня</p>
-      <p class="service-price">900&nbsp;Br<span class="service-price-note">за дизайн и разработку</span></p>
-      <p class="service-desc">Мы делаем лендинги под конкретную услугу или акцию: структура, тексты, дизайн и вёрстка. Показываем готовый результат за три дня.</p>
+    <div class="services-head" data-reveal>
+      <h2 class="services-title">Услуги</h2>
     </div>
 
-    <div class="service-note" data-reveal>
-      <h3>Что ещё нужно для запуска</h3>
-      <p>Кроме самого сайта понадобится хостинг, домен и, как правило, юридические документы — оферта и политика конфиденциальности. Мы подскажем, где всё это оформить, и запустим сайт на боевом адресе.</p>
+    <!-- Главный оффер: та же «клавиша», что и CTA в герое, — слева предложение, справа цена и кнопка -->
+    <div class="offer" data-reveal>
+      <div class="offer-main">
+        <p class="offer-script">Лендинг</p>
+        <h3 class="offer-title">Дизайн и разработка сайта за 3&nbsp;дня</h3>
+        <p class="offer-desc">Под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+      </div>
+
+      <div class="offer-side">
+        <p class="offer-price">900&nbsp;<span class="offer-currency">Br</span></p>
+        <p class="offer-price-note">за дизайн и разработку</p>
+        <a class="offer-cta" href="#brief">Обсудить проект</a>
+      </div>
     </div>
 
-    <div class="service-complex" data-reveal>
-      <h3 class="service-complex-title">Мы также можем реализовать более сложные решения</h3>
-      <p class="service-complex-desc">Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.</p>
-      <form class="service-form" data-brief>
-        <label class="cell"><span class="sr-only">Ваше имя</span><input type="text" name="имя" placeholder="Имя" autocomplete="name" required></label>
-        <label class="cell"><span class="sr-only">Как с вами связаться</span><input type="text" name="контакт" placeholder="Почта или телефон" required></label>
-        <label class="cell"><span class="sr-only">Что хотите сделать</span><input type="text" name="задача" placeholder="Что хотите сделать" required></label>
-        <button class="cell cell--submit" type="submit">Отправить</button>
-      </form>
+    <!-- Что входит в цену: четыре колонки с волосяными разделителями -->
+    <div class="includes">
+      <h3 class="services-sub" data-reveal>Что входит в цену</h3>
+      <ol class="includes-grid">
+        <li class="includes-item" data-reveal style="--i: 0">
+          <span class="includes-num" aria-hidden="true">01</span>
+          <p class="includes-name">Структура</p>
+          <p class="includes-note">Выясняем, кто ваш клиент и что мешает ему купить</p>
+        </li>
+        <li class="includes-item" data-reveal style="--i: 1">
+          <span class="includes-num" aria-hidden="true">02</span>
+          <p class="includes-name">Тексты</p>
+          <p class="includes-note">Пишем под&nbsp;ваш бизнес, без чужих формулировок</p>
+        </li>
+        <li class="includes-item" data-reveal style="--i: 2">
+          <span class="includes-num" aria-hidden="true">03</span>
+          <p class="includes-name">Дизайн</p>
+          <p class="includes-note">Рисуем под&nbsp;вашу компанию, без готовых тем</p>
+        </li>
+        <li class="includes-item" data-reveal style="--i: 3">
+          <span class="includes-num" aria-hidden="true">04</span>
+          <p class="includes-name">Вёрстка и запуск</p>
+          <p class="includes-note">Собираем вручную и ставим на&nbsp;ваш домен</p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Что нужно для запуска: заголовок с лидом и три карточки с иконками -->
+    <div class="launch" data-reveal>
+      <div class="launch-head">
+        <h3 class="services-sub">Что ещё нужно для запуска</h3>
+        <p class="launch-lead">Мы подскажем, где всё это оформить, и запустим сайт на&nbsp;вашем домене</p>
+      </div>
+      <ul class="launch-list">
+        <li class="launch-item">
+          <svg class="launch-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+          <p class="launch-name">Хостинг</p>
+          <p class="launch-note">Где разместить сайт дешевле и без лишних тарифов</p>
+        </li>
+        <li class="launch-item">
+          <svg class="launch-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+          <p class="launch-name">Домен</p>
+          <p class="launch-note">Привяжем к сайту сами</p>
+        </li>
+        <li class="launch-item">
+          <svg class="launch-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+          <p class="launch-name">Документы</p>
+          <p class="launch-note">Оферта и политика конфиденциальности</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Сложные решения: панель с волосяной рамкой и одной кнопкой в Telegram -->
+    <div class="brief" id="brief" data-reveal>
+      <div class="brief-head">
+        <h3 class="brief-title">Мы также можем реализовать более сложные решения</h3>
+        <p class="brief-desc">Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.</p>
+      </div>
+
+      <a class="brief-cta" href="{{ site.Params.telegram }}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span>Написать в Telegram</span>
+      </a>
     </div>
   </div>
 </section>
