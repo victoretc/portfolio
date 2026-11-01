@@ -37,12 +37,3 @@ digitaldaybearus
 
 https://utopy.ai/academy/course/EfhxL/lessons/k2KT9
 
-
-
-
-
-
-
-
-Нужно передезайнить Услуги.  
-

@@ -33,7 +33,7 @@ enableRobotsTXT = true
 [params]
   description = 'Богатов Dev — веб-студия для малого и среднего бизнеса: сайты, лендинги и интернет-магазины без шаблонов, с честными сроками и поддержкой после сдачи.'
   email = 'hello@example.com'
-  telegram = 'https://t.me/example'
+  telegram = 'https://t.me/victor_aqa'
   phone = '+7 (000) 000-00-00'
 
 [markup]

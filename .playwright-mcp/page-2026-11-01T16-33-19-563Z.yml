@@ -1,0 +1,254 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation "Основная навигация" [ref=f3e3]:
+      - generic [ref=f3e4]:
+        - link "Кейсы" [ref=f3e5] [cursor=pointer]:
+          - /url: "#cases"
+        - link "Услуги" [ref=f3e6] [cursor=pointer]:
+          - /url: "#services"
+        - link "Контакты" [ref=f3e7] [cursor=pointer]:
+          - /url: "#contact"
+        - link "FAQ" [ref=f3e8] [cursor=pointer]:
+          - /url: "#faq"
+      - link "Связаться" [ref=f3e9] [cursor=pointer]:
+        - /url: https://t.me/example
+  - generic [ref=f3e14]:
+    - heading "Богатов Студия разработки для малого и среднего бизнеса" [level=1] [ref=f3e15]:
+      - generic [ref=f3e16]: Богатов
+      - text: Студия разработки для малого и среднего бизнеса
+    - paragraph [ref=f3e17]: Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.
+    - generic:
+      - generic:
+        - generic:
+          - generic: Г
+          - generic: о
+          - generic: в
+          - generic: о
+          - generic: р
+          - generic: я
+          - generic: т
+          - generic: ч
+          - generic: т
+          - generic: о
+          - generic: н
+          - generic: а
+          - generic: б
+          - generic: о
+          - generic: л
+          - generic: ь
+          - generic: ш
+          - generic: и
+          - generic: е
+          - generic: к
+          - generic: н
+          - generic: о
+          - generic: п
+          - generic: к
+          - generic: и
+          - generic: х
+          - generic: о
+          - generic: ч
+          - generic: е
+          - generic: т
+          - generic: с
+          - generic: я
+          - generic: к
+          - generic: л
+          - generic: и
+          - generic: к
+          - generic: н
+          - generic: у
+          - generic: т
+          - generic: ь
+      - link "Связаться" [ref=f3e18] [cursor=pointer]:
+        - /url: "#contact"
+  - generic [ref=f3e21]:
+    - heading "Кейсы" [level=2] [ref=f3e22]
+    - article [ref=f3e23]:
+      - generic [ref=f3e24]:
+        - link "Открыть сайт «Читка»" [ref=f3e25] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=f3e26]
+        - generic [ref=f3e27]:
+          - generic [ref=f3e28]:
+            - heading "Читка" [level=3] [ref=f3e29]
+            - paragraph [ref=f3e30]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=f3e31]:
+              - generic [ref=f3e32]: "Стэк:"
+              - generic [ref=f3e33]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=f3e34] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=f3e36]:
+    - heading "Что мы делаем" [level=2] [ref=f3e37]
+    - generic [ref=f3e38]:
+      - paragraph [ref=f3e39]: Мы делаем сайты,
+      - paragraph [ref=f3e40]: лендинги и
+      - paragraph [ref=f3e41]: магазины —
+      - paragraph [ref=f3e42]: проектируем их
+      - paragraph [ref=f3e43]: под вашу задачу.
+    - paragraph [ref=f3e44]: "Не перекрашиваем чужие шаблоны: изучаем, кто ваш клиент и что мешает ему нажать «купить». Доводим до продакшена и остаёмся на поддержке."
+    - generic [ref=f3e45]:
+      - figure [ref=f3e46]:
+        - img "Фасад дома на Фридрихштрассе в Берлине" [ref=f3e47]
+      - figure [ref=f3e48]:
+        - img "Небоскрёбы Далласа в вечернем свете" [ref=f3e49]
+  - generic [ref=f3e50]:
+    - generic [ref=f3e51]:
+      - heading "Доводим клиента до кнопки «Купить»" [level=2] [ref=f3e52]: Доводим клиентадо кнопки «Купить»
+      - paragraph [ref=f3e53]: Листайте вниз — линия повторяет ваш скролл
+    - generic [ref=f3e54]:
+      - paragraph [ref=f3e55]: Богатов Dev
+      - generic [ref=f3e56]:
+        - paragraph [ref=f3e57]: Сайты, лендинги, магазиныпод задачу бизнеса
+        - paragraph [ref=f3e58]: от 150 000 ₽срок 2–3 недели
+      - generic [ref=f3e59]:
+        - paragraph [ref=f3e60]: 30 дней правокбесплатно
+        - paragraph [ref=f3e61]: остаёмсяна поддержке
+  - generic [ref=f3e63]:
+    - heading "Почему мы" [level=2] [ref=f3e65]
+    - generic [ref=f3e66]:
+      - article [ref=f3e67]:
+        - heading "Дизайн под задачу, не под шаблон" [level=3] [ref=f3e68]
+        - generic [ref=f3e69]:
+          - img "Диагональный срез бетонного фасада" [ref=f3e70]
+          - list [ref=f3e71]:
+            - listitem [ref=f3e72]: Не покупаем готовые темы и не адаптируем их «немного под вас».
+            - listitem [ref=f3e73]: "Каждый проект начинается с исследования: кто ваш клиент, что он ищет, что мешает нажать «купить»."
+      - article [ref=f3e74]:
+        - heading "ИИ помогает — мы решаем" [level=3] [ref=f3e75]
+        - generic [ref=f3e76]:
+          - img "Рельеф из известняка на фасаде отеля" [ref=f3e77]
+          - list [ref=f3e78]:
+            - listitem [ref=f3e79]: "Нейросети экономят бюджет: варианты текстов, прототипы, рутина."
+            - listitem [ref=f3e80]: Финальное решение — за человеком. Сайт не должен выглядеть как одноразовый промпт.
+      - article [ref=f3e81]:
+        - heading "Нам важно, чтобы работало после сдачи" [level=3] [ref=f3e82]
+        - generic [ref=f3e83]:
+          - img "Винтовая лестница смотровой вышки" [ref=f3e84]
+          - list [ref=f3e85]:
+            - listitem [ref=f3e86]: Интересно не «сдать и забыть», а чтобы сайт приносил заявки.
+            - listitem [ref=f3e87]: Объясняем решения простым языком и остаёмся на связи после релиза.
+  - generic [ref=f3e89]:
+    - heading "Услуги" [level=2] [ref=f3e90]
+    - generic [ref=f3e91]:
+      - paragraph [ref=f3e92]: Лендинг
+      - paragraph [ref=f3e93]: Дизайн и разработка сайта за 3 дня
+      - paragraph [ref=f3e94]:
+        - text: 900 ₽
+        - generic [ref=f3e95]: за дизайн и разработку
+      - paragraph [ref=f3e96]: "Мы делаем лендинги под конкретную услугу или акцию: структура, тексты, дизайн и вёрстка. Показываем готовый результат за три дня."
+    - generic [ref=f3e97]:
+      - heading "Что ещё нужно для запуска" [level=3] [ref=f3e98]
+      - paragraph [ref=f3e99]: Кроме самого сайта понадобится хостинг, домен и, как правило, юридические документы — оферта и политика конфиденциальности. Мы подскажем, где всё это оформить, и запустим сайт на боевом адресе.
+    - generic [ref=f3e100]:
+      - heading "Мы также можем реализовать более сложные решения" [level=3] [ref=f3e101]
+      - paragraph [ref=f3e102]: Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.
+      - generic [ref=f3e103]:
+        - generic [ref=f3e104]:
+          - generic [ref=f3e105]: Ваше имя
+          - textbox "Ваше имя" [ref=f3e106]:
+            - /placeholder: Имя
+        - generic [ref=f3e107]:
+          - generic [ref=f3e108]: Как с вами связаться
+          - textbox "Как с вами связаться" [ref=f3e109]:
+            - /placeholder: Почта или телефон
+        - generic [ref=f3e110]:
+          - generic [ref=f3e111]: Что хотите сделать
+          - textbox "Что хотите сделать" [ref=f3e112]
+        - button "Отправить" [ref=f3e113] [cursor=pointer]
+  - generic [ref=f3e115]:
+    - heading "О студии" [level=2] [ref=f3e116]
+    - paragraph [ref=f3e118]:
+      - text: Богатов Dev — небольшая команда разработчиков и дизайнеров. Небольшая — значит, над вашим проектом работают
+      - mark [ref=f3e119]: конкретные люди
+      - text: ", а не «отдел». Мы не обещаем сделать всё за неделю и за 10 000 ₽. Обещаем другое: называть"
+      - mark [ref=f3e120]: реальные сроки
+      - text: ", объяснять решения"
+      - mark [ref=f3e121]: без жаргона
+      - text: и
+      - mark [ref=f3e122]: не исчезать после предоплаты
+      - text: . Мы используем нейросети там, где они экономят ваш бюджет, но
+      - mark [ref=f3e123]: финальные решения принимает человек
+      - text: ". После сдачи сайт остаётся с нами:"
+      - mark [ref=f3e124]: 30 дней правок бесплатно
+      - text: ", дальше — по договору."
+      - link "Расскажите о задаче — ответим в течение рабочего дня." [ref=f3e125] [cursor=pointer]:
+        - /url: "#contact"
+  - generic [ref=f3e127]:
+    - generic [ref=f3e128]:
+      - heading "Как мы работаем" [level=2] [ref=f3e129]
+      - paragraph [ref=f3e130]: Шесть шагов от первого разговора до живого сайта. Каждый этап заканчивается понятным результатом, а вы знаете цену и дату сдачи заранее.
+    - generic [ref=f3e131]:
+      - group [ref=f3e132]:
+        - generic "Бриф" [ref=f3e133] [cursor=pointer]
+        - paragraph [ref=f3e135]: 30 минут. Вы рассказываете про бизнес, мы задаём вопросы и фиксируем задачу.
+      - group [ref=f3e136]:
+        - generic "Смета и срок" [ref=f3e137] [cursor=pointer]
+      - group [ref=f3e138]:
+        - generic "Дизайн" [ref=f3e139] [cursor=pointer]
+      - group [ref=f3e140]:
+        - generic "Разработка" [ref=f3e141] [cursor=pointer]
+      - group [ref=f3e142]:
+        - generic "Запуск" [ref=f3e143] [cursor=pointer]
+      - group [ref=f3e144]:
+        - generic "Поддержка" [ref=f3e145] [cursor=pointer]
+  - generic [ref=f3e146]:
+    - heading "Частые вопросы" [level=2] [ref=f3e149]
+    - generic [ref=f3e151]:
+      - heading "Сколько стоит сайт?" [level=3] [ref=f3e152]
+      - paragraph [ref=f3e153]: Лендинг — от 150 000 ₽, сайт компании — от 350 000 ₽. Точную цифру называем после брифа.
+    - generic [ref=f3e155]:
+      - heading "Вы делаете на шаблонах?" [level=3] [ref=f3e156]
+      - paragraph [ref=f3e157]: Нет. Каждый проект — с уникальным дизайном. Из этого следует и цена, и срок.
+    - generic [ref=f3e159]:
+      - heading "Что с ИИ — это не «один промпт»?" [level=3] [ref=f3e160]
+      - paragraph [ref=f3e161]: ИИ помогает с черновиками текстов и вариантами вёрстки. Финальные решения принимает человек. Сайт, собранный одним промптом, выглядит соответствующе.
+    - generic [ref=f3e163]:
+      - heading "А если не понравится?" [level=3] [ref=f3e164]
+      - paragraph [ref=f3e165]: Макет показываем до вёрстки, правки заложены в договор. Спорные вопросы решаем на созвоне, а не перепиской.
+    - generic [ref=f3e167]:
+      - heading "Делаете поддержку после сдачи?" [level=3] [ref=f3e168]
+      - paragraph [ref=f3e169]: Первые 30 дней правки бесплатны. Дальше — по договору или разово.
+  - generic [ref=f3e173]:
+    - heading "Напишите нам" [level=2] [ref=f3e174]
+    - paragraph [ref=f3e175]: Ответим в течение рабочего дня. Нам не нужен технический бриф — достаточно рассказать, чем вы занимаетесь и что хотите получить.
+    - generic [ref=f3e176]:
+      - generic [ref=f3e177]:
+        - generic [ref=f3e178]: Ваше имя
+        - textbox "Ваше имя" [ref=f3e179]:
+          - /placeholder: Имя
+      - generic [ref=f3e180]:
+        - generic [ref=f3e181]: Как с вами связаться
+        - textbox "Как с вами связаться" [ref=f3e182]:
+          - /placeholder: Почта или телефон
+      - generic [ref=f3e183]:
+        - generic [ref=f3e184]: Пара слов о задаче
+        - textbox "Пара слов о задаче" [ref=f3e185]
+      - button "Отправить" [ref=f3e186] [cursor=pointer]
+    - list [ref=f3e187]:
+      - listitem [ref=f3e188]:
+        - link "hello@example.com" [ref=f3e189] [cursor=pointer]:
+          - /url: mailto:hello@example.com
+      - listitem [ref=f3e190]:
+        - link "Telegram" [ref=f3e191] [cursor=pointer]:
+          - /url: https://t.me/example
+      - listitem [ref=f3e192]:
+        - link "+7 (000) 000-00-00" [ref=f3e193] [cursor=pointer]:
+          - /url: tel:+70000000000
+  - contentinfo [ref=f3e194]:
+    - generic [ref=f3e195]:
+      - paragraph [ref=f3e196]: Богатов Dev
+      - navigation "Навигация в подвале" [ref=f3e197]:
+        - link "Услуги и цены" [ref=f3e198] [cursor=pointer]:
+          - /url: "#services"
+        - link "Кейсы" [ref=f3e199] [cursor=pointer]:
+          - /url: "#cases"
+        - link "О студии" [ref=f3e200] [cursor=pointer]:
+          - /url: "#about"
+        - link "Процесс" [ref=f3e201] [cursor=pointer]:
+          - /url: "#process"
+        - link "Вопросы" [ref=f3e202] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Контакты" [ref=f3e203] [cursor=pointer]:
+          - /url: "#contact"
+      - paragraph [ref=f3e204]: "© 2026 Богатов Dev. Фото: Wikimedia Commons — Wolfgang Weber (CC BY 3.0), Jörg Zägel (CC BY-SA 3.0), Sharon Mollerus (CC BY 4.0), Globetrotter19 (CC BY-SA 3.0), Dietmar Rabich (CC BY-SA 4.0)."

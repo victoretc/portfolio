@@ -1,0 +1,3 @@
+[      82ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:1313/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[      86ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:1313/portfolio/video/first-case.mp4:0
+[    3732ms] [WARNING] The resource http://127.0.0.1:1313/portfolio/fonts/czizh/Czizh%20Body.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://127.0.0.1:1313/:0

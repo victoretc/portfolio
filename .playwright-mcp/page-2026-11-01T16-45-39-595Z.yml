@@ -1,0 +1,108 @@
+- generic [active] [ref=f9e1]:
+  - banner [ref=f9e2]:
+    - navigation "Основная навигация" [ref=f9e3]:
+      - link "Связаться" [ref=f9e4] [cursor=pointer]:
+        - /url: https://t.me/example
+  - generic [ref=f9e9]:
+    - heading "Богатов Студия разработки для малого и среднего бизнеса" [level=1] [ref=f9e10]:
+      - generic [ref=f9e11]: Богатов
+      - text: Студия разработки для малого и среднего бизнеса
+    - paragraph [ref=f9e12]: Не переписываем текст чужих шаблонов. Изучаем, кто ваш клиент и что мешает ему нажать «Купить». Доводим до готового результата и остаёмся на связи.
+    - generic:
+      - generic:
+        - generic:
+          - generic: Г
+          - generic: о
+          - generic: в
+          - generic: о
+          - generic: р
+          - generic: я
+          - generic: т
+          - generic: ч
+          - generic: т
+          - generic: о
+          - generic: н
+          - generic: а
+          - generic: б
+          - generic: о
+          - generic: л
+          - generic: ь
+          - generic: ш
+          - generic: и
+          - generic: е
+          - generic: к
+          - generic: н
+          - generic: о
+          - generic: п
+          - generic: к
+          - generic: и
+          - generic: х
+          - generic: о
+          - generic: ч
+          - generic: е
+          - generic: т
+          - generic: с
+          - generic: я
+          - generic: к
+          - generic: л
+          - generic: и
+          - generic: к
+          - generic: н
+          - generic: у
+          - generic: т
+          - generic: ь
+      - link "Связаться" [ref=f9e13] [cursor=pointer]:
+        - /url: "#services"
+  - generic [ref=f9e16]:
+    - heading "Кейсы" [level=2] [ref=f9e17]
+    - article [ref=f9e18]:
+      - generic [ref=f9e19]:
+        - link "Открыть сайт «Читка»" [ref=f9e20] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=f9e21]
+        - generic [ref=f9e22]:
+          - generic [ref=f9e23]:
+            - heading "Читка" [level=3] [ref=f9e24]
+            - paragraph [ref=f9e25]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=f9e26]:
+              - generic [ref=f9e27]: "Стэк:"
+              - generic [ref=f9e28]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=f9e29] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=f9e31]:
+    - heading "Услуги" [level=2] [ref=f9e32]
+    - generic [ref=f9e33]:
+      - paragraph [ref=f9e34]: Лендинг
+      - paragraph [ref=f9e35]: Дизайн и разработка сайта за 3 дня
+      - paragraph [ref=f9e36]:
+        - text: 900 Br
+        - generic [ref=f9e37]: за дизайн и разработку
+      - paragraph [ref=f9e38]: "Мы делаем лендинги под конкретную услугу или акцию: структура, тексты, дизайн и вёрстка. Показываем готовый результат за три дня."
+    - generic [ref=f9e39]:
+      - heading "Что ещё нужно для запуска" [level=3] [ref=f9e40]
+      - paragraph [ref=f9e41]: Кроме самого сайта понадобится хостинг, домен и, как правило, юридические документы — оферта и политика конфиденциальности. Мы подскажем, где всё это оформить, и запустим сайт на боевом адресе.
+    - generic [ref=f9e42]:
+      - heading "Мы также можем реализовать более сложные решения" [level=3] [ref=f9e43]
+      - paragraph [ref=f9e44]: Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.
+      - generic [ref=f9e45]:
+        - generic [ref=f9e46]:
+          - generic [ref=f9e47]: Ваше имя
+          - textbox "Ваше имя" [ref=f9e48]:
+            - /placeholder: Имя
+        - generic [ref=f9e49]:
+          - generic [ref=f9e50]: Как с вами связаться
+          - textbox "Как с вами связаться" [ref=f9e51]:
+            - /placeholder: Почта или телефон
+        - generic [ref=f9e52]:
+          - generic [ref=f9e53]: Что хотите сделать
+          - textbox "Что хотите сделать" [ref=f9e54]
+        - button "Отправить" [ref=f9e55]
+  - contentinfo [ref=f9e56]:
+    - generic [ref=f9e57]:
+      - paragraph [ref=f9e58]: Богатов Dev
+      - navigation "Навигация в подвале" [ref=f9e59]:
+        - link "Услуги" [ref=f9e60] [cursor=pointer]:
+          - /url: "#services"
+        - link "Кейсы" [ref=f9e61] [cursor=pointer]:
+          - /url: "#cases"
+      - paragraph [ref=f9e62]: © 2026 Богатов Dev
