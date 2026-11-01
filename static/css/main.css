@@ -79,14 +79,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   border-radius: 999px;
   border: 0;
   cursor: pointer;
-  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+  transition: transform 150ms ease-out, background-color var(--t-hover) ease;
 }
-.btn:hover { background: #ab0d5d; transform: translateY(-2px); }
-.btn:active { transform: translateY(1px) scale(0.98); }
+@media (hover: hover) {
+  .btn:hover { background: #ab0d5d; transform: translateY(-2px); }
+}
+.btn:not(:disabled):active { transform: scale(0.96); }
 
 /* ---------- header (ref: hmrv.io) — плавающая капсула, на скролле стеклянная плашка ---------- */
 .site-head {
-  --head-inset: clamp(8px, 1.2vw, 16px);
+  /* Капсула хедера выровнена по той же 1200px-колонке, что и первый экран и кнопка .cta */
+  --head-inset: max(var(--margin), calc((100vw - 1200px) / 2 + var(--margin)));
   position: fixed;
   top: 0;
   left: 0;
@@ -171,7 +174,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-self: stretch;
   margin-block: 6px;
   margin-left: auto;
-  padding: 0 clamp(16px, 1.4vw, 22px);
+  /* оптический сдвиг: на 2px меньше со стороны иконки (better-ui) */
+  padding: 0 clamp(16px, 1.4vw, 22px) 0 clamp(14px, calc(1.4vw - 2px), 20px);
   font-family: var(--sans);
   font-size: 15px;
   font-weight: 600;
@@ -182,9 +186,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   white-space: nowrap;
   background: radial-gradient(50% 50%, rgb(255, 255, 255) 0%, rgb(143, 139, 250) 65.09%, rgb(170, 185, 255) 100%);
   box-shadow: inset 0 0 9px 0 rgb(255, 255, 255), inset 0 -2px 3px rgb(142, 142, 142 / 0.45);
-  border: 0;
+  border: 1px solid transparent;
   border-radius: 999px;
-  transition: transform var(--t-press) var(--ease-out), box-shadow var(--t-hover) ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, box-shadow var(--t-hover) ease;
 }
 @media (hover: hover) {
   .head-cta:hover {
@@ -230,6 +235,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* 1. HERO — чёрный фон, текст в правой колонке, орбы слева (ref: zorigto.ru) */
 .hero {
+  --hero-edge: max(var(--margin), calc((100vw - 1200px) / 2 + var(--margin)));
   background: #000;
   color: #f5f5f5;
   /* 88svh, не 100: верх кейсов выглядывает уже с первого экрана */
@@ -355,8 +361,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* CTA «Связаться» — copy of the hmrv.io bento CTA: dark key face, bevel, glow */
 .hero-actions {
   position: relative;
-  /* компактный зазор под подпись-стрелку над кнопкой */
-  margin-top: clamp(68px, 9.5vh, 104px);
+  /* компактный зазор под подпись-стрелку над кнопкой (в паре с grid gap у .hero-inner) */
+  margin-top: clamp(40px, 5.5vh, 64px);
 }
 .cta {
   --round: 999px;
@@ -368,21 +374,28 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   overflow: hidden;
   width: 100%;
   max-width: none;
-  height: clamp(180px, 26vw, 320px);
-  border-radius: clamp(24px, 5vw, 96px);
-  background: radial-gradient(50% 50%, rgb(255, 255, 255) 0%, rgb(143, 139, 250) 65.09%, rgb(170, 185, 255) 100%);
+  height: clamp(160px, 20vw, 240px);
+  border: 1px solid transparent;
+  border-radius: clamp(24px, 4.5vw, 72px);
+  background: radial-gradient(90% 130% at 50% 15%, rgb(232, 234, 255) 0%, rgb(162, 159, 252) 55%, rgb(138, 134, 248) 100%);
   color: rgb(1, 2, 4);
   text-decoration: none;
-  transition: border-radius 480ms cubic-bezier(0.65, 0, 0.35, 1), box-shadow var(--t-hover) ease;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-radius 480ms cubic-bezier(0.65, 0, 0.35, 1),
+    transform 150ms ease-out,
+    box-shadow var(--t-hover) ease;
 }
 @media (hover: hover) {
   .cta:hover {
     border-radius: var(--round);
-    box-shadow: 0 0 48px rgb(143, 139, 250 / 0.45);
-    transition-duration: 480ms;
+    box-shadow: 0 0 48px rgb(143, 139, 250 / 0.4);
   }
 }
-.cta:active { border-radius: var(--round); }
+.cta:active {
+  border-radius: var(--round);
+  transform: scale(0.96);
+}
 .cta::before,
 .cta::after {
   content: "";
@@ -392,7 +405,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   inset: 0;
 }
 .cta::before {
-  background: radial-gradient(55% 55%, rgb(255, 255, 255) 0%, rgb(158, 154, 255) 65%, rgb(188, 200, 255) 100%);
+  background: radial-gradient(90% 130% at 50% 10%, rgb(244, 245, 255) 0%, rgb(174, 171, 255) 55%, rgb(148, 144, 252) 100%);
   opacity: 0;
   transition: opacity 160ms var(--ease-key);
 }
@@ -400,7 +413,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .cta:hover::before { opacity: 1; transition-duration: 220ms; }
 }
 .cta::after {
-  box-shadow: inset 0 0 18px 0 rgb(255, 255, 255), inset 0 -3px 6px rgb(142, 142, 142 / 0.45);
+  box-shadow:
+    inset 0 2px 3px rgb(255 255 255 / 0.85),
+    inset 0 0 18px rgb(255 255 255 / 0.55),
+    inset 0 -3px 6px rgb(78 72 172 / 0.35);
 }
 .cta-glow {
   display: none;
@@ -410,7 +426,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   z-index: 1;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(40px, 5.625vw, 108px);
+  font-size: clamp(36px, 4.8vw, 84px);
   letter-spacing: -0.02em;
   line-height: 1;
   color: rgb(1, 2, 4);
@@ -421,7 +437,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .callout {
   position: absolute;
   display: none;
-  color: #f5f5f5;
+  color: rgb(245 245 245 / 0.8);
   pointer-events: none;
   z-index: 2;
 }
@@ -460,7 +476,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .callout--cta {
   --co-size: clamp(16px, 1.4vw, 20px);
   --co-arrow: clamp(52px, 4.8vw, 68px);
-  right: clamp(24px, 5%, 64px);
+  right: clamp(8px, 2%, 24px);
   bottom: calc(100% - 6px);
   align-items: flex-end;
   max-width: 240px;
@@ -476,7 +492,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   --co-size: clamp(14px, 1.15vw, 17px);
   --co-arrow: clamp(48px, 4.2vw, 60px);
   top: 54px;
-  right: clamp(28px, 2.5vw, 48px);
+  right: calc(var(--hero-edge) + 12px);
   align-items: flex-end;
   max-width: 175px;
   transform: rotate(-4deg);
@@ -488,14 +504,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .callout--head .callout-stroke {
   margin: 0 14px -4px 0;
-  transform: rotate(180deg);
 }
 /* 3. Прямо под ссылками навигации: остриё у «Кейсы/Услуги», текст правее-ниже хвоста */
 .callout--nav {
   --co-size: clamp(13px, 1vw, 15px);
   --co-arrow: clamp(44px, 3.8vw, 54px);
   top: 50px;
-  left: clamp(32px, 3vw, 52px);
+  left: calc(var(--hero-edge) + 20px);
   align-items: flex-start;
   transform: rotate(4deg);
   transform-origin: 20% 0%;
@@ -506,7 +521,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .callout--nav .callout-stroke {
   margin: 0 0 -4px 0;
-  transform: scaleY(-1);
 }
 .callout-stroke path {
   stroke-dasharray: 1;
@@ -567,6 +581,8 @@ html.js .callout.is-in .callout-label .callout-char {
   width: 100%;
   border-radius: clamp(16px, 2vw, 24px);
   overflow: hidden;
+  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline-offset: -1px;
 }
 .project-card__visual {
   display: block;
@@ -694,9 +710,13 @@ html.js .callout.is-in .callout-label .callout-char {
   letter-spacing: -0.01em;
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 150ms ease, transform 150ms ease-out;
 }
-.project-card__cta:hover { opacity: 0.85; }
+@media (hover: hover) {
+  .project-card__cta:hover { opacity: 0.85; }
+}
+.project-card__cta:not(:disabled):active { transform: scale(0.96); }
 
 /* 4. SERVICES — чёрное поле: заголовок по левому краю колонки,
    «клавиша»-оффер с ценой, ниже — состав цены, запуск и панель с Telegram */
@@ -978,7 +998,7 @@ html.js .callout.is-in .callout-label .callout-char {
   justify-content: center;
   gap: 12px;
   min-height: clamp(68px, 9vh, 96px);
-  padding: 16px 28px;
+  padding: 16px 28px 16px 26px;
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(16px, 1.6vw, 20px);
@@ -1068,7 +1088,9 @@ html.js .callout.is-in .callout-label .callout-char {
   color: #f5f5f5;
   transition: color var(--t-hover) ease;
 }
-.faq-q:hover .faq-q-text { color: rgb(245 245 245 / 0.7); }
+@media (hover: hover) {
+  .faq-q:hover .faq-q-text { color: rgb(245 245 245 / 0.7); }
+}
 .faq-icon { position: relative; width: 24px; height: 24px; }
 .faq-icon::before,
 .faq-icon::after {
@@ -1125,12 +1147,15 @@ html.js .callout.is-in .callout-label .callout-char {
   text-decoration: none;
   color: #000;
   background: #f5f5f5;
-  padding: 12px 22px;
+  padding: 12px 22px 12px 20px;
   border-radius: 999px;
-  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease-out, background-color var(--t-hover) ease;
 }
-.faq-foot-link:hover { background: #d9d9d9; transform: translateY(-2px); }
-.faq-foot-link:active { transform: translateY(1px) scale(0.98); }
+@media (hover: hover) {
+  .faq-foot-link:hover { background: #d9d9d9; transform: translateY(-2px); }
+}
+.faq-foot-link:not(:disabled):active { transform: scale(0.96); }
 .faq-foot-link svg { display: block; flex: none; }
 
 /* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
@@ -1158,7 +1183,7 @@ html.js .callout.is-in .callout-label .callout-char {
   line-height: 0.8;
   letter-spacing: 0;
 }
-/* «Клавиша» — тёмный градиент, фаска и свечение из героя */
+/* «Клавиша» — в том же лавандовом ключе, что .cta и .head-cta */
 .footer-key {
   position: relative;
   display: flex;
@@ -1168,25 +1193,37 @@ html.js .callout.is-in .callout-label .callout-char {
   width: 100%;
   margin-top: clamp(28px, 5vh, 56px);
   height: clamp(110px, 17vw, 220px);
+  border: 1px solid transparent;
   border-radius: clamp(24px, 4vw, 72px);
-  background: linear-gradient(to bottom, rgb(32, 32, 32), rgb(0, 0, 0));
-  color: #fff;
+  background: radial-gradient(90% 130% at 50% 15%, rgb(232, 234, 255) 0%, rgb(162, 159, 252) 55%, rgb(138, 134, 248) 100%);
+  color: rgb(1, 2, 4);
   text-decoration: none;
-  box-shadow: inset 0 -2px 3px rgb(255 255 245 / 0.95), inset 0 5px 6px rgb(142 142 142 / 0.25);
-  transition: border-radius 480ms cubic-bezier(0.65, 0, 0.35, 1);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    inset 0 2px 3px rgb(255 255 255 / 0.85),
+    inset 0 0 18px rgb(255 255 255 / 0.55),
+    inset 0 -3px 6px rgb(78 72 172 / 0.35);
+  transition:
+    border-radius 480ms cubic-bezier(0.65, 0, 0.35, 1),
+    transform 150ms ease-out,
+    box-shadow var(--t-hover) ease;
 }
 @media (hover: hover) {
-  .footer-key:hover { border-radius: 999px; }
+  .footer-key:hover {
+    border-radius: 999px;
+    box-shadow:
+      inset 0 2px 3px rgb(255 255 255 / 0.85),
+      inset 0 0 18px rgb(255 255 255 / 0.55),
+      inset 0 -3px 6px rgb(78 72 172 / 0.35),
+      0 0 48px rgb(143, 139, 250 / 0.4);
+  }
 }
-.footer-key:active { border-radius: 999px; }
+.footer-key:not(:disabled):active {
+  border-radius: 999px;
+  transform: scale(0.96);
+}
 .footer-key__glow {
-  position: absolute;
-  top: -38.2%;
-  left: -16.13%;
-  width: 133.33%;
-  height: 178.35%;
-  background: url("/img/key-glow.svg") 50% 50% / 100% 100% no-repeat;
-  pointer-events: none;
+  display: none;
 }
 .footer-key__label {
   position: relative;
@@ -1196,7 +1233,7 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(34px, 5.4vw, 96px);
   letter-spacing: -0.02em;
   line-height: 1;
-  color: #fff;
+  color: rgb(1, 2, 4);
 }
 .footer-cols {
   display: grid;
@@ -1224,7 +1261,9 @@ html.js .callout.is-in .callout-label .callout-char {
   color: #f5f5f5;
   transition: color var(--t-hover) ease;
 }
-.footer-col a:hover { color: rgb(245 245 245 / 0.6); }
+@media (hover: hover) {
+  .footer-col a:hover { color: rgb(245 245 245 / 0.6); }
+}
 .footer-note {
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.55;
