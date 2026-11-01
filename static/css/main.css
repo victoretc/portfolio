@@ -141,7 +141,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: flex-start;
   justify-content: center;
   /* reserve room for the absolutely-positioned CTA at the bottom */
-  padding-block: clamp(96px, 17vh, 200px) calc(clamp(180px, 26vw, 320px) + clamp(24px, 5vh, 64px) + 24px + clamp(48px, 9vh, 110px));
+  padding-block: calc(64px + clamp(24px, 4vh, 48px)) calc(clamp(180px, 26vw, 320px) + clamp(24px, 5vh, 64px) + 24px + clamp(48px, 9vh, 110px));
   position: relative;
   overflow: hidden;
 }
