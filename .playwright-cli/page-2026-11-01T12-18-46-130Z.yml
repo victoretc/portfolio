@@ -1,9 +1,0 @@
-- generic [active] [ref=e1]:
-  - text: Body
-  - paragraph [ref=e2]: Богатов студия
-  - text: Feather
-  - paragraph [ref=e3]: Богатов студия
-  - text: Wing
-  - paragraph [ref=e4]: Богатов студия
-  - text: HandilPro
-  - paragraph [ref=e5]: Богатов — студия разработки
