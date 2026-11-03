@@ -1,0 +1,126 @@
+- generic [active] [ref=f125e1]:
+  - generic [ref=f125e2]:
+    - banner:
+      - link "Artur Hamraev Currently in Uzbekistan (+ 5 UTC)" [ref=f125e3] [cursor=pointer]:
+        - /url: /en/
+        - generic [ref=f125e8]:
+          - generic [ref=f125e9]: Artur Hamraev
+          - generic [ref=f125e10]:
+            - generic [ref=f125e11]: Currently in
+            - img "Uzbekistan" [ref=f125e12]
+            - generic [ref=f125e32]: (+ 5 UTC)
+      - generic [ref=f125e33]:
+        - link "Download CV" [ref=f125e34] [cursor=pointer]:
+          - /url: /files/Artur_Hamraev_CV_EN.pdf
+        - link "Get in touch" [ref=f125e36] [cursor=pointer]:
+          - /url: https://t.me/artur_hmrv
+    - main [ref=f125e38]:
+      - heading "Product designer, 10+ years, with a background in graphic design. Usually the first designer on a product. Projects range from a single onboarding flow to a full platform, consumer and B2B, mobile and web. Dashboards with dense data, two-sided marketplaces, onboarding and paywalls, payments. Across domains the task is close to the same, people have to understand what they see and decide what to do next. Research, information architecture, flows, UI and a design system in Figma. I also build working products in Claude Code." [level=1] [ref=f125e40]:
+        - generic [aria-hidden] [ref=f125e41]:
+          - text: Product designer, 10+ years, with a background in graphic design. Usually the first designer on a product.
+          - generic [ref=f125e42]: Projects range from a single onboarding flow to a full platform, consumer and B2B, mobile and web. Dashboards with dense data, two-sided marketplaces, onboarding and paywalls, payments. Across domains the task is close to the same, people have to understand what they see and decide what to do next.
+          - generic [ref=f125e43]: Research, information architecture, flows, UI and a design system in Figma. I also build working products in Claude Code.
+      - generic [ref=f125e45]:
+        - generic [ref=f125e46]:
+          - tablist "Type of work" [ref=f125e47]:
+            - tab "Product design" [selected] [ref=f125e48] [cursor=pointer]
+            - tab "Vibecoding, soon" [disabled] [ref=f125e51]:
+              - generic [ref=f125e52]: Vibecoding
+          - status [ref=f125e53]
+        - region "Selected work" [ref=f125e54]:
+          - list [ref=f125e55]:
+            - listitem [ref=f125e56]:
+              - generic [ref=f125e57]:
+                - link "Ownership.Health" [ref=f125e58] [cursor=pointer]:
+                  - /url: /en/work/ownership-health/
+                - button "Resize tile, now 2 by 2" [ref=f125e62]
+            - listitem [ref=f125e64]:
+              - generic [ref=f125e65]:
+                - link "Carfy" [ref=f125e66] [cursor=pointer]:
+                  - /url: /en/work/carfy/
+                - button "Resize tile, now 1 by 1" [ref=f125e70]
+            - listitem [ref=f125e72]:
+              - generic [ref=f125e73]:
+                - link "Duo" [ref=f125e74] [cursor=pointer]:
+                  - /url: /en/work/duo/
+                - button "Resize tile, now 1 by 1" [ref=f125e78]
+            - listitem [ref=f125e80]:
+              - generic [ref=f125e81]:
+                - link "Diab" [ref=f125e82] [cursor=pointer]:
+                  - /url: /en/work/diab/
+                - button "Resize tile, now 1 by 1" [ref=f125e86]
+            - listitem [ref=f125e88]:
+              - link "Download CV" [ref=f125e89] [cursor=pointer]:
+                - /url: /files/Artur_Hamraev_CV_EN.pdf
+                - generic [ref=f125e90]: CV
+                - generic: Download
+            - listitem [ref=f125e92]:
+              - link "Get in touch" [ref=f125e93] [cursor=pointer]:
+                - /url: https://t.me/artur_hmrv
+          - paragraph [ref=f125e95]
+        - paragraph [ref=f125e96]
+      - region [ref=f125e98]:
+        - heading "Other works" [level=2] [ref=f125e99]
+        - generic [ref=f125e100]:
+          - list [ref=f125e102]:
+            - listitem [ref=f125e103]:
+              - generic [ref=f125e104]: "2026"
+              - paragraph [ref=f125e105]: Parcel delivery with travelers between countries, Nomad Post P2P Marketplace Mobile
+            - listitem [ref=f125e106]:
+              - generic [ref=f125e107]: "2026"
+              - paragraph [ref=f125e108]:
+                - text: Ear training for English numbers,
+                - link "NumLingo" [ref=f125e109] [cursor=pointer]:
+                  - /url: https://apps.apple.com/app/numlingo-numbers-worldwide/id6479067907
+                - text: iOS EdTech
+            - listitem [ref=f125e110]:
+              - generic [ref=f125e111]: "2026"
+              - paragraph [ref=f125e112]:
+                - text: Reviews and promotion for cafés and restaurants,
+                - link "TrueStars" [ref=f125e113] [cursor=pointer]:
+                  - /url: https://truestars.ai/
+                - text: B2B SaaS Dashboard
+          - button "more" [ref=f125e114] [cursor=pointer]
+      - generic [ref=f125e116]:
+        - generic [ref=f125e121]:
+          - generic [aria-hidden]:
+            - generic: Ask me anything
+          - textbox "Ask me a question, an AI assistant answers" [ref=f125e122]
+        - paragraph [ref=f125e123]: An AI assistant answers for me. Questions are saved to improve the answers.
+        - status [ref=f125e124]
+      - link "Back to top" [ref=f125e125] [cursor=pointer]:
+        - /url: "#top"
+  - contentinfo [ref=f125e127]:
+    - generic [ref=f125e128]:
+      - navigation "Language" [ref=f125e129]:
+        - link "RU" [ref=f125e130] [cursor=pointer]:
+          - /url: /ru/
+        - link "EN" [ref=f125e132] [cursor=pointer]:
+          - /url: /ru/
+      - generic [ref=f125e134]:
+        - link "Download CV" [ref=f125e135] [cursor=pointer]:
+          - /url: /files/Artur_Hamraev_CV_EN.pdf
+        - link "Get in touch" [ref=f125e137] [cursor=pointer]:
+          - /url: https://t.me/artur_hmrv
+    - generic [ref=f125e139]:
+      - list "Contacts and social links" [ref=f125e140]:
+        - listitem [ref=f125e141]:
+          - link "Telegram" [ref=f125e142] [cursor=pointer]:
+            - /url: https://t.me/artur_hmrv
+        - listitem [ref=f125e144]:
+          - link "WhatsApp" [ref=f125e145] [cursor=pointer]:
+            - /url: https://wa.me/998909880388
+        - listitem [ref=f125e147]:
+          - link "Email" [ref=f125e148] [cursor=pointer]:
+            - /url: mailto:arturxdg1@gmail.com
+        - listitem [ref=f125e150]:
+          - button "+4, Show all contacts" [ref=f125e151] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f125e152]: "+4"
+      - generic [ref=f125e153]:
+        - paragraph
+        - link "For agents" [ref=f125e154] [cursor=pointer]:
+          - /url: /en/for-agents/
+  - alert [ref=f125e155]
+  - region "Cookies" [ref=f125e156]:
+    - paragraph [ref=f125e157]: This site uses cookies for visit statistics.
+    - button "Got it" [ref=f125e158] [cursor=pointer]

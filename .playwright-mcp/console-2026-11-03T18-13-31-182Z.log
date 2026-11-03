@@ -26,3 +26,5 @@
 [   52173ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
 [   52173ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
 [   52177ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[ 5632600ms] [LOG] LiveReload protocol error (invalid command 'reload', only valid commands are: hello)) after receiving data: "{"command":"reload","path":"/index.html","originalPath":"","liveCSS":true,"liveImg":true}".. @ http://localhost:1415/livereload.js?mindelay=10&v=2&port=1415&path=livereload:2
+[ 5857251ms] [LOG] LiveReload protocol error (invalid command 'reload', only valid commands are: hello)) after receiving data: "{"command":"reload","path":"/index.html","originalPath":"","liveCSS":true,"liveImg":true}".. @ http://localhost:1415/livereload.js?mindelay=10&v=2&port=1415&path=livereload:2

@@ -1,0 +1,117 @@
+- generic [active] [ref=f167e1]:
+  - status "Загрузка"
+  - generic [ref=f167e4]:
+    - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f167e6]
+    - 'generic "Бейдж: Виктор, арт директор студии «Богатов». Потяните, чтобы качнуть." [ref=f167e8]':
+      - generic [ref=f167e11]:
+        - paragraph [ref=f167e17]: Виктор
+        - paragraph [ref=f167e18]: Арт директор, Богатов
+    - generic [ref=f167e19]:
+      - generic [ref=f167e20]:
+        - paragraph [ref=f167e21]: Сайт, который приводит клиентов, а не украшает интернет.
+        - paragraph [ref=f167e22]: Шесть лет в разработке, фиксированная цена.
+        - link "Связаться" [ref=f167e23] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+      - generic [ref=f167e27]:
+        - paragraph [ref=f167e28]: Дизайн и тексты пишем под ваш бизнес, а не переписываем из шаблона.
+        - paragraph [ref=f167e29]: Вы общаетесь напрямую с разработчиком и дизайнером — без менеджеров между вами и результатом.
+        - paragraph [ref=f167e30]: Изучаем, кто ваш клиент и что мешает ему нажать «Купить».
+  - generic [ref=f167e32]:
+    - heading "Проекты" [level=2] [ref=f167e33]
+    - article [ref=f167e34]:
+      - generic [ref=f167e35]:
+        - link "Открыть сайт «Читка»" [ref=f167e36] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=f167e37]
+        - generic [ref=f167e38]:
+          - generic [ref=f167e39]:
+            - heading "Читка" [level=3] [ref=f167e40]
+            - paragraph [ref=f167e41]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=f167e42]:
+              - generic [ref=f167e43]: "Стэк:"
+              - generic [ref=f167e44]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=f167e45] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=f167e50]:
+    - heading "Услуги" [level=2] [ref=f167e52]
+    - generic [ref=f167e53]:
+      - generic [ref=f167e54]:
+        - paragraph [ref=f167e55]: Лендинг
+        - paragraph [ref=f167e56]: Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.
+        - paragraph [ref=f167e57]: Стоимость и сроки
+        - generic [ref=f167e58]:
+          - paragraph [ref=f167e59]:
+            - generic [ref=f167e60]: "900"
+            - generic [ref=f167e61]: BYN
+          - paragraph [ref=f167e62]: 5 рабочих дней после согласования задачи и получения материалов.
+      - generic [ref=f167e63]:
+        - heading "А так же" [level=3] [ref=f167e64]
+        - paragraph [ref=f167e65]: "Делаем интернет-магазины, Telegram-ботов и сложные системы под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. Напишите, что нужно, — предложим решение и назовём вилку."
+    - generic [ref=f167e66]:
+      - paragraph [ref=f167e67]: Что входит в работу
+      - list [ref=f167e68]:
+        - listitem [ref=f167e69]:
+          - generic [aria-hidden] [ref=f167e70]: "01"
+          - generic [ref=f167e71]:
+            - heading "Структура страницы" [level=3] [ref=f167e72]
+            - paragraph [ref=f167e73]: Разбираемся, какие вопросы есть у ваших клиентов, и выстраиваем блоки в том порядке, в котором они их задают.
+        - listitem [ref=f167e74]:
+          - generic [aria-hidden] [ref=f167e75]: "02"
+          - generic [ref=f167e76]:
+            - heading "Дизайн под ваш бизнес" [level=3] [ref=f167e77]
+            - paragraph [ref=f167e78]: Типографика, цвет, изображения и акценты — из вашей сферы, а не из шаблона. Дизайном занимается дизайнер, а не разработчик между делом.
+        - listitem [ref=f167e79]:
+          - generic [aria-hidden] [ref=f167e80]: "03"
+          - generic [ref=f167e81]:
+            - heading "Мобильная версия" [level=3] [ref=f167e82]
+            - paragraph [ref=f167e83]: "Проверяем на реальных телефонах: читаемость текста, размер кнопок, скорость загрузки."
+        - listitem [ref=f167e84]:
+          - generic [aria-hidden] [ref=f167e85]: "04"
+          - generic [ref=f167e86]:
+            - heading "Базовое SEO" [level=3] [ref=f167e87]
+            - paragraph [ref=f167e88]: Заголовок и описание страницы, структура заголовков, технические файлы для поисковиков.
+        - listitem [ref=f167e89]:
+          - generic [aria-hidden] [ref=f167e90]: "05"
+          - generic [ref=f167e91]:
+            - heading "Разработка и вёрстка" [level=3] [ref=f167e92]
+            - paragraph [ref=f167e93]: Собираем страницу, подключаем аналитику, проверяем ссылки и отправку формы.
+        - listitem [ref=f167e94]:
+          - generic [aria-hidden] [ref=f167e95]: "06"
+          - generic [ref=f167e96]:
+            - heading "Запуск" [level=3] [ref=f167e97]
+            - paragraph [ref=f167e98]: Помогаем с доменом и хостингом, публикуем сайт и показываем, как им пользоваться.
+  - contentinfo [ref=f167e99]:
+    - generic [ref=f167e100]:
+      - generic [ref=f167e101]:
+        - paragraph [ref=f167e102]: Расскажите о задаче — ответим в течение рабочего дня
+        - link "Написать" [ref=f167e103] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+        - paragraph [ref=f167e107]: Говорят, что на большую кнопку хочется кликнуть
+      - generic [ref=f167e108]:
+        - navigation "Разделы сайта" [ref=f167e109]:
+          - paragraph [ref=f167e110]: Разделы
+          - link "Проекты" [ref=f167e111] [cursor=pointer]:
+            - /url: "#cases"
+          - link "Услуги" [ref=f167e112] [cursor=pointer]:
+            - /url: "#services"
+          - link "Контакты" [ref=f167e113] [cursor=pointer]:
+            - /url: "#contacts"
+        - navigation "Контакты" [ref=f167e114]:
+          - paragraph [ref=f167e115]: Контакты
+          - link "Telegram" [ref=f167e116] [cursor=pointer]:
+            - /url: https://t.me/victor_aqa
+        - paragraph [ref=f167e118]: Сайт, который приводит клиентов, а не украшает интернет.
+      - paragraph [aria-hidden] [ref=f167e119]: Богатов
+      - generic [ref=f167e120]:
+        - paragraph [ref=f167e121]: © 2026 Богатов
+        - paragraph [ref=f167e122]: Дизайн и вёрстка — без готовых тем
+  - navigation "Навигация по странице" [ref=f167e123]:
+    - generic [ref=f167e124]:
+      - link "Проекты" [ref=f167e125] [cursor=pointer]:
+        - /url: "#cases"
+      - link "Услуги" [ref=f167e129] [cursor=pointer]:
+        - /url: "#services"
+      - link "Контакты" [ref=f167e134] [cursor=pointer]:
+        - /url: "#contacts"
+    - link "Telegram" [ref=f167e139] [cursor=pointer]:
+      - /url: https://t.me/victor_aqa

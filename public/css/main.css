@@ -47,39 +47,9 @@
   src: url("../fonts/onest/Onest-latin-ext.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-/* Дисплей: заголовок, цена, имя на бейдже. Вариативный 200-900 */
-@font-face {
-  font-family: "Unbounded";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("../fonts/unbounded/Unbounded-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: "Unbounded";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("../fonts/unbounded/Unbounded-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: "Unbounded";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("../fonts/unbounded/Unbounded-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Unbounded";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("../fonts/unbounded/Unbounded-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+/* Дисплей: заголовок, цена, имя на бейдже. Гарнитура та же, что в тексте, —
+   отличает вес и кегль, а не начертание (как в референсе zorigto.ru,
+   где и заголовок, и текст набраны одним Nagel). */
 :root {
   --bg: #f7f7f5;
   --surface: #ebebe8;
@@ -107,7 +77,7 @@
   --hero-pad-b: clamp(96px, 12vh, 140px);
   --sans: "Onest", "Golos Text", "Helvetica Neue", Arial, sans-serif;
   /* Дисплейная гарнитура: заголовок, цена, имя на бейдже */
-  --display: "Unbounded", "Onest", "Helvetica Neue", Arial, sans-serif;
+  --display: "Onest", "Golos Text", "Helvetica Neue", Arial, sans-serif;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --t-reveal: 700ms;
@@ -952,6 +922,9 @@ html.js .callout.is-in .callout-label .callout-char {
 
 /* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
 .footer {
+  /* Единый ритм подвала: одинаковые отступы между блоками —
+     от лида до кнопки, от кнопки до подписи, от подписи до колонок */
+  --gap-foot: clamp(28px, 4.2vh, 48px);
   background: #ffffff;
   color: #0a0a0a;
   padding: var(--gap-block) 0 clamp(28px, 4vh, 48px);
@@ -972,7 +945,8 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(24px, 3vw, 44px);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  max-width: 24ch;
+  max-width: 26ch;
+  text-wrap: balance;
 }
 /* «Написать» — та же кнопка, что «Связаться» на главной, только крупная:
    серая заливка, радиус 24, тёмный текст, серый самолётик (на наведении — синий) */
@@ -986,7 +960,7 @@ html.js .callout.is-in .callout-label .callout-char {
   --key-icon: clamp(30px, 4.8vw, 84px);
   gap: 0.33em;
   width: 100%;
-  margin-top: clamp(28px, 5vh, 56px);
+  margin-top: var(--gap-foot);
   height: clamp(110px, 17vw, 220px);
   border-radius: 24px;
   background: rgba(0, 0, 0, 0.08);
@@ -1029,19 +1003,19 @@ html.js .callout.is-in .callout-label .callout-char {
 
 /* Подпись под большой кнопкой */
 .footer-hint {
-  margin-top: clamp(14px, 1.6vw, 20px);
+  margin-top: var(--gap-foot);
   font-family: var(--sans);
-  font-size: var(--step-small);
+  font-size: var(--step-body);
   line-height: 1.45;
   text-align: center;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.55);
 }
 .footer-cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(24px, 4vw, 56px);
-  margin-top: clamp(40px, 7vh, 80px);
-  padding-top: clamp(28px, 4vh, 44px);
+  margin-top: var(--gap-foot);
+  padding-top: var(--gap-foot);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -1073,17 +1047,17 @@ html.js .callout.is-in .callout-label .callout-char {
 }
 .footer-mark {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(40px, 7.4vw, 128px);
-  letter-spacing: -0.02em; line-height: 0.92;
+  font-size: clamp(40px, 10vw, 148px);
+  letter-spacing: -0.03em; line-height: 0.9;
   text-transform: uppercase;
-  margin: clamp(48px, 8vh, 96px) 0 clamp(20px, 3vh, 32px);
+  margin: var(--gap-foot) 0 0;
 }
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 8px clamp(16px, 3vw, 32px);
-  padding-top: clamp(16px, 2vh, 24px);
+  padding-top: var(--gap-foot);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .footer-meta { font-size: var(--step-small); line-height: 1.5; color: rgba(0, 0, 0, 0.5); margin: 0; max-width: 60ch; }
@@ -1227,7 +1201,7 @@ html:not(.js) .loader { display: none; }
 
   .footer-key { height: clamp(120px, 34vw, 160px); }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
-  .footer-mark { font-size: clamp(40px, 13vw, 72px); }
+  .footer-mark { font-size: clamp(40px, 17vw, 68px); }
   .footer-bottom { flex-direction: column; }
 }
 
@@ -1263,12 +1237,14 @@ body { overflow-x: hidden; }
   grid-column: 1 / 9;
   container-type: inline-size;
 }
+/* Заголовок — как на zorigto.ru: средний вес, нормальный трекинг,
+   плотный интерлиньяж. Крупный жирный заголовок здесь смотрелся тяжело. */
 .intro-title {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 6.2cqw, 3.9rem);
-  line-height: 1.06;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  font-size: clamp(2rem, 8.5cqw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: normal;
   text-wrap: balance;
 }
 
@@ -1290,37 +1266,39 @@ body { overflow-x: hidden; }
   margin-top: clamp(26px, 3.4vw, 48px);
   align-items: start;
 }
-/* Левая колонка: оффер → марка → кнопка. Растягивается на высоту правой
-   колонки, кнопка прижата к общей нижней линии первого экрана. */
+/* Левая колонка: оффер → кнопка. Отступ до кнопки фиксированный и больше
+   межстрочного интервала текста. Кнопка не привязана к низу колонки: если
+   прижать её к низу, на узких экранах левый столбец (цветок + текст) выше
+   правого, и кнопка уходит ниже последней строки текста. */
 .intro-col {
   display: flex;
   flex-direction: column;
   align-self: stretch;
 }
-.intro-col > .cta-link { margin-top: auto; align-self: flex-start; }
-.intro-lead {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 1.95vw, 1.75rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #0a0a0a;
-}
+.intro-col > .cta-link { margin-top: 36px; align-self: flex-start; }
+/* Все тексты первого экрана — одна гарнитура, один кегль, один вес
+   (ref: zorigto.ru): оффер слева и три заметки справа читаются как один ряд
+   и стоят на одной верхней линии. */
+.intro-lead,
 .intro-note,
 .intro-copy p {
   font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(1.0625rem, 1.32vw, 1.25rem);
-  line-height: 1.45;
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
   color: #111111;
 }
-.intro-note { margin-top: clamp(14px, 1.4vw, 20px); }
+/* Первая заметка начинается на той же линии, что оффер: у всех текстов одна
+   верхняя линия. */
+.intro-note { margin-top: 0; }
 .intro-copy { display: grid; gap: clamp(12px, 1.1vw, 16px); }
 
-/* Фигура-марка: стоит после оффера — «не украшает интернет» и сам цветок.
+/* Фигура-марка: стоит в начале блока, кнопка — внизу, между ними текст
+   (ref: zorigto.ru: иконка и кнопки в разных местах блока).
    Метка намеренно небольшая: это знак, а не второй заголовок.
-   На широком экране — отдельной строкой под оффером, на телефоне — в ту же
-   строку с последним словом, чтобы не съедать высоту первого экрана. */
+   В PNG сверху 14.6% прозрачного поля (105 из 720) — картинку сдвигаем вверх
+   на эту величину, иначе лепестки стоят ниже верхней линии текста. */
 .intro-fig {
   display: block;
   height: auto;
@@ -1328,8 +1306,9 @@ body { overflow-x: hidden; }
   -webkit-user-drag: none;
 }
 .intro-fig--flower {
-  width: clamp(44px, 3.8vw, 58px);
-  margin: clamp(18px, 1.8vw, 26px) 0 clamp(16px, 1.6vw, 22px);
+  --fw: clamp(44px, 4.4vw, 72px);
+  width: var(--fw);
+  margin: calc(var(--fw) * -0.169) 0 18px;
 }
 
 /* «Связаться» — главное действие на первом экране (ref: zorigto.ru)
@@ -1536,7 +1515,7 @@ body { overflow-x: hidden; }
 .ly-name {
   font-family: var(--display);
   font-weight: 700;
-  font-size: calc(1.95 * var(--u));
+  font-size: calc(2.1 * var(--u));
   line-height: 1;
   letter-spacing: -0.01em;
   color: #0a0a0a;
@@ -1738,20 +1717,14 @@ body { overflow-x: hidden; }
   .intro-info { order: 3; margin-top: clamp(32px, 9vw, 44px); grid-template-columns: 1fr; row-gap: clamp(24px, 4vw, 32px); }
   .intro-copy { max-width: none; gap: 12px; }
   .lanyard { --ly-card-w: 156px; }
-  /* Марка — в той же строке, что и последнее слово оффера. Размер берём по
-     высоте строки (x-height 0.52em), а не «на глаз»: в PNG сверху и снизу
-     прозрачные поля 15%, поэтому картинка садится на базовую линию со
-     смещением -0.17em — так лепестки стоят ровно по строке, а не висят
-     под ней. */
+  /* Марка на телефоне — мельче: не съедает высоту первого экрана. */
   .intro-fig--flower {
-    display: inline-block;
-    width: 20px;
-    margin: 0 0 0 7px;
-    vertical-align: -0.17em;
+    --fw: 32px;
+    margin: calc(var(--fw) * -0.169) 0 16px;
   }
-  /* Кнопка — отдельным блоком: между оффером и кнопкой должно быть
-     столько же воздуха, сколько между кнопкой и текстом ниже. */
-  .intro-col > .cta-link { margin-top: 28px; }
+  /* Кнопка — отдельным блоком: отступ до кнопки больше межстрочного
+     интервала текста. */
+  .intro-col > .cta-link { margin-top: 36px; }
   /* Между героем и «Проектами» — вдвое меньше воздуха */
   .cases { padding-top: 16px; }
   .dock {

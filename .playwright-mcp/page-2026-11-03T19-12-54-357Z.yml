@@ -1,0 +1,244 @@
+- generic [ref=f130e2]:
+  - banner:
+    - generic [ref=f130e6]:
+      - button "Навигационное меню" [ref=f130e7] [cursor=pointer]
+      - link [ref=f130e15] [cursor=pointer]:
+        - /url: /
+      - link "СВЯЗЬ" [ref=f130e18] [cursor=pointer]:
+        - /url: "#contacts"
+    - alertdialog [ref=f130e21]:
+      - generic [ref=f130e22]: Мы используем файлы cookie для обеспечения наилучшего взаимодействия с сайтом.
+      - generic [ref=f130e23] [cursor=pointer]: Ладно, ОК!
+      - button "Закрыть уведомление" [ref=f130e25] [cursor=pointer]
+  - generic [ref=f130e37]:
+    - generic [ref=f130e38]: BitRe — Создаём бренды и цифровые продукты, которые невозможно спутать.Стратегия, айдентика, UX/UI и разработка — в одной команде. Помогаем бизнесу выглядеть убедительно, работать удобнее и расти системно.
+    - heading "Веб- агентство" [level=1] [ref=f130e41]: Веб-агентство
+  - generic [ref=f130e44]:
+    - generic [ref=f130e47]: 8+
+    - generic [ref=f130e51]: BitRe — дизайн, который не спутать.8+ лет работаем по миру. Без шаблонов и стоков — только идеи, характер и узнаваемость.
+  - generic [ref=f130e55]:
+    - generic [ref=f130e56]:
+      - generic [ref=f130e57]: Наши проекты
+      - generic [ref=f130e62]:
+        - generic:
+          - button "Предыдущий слайд" [ref=f130e63] [cursor=pointer]
+          - button "Следующий слайд" [ref=f130e65] [cursor=pointer]
+    - generic [ref=f130e68]:
+      - group "1 из 7" [ref=f130e69]:
+        - generic [ref=f130e73]:
+          - generic [ref=f130e74]: Веб-дизайн · Разработка
+          - generic [ref=f130e75]: Pulchiino
+          - generic [ref=f130e76]: Сайт для белорусского бренда детских гипоаллергенных средств — простой, яркий и сфокусированный на продукте.
+          - link "Посмотреть →" [ref=f130e78] [cursor=pointer]:
+            - /url: https://sontsa-pulcino.by/
+      - group "2 из 7" [ref=f130e79]:
+        - generic [ref=f130e83]:
+          - generic [ref=f130e84]: UX-исследование · Веб-дизайн
+          - generic [ref=f130e85]: Coinspaid
+          - generic [ref=f130e86]: Digital-опыт для международного финтех-сервиса, который делает сложный продукт понятнее для пользователей и бизнеса.
+          - link "Посмотреть →" [ref=f130e88] [cursor=pointer]:
+            - /url: https://coinspaid.com/
+      - group "3 из 7" [ref=f130e89]:
+        - generic [ref=f130e92]:
+          - generic:
+            - generic [ref=f130e93]: Айдентика · Веб-дизайн · Разработка
+            - generic [ref=f130e94]: smartservice
+            - generic [ref=f130e95]: Единая цифровая система для сервисной компании с разными направлениями бизнеса.
+            - link "Посмотреть →" [ref=f130e97] [cursor=pointer]:
+              - /url: https://www.smartservice.ee/
+      - group "4 из 7" [ref=f130e98]:
+        - generic [ref=f130e101]:
+          - generic:
+            - generic [ref=f130e102]: Веб-дизайн · Разработка · AI
+            - generic [ref=f130e103]: coppingjoyce
+            - generic [ref=f130e104]: Цифровой продукт для британской консалтинговой компании в сфере недвижимости.
+            - link "Посмотреть →" [ref=f130e106] [cursor=pointer]:
+              - /url: https://www.coppingjoyce.co.uk/
+      - group "5 из 7" [ref=f130e107]:
+        - generic [ref=f130e110]:
+          - generic:
+            - generic [ref=f130e111]: Веб-дизайн · UX-исследование
+            - generic [ref=f130e112]: tagion
+            - generic [ref=f130e113]: Понятная digital-презентация сложной технологии в сфере распределённых баз данных.
+            - link "Посмотреть →" [ref=f130e115] [cursor=pointer]:
+              - /url: https://www.tagion.org/
+      - group "6 из 7" [ref=f130e116]:
+        - generic [ref=f130e119]:
+          - generic:
+            - generic [ref=f130e120]: Веб-дизайн · Разработка
+            - generic [ref=f130e121]: secondtime
+            - generic [ref=f130e122]: E-commerce платформа для покупки и продажи винтажных и современных часов по всему миру.
+            - link "Посмотреть →" [ref=f130e124] [cursor=pointer]:
+              - /url: https://secondtime.com/
+      - group "7 из 7" [ref=f130e125]:
+        - generic [ref=f130e128]:
+          - generic:
+            - generic [ref=f130e129]: Айдентика · Веб-дизайн · Разработка
+            - generic [ref=f130e130]: connectin energy
+            - generic [ref=f130e131]: Бренд и цифровой продукт для B2B-сервиса, объединяющего компании энергетической отрасли.
+            - link "Посмотреть →" [ref=f130e133] [cursor=pointer]:
+              - /url: connectin.energy
+  - generic [ref=f130e135]:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic [ref=f130e136]: УСЛУГИ
+            - generic [ref=f130e139]: УСЛУГИ
+            - generic [ref=f130e142]: УСЛУГИ
+            - generic [ref=f130e145]: УСЛУГИ
+            - generic [ref=f130e148]: УСЛУГИ
+  - generic [ref=f130e161]:
+    - heading [level=3] [ref=f130e163]:
+      - strong [ref=f130e164]: Стратегия
+    - generic [ref=f130e165]: Погружаемся в рынок, продукт, конкурентов и аудиторию. Находим точки роста и формируем основу, на которой можно принимать сильные дизайн- и бизнес-решения.
+  - generic [ref=f130e182]:
+    - heading "Концепция" [level=3] [ref=f130e184]
+    - generic [ref=f130e185]: "Определяем позиционирование бренда: чем он отличается, для кого существует и почему его должны выбрать. Переводим сложные идеи в ясное и убедительное сообщение."
+  - generic [ref=f130e201]:
+    - heading "Брендинг" [level=3] [ref=f130e203]
+    - generic [ref=f130e204]: "Создаём визуальную систему, которая узнаётся и масштабируется: логотип, типографика, цвет, графика, правила коммуникации и носители бренда."
+  - generic [ref=f130e220]:
+    - heading "UX/UI-дизайн" [level=3] [ref=f130e222]
+    - generic [ref=f130e223]: Проектируем сайты и цифровые продукты вокруг реальных пользовательских сценариев. Убираем лишнее, выстраиваем понятную логику и превращаем интерфейс в инструмент бизнеса.
+  - generic [ref=f130e239]:
+    - heading "Разработка" [level=3] [ref=f130e241]
+    - generic [ref=f130e242]: Переносим дизайн в работающий цифровой продукт, сохраняя задумку до пикселя. Продумываем адаптивность, скорость, анимацию, CMS и техническую устойчивость.
+  - generic [ref=f130e258]:
+    - heading "SEO" [level=3] [ref=f130e260]
+    - generic [ref=f130e261]: "Закладываем основу для органического роста: структура, техническая оптимизация, контентные точки входа и понятная аналитика."
+  - generic [ref=f130e277]:
+    - heading "AI" [level=3] [ref=f130e279]
+    - generic [ref=f130e280]: Встраиваем AI там, где он действительно экономит время, улучшает сервис или помогает масштабировать процессы — без технологии ради технологии.
+  - generic [ref=f130e296]:
+    - heading "Поддержка" [level=3] [ref=f130e298]
+    - generic [ref=f130e299]: После запуска не исчезаем. Развиваем продукт, тестируем гипотезы, улучшаем интерфейсы и помогаем бренду оставаться цельным по мере роста.
+  - generic [ref=f130e311]:
+    - heading "Команда" [level=2] [ref=f130e312]
+    - article [ref=f130e313]:
+      - img "Александр Груша — арт-директор BitRe" [ref=f130e315]
+      - paragraph [ref=f130e317]: Арт-директор
+    - article [ref=f130e318]:
+      - img "UX/UI-дизайнер BitRe" [ref=f130e320]
+      - paragraph [ref=f130e322]: UX/UI-дизайнер
+    - article [ref=f130e323]:
+      - img "Маркетолог BitRe" [ref=f130e325]
+      - paragraph [ref=f130e327]: Маркетолог
+    - article [ref=f130e328]:
+      - img "Разработчик BitRe" [ref=f130e330]
+      - paragraph [ref=f130e332]: Разработчик
+    - article [ref=f130e333]:
+      - paragraph [ref=f130e336]: AI-помощник
+    - generic [ref=f130e337]:
+      - generic [ref=f130e338]: "01"
+      - generic [ref=f130e339]: /05
+    - generic [ref=f130e340]: Scroll
+  - generic [ref=f130e349]:
+    - heading "Клиенты" [level=2] [ref=f130e355]
+    - img "Ararat" [ref=f130e359]
+    - img "ChillBase" [ref=f130e363]
+    - img "CoinsPaid" [ref=f130e367]
+    - img "Cryptopay" [ref=f130e371]
+    - img "Dao De Rooms" [ref=f130e375]
+    - img "Fujimoto" [ref=f130e379]
+    - img "On Chain Pay" [ref=f130e383]
+    - img "Pto Balance" [ref=f130e387]
+    - img "Pulcino" [ref=f130e391]
+    - img "Swan Lake" [ref=f130e395]
+  - generic [ref=f130e404]:
+    - heading "Почему BitRe" [level=2] [ref=f130e408]
+    - generic [ref=f130e410]:
+      - generic [ref=f130e412]:
+        - generic [ref=f130e414]:
+          - generic [ref=f130e415]: "1"
+          - generic [ref=f130e419]: Одна команда
+          - generic [ref=f130e421]: Одна команда вместо цепочки подрядчиков. Стратегия, дизайн и разработка работают вместе с самого начала.
+        - generic [ref=f130e424]:
+          - generic [ref=f130e425]: "2"
+          - generic [ref=f130e429]: Без шаблонов
+          - generic [ref=f130e431]: Без шаблонных решений. Визуальный язык и интерфейс строятся вокруг конкретного продукта и его аудитории.
+      - generic [ref=f130e434]:
+        - generic [ref=f130e436]:
+          - generic [ref=f130e437]: "3"
+          - generic [ref=f130e441]: Готово к запуску
+          - generic [ref=f130e443]: Думаем о запуске заранее. Проектируем решения так, чтобы их можно было реализовать, поддерживать и масштабировать.
+        - generic [ref=f130e446]:
+          - generic [ref=f130e447]: "4"
+          - generic [ref=f130e451]: Открытый процесс
+          - generic [ref=f130e453]: Работаем в диалоге. Показываем логику решений, синхронизируемся на ключевых этапах и не превращаем процесс в чёрный ящик.
+  - generic [ref=f130e461]:
+    - heading "FAQ" [level=2] [ref=f130e463]
+    - generic [ref=f130e464]:
+      - button "Сколько стоит проект?" [ref=f130e468] [cursor=pointer]
+      - button "Сколько времени занимает работа?" [ref=f130e475] [cursor=pointer]
+      - button "Можно заказать только дизайн или только разработку?" [ref=f130e482] [cursor=pointer]
+      - button "Вы работаете с готовым брендом?" [ref=f130e489] [cursor=pointer]
+      - button "Как проходит оплата?" [ref=f130e496] [cursor=pointer]
+      - button "Что происходит после запуска?" [ref=f130e503] [cursor=pointer]
+  - generic [ref=f130e516]:
+    - heading "Контакты" [level=2] [ref=f130e518]
+    - generic [ref=f130e520]:
+      - generic [ref=f130e522]:
+        - generic [ref=f130e524]:
+          - generic [ref=f130e525]: Беларусь, Минск
+          - generic [ref=f130e527]: "Локация:"
+        - generic [ref=f130e530]:
+          - link "+375 (29) 554-81-94" [ref=f130e533] [cursor=pointer]:
+            - /url: tel:+375295548194
+          - generic [ref=f130e534]: "Номер:"
+        - generic [ref=f130e537]:
+          - link "design@bitre.by" [ref=f130e540] [cursor=pointer]:
+            - /url: maito:design@bitre.by
+          - generic [ref=f130e541]: "Email:"
+      - generic [ref=f130e544]:
+        - link "Telegram" [ref=f130e546] [cursor=pointer]:
+          - /url: https://t.me/gadpx
+        - link "behance" [ref=f130e551] [cursor=pointer]:
+          - /url: https://www.behance.net/bitre
+        - link "LinkedIn" [ref=f130e556] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/aleksandr-grusha-ux-designer/
+  - contentinfo [ref=f130e560]:
+    - generic [ref=f130e563]:
+      - generic [ref=f130e567]:
+        - generic [ref=f130e569]:
+          - generic [ref=f130e571]:
+            - strong [ref=f130e572]: BitRe — дизайн, который не спутать.
+            - text: Создаём бренды, сайты и цифровые продукты. Стратегия, дизайн и разработка — в одной команде.
+          - generic [ref=f130e574]:
+            - generic [ref=f130e575]: Контакты
+            - generic [ref=f130e578]:
+              - link "+375 (29) 554-81-94" [ref=f130e580] [cursor=pointer]:
+                - /url: /
+              - link "design@bitre.by" [ref=f130e584] [cursor=pointer]:
+                - /url: mailto:design@bitre.by
+        - generic [ref=f130e588]:
+          - generic [ref=f130e590]:
+            - generic [ref=f130e591]: Навигация
+            - generic [ref=f130e596]:
+              - link "Главная" [ref=f130e598] [cursor=pointer]:
+                - /url: /
+              - link "Услуги" [ref=f130e602] [cursor=pointer]:
+                - /url: "#services"
+              - link "Контакты" [ref=f130e606] [cursor=pointer]:
+                - /url: "#contacts"
+              - link "Проекты" [ref=f130e610] [cursor=pointer]:
+                - /url: "#projects"
+              - link "О нас" [ref=f130e614] [cursor=pointer]:
+                - /url: "#about"
+          - generic [ref=f130e618]:
+            - generic [ref=f130e620]:
+              - generic [ref=f130e621]: Ссылки
+              - generic [ref=f130e626]:
+                - link "Telegram" [ref=f130e628] [cursor=pointer]:
+                  - /url: https://t.me/gadpx
+                - link "Behance" [ref=f130e633] [cursor=pointer]:
+                  - /url: https://www.behance.net/bitre
+                - link "LinkedIn" [ref=f130e638] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/aleksandr-grusha-ux-designer/
+            - link "Вернуться наверх" [ref=f130e643] [cursor=pointer]:
+              - /url: "#hero"
+      - generic [ref=f130e647]:
+        - generic [ref=f130e648]: © 2019–2026 BitRe. Web agency.
+        - link "Груша Александр Дмитриевич – плательщик налога на профессиональный доход в соответствии с гл.40 НК РБ AC3313697" [ref=f130e656] [cursor=pointer]:
+          - /url: /
+          - text: Груша Александр Дмитриевич – плательщик налога на профессиональный доход в соответствии с гл.40 НК РБAC3313697

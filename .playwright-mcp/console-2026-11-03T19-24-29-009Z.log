@@ -1,0 +1,2 @@
+[     368ms] [LOG] [FixFramer] forms interceptor active (mode=proxy) @ https://zorigto.ru/:253
+[    2467ms] [ERROR] Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID @ https://mdd.yandex.net/:0

@@ -1,0 +1,429 @@
+- generic [active] [ref=f128e1]:
+  - banner [ref=f128e2]:
+    - generic [ref=f128e3]:
+      - link "sakura*web" [ref=f128e4] [cursor=pointer]:
+        - /url: https://sakura-web.by/
+      - navigation "Основное меню" [ref=f128e5]:
+        - link "Главная" [ref=f128e6] [cursor=pointer]:
+          - /url: https://sakura-web.by/
+        - generic [ref=f128e8]:
+          - link "Услуги" [ref=f128e9] [cursor=pointer]:
+            - /url: https://sakura-web.by/uslugi/
+          - 'button "Меню: Услуги" [ref=f128e10] [cursor=pointer]':
+            - generic [aria-hidden]: 
+        - link "Портфолио" [ref=f128e11] [cursor=pointer]:
+          - /url: https://sakura-web.by/portfolio/
+        - link "Продукты" [ref=f128e12] [cursor=pointer]:
+          - /url: https://sakura-web.by/produkty/
+        - generic [ref=f128e14]:
+          - link "Цены" [ref=f128e15] [cursor=pointer]:
+            - /url: https://sakura-web.by/czenyi/
+          - 'button "Меню: Цены" [ref=f128e16] [cursor=pointer]':
+            - generic [aria-hidden]: 
+        - generic [ref=f128e18]:
+          - link "Экспертиза" [ref=f128e19] [cursor=pointer]:
+            - /url: https://sakura-web.by/o-nas/
+          - 'button "Меню: Экспертиза" [ref=f128e20] [cursor=pointer]':
+            - generic [aria-hidden]: 
+        - link "Контакты" [ref=f128e21] [cursor=pointer]:
+          - /url: https://sakura-web.by/kontaktyi
+      - generic [ref=f128e22]:
+        - generic "Связаться с нами" [ref=f128e23]:
+          - link "Позвонить +375 33 360-39-50" [ref=f128e24] [cursor=pointer]:
+            - /url: tel:+375333603950
+            - generic [aria-hidden] [ref=f128e25]: 
+          - link "Написать в Telegram" [ref=f128e26] [cursor=pointer]:
+            - /url: https://t.me/sakuraweb
+            - generic [aria-hidden] [ref=f128e27]: 
+          - link "Написать в Viber" [ref=f128e28] [cursor=pointer]:
+            - /url: viber://chat?number=375292512726
+            - generic [aria-hidden] [ref=f128e29]: 
+          - link "Мы во ВКонтакте" [ref=f128e30] [cursor=pointer]:
+            - /url: https://vk.com/sakurawebstudio
+            - generic [aria-hidden] [ref=f128e31]: 
+        - link "Оставить заявку" [ref=f128e32] [cursor=pointer]:
+          - /url: https://sakura-web.by/kontaktyi
+  - main [ref=f128e33]:
+    - generic [ref=f128e35]:
+      - navigation "Хлебные крошки" [ref=f128e36]:
+        - link "Главная" [ref=f128e37] [cursor=pointer]:
+          - /url: //
+        - text: /
+        - link "Города" [ref=f128e38] [cursor=pointer]:
+          - /url: /goroda/
+        - text: / Брест
+      - generic [ref=f128e39]: веб-студия
+      - heading "Разработка сайтов в Бресте" [level=1] [ref=f128e40]
+      - generic [ref=f128e41]:
+        - paragraph [ref=f128e42]: Создаём сайты для бизнеса Бреста под ключ — от лендинга до интернет-магазина.
+        - paragraph [ref=f128e43]: "Работаем полностью удалённо: офис студии в Молодечно, проекты — по всей Беларуси."
+      - generic [ref=f128e44]:
+        - generic [ref=f128e45]: 13 лет на рынке
+        - generic [ref=f128e46]: ·210+ проектов
+        - generic [ref=f128e47]: ·50+ клиентов
+        - generic [ref=f128e48]: ·от 5 дней
+      - generic [ref=f128e49]:
+        - link "Бесплатная консультация" [ref=f128e50] [cursor=pointer]:
+          - /url: "#contacts"
+        - link "Примеры работ" [ref=f128e51] [cursor=pointer]:
+          - /url: https://sakura-web.by/portfolio/
+    - generic [ref=f128e53]:
+      - paragraph [ref=f128e54]: Почему мы
+      - heading "Веб-студия полного цикла для компаний Бреста" [level=2] [ref=f128e55]
+      - generic [ref=f128e56]:
+        - paragraph [ref=f128e57]: За 13 лет запустили более 210 сайтов. Каждый проект получает адаптивную вёрстку, базовую SEO-настройку и обучение вашей команды работе с админкой.
+        - paragraph [ref=f128e58]: "Заказать сайт в Бресте сегодня можно так же просто, как оформить доставку: созвон, бриф, согласование — и команда приступает к работе. Мы не привязываем стоимость к адресу офиса клиента."
+      - generic [ref=f128e59]:
+        - article [ref=f128e60]:
+          - heading "Цена без сюрпризов" [level=3] [ref=f128e61]
+          - paragraph [ref=f128e62]: Смета до старта работ. Дополнительные задачи — только по согласованию.
+        - article [ref=f128e63]:
+          - heading "Поддержка после запуска" [level=3] [ref=f128e64]
+          - paragraph [ref=f128e65]: "Не бросаем после публикации: техподдержка, доработки, SEO и реклама."
+        - article [ref=f128e66]:
+          - heading "Опыт по региону" [level=3] [ref=f128e67]
+          - paragraph [ref=f128e68]: Работаем с компаниями Брестской области — от СМИ до e-commerce и B2B.
+        - article [ref=f128e69]:
+          - heading "Полный цикл" [level=3] [ref=f128e70]
+          - paragraph [ref=f128e71]: Дизайн, вёрстка, CMS, интеграции CRM и оплаты — в одной студии.
+    - generic [ref=f128e73]:
+      - paragraph [ref=f128e74]: Услуги
+      - heading "Форматы сайтов" [level=2] [ref=f128e75]
+      - paragraph [ref=f128e76]: Выберите тип под задачу — поможем определиться на бесплатной консультации и возьмём проект под ключ.
+      - generic [ref=f128e77]:
+        - article [ref=f128e78]:
+          - heading "Landing Page" [level=3] [ref=f128e80]
+          - paragraph [ref=f128e81]: Посадочная страница для рекламы и быстрых продаж.
+          - link "Заказать" [ref=f128e82] [cursor=pointer]:
+            - /url: uslugi/razrabotka-landing-page
+        - article [ref=f128e83]:
+          - heading "Сайт-визитка" [level=3] [ref=f128e85]
+          - paragraph [ref=f128e86]: Имиджевый сайт для компании или специалиста.
+          - link "Заказать" [ref=f128e87] [cursor=pointer]:
+            - /url: uslugi/sozdanie-razrabotka-texnicheskaya-podderzhka-korporativnyix-sajtov
+        - article [ref=f128e88]:
+          - heading "Сайт-каталог" [level=3] [ref=f128e90]
+          - paragraph [ref=f128e91]: Удобный каталог товаров и услуг с фильтрами.
+          - link "Заказать" [ref=f128e92] [cursor=pointer]:
+            - /url: uslugi/razrabotka-sajtov-katalogov
+        - article [ref=f128e93]:
+          - heading "Интернет-магазин" [level=3] [ref=f128e95]
+          - paragraph [ref=f128e96]: Продажи онлайн с корзиной, оплатой и доставкой.
+          - link "Заказать" [ref=f128e97] [cursor=pointer]:
+            - /url: uslugi/sozdanie-razrabotka-texnicheskaya-podderzhka-internet-magazinov
+    - generic [ref=f128e99]:
+      - paragraph [ref=f128e100]: Стоимость
+      - heading "Сколько стоит сайт в Бресте" [level=2] [ref=f128e101]
+      - paragraph [ref=f128e102]: Цены едины по всей Беларуси — город в смете не влияет на итог. Ниже ориентиры; точную сумму назовём после брифа.
+      - generic [ref=f128e103]:
+        - generic [ref=f128e104]:
+          - strong [ref=f128e105]: Landing Page
+          - text: от 500 руб.
+        - generic [ref=f128e106]:
+          - strong [ref=f128e107]: Сайт-визитка
+          - text: от 800 руб.
+        - generic [ref=f128e108]:
+          - strong [ref=f128e109]: Сайт-каталог
+          - text: от 1500 руб.
+        - generic [ref=f128e110]:
+          - strong [ref=f128e111]: Интернет-магазин
+          - text: от 2500 руб.
+    - generic [ref=f128e113]:
+      - paragraph [ref=f128e114]: Процесс
+      - heading "Этапы разработки" [level=2] [ref=f128e115]
+      - paragraph [ref=f128e116]: "Все шаги — дистанционно: созвоны, мессенджеры, общий доступ к макетам и staging-серверу. Где находится ваш офис в Бресте — на сроки не влияет."
+      - generic [ref=f128e117]:
+        - article [ref=f128e118]:
+          - text: "01"
+          - heading "Бриф и постановка задачи" [level=3] [ref=f128e119]
+          - paragraph [ref=f128e120]: Бриф и постановка задачи (созвон или видеосвязь)
+        - article [ref=f128e121]:
+          - text: "02"
+          - heading "Анализ ниши и конкурентов, составление ТЗ" [level=3] [ref=f128e122]
+          - paragraph [ref=f128e123]: Анализ ниши и конкурентов, составление ТЗ
+        - article [ref=f128e124]:
+          - text: "03"
+          - heading "Разработка дизайна и согласование" [level=3] [ref=f128e125]
+          - paragraph [ref=f128e126]: Разработка дизайна и согласование
+        - article [ref=f128e127]:
+          - text: "04"
+          - heading "Вёрстка и программирование" [level=3] [ref=f128e128]
+          - paragraph [ref=f128e129]: Вёрстка и программирование
+        - article [ref=f128e130]:
+          - text: "05"
+          - heading "Наполнение контентом и тестирование" [level=3] [ref=f128e131]
+          - paragraph [ref=f128e132]: Наполнение контентом и тестирование
+        - article [ref=f128e133]:
+          - text: "06"
+          - heading "Запуск сайта и передача в техподдержку" [level=3] [ref=f128e134]
+          - paragraph [ref=f128e135]: Запуск сайта и передача в техподдержку
+    - generic [ref=f128e137]:
+      - heading "Разрабатываем сайты на CMS" [level=2] [ref=f128e138]
+      - generic [ref=f128e139]:
+        - link "MODx" [ref=f128e140] [cursor=pointer]:
+          - /url: uslugi/razrabotka-texnicheskaya-podderzhka-sajtov-na-modx
+        - link "Bitrix" [ref=f128e143] [cursor=pointer]:
+          - /url: uslugi/razrabotka-texnicheskaya-podderzhka-sajtov-na-bitrix-bitriks
+        - link "OpenCart" [ref=f128e146] [cursor=pointer]:
+          - /url: uslugi/razrabotka-texnicheskaya-podderzhka-sajtov-na-opencart
+        - link "WordPress" [ref=f128e149] [cursor=pointer]:
+          - /url: uslugi/razrabotka-texnicheskaya-podderzhka-sajtov-na-wordpress
+        - link "PrestaShop" [ref=f128e152] [cursor=pointer]:
+          - /url: uslugi/razrabotka-i-txpodderzhka-sajtov-na-prestashop
+          - generic [aria-hidden] [ref=f128e154]: 
+        - link "Drupal" [ref=f128e156] [cursor=pointer]:
+          - /url: uslugi/razrabotka-i-texpodderzhka-sajtov-na-drupal
+        - link "Не нашли CMS? Уточните" [ref=f128e159] [cursor=pointer]:
+          - /url: "#contacts"
+    - generic [ref=f128e161]:
+      - paragraph [ref=f128e162]: Мы ценим каждого из своих клиентов и делаем всё возможное для достижения максимальных результатов.
+      - link "Проконсультироваться" [ref=f128e163] [cursor=pointer]:
+        - /url: "#contacts"
+    - generic [ref=f128e165]:
+      - heading "Нужен сайт для компании в Разработка сайтов в Бресте?" [level=2] [ref=f128e166]
+      - paragraph [ref=f128e167]: Рассчитаем стоимость и сроки за один рабочий день — консультация бесплатная.
+      - link "Получить расчёт" [ref=f128e168] [cursor=pointer]:
+        - /url: "#contacts"
+    - generic [ref=f128e170]:
+      - article [ref=f128e171]:
+        - heading "Разработка сайтов в Бресте — подробности от SAKURAWEB" [level=2] [ref=f128e172]
+        - paragraph [ref=f128e173]: "SAKURAWEB — веб-студия полного цикла с 2013 года. Создаём сайты для бизнеса Бреста, СМИ и B2B по всей Брестской области: от лендинга до интернет-магазина и медиа-портала."
+        - paragraph [ref=f128e174]: За 13 лет запустили более 210 сайтов. Каждый проект получает адаптивную вёрстку, базовую SEO-настройку и обучение вашей команды работе с админкой.
+        - heading "Что входит в работу" [level=3] [ref=f128e175]
+        - list [ref=f128e176]:
+          - listitem [ref=f128e177]: Проектирование структуры и прототипирование
+          - listitem [ref=f128e178]: Уникальный адаптивный дизайн и вёрстка
+          - listitem [ref=f128e179]: Разработка на MODx, 1С-Битрикс, WordPress, OpenCart и др.
+          - listitem [ref=f128e180]: "Интеграции: CRM, аналитика, 1С, платёжные системы"
+          - listitem [ref=f128e181]: Базовая SEO-оптимизация при запуске
+          - listitem [ref=f128e182]: Обучение администраторов и техподдержка
+        - heading "Этапы сотрудничества" [level=3] [ref=f128e183]
+        - list [ref=f128e184]:
+          - listitem [ref=f128e185]: Бриф и анализ ниши в Бресте
+          - listitem [ref=f128e186]: Прототип, дизайн и согласование
+          - listitem [ref=f128e187]: Разработка, наполнение и тестирование
+          - listitem [ref=f128e188]: Публикация и передача в поддержку
+        - heading "Сроки и стоимость" [level=3] [ref=f128e189]
+        - paragraph [ref=f128e190]: Лендинг — от 5 дней, корпоративный сайт — 4–8 недель, интернет-магазин — от 6 недель. Цены едины по Беларуси; для компаний Бреста рассчитаем смету бесплатно после брифа.
+        - heading "География и формат работы" [level=3] [ref=f128e191]
+        - paragraph [ref=f128e192]: Работаем с клиентами в Бресте и всей Беларуси дистанционно. Офис студии — Молодечно, встреча в офисе не обязательна. Консультации — по телефону, видеосвязи и в мессенджерах.
+        - heading "Как заказать" [level=3] [ref=f128e193]
+        - paragraph [ref=f128e194]:
+          - text: Оставьте заявку в форме на странице или напишите на
+          - link "info@sakura-web.by" [ref=f128e195] [cursor=pointer]:
+            - /url: mailto:info@sakura-web.by
+          - text: . Также смотрите
+          - link "портфолио" [ref=f128e196] [cursor=pointer]:
+            - /url: portfolio/
+          - text: и
+          - link "все услуги" [ref=f128e197] [cursor=pointer]:
+            - /url: uslugi/razrabotka-i-sozdanie-sajtov/
+          - text: .
+      - 'heading "Что выгоднее в Бресте: лендинг под ключ или сайт на конструкторе" [level=3] [ref=f128e198]'
+      - paragraph [ref=f128e199]: "Считаем для бизнеса Бреста Брестской области: подписка на конструктор кажется дешевле — 15–60 рублей в месяц, но за 2–3 года это 500–2000 рублей за шаблон, который нельзя вынести с платформы. Лендинг под ключ стоит от 500 рублей разово и остаётся у вас навсегда: код, дизайн, контент и домен — собственность компании. По скорости студия тоже выигрывает: от 5 дней до запуска против недель освоения конструктора, где мобильная версия и скорость загрузки зависят от ваших рук. Скрытая экономия — в конверсии: уникальный дизайн под компаний Бреста продаёт лучше типовой сетки, а чистая вёрстка и мета-теги с первого дня дают рекламе и поиску нужный материал. Вывод для компаний Бреста: конструктор годится для страницы-визитки на неделю, лендинг — для бизнеса, который собирает заявки и растёт. Плюс поддержка: после запуска сайт ведёт студия по договору — правки, резервные копии и консультации не требуют отдельного IT-сотрудника в штате."
+      - 'heading "Сроки разработки сайта в Бресте: от брифа до запуска" [level=3] [ref=f128e200]'
+      - paragraph [ref=f128e201]: "Для бизнеса Бреста Брестской области график выглядит так: лендинг — от 5 рабочих дней, корпоративный сайт — 4–8 недель, интернет-магазин — от 6 недель. Первый день — бриф: формат, цели, примеры. Затем два-три дня на анализ конкурентов и техзадание, до пяти дней на дизайн и правки, после — вёрстка, программирование и наполнение контентом. Цену и дату сдачи фиксирует договор, подписываемый до начала работ, — проекты Бреста не двигаются месяцами из-за «непредвиденных сложностей». Ускоряют три вещи: подготовленные тексты и фото, оперативная связь в Telegram или Viber, заранее согласованные референсы. Когда контента нет, его закрывает студия: копирайтер пишет тексты, изображения берутся из лицензионных стоков. Если сайт нужен к конкретной дате — выставке или запуску рекламы, — график планируется от дедлайна, и каждый этап имеет своего владельца со стороны студии. Перед сдачей сайт проходит проверку форм и адаптива на реальных устройствах: запускается только рабочая версия."
+      - 'heading "Состав работ: что получает заказчик сайта в Бресте" [level=3] [ref=f128e202]'
+      - paragraph [ref=f128e203]: "Заказчик Бреста получает сайт «под ключ» — без доплат за каждый шаг. Состав работ: анализ ниши и конкурентов, прототип, техзадание, уникальный дизайн с адаптивом под смартфоны, вёрстка, программирование, наполнение разделов контентом, базовая SEO-настройка (мета-теги, ЧПУ, robots.txt, sitemap). Функциональный блок: формы заявок с отправкой в CRM или на почту, счётчики аналитики, карты, кнопки мессенджеров. Технологии — по задаче: MODx, 1С-Битрикс, WordPress, OpenCart, PrestaShop, Drupal или разработка на чистом коде. Домен и хостинг в Бресте поможем зарегистрировать и настроить. На финише — инструктаж по админке: тексты и фото менеджер компании меняет сам. Формат для бизнеса Бреста Брестской области — дистанционный: созвоны, переписка, электронный документооборот. В цену входит и безопасность: SSL, антиспам на формах, резервное копирование. Нестандартные функции — выгрузка 1С, онлайн-оплата, личные кабинеты — считаются после брифа отдельной строкой, чтобы смета оставалась прозрачной. После запуска сайт остаётся под наблюдением поддержки: вопросы закрываются в мессенджерах в рабочие часы."
+    - generic [ref=f128e205]:
+      - generic [ref=f128e206]: портфолио
+      - heading "Примеры наших работ" [level=2] [ref=f128e207]
+      - list [ref=f128e208]:
+        - listitem [ref=f128e209] [cursor=pointer]:
+          - generic [ref=f128e210]: Проект
+          - paragraph [ref=f128e211]:
+            - text: Газета "Калiнкавiцкiя навiны"
+            - emphasis [ref=f128e212]: СМИ
+        - listitem [ref=f128e213] [cursor=pointer]:
+          - generic [ref=f128e214]: Проект
+          - paragraph [ref=f128e215]:
+            - text: Газета "Новости Лиозно"
+            - emphasis [ref=f128e216]: СМИ
+        - listitem [ref=f128e217] [cursor=pointer]:
+          - generic [ref=f128e218]: Проект
+          - paragraph [ref=f128e219]:
+            - text: Газета "Шахцёр"
+            - emphasis [ref=f128e220]: СМИ
+        - listitem [ref=f128e221] [cursor=pointer]:
+          - generic [ref=f128e222]: Проект
+          - paragraph [ref=f128e223]:
+            - text: Газета «Голас Сенненшчыны»
+            - emphasis [ref=f128e224]: СМИ
+        - listitem [ref=f128e225] [cursor=pointer]:
+          - generic [ref=f128e226]: "****"
+          - paragraph [ref=f128e227]: Здесь может быть ваш проект
+      - link "Смотреть все проекты" [ref=f128e228] [cursor=pointer]:
+        - /url: https://sakura-web.by/portfolio/
+    - generic [ref=f128e233]:
+      - paragraph [ref=f128e234]: Отзывы
+      - heading "Благодарности клиентов" [level=2] [ref=f128e235]
+      - generic "Благодарственные письма" [ref=f128e236]:
+        - button "Назад" [disabled] [ref=f128e237]
+        - generic [ref=f128e241]:
+          - article [ref=f128e242]:
+            - img "«Голас Любаншчыны»" [ref=f128e243]: Г
+            - heading "«Голас Любаншчыны»" [level=3] [ref=f128e244]
+          - article [ref=f128e245]:
+            - img "«Нясвiжскiя навiны»" [ref=f128e246]: Н
+            - heading "«Нясвiжскiя навiны»" [level=3] [ref=f128e247]
+          - article [ref=f128e248]:
+            - img "«Навiны Палесся»" [ref=f128e249]: Н
+            - heading "«Навiны Палесся»" [level=3] [ref=f128e250]
+          - article [ref=f128e251]:
+            - img "«Светлы шлях»" [ref=f128e252]: С
+            - heading "«Светлы шлях»" [level=3] [ref=f128e253]
+          - article [ref=f128e254]:
+            - img "«Свабоднае слова»" [ref=f128e255]: С
+            - heading "«Свабоднае слова»" [level=3] [ref=f128e256]
+          - article [ref=f128e257]:
+            - img "«Працоуная слава» (Воложин)" [ref=f128e258]: П
+            - heading "«Працоуная слава» (Воложин)" [level=3] [ref=f128e259]
+          - article [ref=f128e260]:
+            - img "Дятловская ЦРБ" [ref=f128e261]: Д
+            - heading "Дятловская ЦРБ" [level=3] [ref=f128e262]
+          - article [ref=f128e263]:
+            - img "«Наша Талачыншчына»" [ref=f128e264]: Н
+            - heading "«Наша Талачыншчына»" [level=3] [ref=f128e265]
+          - article [ref=f128e266]:
+            - img "«Лепельскi край»" [ref=f128e267]: Л
+            - heading "«Лепельскi край»" [level=3] [ref=f128e268]
+        - button "Вперёд" [ref=f128e269] [cursor=pointer]
+    - generic [ref=f128e273]:
+      - paragraph [ref=f128e274]: FAQ
+      - heading "Частые вопросы" [level=2] [ref=f128e275]
+      - generic [ref=f128e277]:
+        - group [ref=f128e278]:
+          - generic "Сколько стоит сайт в Бресте?" [ref=f128e279] [cursor=pointer]
+          - paragraph [ref=f128e282]: "Стоимость зависит от типа сайта и функционала. Ориентир: лендинг — от 500 руб., интернет-магазин — от 2500 руб. Точную цену для компании в Бресте рассчитаем бесплатно после брифа."
+        - group [ref=f128e283]:
+          - generic "Работаете ли вы с компаниями Бреста удалённо «под ключ»?" [ref=f128e284] [cursor=pointer]
+        - group [ref=f128e286]:
+          - generic "Какие CMS вы используете при разработке сайтов для клиентов из Бреста?" [ref=f128e287] [cursor=pointer]
+    - generic [ref=f128e290]:
+      - paragraph [ref=f128e291]: Услуги
+      - heading "Другие услуги нашей студии" [level=2] [ref=f128e292]
+      - paragraph [ref=f128e293]: Кратко о направлениях, которые ведём для компаний Разработка сайтов в Бресте и по всей Беларуси.
+      - generic [ref=f128e294]:
+        - link [ref=f128e295] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/vnedrenie-crm-erp-saas-sistem/
+          - generic [ref=f128e296]:
+            - heading "Внедрение CRM, ERP, SaaS" [level=3] [ref=f128e297]
+            - paragraph [ref=f128e298]: Bitrix24, AmoCRM, ERP — внедрение и интеграция для бизнеса Разработка сайтов в Бресте.
+            - text: 42 проектов
+          - img "Внедрение CRM, ERP, SaaS"
+        - link [ref=f128e299] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/texnicheskaya-podderzhka
+          - generic [ref=f128e300]:
+            - heading "Техническая поддержка" [level=3] [ref=f128e301]
+            - paragraph [ref=f128e302]: Поддержка и доработка сайтов на MODx, Bitrix, WordPress и других CMS — 24/7.
+            - text: постоянные клиенты на поддержке
+          - img "Техническая поддержка"
+        - link [ref=f128e303] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/web-razrabotka
+          - generic [ref=f128e304]:
+            - heading "Web-разработка" [level=3] [ref=f128e305]
+            - paragraph [ref=f128e306]: Скрипты, API, чат-боты и обмен с 1С — под задачи компаний Разработка сайтов в Бресте.
+            - text: 27 проектов
+          - img "Web-разработка"
+        - link [ref=f128e307] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/podklyuchenie-platezhnyix-sistem
+          - generic [ref=f128e308]:
+            - heading "Интернет-эквайринг" [level=3] [ref=f128e309]
+            - paragraph [ref=f128e310]: ЕРИП и WebPay — подключим онлайн-оплату на сайт под ключ.
+            - text: 12 проектов
+          - img "Интернет-эквайринг"
+        - link "Контекстная реклама 14 проектов" [ref=f128e311] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/kontekstnaya-reklama
+          - heading "Контекстная реклама" [level=3] [ref=f128e312]
+          - generic [ref=f128e313]: 14 проектов
+        - link "Дизайн сайтов 22 проекта" [ref=f128e314] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/razrabotka-dizajna-sajtov
+          - heading "Дизайн сайтов" [level=3] [ref=f128e315]
+          - generic [ref=f128e316]: 22 проекта
+        - link "Разработка сайтов для СМИ 24 проекта" [ref=f128e317] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/razrabotka-sajtov-dlya-smi-gazetyi-radio-televidenie
+          - heading "Разработка сайтов для СМИ" [level=3] [ref=f128e318]
+          - generic [ref=f128e319]: 24 проекта
+        - link "Контент маркетинг 44 проекта" [ref=f128e320] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/kopirajting-tekstovoe-napolnenie-sajta
+          - heading "Контент маркетинг" [level=3] [ref=f128e321]
+          - generic [ref=f128e322]: 44 проекта
+        - link "Продвижение в соцсетях 32 проекта" [ref=f128e323] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/prodvizhenie-v-soczsetyax-smm
+          - heading "Продвижение в соцсетях" [level=3] [ref=f128e324]
+          - generic [ref=f128e325]: 32 проекта
+        - link "SEO и продвижение сайтов 18 проектов" [ref=f128e326] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/seo-i-prodvizhenie-sajtov
+          - heading "SEO и продвижение сайтов" [level=3] [ref=f128e327]
+          - generic [ref=f128e328]: 18 проектов
+        - link "Разработка сайтов 97 проектов" [ref=f128e329] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/razrabotka-i-sozdanie-sajtov/
+          - heading "Разработка сайтов" [level=3] [ref=f128e330]
+          - generic [ref=f128e331]: 97 проектов
+        - link "Все услуги студии" [ref=f128e332] [cursor=pointer]:
+          - /url: https://sakura-web.by/uslugi/
+    - generic [ref=f128e337]:
+      - generic [ref=f128e338]:
+        - heading "Расскажите о вашей задаче" [level=2] [ref=f128e339]
+        - paragraph [ref=f128e340]: Оставьте заявку — перезвоним в течение 15 минут в рабочее время
+      - form "Форма заявки" [ref=f128e341]:
+        - generic [aria-hidden] [ref=f128e342]:
+          - generic [ref=f128e343]:
+            - text: Ваш сайт
+            - textbox [ref=f128e344]
+          - generic [ref=f128e345]:
+            - text: Компания URL
+            - textbox [ref=f128e346]
+        - textbox [ref=f128e348]:
+          - /placeholder: Ваше имя
+        - textbox [ref=f128e350]:
+          - /placeholder: +375 (29) 000-00-00
+        - textbox [ref=f128e352]:
+          - /placeholder: name@example.com
+        - textbox [ref=f128e354]:
+          - /placeholder: Кратко опишите задачу или удобное время для звонка
+        - button "Получить консультацию" [ref=f128e355] [cursor=pointer]
+        - generic [ref=f128e359] [cursor=pointer]:
+          - checkbox "Я согласен с правилами обработки персональных данных" [ref=f128e360]
+          - generic [ref=f128e361]:
+            - text: Я согласен с
+            - link "правилами обработки персональных данных" [ref=f128e362]:
+              - /url: https://sakura-web.by/politika-v-otnoshenii-obrabotki-personalnyix-dannyix
+  - contentinfo [ref=f128e363]:
+    - generic [ref=f128e364]:
+      - generic [ref=f128e365]:
+        - generic [ref=f128e366]: sakura
+        - generic [ref=f128e367]: web
+      - generic [ref=f128e368]:
+        - generic [ref=f128e369]: © Copyright 2013 - 2026 ООО «САКУРАВЕБ» (SAKURAWEB) — все права защищены
+        - generic [ref=f128e370]:
+          - text: г. Молодечно, ул. Великий Гостинец, 143Б-517а ·
+          - link "+375 33 360-39-50" [ref=f128e371] [cursor=pointer]:
+            - /url: tel:+375333603950
+          - text: ·
+          - link "info@sakura-web.by" [ref=f128e372] [cursor=pointer]:
+            - /url: mailto:info@sakura-web.by
+        - generic [ref=f128e373]: web design — George Mukhanov
+  - dialog [ref=f128e374]:
+    - generic [ref=f128e375]:
+      - generic [ref=f128e376]:
+        - paragraph [ref=f128e377]: Мы используем cookie
+        - paragraph [ref=f128e378]:
+          - text: Сайт применяет файлы cookie и обрабатывает персональные данные для работы форм, аналитики и улучшения сервиса. Продолжая пользоваться сайтом, вы соглашаетесь с
+          - link "политикой обработки и хранения cookies" [ref=f128e379] [cursor=pointer]:
+            - /url: https://sakura-web.by/politika-v-otnoshenii-obrabotki-kuki
+          - text: .
+      - generic [ref=f128e380]:
+        - button "Принять" [ref=f128e381] [cursor=pointer]
+        - button "Настроить" [ref=f128e382] [cursor=pointer]
+        - link "Подробнее" [ref=f128e383] [cursor=pointer]:
+          - /url: https://sakura-web.by/politika-v-otnoshenii-obrabotki-personalnyix-dannyix
+  - generic:
+    - generic [ref=f128e384]:
+      - generic [ref=f128e385]:
+        - text: Чат собирает адрес открытой страницы, чтобы мы могли вам ответить.
+        - link "Политика обработки данных" [ref=f128e386] [cursor=pointer]:
+          - /url: https://sakura-web.by/politika-v-otnoshenii-obrabotki-personalnyix-dannyix
+      - button "Скрыть" [ref=f128e387] [cursor=pointer]: Понятно
+    - button "Открыть чат" [ref=f128e388] [cursor=pointer]
+  - button "Валера — ИИ-консультант" [ref=f128e391] [cursor=pointer]

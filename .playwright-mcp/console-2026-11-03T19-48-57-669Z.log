@@ -1,0 +1,4 @@
+[    1103ms] SyntaxError: Failed to execute 'querySelector' on 'Document': '[data-f=""Golos Text""]' is not a valid selector.
+    at http://127.0.0.1:8899/fonts2.html:87:24
+    at NodeList.forEach (<anonymous>)
+    at http://127.0.0.1:8899/fonts2.html:79:35

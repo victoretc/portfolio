@@ -1,0 +1,99 @@
+- generic [active] [ref=f181e1]:
+  - heading "Шрифт заголовка — 12 вариантов" [level=1] [ref=f181e2]
+  - paragraph [ref=f181e3]: Реальный текст, реальный кегль 64px и колонка 712px. Все гарнитуры — SIL Open Font License, кириллица родная. Под каждым — число строк и ширина длинной строки.
+  - generic [ref=f181e4]:
+    - generic [ref=f181e5]:
+      - generic [ref=f181e6]:
+        - generic [ref=f181e7]: Commissioner 700
+        - text: сейчас на сайте
+      - generic [ref=f181e9]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e10]
+        - paragraph [ref=f181e11]: Сайт, который приводит клиентов, а не украшает интернет.
+        - generic [ref=f181e12]: "строк: 2 · ширина: 637 px из 712"
+    - generic [ref=f181e13]:
+      - generic [ref=f181e14]:
+        - generic [ref=f181e15]: Onest 800
+        - text: та же гарнитура, что в тексте
+      - generic [ref=f181e17]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e18]
+        - paragraph [ref=f181e19]: Сайт, который приводит клиентов, а не украшает интернет.
+        - generic [ref=f181e20]: "строк: 2 · ширина: 687 px из 712"
+    - generic [ref=f181e21]:
+      - generic [ref=f181e22]:
+        - generic [ref=f181e23]: Inter 700
+        - text: нейтральный, отличная кириллица
+      - generic [ref=f181e25]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e26]
+        - paragraph [ref=f181e27]: Сайт, который приводит клиентов, а не украшает интернет.
+        - generic [ref=f181e28]: "строк: 2 · ширина: 682 px из 712"
+    - generic [ref=f181e29]:
+      - generic [ref=f181e30]:
+        - generic [ref=f181e31]: Manrope 800
+        - text: мягкая геометрия
+      - generic [ref=f181e33]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e34]
+        - paragraph [ref=f181e35]: Сайт, который приводит клиентов, а не украшает интернет.
+        - generic [ref=f181e36]: "строк: 2 · ширина: 678 px из 712"
+    - generic [ref=f181e37]:
+      - generic [ref=f181e38]:
+        - generic [ref=f181e39]: Golos Text 600
+        - text: Paratype — то, что было до Unbounded
+      - generic [ref=f181e41]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e42]
+        - paragraph [ref=f181e43]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e44]:
+      - generic [ref=f181e45]:
+        - generic [ref=f181e46]: Rubik 700
+        - text: гротеск со скруглёнными углами
+      - generic [ref=f181e48]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e49]
+        - paragraph [ref=f181e50]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e51]:
+      - generic [ref=f181e52]:
+        - generic [ref=f181e53]: Montserrat 700
+        - text: геометрический, популярный
+      - generic [ref=f181e55]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e56]
+        - paragraph [ref=f181e57]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e58]:
+      - generic [ref=f181e59]:
+        - generic [ref=f181e60]: Oswald 600
+        - text: "узкий: длинная фраза влезает в строку"
+      - generic [ref=f181e62]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e63]
+        - paragraph [ref=f181e64]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e65]:
+      - generic [ref=f181e66]:
+        - generic [ref=f181e67]: Playfair Display 700
+        - text: засечки, редакционный характер
+      - generic [ref=f181e69]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e70]
+        - paragraph [ref=f181e71]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e72]:
+      - generic [ref=f181e73]:
+        - generic [ref=f181e74]: Prata 400
+        - text: дидон, только один начертание
+      - generic [ref=f181e76]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e77]
+        - paragraph [ref=f181e78]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e79]:
+      - generic [ref=f181e80]:
+        - generic [ref=f181e81]: Cormorant 600
+        - text: изящный контрастный шрифт
+      - generic [ref=f181e83]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e84]
+        - paragraph [ref=f181e85]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e86]:
+      - generic [ref=f181e87]:
+        - generic [ref=f181e88]: Comfortaa 700
+        - text: мягкий, игривый
+      - generic [ref=f181e90]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e91]
+        - paragraph [ref=f181e92]: Сайт, который приводит клиентов, а не украшает интернет.
+    - generic [ref=f181e93]:
+      - generic [ref=f181e94]:
+        - generic [ref=f181e95]: Martian Mono 700
+        - text: техно-моно
+      - generic [ref=f181e97]:
+        - heading "Богатов, студия разработки из Бреста" [level=1] [ref=f181e98]
+        - paragraph [ref=f181e99]: Сайт, который приводит клиентов, а не украшает интернет.

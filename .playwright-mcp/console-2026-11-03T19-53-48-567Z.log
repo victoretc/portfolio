@@ -1,0 +1,4 @@
+[     215ms] SyntaxError: Failed to execute 'querySelector' on 'Document': '[data-f=""Golos Text""]' is not a valid selector.
+    at http://127.0.0.1:8899/ref.html:65:24
+    at NodeList.forEach (<anonymous>)
+    at http://127.0.0.1:8899/ref.html:57:35
