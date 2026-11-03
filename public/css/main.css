@@ -548,13 +548,12 @@ html.js .callout.is-in .callout-label .callout-char {
   html.js .callout.is-in .callout-label .callout-char { animation: none; }
 }
 
-/* 2. CASES — video cards on black (ref: lborisovv.ru) */
-.cases { background: #000; color: #f5f5f5; padding-block: var(--gap-block); }
+/* 2. CASES — белое поле, как первый экран: видео растворяется в фоне,
+   под ним — название проекта и кнопка */
+.cases { background: #ffffff; color: #000000; padding-block: var(--gap-block); }
 .cases-inner {
-  width: 100%;
-  max-width: 1200px;
+  width: min(1160px, calc(100% - clamp(40px, 16vw, 280px)));
   margin-inline: auto;
-  padding-inline: var(--margin);
 }
 .cases-title {
   font-family: var(--sans);
@@ -577,11 +576,12 @@ html.js .callout.is-in .callout-label .callout-char {
   max-width: 1000px;
 }
 .project-card__visual-link {
+  position: relative;
   display: block;
   width: 100%;
   border-radius: clamp(16px, 2vw, 24px);
   overflow: hidden;
-  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline: 1px solid oklch(0 0 0 / 0.1);
   outline-offset: -1px;
 }
 .project-card__visual {
@@ -589,37 +589,30 @@ html.js .callout.is-in .callout-label .callout-char {
   width: 100%;
   height: auto;
   aspect-ratio: 1600 / 920; /* native ratio of the desktop recording — nothing is cropped */
-  background: #111;
+  background: #eeecea;
 }
-/* Text block overlaps the bottom of the video, tint + progressive blur
-   fade the media into black — the card treatment from lborisovv.ru */
-.project-card__text {
-  position: relative;
-  width: 100%;
-  margin-top: -140px;
-  padding: 160px clamp(24px, 5vw, 64px) 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
+/* Нижний край видео тает в белый фон: размытие каскадом + белая подложка */
 .project-card__tint {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 74.419%);
-  border-radius: 0 0 clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 86%);
 }
 .project-card__blur {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
   pointer-events: none;
 }
 .project-card__blur > div {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  border-radius: 0 0 clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px);
 }
 .project-card__blur > div:nth-child(1) {
   backdrop-filter: blur(1px);
@@ -657,13 +650,23 @@ html.js .callout.is-in .callout-label .callout-char {
   mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
 }
+.project-card__text {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  padding: clamp(20px, 2.4vw, 32px) 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 .project-card__title-group {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
 }
 .project-card__title {
@@ -678,7 +681,7 @@ html.js .callout.is-in .callout-label .callout-char {
   font-family: var(--sans);
   font-size: clamp(16px, 1.6vw, 18px);
   line-height: 1.47;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   text-align: center;
   max-width: 56ch;
 }
@@ -690,33 +693,9 @@ html.js .callout.is-in .callout-label .callout-char {
   gap: 10px;
   font-family: var(--sans);
   font-size: clamp(15px, 1.3vw, 18px);
-  color: #fff;
+  color: #000000;
 }
-.project-card__stack-label { color: rgba(255, 255, 255, 0.7); }
-.project-card__cta {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  background: #f5f5f5;
-  color: #000;
-  border-radius: 14px;
-  font-family: var(--sans);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  white-space: nowrap;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 150ms ease, transform 150ms ease-out;
-}
-@media (hover: hover) {
-  .project-card__cta:hover { opacity: 0.85; }
-}
-.project-card__cta:not(:disabled):active { transform: scale(0.96); }
+.project-card__stack-label { color: rgba(0, 0, 0, 0.6); }
 
 /* 4. SERVICES — чёрное поле: заголовок по левому краю колонки,
    «клавиша»-оффер с ценой, ниже — состав цены, запуск и панель с Telegram */
@@ -1392,7 +1371,7 @@ html.js .callout.is-in .callout-label .callout-char {
   .cta-label { font-size: clamp(34px, 9vw, 44px); }
 
   /* Текст держит отступ 16px, а кнопка «Открыть сайт» выходит вплотную к краю карточки (16px от экрана) */
-  .project-card__text { margin-top: -90px; padding: 110px 0 28px; gap: 24px; }
+  .project-card__text { margin-top: -90px; padding: 104px 0 28px; gap: 18px; }
   .project-card__title-group { padding-inline: var(--margin); }
   .project-card__stack { flex-wrap: wrap; justify-content: center; }
   .project-card__description { max-width: none; }
@@ -1427,4 +1406,487 @@ html.js .callout.is-in .callout-label .callout-char {
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
   .footer-mark { font-size: clamp(40px, 13vw, 72px); }
   .footer-bottom { flex-direction: column; }
+}
+
+/* =====================================================================
+   ПЕРВЫЙ БЛОК — редизайн по референсу zorigto.ru
+   Остальные секции остаются прежними.
+   ===================================================================== */
+
+@font-face {
+  font-family: "Handil Pro";
+  src: url("/fonts/handil_pro/HandilPro-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+body { overflow-x: hidden; }
+
+.intro {
+  position: relative;
+  background: #ffffff;
+  color: #0a0a0a;
+  padding: clamp(28px, 4.4vw, 56px) 0 clamp(28px, 3.4vw, 44px);
+}
+.intro-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(1160px, calc(100% - clamp(40px, 16vw, 280px)));
+  margin-inline: auto;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 24px);
+  align-content: start;
+}
+
+.intro-title {
+  grid-column: 1 / 9;
+  font-family: "Handil Pro", var(--sans);
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.intro-badge {
+  grid-column: 9 / 13;
+  grid-row: 1 / 3;
+  position: relative;
+  min-height: 480px;
+}
+
+/* Текстовый блок: две колонки под заголовком, как в референсе.
+   Ширина блока совпадает с шириной заголовка — колонки 1–8. */
+.intro-info {
+  grid-column: 1 / 9;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+  column-gap: clamp(16px, 1.7vw, 24px);
+  margin-top: clamp(26px, 3.4vw, 48px);
+  align-items: start;
+}
+.intro-lead {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.95vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+}
+.intro-note,
+.intro-copy p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.32vw, 1.25rem);
+  line-height: 1.45;
+  color: #111111;
+}
+.intro-note { margin-top: clamp(14px, 1.4vw, 20px); }
+.intro-copy { display: grid; gap: clamp(12px, 1.1vw, 16px); }
+
+/* Фигура-марка в начале текстовой колонки */
+.intro-fig {
+  display: block;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.intro-fig--flower {
+  width: clamp(52px, 4.6vw, 72px);
+  margin-bottom: clamp(16px, 1.6vw, 22px);
+}
+
+/* «Связаться» — главное действие на первом экране (ref: zorigto.ru)
+   Кнопка-скруглённый прямоугольник: серая заливка, радиус 24, иконка-самолётик
+   серая. При наведении заливка светлеет, самолётик становится синим; при нажатии
+   заливка темнеет. Движений нет — только цвет, как в референсе. */
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(22px, 2vw, 32px);
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #0a0a0a;
+  font-family: var(--sans);
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 250ms cubic-bezier(0, 0, 0.58, 1);
+}
+.cta-link svg {
+  flex: none;
+  width: 24px;
+  height: 20px;
+  color: #5d5d5d;
+  transition: color 120ms ease-out;
+}
+@media (hover: hover) {
+  .cta-link:hover { background: rgba(0, 0, 0, 0.06); }
+  .cta-link:hover svg { color: #24a1de; }
+}
+/* Нажатие — заливка темнее (в референсе 0.098) */
+.cta-link:active { background: rgba(0, 0, 0, 0.1); }
+
+/* «Открыть сайт» в карточке кейса — тот же компонент, что «Связаться» на первом
+   экране: серый скруглённый прямоугольник, тёмный текст, серая иконка, которая
+   при наведении становится акцентной. Размер чуть меньше первого экрана. */
+.project-card__cta {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  height: 52px;
+  padding: 0 24px;
+  font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+}
+.project-card__cta:hover svg { color: var(--accent); }
+
+/* ---------- бейдж на всю ширину экрана ---------- */
+.lanyard {
+  --ly-card-w: 220px;
+  --ly-s: 1;
+  --u: calc(16px * var(--ly-s));
+  --ly-card-top: 120px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(-50%);
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+}
+.lanyard-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+.lanyard-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 50% 0;
+  cursor: grab;
+  outline: none;
+  pointer-events: auto;
+  will-change: transform;
+  border-radius: calc(1.6 * var(--u));
+}
+/* Подложка карточки: белая «ламинация» с волной-отливком, тонкой рамкой
+   и мягкой тенью — те же приёмы, что на первом экране. */
+.ly-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f3f0 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px -26px rgba(22, 20, 42, 0.5);
+}
+/* Волна — едва заметный отливок, а не фон: карточка остаётся белой */
+.ly-shader {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.14;
+}
+.lanyard-card:focus-visible { outline: 2px solid #111; outline-offset: 6px; border-radius: 18px; }
+.lanyard-card:active { cursor: grabbing; }
+
+.ly-clip {
+  position: absolute;
+  left: 50%;
+  /* Зажим цепляется к верхнему краю карточки и накрывает прорезь для ремешка */
+  top: calc(-1 * var(--ly-face-top, 21px));
+  width: calc(1.125 * var(--u));
+  height: calc(2.25 * var(--u));
+  transform: translateX(-50%);
+  border-radius: calc(0.3 * var(--u));
+  background: linear-gradient(90deg, #f7f3ec 0%, #b6ae9f 46%, #8b8376 56%, #ece6da 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.28);
+  z-index: 2;
+}
+/* Внутренний слой карточки. Плоский, без 3D: композитинг видео внутри
+   повёрнутого контейнера в Chrome рисуется частично — карточка «половинится». */
+.ly-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.ly-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Прозрачная лицевая сторона: подложку рисует .ly-bg */
+  background: transparent;
+}
+/* Содержимое бейджа: фото сверху, под ним имя и роль */
+.ly-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(0.9 * var(--u));
+  padding: calc(3.1 * var(--u)) calc(1.1 * var(--u)) 0;
+  text-align: center;
+  color: #0a0a0a;
+}
+/* Фотография: квадрат с тонкой рамкой, как на настоящем бейдже */
+.ly-photo {
+  position: relative;
+  flex: none;
+  width: calc(7.6 * var(--u));
+  height: calc(7.6 * var(--u));
+  overflow: hidden;
+  border-radius: calc(1.1 * var(--u));
+  /* Контентное изображение: 1px рамка чистым чёрным 10% */
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
+  background: #ece4d4;
+  box-shadow: 0 12px 24px -16px rgba(20, 18, 40, 0.55);
+}
+.ly-photo__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+/* Имя и роль — без плашки: карточка и так светлая, текст читается */
+.ly-plate {
+  width: 100%;
+  padding: 0 calc(0.4 * var(--u));
+}
+.ly-name {
+  font-family: "Handil Pro", var(--sans);
+  font-weight: 500;
+  font-size: calc(2.3 * var(--u));
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+}
+.ly-name--sm { font-size: calc(1.05 * var(--u)); line-height: 1.15; }
+.ly-sub {
+  margin-top: calc(0.45 * var(--u));
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: calc(0.7 * var(--u));
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.55);
+}
+/* Подвал бейджа: короткая линия и студия — как внизу настоящего бейджа */
+.ly-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(1.7 * var(--u));
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: calc(0.68 * var(--u));
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(10, 10, 10, 0.42);
+}
+.ly-foot::before {
+  content: "";
+  display: block;
+  width: calc(2.4 * var(--u));
+  height: 1px;
+  margin: 0 auto calc(0.7 * var(--u));
+  background: rgba(10, 10, 10, 0.16);
+}
+/* Прорезь под ремешок */
+.ly-slot {
+  position: absolute;
+  top: 4.5%;
+  left: 50%;
+  width: 20%;
+  height: 3.5%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.16);
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.28);
+}
+.ly-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.3) 50%, transparent 65%) var(--lyd-shine, 50%) 0 / 250% 100% no-repeat,
+    rgba(0, 0, 0, var(--lyd-dim, 0));
+}
+
+/* ---------- нижнее меню: стеклянная панель (ref: v-a-d-i-m.ru) ---------- */
+/* Тёмное матовое стекло с размытием, навигация ссылками и отдельная
+   пилюля Telegram справа. */
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 60;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dock-bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(18, 18, 18, 0.68);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+}
+.dock a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease-out;
+}
+/* Иконка рисуется currentColor, толщина штриха — по весу текста рядом */
+.dock-icon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (hover: hover) {
+  .dock a:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dock a:hover { transform: translateY(-1px); }
+  .dock a:active { transform: scale(0.96); }
+}
+/* Раздел, который сейчас на экране */
+.dock a.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+/* Telegram — отдельная пилюля, как в референсе */
+.dock-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background-color: rgba(18, 18, 18, 0.68);
+  /* Слой подсветки: прозрачный в покое, 10% белого при наведении —
+     та же подсветка, что и у пунктов меню, но поверх своего стекла */
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms ease, background-image 150ms ease, transform 150ms ease-out;
+}
+.dock-cta svg { flex: none; }
+@media (hover: hover) {
+  /* Общее правило `.dock a:hover` перебивает фон пилюли, поэтому переопределяем
+     его: стекло остаётся, поверх ложится та же подсветка, что у пунктов меню */
+  .dock a.dock-cta:hover {
+    background-color: rgba(18, 18, 18, 0.68);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dock-cta:hover { transform: translateY(-1px); }
+  .dock-cta:active { transform: scale(0.96); }
+}
+
+.footer { padding-bottom: clamp(120px, 16vh, 168px); }
+
+@media (max-width: 1100px) {
+  /* заголовок занимает 7 колонок — уменьшаем кегль, чтобы «студия разработки»
+     не переносилась на четвёртую строку */
+  .intro-title { grid-column: 1 / 8; font-size: clamp(2rem, 4.4vw, 4.4rem); }
+  .intro-badge { grid-column: 8 / 13; min-height: 440px; }
+  .intro-info { grid-column: 1 / 8; grid-template-columns: 1fr; row-gap: clamp(24px, 3vw, 32px); }
+  .intro-copy { max-width: 46ch; }
+  .lanyard { --ly-card-w: 200px; --ly-card-top: 110px; }
+}
+
+@media (max-width: 860px) {
+  .intro { padding-top: 28px; padding-bottom: 92px; }
+  .intro-grid { display: flex; flex-direction: column; }
+  .intro-title {
+    font-size: clamp(1.8rem, 7.4vw, 2.9rem);
+    order: 1;
+  }
+  .intro-badge { order: 2; min-height: 350px; margin-top: 16px; }
+  .intro-info { order: 3; margin-top: clamp(24px, 5vw, 32px); grid-template-columns: 1fr; row-gap: clamp(24px, 4vw, 32px); }
+  .intro-copy { max-width: none; gap: 12px; }
+  .lanyard { --ly-card-w: 156px; --ly-card-top: 20px; }
+  .intro-fig--flower { width: 60px; margin-bottom: 18px; }
+  .dock { gap: 6px; }
+  .dock a { padding: 10px 11px; font-size: 13px; }
+  .dock-icon { width: 15px; height: 15px; }
+  .dock-cta { height: 42px; padding: 0 16px; font-size: 13px; }
+}
+
+@media (min-width: 560px) and (max-width: 860px) {
+  .intro-badge { min-height: 430px; }
+  .lanyard { --ly-card-w: 190px; --ly-card-top: 24px; }
+}
+
+@media (max-width: 560px) {
+  .dock { gap: 5px; bottom: max(12px, env(safe-area-inset-bottom)); }
+  .dock a { padding: 10px 9px; font-size: 12px; gap: 5px; }
+  .dock-icon { width: 14px; height: 14px; }
+  .dock-cta { height: 40px; padding: 0 13px; font-size: 12px; gap: 6px; }
+  .dock-cta svg { width: 15px; height: 12px; }
+}
+
+@media (max-width: 360px) {
+  .dock a span { display: none; }
+  .dock a { padding: 11px; }
+  .dock-cta span { display: none; }
+  .dock-cta { padding: 0 13px; }
 }
