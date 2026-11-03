@@ -751,7 +751,7 @@ html.js .callout.is-in .callout-label .callout-char {
   width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
 }
-/* Шапка главы: заголовок слева, марка-цветок справа — как колофон */
+/* Шапка главы: заголовок слева */
 .services-head {
   display: flex;
   align-items: flex-end;
@@ -765,13 +765,6 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(28px, 3vw, 40px);
   letter-spacing: -0.015em;
   line-height: 1.05;
-}
-.services-fig {
-  flex: none;
-  width: clamp(40px, 3.8vw, 56px);
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
 }
 
 /* Подпись над списком — микро-лейбл в ритме подписей в подвале */
@@ -1191,7 +1184,6 @@ html:not(.js) .loader { display: none; }
   /* Услуги на телефоне: список работ и цена в одну колонку */
   .services-head { margin-bottom: 26px; }
   .services-title { font-size: 30px; }
-  .services-fig { width: 38px; }
   .work-list { grid-template-columns: minmax(0, 1fr); }
   .work-item { grid-template-columns: 34px minmax(0, 1fr); padding-block: 18px; }
   .work-num { line-height: 1.9; }
