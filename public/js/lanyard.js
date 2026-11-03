@@ -410,6 +410,16 @@
   place();
   requestAnimationFrame(tick);
 
+  // Видео в окне бейджа стартует не сразу и без повтора: к концу клипа
+  // человек уходит из кадра, и окно остаётся пустым
+  var photo = card.querySelector('.ly-photo__media');
+  if (photo && !reduced) {
+    window.setTimeout(function () {
+      var p = photo.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    }, 1600);
+  }
+
   var observer = new ResizeObserver(function () {
     if (Math.abs(host.clientWidth - W) < 1 && Math.abs(host.clientHeight - H) < 1) return;
     build();

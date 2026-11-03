@@ -1591,7 +1591,7 @@ body { overflow-x: hidden; }
   inset: 0;
   overflow: hidden;
   border-radius: inherit;
-  background: linear-gradient(180deg, #ffffff 0%, #f3f3f0 100%);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 40px -26px rgba(22, 20, 42, 0.5);
 }
@@ -1602,7 +1602,7 @@ body { overflow-x: hidden; }
   width: 100%;
   height: 100%;
   display: block;
-  opacity: 0.14;
+  opacity: 0.06;
 }
 .lanyard-card:focus-visible { outline: 2px solid #111; outline-offset: 6px; border-radius: 18px; }
 .lanyard-card:active { cursor: grabbing; }
@@ -1653,8 +1653,8 @@ body { overflow-x: hidden; }
 .ly-photo {
   position: relative;
   flex: none;
-  width: calc(7.6 * var(--u));
-  height: calc(7.6 * var(--u));
+  width: calc(8.4 * var(--u));
+  height: calc(8.4 * var(--u));
   overflow: hidden;
   border-radius: calc(1.1 * var(--u));
   /* Контентное изображение: 1px рамка чистым чёрным 10% */
