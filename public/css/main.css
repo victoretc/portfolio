@@ -788,7 +788,7 @@ html.js .callout.is-in .callout-label .callout-char {
 /* Верх услуг: сама услуга с ценой слева, остальные проекты справа */
 .services-top {
   display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: clamp(32px, 5vw, 72px);
   align-items: start;
   margin-bottom: clamp(40px, 6vw, 76px);
@@ -813,7 +813,6 @@ html.js .callout.is-in .callout-label .callout-char {
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.62);
   margin-top: 10px;
-  max-width: 36ch;
 }
 .price-label {
   font-family: var(--sans);
@@ -824,11 +823,18 @@ html.js .callout.is-in .callout-label .callout-char {
   color: rgba(0, 0, 0, 0.45);
   margin-top: clamp(24px, 3vw, 34px);
 }
+/* Цена и срок в одну строку: цифры слева, пояснение справа */
+.price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: clamp(16px, 2vw, 28px);
+  margin-top: 6px;
+}
 .price-value {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-top: 14px;
   font-family: "Handil Pro", var(--sans);
   font-weight: 500;
   font-size: clamp(52px, 6.4vw, 84px);
@@ -852,12 +858,12 @@ html.js .callout.is-in .callout-label .callout-char {
   color: rgba(0, 0, 0, 0.45);
 }
 .price-note {
+  flex: 1 1 220px;
   font-family: var(--sans);
   font-size: clamp(14px, 1.2vw, 15.5px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.55);
-  margin-top: 14px;
-  max-width: 32ch;
+  max-width: 26ch;
 }
 
 /* Как работаем */
