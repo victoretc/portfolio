@@ -700,303 +700,183 @@ html.js .callout.is-in .callout-label .callout-char {
 }
 .project-card__stack-label { color: rgba(0, 0, 0, 0.6); }
 
-/* 4. SERVICES — чёрное поле: заголовок по левому краю колонки,
-   «клавиша»-оффер с ценой, ниже — состав цены, запуск и панель с Telegram */
+/* 4. SERVICES — плоский редакционный блок в ритме первого экрана:
+   белое поле, индекс работ в две колонки, внизу — цена, сроки и кнопка.
+   Без тёмных карточек и витринных сеток: только типографика и волосяные линии. */
 .services { background: #ffffff; color: #0a0a0a; }
 .services-inner {
   width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
 }
-.services-head { margin-bottom: var(--gap-block); }
+/* Шапка главы: заголовок слева, марка-цветок справа — как колофон */
+.services-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 40px);
+  margin-bottom: clamp(28px, 4.5vw, 56px);
+}
 .services-title {
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(28px, 3vw, 40px);
   letter-spacing: -0.015em;
+  line-height: 1.05;
 }
-/* «Клавиша» — тёмный градиент, фаска и свечение из героя;
-   внутри: слева предложение, справа — цена и кнопка через волосяную линию */
-.offer {
-  position: relative;
-  width: 100%;
-  max-width: var(--shell);
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  align-items: center;
-  column-gap: clamp(24px, 4vw, 56px);
-  padding: clamp(32px, 5vh, 64px) clamp(24px, 4.5vw, 56px);
-  border-radius: clamp(24px, 5vw, 96px);
-  background: linear-gradient(to bottom, rgb(32, 32, 32), rgb(0, 0, 0));
-  box-shadow: inset 0 -2px 3px rgb(255 255 255 / 0.95), inset 0 5px 6px rgb(142 142 142 / 0.25);
-  overflow: hidden;
+.services-fig {
+  flex: none;
+  width: clamp(40px, 3.8vw, 56px);
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.offer::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  top: -38.2%;
-  left: -16.13%;
-  width: 133.33%;
-  height: 178.35%;
-  background: url("/img/key-glow.svg") 50% 50% / 100% 100% no-repeat;
-}
-.offer > * { position: relative; z-index: 1; }
-.offer-main { text-align: left; }
-.offer-side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  align-self: stretch;
-  padding-left: clamp(24px, 4vw, 56px);
-  border-left: 1px solid rgb(245 245 245 / 0.14);
-}
-.offer-script {
-  font-family: "Czizh", "Snell Roundhand", "Segoe Script", cursive;
-  font-weight: 400;
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1.1;
-  letter-spacing: 0;
-  color: #f5f5f5;
-}
-.offer-title {
+
+/* Подпись над списком — микро-лейбл в ритме подписей в подвале */
+.services-sub {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(22px, 2.6vw, 34px);
-  line-height: 1.15;
+  font-size: var(--step-small);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* Индекс работ: две колонки, в каждой номер в поле и текст */
+.work-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 4.5vw, 64px);
+  margin-top: clamp(16px, 2.2vw, 24px);
+}
+.work-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: clamp(8px, 1.2vw, 14px);
+  align-content: start;
+  padding-block: clamp(18px, 2.4vw, 28px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.work-num {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(0, 0, 0, 0.32);
+  transition: color 150ms ease;
+}
+.work-name {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.25;
   letter-spacing: -0.01em;
-  color: #f5f5f5;
-  max-width: 22ch;
+  color: #0a0a0a;
+}
+.work-note {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.2vw, 16px);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 8px;
 }
-.offer-desc {
-  font-family: var(--sans);
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.5;
-  color: rgb(245 245 245 / 0.72);
-  max-width: 44ch;
-  margin-top: clamp(14px, 2vh, 20px);
-}
-.offer-price {
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: clamp(48px, 6.5vw, 88px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  color: #fff;
-}
-.offer-currency {
-  font-size: 0.42em;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: rgb(245 245 245 / 0.72);
-}
-.offer-price-note {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(14px, 1.3vw, 17px);
-  line-height: 1.4;
-  color: rgb(245 245 245 / 0.72);
-  margin-top: 10px;
-}
-/* Белая «клавиша»-пилюля — тот же язык, что ссылка внизу FAQ */
-.offer-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: clamp(18px, 2.6vh, 28px);
-  padding: 14px 28px;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(15px, 1.4vw, 18px);
-  letter-spacing: -0.01em;
-  line-height: 1;
-  color: #000;
-  background: #f5f5f5;
-  border-radius: 999px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
-}
 @media (hover: hover) {
-  .offer-cta:hover { background: #d9d9d9; transform: translateY(-2px); }
+  .work-item:hover .work-num { color: var(--accent); }
 }
-.offer-cta:not(:disabled):active { transform: scale(0.96); }
-/* Что входит в цену: линия сверху с засечками-штрихами свисает вниз,
-   крупные номера держат иерархию — тот же табличный цифровой язык, что в FAQ */
-.services-sub {
+
+/* Верх услуг: сама услуга с ценой слева, остальные проекты справа */
+.services-top {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  column-gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  margin-bottom: clamp(40px, 6vw, 76px);
+}
+@media (max-width: 860px) {
+  .services-top { grid-template-columns: minmax(0, 1fr); row-gap: clamp(28px, 6vw, 40px); }
+}
+
+/* Цена и сроки — без карточки: скрипт, крупные цифры, пояснение */
+.price-script {
+  font-family: "Czizh", "Snell Roundhand", "Segoe Script", cursive;
+  font-weight: 400;
+  font-size: clamp(38px, 4.4vw, 54px);
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: #0a0a0a;
+  margin-top: 4px;
+}
+.price-desc {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.2vw, 16.5px);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.62);
+  margin-top: 10px;
+  max-width: 36ch;
+}
+.price-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: var(--step-small);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: clamp(24px, 3vw, 34px);
+}
+.price-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: "Handil Pro", var(--sans);
+  font-weight: 500;
+  font-size: clamp(52px, 6.4vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  color: #0a0a0a;
+}
+.price-value__from {
+  font-family: var(--sans);
+  font-size: 0.3em;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.45);
+}
+.price-value__cur {
+  font-family: var(--sans);
+  font-size: 0.24em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.45);
+}
+.price-note {
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.2vw, 15.5px);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.55);
+  margin-top: 14px;
+  max-width: 32ch;
+}
+
+/* Как работаем */
+.how-title {
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(18px, 1.8vw, 24px);
   letter-spacing: -0.015em;
-  color: #0a0a0a;
-}
-.includes {
-  max-width: var(--shell);
-  margin-inline: auto;
-  margin-top: var(--gap-block);
-}
-.includes-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(20px, 3vh, 32px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.includes-item {
-  position: relative;
-  padding: clamp(26px, 3.6vh, 38px) clamp(16px, 2vw, 28px);
-}
-.includes-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 12px;
-  background: rgba(0, 0, 0, 0.85);
-}
-.includes-item + .includes-item { border-left: 1px solid rgba(0, 0, 0, 0.1); }
-.includes-item:first-child { padding-left: 0; }
-.includes-item:last-child { padding-right: 0; }
-/* Номера — декоративные (aria-hidden), поэтому приглушены до фона */
-.includes-num {
-  display: block;
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: clamp(40px, 4.6vw, 60px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  color: rgba(0, 0, 0, 0.16);
-}
-.includes-name {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(17px, 1.7vw, 21px);
-  letter-spacing: -0.01em;
-  color: #0a0a0a;
-  margin-top: clamp(14px, 2vh, 20px);
-}
-.includes-note {
-  font-family: var(--sans);
-  font-size: clamp(14px, 1.3vw, 16px);
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 8px;
-  max-width: 30ch;
-}
-/* Что нужно для запуска: шапка в ритме FAQ, ниже три карточки с иконками */
-.launch {
-  max-width: var(--shell);
-  margin-inline: auto;
-  margin-top: var(--gap-block);
-}
-.launch-head { max-width: 620px; }
-.launch-lead {
-  font-family: var(--sans);
-  font-size: clamp(15px, 1.3vw, 17px);
-  line-height: 1.55;
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 12px;
-}
-.launch-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 20px);
-  margin-top: clamp(20px, 3vh, 32px);
-}
-.launch-item {
-  padding: clamp(20px, 2.6vw, 28px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.025);
-}
-.launch-icon {
-  display: block;
-  width: 26px;
-  height: 26px;
-  color: rgba(0, 0, 0, 0.75);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.launch-name {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(16px, 1.5vw, 19px);
-  letter-spacing: -0.01em;
-  color: #0a0a0a;
-  margin-top: clamp(14px, 1.8vh, 18px);
-}
-.launch-note {
-  font-family: var(--sans);
-  font-size: clamp(14px, 1.3vw, 16px);
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 6px;
-}
-/* Бриф: панель с волосяной рамкой — слева оффер сложных решений, справа форма */
-.brief {
-  max-width: var(--shell);
-  margin-inline: auto;
-  margin-top: var(--gap-block);
-  padding: clamp(24px, 4vw, 48px);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: clamp(24px, 5vw, 72px);
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: clamp(20px, 3vw, 32px);
-  background: rgba(0, 0, 0, 0.025);
-  scroll-margin-top: calc(64px + 24px);
-}
-.brief-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.02em;
   line-height: 1.15;
   color: #0a0a0a;
 }
-.brief-desc {
+.how-text {
   font-family: var(--sans);
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.6);
-  max-width: 44ch;
-  margin-top: 12px;
+  font-size: clamp(15px, 1.2vw, 16.5px);
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.62);
+  margin-top: 10px;
+  max-width: 46ch;
 }
-/* Правая колонка панели — крупная Telegram-кнопка: форма не собирает данные,
-   заявка всегда уходит в Telegram */
-.brief-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: clamp(68px, 9vh, 96px);
-  padding: 16px 28px 16px 26px;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(16px, 1.6vw, 20px);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  color: #ffffff;
-  background: #0a0a0a;
-  border-radius: 999px;
-  text-align: center;
-  text-decoration: none;
-  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
-}
-@media (hover: hover) {
-  .brief-cta:hover { background: #2e2e2c; transform: translateY(-2px); }
-}
-.brief-cta:not(:disabled):active { transform: scale(0.96); }
-.brief-cta svg { display: block; flex: none; }
-
 
 /* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
 .footer {
@@ -1013,73 +893,76 @@ html.js .callout.is-in .callout-label .callout-char {
   margin-inline: auto;
   padding-inline: 0;
 }
+/* Лид футера — одна строка в Golos Text 500: без отдельного акцента внутри абзаца */
 .footer-lead {
   font-family: var(--sans);
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(24px, 3vw, 44px);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  max-width: 22ch;
+  max-width: 24ch;
 }
-/* Скрипт держится на кегле основного текста: 1.43× кегль, строка 1.15 ÷ 1.43 */
-.footer-script {
-  font-family: "Czizh", "Snell Roundhand", "Segoe Script", cursive;
-  font-weight: 400;
-  font-size: 1.43em;
-  line-height: 0.8;
-  letter-spacing: 0;
-}
-/* «Клавиша» — в том же лавандовом ключе, что .cta и .head-cta */
+/* «Написать» — та же кнопка, что «Связаться» на главной, только крупная:
+   серая заливка, радиус 24, тёмный текст, серый самолётик (на наведении — синий) */
 .footer-key {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* Кегли и зазор масштабируются вместе с кнопкой — как на главной */
+  --key-label: clamp(34px, 5.4vw, 96px);
+  --key-icon: clamp(30px, 4.8vw, 84px);
+  gap: 0.33em;
   width: 100%;
   margin-top: clamp(28px, 5vh, 56px);
   height: clamp(110px, 17vw, 220px);
-  border: 1px solid transparent;
-  border-radius: clamp(24px, 4vw, 72px);
-  background: radial-gradient(90% 130% at 50% 15%, rgb(232, 234, 255) 0%, rgb(162, 159, 252) 55%, rgb(138, 134, 248) 100%);
-  color: rgb(1, 2, 4);
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #0a0a0a;
+  font-size: var(--key-label);
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  box-shadow:
-    inset 0 2px 3px rgb(255 255 255 / 0.85),
-    inset 0 0 18px rgb(255 255 255 / 0.55),
-    inset 0 -3px 6px rgb(78 72 172 / 0.35);
-  transition:
-    border-radius 480ms cubic-bezier(0.65, 0, 0.35, 1),
-    transform 150ms ease-out,
-    box-shadow var(--t-hover) ease;
+  transition: background-color 250ms cubic-bezier(0, 0, 0.58, 1);
 }
 @media (hover: hover) {
-  .footer-key:hover {
-    border-radius: 999px;
-    box-shadow:
-      inset 0 2px 3px rgb(255 255 255 / 0.85),
-      inset 0 0 18px rgb(255 255 255 / 0.55),
-      inset 0 -3px 6px rgb(78 72 172 / 0.35),
-      0 0 48px rgb(143, 139, 250 / 0.4);
-  }
+  .footer-key:hover { background: rgba(0, 0, 0, 0.06); }
 }
-.footer-key:not(:disabled):active {
-  border-radius: 999px;
-  transform: scale(0.96);
-}
-.footer-key__glow {
-  display: none;
-}
+/* Нажатие — заливка темнее (как на главной) */
+.footer-key:active { background: rgba(0, 0, 0, 0.1); }
 .footer-key__label {
   position: relative;
   z-index: 1;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(34px, 5.4vw, 96px);
+  font-size: 1em;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: rgb(1, 2, 4);
+  color: #0a0a0a;
+}
+/* Значок Telegram — тот же самолётик, что на кнопке «Связаться» на главной:
+   серый, на наведении становится синим. Размер — от кегля подписи, как на главной. */
+.footer-key__icon {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 0.92em;
+  height: auto;
+  font-size: var(--key-icon);
+  color: #5d5d5d;
+  transition: color 120ms ease-out;
+}
+@media (hover: hover) {
+  .footer-key:hover .footer-key__icon { color: #24a1de; }
+}
+
+/* Подпись под большой кнопкой */
+.footer-hint {
+  margin-top: clamp(14px, 1.6vw, 20px);
+  font-family: var(--sans);
+  font-size: var(--step-small);
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
 }
 .footer-cols {
   display: grid;
@@ -1140,6 +1023,24 @@ html.js .callout.is-in .callout-label .callout-char {
   transition: opacity var(--t-reveal) var(--ease-out), transform var(--t-reveal) var(--ease-out);
   transition-delay: calc(var(--i, 0) * 80ms);
 }
+/* Список работ раскрывается ступенями по 100ms — редкий вход, не рутинное действие */
+.services .work-item[data-reveal].is-in { transition-delay: calc(var(--i, 0) * 100ms); }
+/* Первый экран: текст ждёт готовности страницы (шрифты + снятие шторки-лоадера)
+   и поднимается ступенями: заголовок → левая колонка → правая колонка.
+   Движение — только opacity и transform.
+   Сдвиг задаём только в начальном состоянии (:not(.is-in)), иначе это правило
+   перебило бы transform:none из общего .is-in. */
+.js .intro [data-reveal]:not(.is-in) { transform: translateY(14px); }
+.js .intro .intro-title:not(.is-in) { transform: translateY(20px); }
+.js .intro [data-reveal].is-in {
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+/* Нижнее меню не выскакивает из-под шторки лоадера, а доходит вместе с текстом */
+.js .dock { opacity: 0; }
+.js .dock.is-in { opacity: 1; transition: opacity 250ms var(--ease-out) 200ms; }
+/* Без JS лоадер-шторка осталась бы навсегда — страница должна быть видна */
+html:not(.js) .loader { display: none; }
 /* hero entrance (settles within 1.2s) */
 .js .hero-script, .js .hero-title, .js .hero-lead, .js .hero-actions { animation: rise 700ms var(--ease-out) both; }
 .js .hero-title { animation-delay: 90ms; }
@@ -1150,15 +1051,15 @@ html.js .callout.is-in .callout-label .callout-char {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .js .dock { opacity: 1 !important; transition: none !important; }
   .js .hero-script, .js .hero-title, .js .hero-lead, .js .hero-actions { animation: none !important; }
   .head-cta, .head-cta:active { transform: none !important; transition: none; }
   /* Движение убрано, остаются состояние и кросс-фейд панели */
   .head-burger span, .site-head::before { transition: none; }
   .js .head-links { transform: none !important; transition: opacity 150ms ease, visibility 0s; }
   .cta, .cta:hover, .cta:active { transition: none; }
-  .footer-key, .footer-key:hover, .footer-key:active { transition: none; border-radius: clamp(24px, 4vw, 72px); }
-  .offer-cta, .offer-cta:active { transition: none; transform: none; }
-  .brief-cta, .brief-cta:active { transition: none; transform: none; }
+  .footer-key, .footer-key:hover, .footer-key:active { transition: none; }
+  .cta-link, .cta-link:hover, .cta-link:active { transition: none; }
 }
 
 /* ---------- phone (390) ---------- */
@@ -1240,26 +1141,18 @@ html.js .callout.is-in .callout-label .callout-char {
   .project-card__stack { flex-wrap: wrap; justify-content: center; }
   .project-card__description { max-width: none; }
 
-  /* Услуги на телефоне: всё в одну колонку, линии между блоками становятся горизонтальными */
-  .offer { grid-template-columns: 1fr; row-gap: clamp(24px, 5vh, 32px); border-radius: 24px; padding: 32px 20px; }
-  .offer-main { text-align: left; }
-  .offer-side {
-    padding-left: 0;
-    padding-top: clamp(24px, 5vh, 32px);
-    border-left: 0;
-    border-top: 1px solid rgb(245 245 245 / 0.14);
-  }
-  .includes-grid { grid-template-columns: 1fr; }
-  .includes-item { padding: 22px 0 22px 18px; }
-  .includes-item + .includes-item { border-left: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); }
-  .includes-item::before { left: 0; height: 100%; width: 2px; }
-  .includes-note { max-width: none; }
-  .launch-list { grid-template-columns: 1fr; gap: 10px; }
-  .launch-item { padding: 18px 16px; }
-  .brief { grid-template-columns: 1fr; row-gap: clamp(20px, 4vh, 28px); padding: 24px 16px; }
+  /* Услуги на телефоне: список работ и цена в одну колонку */
+  .services-head { margin-bottom: 26px; }
+  .services-title { font-size: 30px; }
+  .services-fig { width: 38px; }
+  .work-list { grid-template-columns: minmax(0, 1fr); }
+  .work-item { grid-template-columns: 34px minmax(0, 1fr); padding-block: 18px; }
+  .work-num { line-height: 1.9; }
+  .work-note { max-width: none; }
+  .price-note { max-width: none; }
 
 
-  .footer-key { height: clamp(120px, 34vw, 160px); border-radius: 24px; }
+  .footer-key { height: clamp(120px, 34vw, 160px); }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
   .footer-mark { font-size: clamp(40px, 13vw, 72px); }
   .footer-bottom { flex-direction: column; }

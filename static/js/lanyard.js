@@ -449,6 +449,8 @@
   function hideLoader() {
     if (!loader || loader.classList.contains('is-done')) return;
     loader.classList.add('is-done');
+    // Шторка пошла на уход — первый экран может начинать появляться.
+    document.dispatchEvent(new CustomEvent('site:veil'));
     window.setTimeout(function () {
       if (loader.parentNode) loader.parentNode.removeChild(loader);
     }, 300);

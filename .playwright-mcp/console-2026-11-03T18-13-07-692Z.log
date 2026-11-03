@@ -1,0 +1,5 @@
+[   20403ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[   20403ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   20483ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[   20510ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[   20522ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0

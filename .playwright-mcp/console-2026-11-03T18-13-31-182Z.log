@@ -1,0 +1,28 @@
+[     116ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[     127ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[     127ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[     127ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[    3134ms] [WARNING] The resource http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:1414/:0
+[   23409ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[   23410ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   23410ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[   23455ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   23455ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[   26457ms] [WARNING] The resource http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:1414/:0
+[   32862ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   32866ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[   33040ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   33046ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[   33046ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[   36053ms] [WARNING] The resource http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:1414/?cb=1793729643665:0
+[   40004ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[   40007ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   40049ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[   40062ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   40066ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[   44114ms] [WARNING] The resource http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:1414/:0
+[   52161ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/fonts/czizh/Czizh%20Body.ttf:0
+[   52161ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0
+[   52173ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/studio.mp4:0
+[   52173ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/video/first-case.mp4:0
+[   52177ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1414/portfolio/img/shape-flower.svg:0

@@ -25,11 +25,21 @@
   if (mqReduce.addEventListener) mqReduce.addEventListener('change', syncVideoMotion);
 
   // --- reveal ------------------------------------------------------------
+  // Первый экран живёт по отдельному правилу: он ждёт готовности страницы
+  // (шрифты + снятие шторки-лоадера), поэтому скролл-ревил его не трогает.
+  var hero = document.querySelector('[data-hero]');
+  var heroTargets = hero
+    ? Array.prototype.slice.call(hero.querySelectorAll('[data-reveal]'))
+    : [];
+  var isHeroTarget = function (el) { return heroTargets.indexOf(el) !== -1; };
+  var dock = document.querySelector('.dock');
+
   var targets = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
+          if (isHeroTarget(e.target)) return; // первый экран ждёт site:veil
           e.target.classList.add('is-in');
           io.unobserve(e.target);
         }
@@ -40,12 +50,47 @@
     // safety: never leave content hidden if the observer misses something
     setTimeout(function () {
       targets.forEach(function (t) {
+        if (isHeroTarget(t)) return;
         var r = t.getBoundingClientRect();
         if (r.top < window.innerHeight) t.classList.add('is-in');
       });
     }, 2500);
   } else {
     targets.forEach(function (t) { t.classList.add('is-in'); });
+  }
+
+  // --- первый экран: ждём шрифты и шторку --------------------------------
+  // Пока висит белый лоадер, текст показывать бессмысленно — анимация проиграет
+  // под шторкой. Ждём обоих событий и только потом поднимаем текст.
+  function waitForFonts() {
+    if (!document.fonts || !document.fonts.load) return Promise.resolve();
+    var load = Promise.all([
+      document.fonts.load('1rem "Handil Pro"'),
+      document.fonts.load('500 1rem "Golos Text"')
+    ]).catch(function () {});
+    return Promise.race([
+      load,
+      new Promise(function (resolve) { setTimeout(resolve, 1500); })
+    ]);
+  }
+  function waitForVeil() {
+    return new Promise(function (resolve) {
+      var loader = document.querySelector('[data-loader]');
+      if (!loader || loader.classList.contains('is-done')) return resolve();
+      document.addEventListener('site:veil', resolve, { once: true });
+      setTimeout(resolve, 4000); // страховка: текст не должен остаться скрытым
+    });
+  }
+  if (heroTargets.length && !reduced) {
+    Promise.all([waitForFonts(), waitForVeil()]).then(function () {
+      // маленькая пауза, чтобы текст начал подниматься из-под гаснущей шторки
+      setTimeout(function () {
+        heroTargets.forEach(function (el) { el.classList.add('is-in'); });
+        if (dock) dock.classList.add('is-in');
+      }, 60);
+    });
+  } else if (dock) {
+    dock.classList.add('is-in');
   }
 
   // --- dock: highlight the section in view -------------------------------

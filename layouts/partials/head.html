@@ -1,5 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Класс .js ставим до первой отрисовки: иначе текст первого экрана
+     мигнёт (виден → скрыт → появляется). Без JS страница остаётся живой. -->
+<script>document.documentElement.classList.add('js');</script>
 <title>{{ if .IsHome }}{{ site.Title }} — сайты, которые приносят заявки{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ site.Params.description }}">
 <meta property="og:title" content="{{ site.Title }}">

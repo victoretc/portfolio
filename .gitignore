@@ -1,2 +1,4 @@
 book-club-static
 .playwright-cli
+node_modules
+dist
