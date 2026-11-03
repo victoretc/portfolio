@@ -331,9 +331,6 @@
     var swing = swingAngle(T, C);
     card.style.transform =
       "translate3d(" + (T.x - cw / 2).toFixed(2) + "px," + (T.y + ringR).toFixed(2) + "px,0) rotate(" + (-swing).toFixed(4) + "rad)";
-    // Блик идёт за наклоном карточки: при качании он смещается по поверхности
-    inner.style.setProperty("--lyd-shine", (50 - swing * 110).toFixed(1) + "%");
-    inner.style.setProperty("--lyd-dim", Math.min(0.16, Math.abs(swing) * 0.5).toFixed(3));
   }
 
   // ---- interaction -------------------------------------------------------
@@ -417,7 +414,7 @@
     window.setTimeout(function () {
       var p = photo.play();
       if (p && typeof p.catch === 'function') p.catch(function () {});
-    }, 1600);
+    }, 2600);
   }
 
   var observer = new ResizeObserver(function () {
