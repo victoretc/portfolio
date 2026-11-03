@@ -158,6 +158,9 @@
   var strapTex = null, plainTex = null;
   var STEP = 1 / 120, GRAVITY = 2400, ITER = 18;
   var t = 0;
+  // Колонка, в которой висит бейдж: по её низу выравнивается карточка.
+  var area = host.parentElement;
+  var areaH = 0;
   var look = {
     text: host.getAttribute("data-strap-text") || "",
     label: host.getAttribute("data-strap-label") || "",
@@ -185,6 +188,54 @@
     return isFinite(v) && v > 80 ? v : 232;
   }
 
+  /* Геометрия ремешка и карточки. cardTop — где по расчёту виснет верх
+     карточки; физика опускает его ещё на величину провиса. */
+  function layout(cardTop) {
+    pts = [];
+    links = [];
+    var cx = W / 2;
+    var spread = Math.min(cw * 0.62, W * 0.2);
+    var top = -sw * 2;
+    var bY = Math.max(sw * 1.2, cardTop - lowLen - ringR);
+
+    var aL = add(cx - spread, top, 0);
+    iB = add(cx, bY, 1.4);
+    var l = strand(aL, iB, 14, 1.03);
+    var aR = add(cx + spread, top, 0);
+    var r = strand(aR, iB, 14, 1.03);
+    iT = add(cx, bY + lowLen, 0.8);
+    var lo = strand(iB, iT, 3, 1);
+    iC = add(cx, bY + lowLen + arm, 0.25);
+    links.push([iT, iC, arm]);
+    left = l.ids;
+    right = r.ids;
+    low = lo.ids;
+    strandRest = l.rest;
+
+    // Лента однотонная: без надписей и орнамента.
+    var opts = { color: look.color, ink: look.ink, text: "", label: "", plain: true };
+    strapTex = makeStrap(strandRest * 14 + 4, sw, dpr, opts);
+    plainTex = makeStrap(lowLen + 4, sw * 0.8, dpr, { color: opts.color, ink: opts.ink, text: "", label: "", plain: true });
+  }
+
+  /* Провис ремешка: кольцо под тяжестью карточки садится ниже расчётного
+     места. Измеряем провис на копии точек, чтобы повесить карточку ровно. */
+  function restDrop() {
+    var saved = [];
+    var i;
+    for (i = 0; i < pts.length; i++) {
+      saved.push({ x: pts[i].x, y: pts[i].y, px: pts[i].px, py: pts[i].py, w: pts[i].w });
+    }
+    for (var k = 0; k < 400; k++) {
+      integrate(pts, STEP, GRAVITY, 0.98);
+      solve(pts, links, ITER);
+    }
+    var dy = pts[iT].y - saved[iT].y;
+    pts.length = 0;
+    for (i = 0; i < saved.length; i++) pts.push(saved[i]);
+    return dy;
+  }
+
   function build() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = Math.max(1, host.clientWidth);
@@ -210,32 +261,15 @@
     card.style.height = ch + "px";
     inner.style.height = ch + "px";
 
-    pts = [];
-    links = [];
-    var cx = W / 2;
-    var spread = Math.min(cw * 0.62, W * 0.2);
-    var top = -sw * 2;
-    var cardTop = parseFloat(getComputedStyle(host).getPropertyValue("--ly-card-top")) || 148;
-    var bY = Math.max(sw * 1.2, cardTop - lowLen - ringR);
-
-    var aL = add(cx - spread, top, 0);
-    iB = add(cx, bY, 1.4);
-    var l = strand(aL, iB, 14, 1.03);
-    var aR = add(cx + spread, top, 0);
-    var r = strand(aR, iB, 14, 1.03);
-    iT = add(cx, bY + lowLen, 0.8);
-    var lo = strand(iB, iT, 3, 1);
-    iC = add(cx, bY + lowLen + arm, 0.25);
-    links.push([iT, iC, arm]);
-    left = l.ids;
-    right = r.ids;
-    low = lo.ids;
-    strandRest = l.rest;
-
-    // Лента однотонная: без надписей и орнамента.
-    var opts = { color: look.color, ink: look.ink, text: "", label: "", plain: true };
-    strapTex = makeStrap(strandRest * 14 + 4, sw, dpr, opts);
-    plainTex = makeStrap(lowLen + 4, sw * 0.8, dpr, { color: opts.color, ink: opts.ink, text: "", label: "", plain: true });
+    /* Низ карточки встаёт вровень с низом своей колонки — там же, где
+       заканчивается блок текста под заголовком. */
+    areaH = area ? area.clientHeight : 0;
+    var targetTop = areaH > ch ? areaH - ch : 0;
+    layout(targetTop);
+    var drop = restDrop();
+    layout(targetTop - drop);
+    var drop2 = restDrop();
+    if (Math.abs(drop2 - drop) > 0.5) layout(targetTop - drop2);
 
     if (reduced) {
       for (var i = 0; i < 900; i++) {
@@ -440,10 +474,12 @@
   window.setTimeout(hideLoader, 6000);
 
   var observer = new ResizeObserver(function () {
-    if (Math.abs(host.clientWidth - W) < 1 && Math.abs(host.clientHeight - H) < 1) return;
+    var areaNow = area ? area.clientHeight : 0;
+    if (Math.abs(host.clientWidth - W) < 1 && Math.abs(host.clientHeight - H) < 1 && Math.abs(areaNow - areaH) < 1) return;
     build();
     draw();
     place();
   });
   observer.observe(host);
+  if (area) observer.observe(area);
 })();

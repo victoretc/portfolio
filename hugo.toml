@@ -1,6 +1,6 @@
 baseURL = 'http://localhost:1414/'
 languageCode = 'ru-ru'
-title = 'Богатов Dev'
+title = 'Богатов'
 hasCJKLanguage = false
 enableRobotsTXT = true
 
@@ -31,7 +31,7 @@ enableRobotsTXT = true
     target = 'static/fonts'
 
 [params]
-  description = 'Богатов Dev — веб-студия для малого и среднего бизнеса: сайты, лендинги и интернет-магазины без шаблонов, с честными сроками и поддержкой после сдачи.'
+  description = 'Сайт, который приводит клиентов, а не украшает интернет.'
   email = 'hello@example.com'
   telegram = 'https://t.me/victor_aqa'
   phone = '+7 (000) 000-00-00'

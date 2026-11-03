@@ -1,4 +1,4 @@
-/* Богатов Dev — colour chapters (design-taste-frontend, seed 1076830185) */
+/* Богатов — colour chapters (design-taste-frontend, seed 1076830185) */
 
 @font-face {
   font-family: "Czizh";
@@ -27,6 +27,9 @@
   --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
 
   --margin: clamp(16px, 8vw, 120px);
+  /* Ширина колонки сайта: одна на весь сайт — секции выровнены по краям */
+  --shell: 1080px;
+  --gutter: clamp(40px, 16vw, 280px);
   /* Один отступ для всех блоков: внутри секций и между секциями */
   --gap-block: clamp(40px, 7vh, 72px);
   /* Низ героя держит дудл-стрелку — при стыковке секций гасится целиком */
@@ -238,13 +241,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   --hero-edge: max(var(--margin), calc((100vw - 1200px) / 2 + var(--margin)));
   background: #000;
   color: #f5f5f5;
-  /* 88svh, не 100: верх кейсов выглядывает уже с первого экрана */
+  /* 88svh, не 100: верх проектов выглядывает уже с первого экрана */
   min-height: 88svh;
   display: flex;
   align-items: center;
   /* 64px фиксированного хедера + зазор; низ — обычный отступ секции,
      CTA живёт в потоке и резерва под себя не требует */
-  /* Двойной отступ: часть уходит под дудлы, при стыковке с кейсами гасится целиком */
+  /* Двойной отступ: часть уходит под дудлы, при стыковке с проектами гасится целиком */
   padding-block: calc(64px + clamp(24px, 4vh, 48px)) var(--hero-pad-b);
   position: relative;
   overflow: hidden;
@@ -505,7 +508,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .callout--head .callout-stroke {
   margin: 0 14px -4px 0;
 }
-/* 3. Прямо под ссылками навигации: остриё у «Кейсы/Услуги», текст правее-ниже хвоста */
+/* 3. Прямо под ссылками навигации: остриё у «Проекты/Услуги», текст правее-ниже хвоста */
 .callout--nav {
   --co-size: clamp(13px, 1vw, 15px);
   --co-arrow: clamp(44px, 3.8vw, 54px);
@@ -552,7 +555,7 @@ html.js .callout.is-in .callout-label .callout-char {
    под ним — название проекта и кнопка */
 .cases { background: #ffffff; color: #000000; padding-block: var(--gap-block); }
 .cases-inner {
-  width: min(1160px, calc(100% - clamp(40px, 16vw, 280px)));
+  width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
 }
 .cases-title {
@@ -573,7 +576,7 @@ html.js .callout.is-in .callout-label .callout-char {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--shell);
 }
 .project-card__visual-link {
   position: relative;
@@ -699,12 +702,10 @@ html.js .callout.is-in .callout-label .callout-char {
 
 /* 4. SERVICES — чёрное поле: заголовок по левому краю колонки,
    «клавиша»-оффер с ценой, ниже — состав цены, запуск и панель с Telegram */
-.services { background: #000; color: #f5f5f5; }
+.services { background: #ffffff; color: #0a0a0a; }
 .services-inner {
-  width: 100%;
-  max-width: 1200px;
+  width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
-  padding-inline: var(--margin);
 }
 .services-head { margin-bottom: var(--gap-block); }
 .services-title {
@@ -718,7 +719,7 @@ html.js .callout.is-in .callout-label .callout-char {
 .offer {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--shell);
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -830,10 +831,10 @@ html.js .callout.is-in .callout-label .callout-char {
   font-weight: 600;
   font-size: clamp(18px, 1.8vw, 24px);
   letter-spacing: -0.015em;
-  color: #f5f5f5;
+  color: #0a0a0a;
 }
 .includes {
-  max-width: 1000px;
+  max-width: var(--shell);
   margin-inline: auto;
   margin-top: var(--gap-block);
 }
@@ -841,7 +842,7 @@ html.js .callout.is-in .callout-label .callout-char {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: clamp(20px, 3vh, 32px);
-  border-top: 1px solid rgb(245 245 245 / 0.14);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .includes-item {
   position: relative;
@@ -854,9 +855,9 @@ html.js .callout.is-in .callout-label .callout-char {
   left: 0;
   width: 2px;
   height: 12px;
-  background: rgb(245 245 245 / 0.9);
+  background: rgba(0, 0, 0, 0.85);
 }
-.includes-item + .includes-item { border-left: 1px solid rgb(245 245 245 / 0.14); }
+.includes-item + .includes-item { border-left: 1px solid rgba(0, 0, 0, 0.1); }
 .includes-item:first-child { padding-left: 0; }
 .includes-item:last-child { padding-right: 0; }
 /* Номера — декоративные (aria-hidden), поэтому приглушены до фона */
@@ -868,27 +869,27 @@ html.js .callout.is-in .callout-label .callout-char {
   line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
-  color: rgb(245 245 245 / 0.22);
+  color: rgba(0, 0, 0, 0.16);
 }
 .includes-name {
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(17px, 1.7vw, 21px);
   letter-spacing: -0.01em;
-  color: #f5f5f5;
+  color: #0a0a0a;
   margin-top: clamp(14px, 2vh, 20px);
 }
 .includes-note {
   font-family: var(--sans);
   font-size: clamp(14px, 1.3vw, 16px);
   line-height: 1.5;
-  color: rgb(245 245 245 / 0.72);
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 8px;
   max-width: 30ch;
 }
 /* Что нужно для запуска: шапка в ритме FAQ, ниже три карточки с иконками */
 .launch {
-  max-width: 1000px;
+  max-width: var(--shell);
   margin-inline: auto;
   margin-top: var(--gap-block);
 }
@@ -897,7 +898,7 @@ html.js .callout.is-in .callout-label .callout-char {
   font-family: var(--sans);
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.55;
-  color: rgb(245 245 245 / 0.72);
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 12px;
 }
 .launch-list {
@@ -908,15 +909,15 @@ html.js .callout.is-in .callout-label .callout-char {
 }
 .launch-item {
   padding: clamp(20px, 2.6vw, 28px);
-  border: 1px solid rgb(245 245 245 / 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  background: rgb(245 245 245 / 0.03);
+  background: rgba(0, 0, 0, 0.025);
 }
 .launch-icon {
   display: block;
   width: 26px;
   height: 26px;
-  color: rgb(245 245 245 / 0.85);
+  color: rgba(0, 0, 0, 0.75);
   fill: none;
   stroke: currentColor;
   stroke-width: 1.75;
@@ -928,19 +929,19 @@ html.js .callout.is-in .callout-label .callout-char {
   font-weight: 600;
   font-size: clamp(16px, 1.5vw, 19px);
   letter-spacing: -0.01em;
-  color: #f5f5f5;
+  color: #0a0a0a;
   margin-top: clamp(14px, 1.8vh, 18px);
 }
 .launch-note {
   font-family: var(--sans);
   font-size: clamp(14px, 1.3vw, 16px);
   line-height: 1.5;
-  color: rgb(245 245 245 / 0.72);
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 6px;
 }
 /* Бриф: панель с волосяной рамкой — слева оффер сложных решений, справа форма */
 .brief {
-  max-width: 1000px;
+  max-width: var(--shell);
   margin-inline: auto;
   margin-top: var(--gap-block);
   padding: clamp(24px, 4vw, 48px);
@@ -948,9 +949,9 @@ html.js .callout.is-in .callout-label .callout-char {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: clamp(24px, 5vw, 72px);
   align-items: center;
-  border: 1px solid rgb(245 245 245 / 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: clamp(20px, 3vw, 32px);
-  background: rgb(245 245 245 / 0.03);
+  background: rgba(0, 0, 0, 0.025);
   scroll-margin-top: calc(64px + 24px);
 }
 .brief-title {
@@ -959,13 +960,13 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(22px, 2.4vw, 30px);
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: #f5f5f5;
+  color: #0a0a0a;
 }
 .brief-desc {
   font-family: var(--sans);
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.5;
-  color: rgb(245 245 245 / 0.72);
+  color: rgba(0, 0, 0, 0.6);
   max-width: 44ch;
   margin-top: 12px;
 }
@@ -983,169 +984,35 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(16px, 1.6vw, 20px);
   letter-spacing: -0.01em;
   line-height: 1.2;
-  color: #000;
-  background: #f5f5f5;
+  color: #ffffff;
+  background: #0a0a0a;
   border-radius: 999px;
   text-align: center;
   text-decoration: none;
   transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
 }
 @media (hover: hover) {
-  .brief-cta:hover { background: #d9d9d9; transform: translateY(-2px); }
+  .brief-cta:hover { background: #2e2e2c; transform: translateY(-2px); }
 }
 .brief-cta:not(:disabled):active { transform: scale(0.96); }
 .brief-cta svg { display: block; flex: none; }
 
 
-/* 5. FAQ — чёрное поле, нумерованный аккордеон, те же волосяные линии, что в услугах */
-.faq { background: #000; color: #f5f5f5; border-top: 1px solid rgb(245 245 245 / 0.14); }
-.faq-inner {
-  width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: var(--margin);
-}
-.faq-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  column-gap: clamp(24px, 5vw, 80px);
-  align-items: end;
-}
-.faq-script {
-  grid-column: 1;
-  font-family: "Czizh", "Snell Roundhand", "Segoe Script", cursive;
-  font-weight: 400;
-  font-size: clamp(44px, 5vw, 72px);
-  line-height: 1;
-  color: #f5f5f5;
-}
-.faq-title {
-  grid-column: 1;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(28px, 3vw, 40px);
-  letter-spacing: -0.015em;
-  margin-top: clamp(8px, 1.4vh, 16px);
-}
-.faq-lead {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: end;
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.55;
-  color: rgb(245 245 245 / 0.72);
-  max-width: 52ch;
-}
-.faq-list {
-  margin-top: var(--gap-block);
-  border-top: 1px solid rgb(245 245 245 / 0.14);
-}
-.faq-item { border-bottom: 1px solid rgb(245 245 245 / 0.14); }
-.faq-q {
-  display: grid;
-  grid-template-columns: 28px 1fr 24px;
-  gap: clamp(14px, 2vw, 28px);
-  align-items: center;
-  padding-block: clamp(20px, 3vh, 30px);
-  cursor: pointer;
-  list-style: none;
-}
-.faq-q::-webkit-details-marker { display: none; }
-.faq-num {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: var(--step-small);
-  font-variant-numeric: tabular-nums;
-  color: rgb(245 245 245 / 0.45);
-}
-.faq-q-text {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(17px, 1.7vw, 22px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: #f5f5f5;
-  transition: color var(--t-hover) ease;
-}
-@media (hover: hover) {
-  .faq-q:hover .faq-q-text { color: rgb(245 245 245 / 0.7); }
-}
-.faq-icon { position: relative; width: 24px; height: 24px; }
-.faq-icon::before,
-.faq-icon::after {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  background: #f5f5f5;
-  border-radius: 2px;
-  transform: translate(-50%, -50%);
-  transition: transform 260ms var(--ease-out), opacity 260ms var(--ease-out);
-}
-.faq-icon::before { width: 22px; height: 2px; }
-.faq-icon::after { width: 2px; height: 22px; }
-.faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-.faq-a {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: clamp(14px, 2vw, 28px);
-  padding-bottom: clamp(22px, 3vh, 32px);
-}
-.faq-a p {
-  grid-column: 2;
-  max-width: 68ch;
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.6;
-  color: rgb(245 245 245 / 0.72);
-}
-.faq-item[open] .faq-a { animation: faq-open 380ms var(--ease-out) both; }
-@keyframes faq-open {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: none; }
-}
-.faq-foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(12px, 2vw, 24px);
-  margin-top: var(--gap-block);
-}
-.faq-foot-text {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(17px, 1.7vw, 22px);
-  letter-spacing: -0.01em;
-  color: rgb(245 245 245 / 0.72);
-}
-.faq-foot-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(15px, 1.4vw, 18px);
-  text-decoration: none;
-  color: #000;
-  background: #f5f5f5;
-  padding: 12px 22px 12px 20px;
-  border-radius: 999px;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 150ms ease-out, background-color var(--t-hover) ease;
-}
-@media (hover: hover) {
-  .faq-foot-link:hover { background: #d9d9d9; transform: translateY(-2px); }
-}
-.faq-foot-link:not(:disabled):active { transform: scale(0.96); }
-.faq-foot-link svg { display: block; flex: none; }
-
 /* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
 .footer {
-  background: #000;
-  color: #f5f5f5;
+  background: #ffffff;
+  color: #0a0a0a;
   padding: var(--gap-block) 0 clamp(28px, 4vh, 48px);
-  border-top: 1px solid rgb(245 245 245 / 0.14);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   scroll-margin-top: 64px;
 }
-.footer-inner { display: flex; flex-direction: column; }
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  width: min(var(--shell), calc(100% - var(--gutter)));
+  margin-inline: auto;
+  padding-inline: 0;
+}
 .footer-lead {
   font-family: var(--sans);
   font-weight: 600;
@@ -1220,7 +1087,7 @@ html.js .callout.is-in .callout-label .callout-char {
   gap: clamp(24px, 4vw, 56px);
   margin-top: clamp(40px, 7vh, 80px);
   padding-top: clamp(28px, 4vh, 44px);
-  border-top: 1px solid rgb(245 245 245 / 0.14);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .footer-col-title {
@@ -1229,7 +1096,7 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: var(--step-small);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgb(245 245 245 / 0.45);
+  color: rgba(0, 0, 0, 0.45);
 }
 .footer-col a {
   font-family: var(--sans);
@@ -1237,21 +1104,21 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(16px, 1.4vw, 19px);
   letter-spacing: -0.01em;
   text-decoration: none;
-  color: #f5f5f5;
+  color: #0a0a0a;
   transition: color var(--t-hover) ease;
 }
 @media (hover: hover) {
-  .footer-col a:hover { color: rgb(245 245 245 / 0.6); }
+  .footer-col a:hover { color: rgba(0, 0, 0, 0.6); }
 }
 .footer-note {
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.55;
-  color: rgb(245 245 245 / 0.72);
+  color: rgba(0, 0, 0, 0.62);
   max-width: 34ch;
 }
 .footer-mark {
   font-family: var(--sans); font-weight: 700;
-  font-size: clamp(48px, 11vw, 200px);
+  font-size: clamp(48px, 9vw, 155px);
   letter-spacing: -0.04em; line-height: 0.9;
   text-transform: uppercase;
   margin: clamp(48px, 8vh, 96px) 0 clamp(20px, 3vh, 32px);
@@ -1262,9 +1129,9 @@ html.js .callout.is-in .callout-label .callout-char {
   justify-content: space-between;
   gap: 8px clamp(16px, 3vw, 32px);
   padding-top: clamp(16px, 2vh, 24px);
-  border-top: 1px solid rgb(245 245 245 / 0.14);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-.footer-meta { font-size: var(--step-small); line-height: 1.5; color: rgb(245 245 245 / 0.5); margin: 0; max-width: 60ch; }
+.footer-meta { font-size: var(--step-small); line-height: 1.5; color: rgba(0, 0, 0, 0.5); margin: 0; max-width: 60ch; }
 
 /* ---------- motion ---------- */
 .js [data-reveal] { opacity: 0; transform: translateY(24px); }
@@ -1289,10 +1156,7 @@ html.js .callout.is-in .callout-label .callout-char {
   .head-burger span, .site-head::before { transition: none; }
   .js .head-links { transform: none !important; transition: opacity 150ms ease, visibility 0s; }
   .cta, .cta:hover, .cta:active { transition: none; }
-  .faq-item[open] .faq-a { animation: none !important; }
-  .faq-icon::before, .faq-icon::after { transition: none; }
   .footer-key, .footer-key:hover, .footer-key:active { transition: none; border-radius: clamp(24px, 4vw, 72px); }
-  .faq-foot-link, .faq-foot-link:hover, .faq-foot-link:active { transition: none; transform: none; }
   .offer-cta, .offer-cta:active { transition: none; transform: none; }
   .brief-cta, .brief-cta:active { transition: none; transform: none; }
 }
@@ -1387,20 +1251,13 @@ html.js .callout.is-in .callout-label .callout-char {
   }
   .includes-grid { grid-template-columns: 1fr; }
   .includes-item { padding: 22px 0 22px 18px; }
-  .includes-item + .includes-item { border-left: 0; border-top: 1px solid rgb(245 245 245 / 0.14); }
+  .includes-item + .includes-item { border-left: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); }
   .includes-item::before { left: 0; height: 100%; width: 2px; }
   .includes-note { max-width: none; }
   .launch-list { grid-template-columns: 1fr; gap: 10px; }
   .launch-item { padding: 18px 16px; }
   .brief { grid-template-columns: 1fr; row-gap: clamp(20px, 4vh, 28px); padding: 24px 16px; }
 
-  .faq-head { grid-template-columns: 1fr; }
-  .faq-lead { grid-column: 1; grid-row: auto; margin-top: 16px; }
-  .faq-q { grid-template-columns: 24px 1fr 22px; gap: 12px; }
-  .faq-q-text { font-size: 17px; }
-  .faq-a { grid-template-columns: 24px 1fr; gap: 12px; }
-  .faq-a p { font-size: 16px; }
-  .faq-foot { flex-direction: column; align-items: flex-start; }
 
   .footer-key { height: clamp(120px, 34vw, 160px); border-radius: 24px; }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
@@ -1431,7 +1288,7 @@ body { overflow-x: hidden; }
 .intro-wrap {
   position: relative;
   z-index: 2;
-  width: min(1160px, calc(100% - clamp(40px, 16vw, 280px)));
+  width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
 }
 .intro-grid {
@@ -1441,13 +1298,19 @@ body { overflow-x: hidden; }
   align-content: start;
 }
 
-.intro-title {
+/* Заголовок: кегль считается от ширины своей колонки (container query),
+   поэтому на больших экранах текст ложится в две строки, а не в четыре. */
+.intro-title-cell {
   grid-column: 1 / 9;
+  container-type: inline-size;
+}
+.intro-title {
   font-family: "Handil Pro", var(--sans);
   font-weight: 500;
-  font-size: clamp(2rem, 5vw, 4.6rem);
+  font-size: clamp(2rem, 8cqw, 4.6rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .intro-badge {
@@ -1535,7 +1398,7 @@ body { overflow-x: hidden; }
 /* Нажатие — заливка темнее (в референсе 0.098) */
 .cta-link:active { background: rgba(0, 0, 0, 0.1); }
 
-/* «Открыть сайт» в карточке кейса — тот же компонент, что «Связаться» на первом
+/* «Открыть сайт» в карточке проекта — тот же компонент, что «Связаться» на первом
    экране: серый скруглённый прямоугольник, тёмный текст, серая иконка, которая
    при наведении становится акцентной. Размер чуть меньше первого экрана. */
 .project-card__cta {
@@ -1586,7 +1449,6 @@ body { overflow-x: hidden; }
   --ly-card-w: 220px;
   --ly-s: 1;
   --u: calc(16px * var(--ly-s));
-  --ly-card-top: 120px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -1607,7 +1469,8 @@ body { overflow-x: hidden; }
   pointer-events: none;
 }
 /* Карточка бейджа: обычная белая поверхность в тон первого экрана —
-   волосяная рамка и мягкая тень, без глянца и бликов. */
+   волосяная кромка и мягкая тень, без глянца и бликов. Кромка — тенью,
+   рамка прозрачная: так она рисуется и в forced-colors. */
 .lanyard-card {
   position: absolute;
   left: 0;
@@ -1620,8 +1483,8 @@ body { overflow-x: hidden; }
   /* Радиус = радиус фото + отступ до края карточки */
   border-radius: calc(2.2 * var(--u));
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 20px 40px -26px rgba(22, 20, 42, 0.5);
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 20px 40px -26px rgba(22, 20, 42, 0.5);
 }
 .lanyard-card:focus-visible { outline: 2px solid #111; outline-offset: 6px; border-radius: 18px; }
 .lanyard-card:active { cursor: grabbing; }
@@ -1703,18 +1566,8 @@ body { overflow-x: hidden; }
   letter-spacing: -0.02em;
   color: #0a0a0a;
 }
-.ly-name--sm { font-size: calc(1.05 * var(--u)); line-height: 1.15; }
-.ly-sub {
-  margin-top: calc(0.45 * var(--u));
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: calc(0.7 * var(--u));
-  line-height: 1.4;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.55);
-}
-/* Подвал бейджа: короткая линия и студия — как внизу настоящего бейджа */
+/* Подпись бейджа: роль и студия одной строкой. Шрифт — как во вступлении,
+   но мельче: подпись на карточке должна уступать имени. */
 .ly-foot {
   position: absolute;
   left: 0;
@@ -1722,13 +1575,11 @@ body { overflow-x: hidden; }
   bottom: calc(1.7 * var(--u));
   text-align: center;
   font-family: var(--sans);
-  font-weight: 500;
-  font-size: calc(0.68 * var(--u));
-  line-height: 1.2;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(10, 10, 10, 0.42);
+  font-weight: 400;
+  font-size: calc(0.95 * var(--u));
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #111111;
 }
 .ly-foot::before {
   content: "";
@@ -1757,36 +1608,55 @@ body { overflow-x: hidden; }
 /* Тёмное матовое стекло с размытием, навигация ссылками и отдельная
    пилюля Telegram справа. */
 .dock {
+  /* Размеры нижнего меню — одной группой: при правке --dock-item-h
+     панель и пилюля Telegram остаются одной высоты.
+     Радиус панели = радиус пункта (12) + отступ панели (6) + рамка (1) = 19. */
+  --dock-bar-pad: 6px;
+  --dock-item-h: 48px;
+  --dock-item-r: 12px;
+  --dock-bar-r: 19px;
+  --dock-label: 16px;
+  --dock-gap: 8px;
+  --dock-pad-x: 18px;
+
   position: fixed;
   left: 50%;
   bottom: max(20px, env(safe-area-inset-bottom));
   z-index: 60;
   transform: translateX(-50%);
   display: flex;
-  align-items: center;
+  /* stretch: пилюля Telegram растягивается до высоты панели — обе части
+     меню стоят на одной линии */
+  align-items: stretch;
   gap: 8px;
 }
 .dock-bar {
   display: flex;
   align-items: center;
   gap: 2px;
-  padding: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  padding: var(--dock-bar-pad);
+  /* Волосяная кромка стекла — вкладкой в тени, как у капсулы хедера;
+     прозрачная рамка оставлена, чтобы в forced-colors край рисовался */
+  border: 1px solid transparent;
+  border-radius: var(--dock-bar-r);
   background: rgba(18, 18, 18, 0.68);
   -webkit-backdrop-filter: blur(24px) saturate(140%);
   backdrop-filter: blur(24px) saturate(140%);
-  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
 }
-.dock a {
+.dock-bar a {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 11px 14px;
-  border-radius: 10px;
+  gap: var(--dock-gap);
+  min-height: var(--dock-item-h);
+  /* На стороне иконки отступ на 2px меньше: иконка не выпирает наружу */
+  padding-block: 0;
+  padding-inline: var(--dock-pad-x);
+  padding-inline-start: calc(var(--dock-pad-x) - 2px);
+  border-radius: var(--dock-item-r);
   color: rgba(255, 255, 255, 0.82);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: var(--dock-label);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
@@ -1795,60 +1665,70 @@ body { overflow-x: hidden; }
 }
 /* Иконка рисуется currentColor, толщина штриха — по весу текста рядом */
 .dock-icon {
-  width: 17px;
-  height: 17px;
+  width: 1.25em;
+  height: 1.25em;
   flex: none;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* Иконка нарисована в сетке 24px и уменьшается до 20px: без non-scaling-stroke
+   штрих стал бы 1.33px. Здесь он остаётся ровно 2px, как у текста веса 500. */
+.dock-icon * { vector-effect: non-scaling-stroke; }
 @media (hover: hover) {
-  .dock a:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+  .dock-bar a:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .dock a:hover { transform: translateY(-1px); }
-  .dock a:active { transform: scale(0.96); }
+  .dock-bar a:hover { transform: translateY(-1px); }
+  .dock-bar a:active { transform: scale(0.96); }
 }
 /* Раздел, который сейчас на экране */
-.dock a.is-active {
+.dock-bar a.is-active {
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
 }
 /* Telegram — отдельная пилюля, как в референсе */
 .dock-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 46px;
-  padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* Высоту задаёт .dock (align-items: stretch) — пилюля вровень с панелью */
+  padding-block: 0;
+  padding-inline: 22px;
+  padding-inline-start: 20px;
+  border: 1px solid transparent;
   border-radius: 999px;
   background-color: rgba(18, 18, 18, 0.68);
-  /* Слой подсветки: прозрачный в покое, 10% белого при наведении —
-     та же подсветка, что и у пунктов меню, но поверх своего стекла */
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
   -webkit-backdrop-filter: blur(24px) saturate(140%);
   backdrop-filter: blur(24px) saturate(140%);
-  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
   color: #ffffff;
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: var(--dock-label);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 150ms ease, background-image 150ms ease, transform 150ms ease-out;
+  transition: transform 150ms ease-out;
 }
-.dock-cta svg { flex: none; }
+/* Подсветка при наведении — отдельным слоем поверх стекла, как у пунктов
+   меню: так она перетекает, а градиент в background-image не анимируется */
+.dock-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.dock-cta > * { position: relative; }
+.dock-cta svg { width: 1.2em; height: auto; flex: none; }
 @media (hover: hover) {
-  /* Общее правило `.dock a:hover` перебивает фон пилюли, поэтому переопределяем
-     его: стекло остаётся, поверх ложится та же подсветка, что у пунктов меню */
-  .dock a.dock-cta:hover {
-    background-color: rgba(18, 18, 18, 0.68);
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-  }
+  .dock-cta:hover::before { opacity: 1; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .dock-cta:hover { transform: translateY(-1px); }
@@ -1858,49 +1738,65 @@ body { overflow-x: hidden; }
 .footer { padding-bottom: clamp(120px, 16vh, 168px); }
 
 @media (max-width: 1100px) {
-  /* заголовок занимает 7 колонок — уменьшаем кегль, чтобы «студия разработки»
-     не переносилась на четвёртую строку */
-  .intro-title { grid-column: 1 / 8; font-size: clamp(2rem, 4.4vw, 4.4rem); }
+  /* заголовок занимает 7 колонок — кегль считается от ширины колонки,
+     чтобы текст ложился в две строки */
+  .intro-title-cell { grid-column: 1 / 8; }
+  .intro-title { font-size: clamp(2rem, 8cqw, 2.75rem); }
   .intro-badge { grid-column: 8 / 13; min-height: 440px; }
   .intro-info { grid-column: 1 / 8; grid-template-columns: 1fr; row-gap: clamp(24px, 3vw, 32px); }
   .intro-copy { max-width: 46ch; }
-  .lanyard { --ly-card-w: 200px; --ly-card-top: 110px; }
+  .lanyard { --ly-card-w: 200px; }
 }
 
 @media (max-width: 860px) {
   .intro { padding-top: 28px; padding-bottom: 92px; }
   .intro-grid { display: flex; flex-direction: column; }
+  .intro-title-cell { order: 1; }
   .intro-title {
-    font-size: clamp(1.8rem, 7.4vw, 2.9rem);
-    order: 1;
+    font-size: clamp(1.8rem, 8cqw, 2.9rem);
   }
   .intro-badge { order: 2; min-height: 350px; margin-top: 16px; }
   .intro-info { order: 3; margin-top: clamp(24px, 5vw, 32px); grid-template-columns: 1fr; row-gap: clamp(24px, 4vw, 32px); }
   .intro-copy { max-width: none; gap: 12px; }
-  .lanyard { --ly-card-w: 156px; --ly-card-top: 20px; }
+  .lanyard { --ly-card-w: 156px; }
   .intro-fig--flower { width: 60px; margin-bottom: 18px; }
-  .dock { gap: 6px; }
-  .dock a { padding: 10px 11px; font-size: 13px; }
-  .dock-icon { width: 15px; height: 15px; }
-  .dock-cta { height: 42px; padding: 0 16px; font-size: 13px; }
+  .dock {
+    --dock-bar-pad: 5px;
+    --dock-item-h: 44px;
+    --dock-item-r: 10px;
+    --dock-bar-r: 16px;
+    --dock-label: 14px;
+    --dock-gap: 7px;
+    --dock-pad-x: 14px;
+    gap: 6px;
+  }
+  .dock-cta { padding-inline: 18px; padding-inline-start: 16px; }
 }
 
 @media (min-width: 560px) and (max-width: 860px) {
   .intro-badge { min-height: 430px; }
-  .lanyard { --ly-card-w: 190px; --ly-card-top: 24px; }
+  .lanyard { --ly-card-w: 190px; }
 }
 
 @media (max-width: 560px) {
-  .dock { gap: 5px; bottom: max(12px, env(safe-area-inset-bottom)); }
-  .dock a { padding: 10px 9px; font-size: 12px; gap: 5px; }
-  .dock-icon { width: 14px; height: 14px; }
-  .dock-cta { height: 40px; padding: 0 13px; font-size: 12px; gap: 6px; }
-  .dock-cta svg { width: 15px; height: 12px; }
+  .dock {
+    /* Кегль подписей ужимается вместе с шириной экрана — меню всегда
+       помещается в экран с полями по 12px */
+    --dock-label: clamp(12px, calc(4.44vw - 3.9px), 14px);
+    --dock-item-h: 44px;
+    --dock-gap: 6px;
+    --dock-pad-x: 11px;
+    gap: 5px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  /* Telegram: на телефоне остаётся значок, текст уходит в aria-label */
+  .dock-cta { padding-inline: 16px; }
+  .dock-cta span { display: none; }
 }
 
-@media (max-width: 360px) {
-  .dock a span { display: none; }
-  .dock a { padding: 11px; }
-  .dock-cta span { display: none; }
-  .dock-cta { padding: 0 13px; }
+@media (max-width: 370px) {
+  /* Подписи не помещаются — остаются иконки (имя ссылки — в aria-label) */
+  .dock-bar a span { display: none; }
+  .dock-bar a { padding-inline: 12px; }
+  .dock-cta { padding-inline: 14px; }
 }

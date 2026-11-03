@@ -1,0 +1,124 @@
+- generic [active] [ref=e1]:
+  - status "Загрузка"
+  - generic [ref=e4]:
+    - heading "Богатов, студия разработки из Бреста" [level=1] [ref=e5]: Богатов,студия разработкииз Бреста
+    - 'generic "Бейдж: Виктор, арт директор студии «Богатов». Потяните, чтобы качнуть." [ref=e7]':
+      - generic [ref=e10]:
+        - paragraph [ref=e16]: Виктор
+        - paragraph [ref=e17]: Арт директор, Богатов
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: Сайт, который приводит клиентов, а не украшает интернет.
+        - link "Связаться" [ref=e21] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: Дизайн и тексты пишем под ваш бизнес, а не переписываем из шаблона. Шесть лет в разработке.
+        - paragraph [ref=e27]: Вы общаетесь напрямую с разработчиком и дизайнером — без менеджеров между вами и результатом.
+        - paragraph [ref=e28]: Готовый сайт, который не стыдно отправить клиенту. Изучаем, кто ваш клиент и что мешает ему нажать «Купить».
+  - generic [ref=e30]:
+    - heading "Проекты" [level=2] [ref=e31]
+    - article [ref=e32]:
+      - generic [ref=e33]:
+        - link "Открыть сайт «Читка»" [ref=e34] [cursor=pointer]:
+          - /url: https://victoretc.github.io/book-club-static/
+          - generic "Демо каталога книжных клубов Читка" [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - heading "Читка" [level=3] [ref=e38]
+            - paragraph [ref=e39]: Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.
+            - paragraph [ref=e40]:
+              - generic [ref=e41]: "Стэк:"
+              - generic [ref=e42]: Hugo + GitHub Pages
+          - link "Открыть сайт" [ref=e43] [cursor=pointer]:
+            - /url: https://victoretc.github.io/book-club-static/
+  - generic [ref=e48]:
+    - heading "Услуги" [level=2] [ref=e50]
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - paragraph [ref=e53]: Лендинг
+        - heading "Дизайн и разработка сайта за 3 дня" [level=3] [ref=e54]
+        - paragraph [ref=e55]: Под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: 900 Br
+        - paragraph [ref=e58]: за дизайн и разработку
+        - link "Обсудить проект" [ref=e59] [cursor=pointer]:
+          - /url: "#brief"
+    - generic [ref=e60]:
+      - heading "Что входит в цену" [level=3] [ref=e61]
+      - list [ref=e62]:
+        - listitem [ref=e63]:
+          - generic [aria-hidden] [ref=e64]: "01"
+          - paragraph [ref=e65]: Структура
+          - paragraph [ref=e66]: Выясняем, кто ваш клиент и что мешает ему купить
+        - listitem [ref=e67]:
+          - generic [aria-hidden] [ref=e68]: "02"
+          - paragraph [ref=e69]: Тексты
+          - paragraph [ref=e70]: Пишем под ваш бизнес, без чужих формулировок
+        - listitem [ref=e71]:
+          - generic [aria-hidden] [ref=e72]: "03"
+          - paragraph [ref=e73]: Дизайн
+          - paragraph [ref=e74]: Рисуем под вашу компанию, без готовых тем
+        - listitem [ref=e75]:
+          - generic [aria-hidden] [ref=e76]: "04"
+          - paragraph [ref=e77]: Вёрстка и запуск
+          - paragraph [ref=e78]: Собираем вручную и ставим на ваш домен
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - heading "Что ещё нужно для запуска" [level=3] [ref=e81]
+        - paragraph [ref=e82]: Мы подскажем, где всё это оформить, и запустим сайт на вашем домене
+      - list [ref=e83]:
+        - listitem [ref=e84]:
+          - paragraph [ref=e89]: Хостинг
+          - paragraph [ref=e90]: Где разместить сайт дешевле и без лишних тарифов
+        - listitem [ref=e91]:
+          - paragraph [ref=e95]: Домен
+          - paragraph [ref=e96]: Привяжем к сайту сами
+        - listitem [ref=e97]:
+          - paragraph [ref=e102]: Документы
+          - paragraph [ref=e103]: Оферта и политика конфиденциальности
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - heading "Мы также можем реализовать более сложные решения" [level=3] [ref=e106]
+        - paragraph [ref=e107]: Сайты с каталогом, личными кабинетами, интеграциями и оплатой. Расскажите задачу — обсудим и назовём срок и цену.
+      - link "Написать в Telegram" [ref=e108] [cursor=pointer]:
+        - /url: https://t.me/victor_aqa
+  - contentinfo [ref=e112]:
+    - generic [ref=e113]:
+      - generic [ref=e114]:
+        - paragraph [ref=e115]: Расскажите о задаче — ответим в течение рабочего дня
+        - link "Написать" [ref=e116] [cursor=pointer]:
+          - /url: https://t.me/victor_aqa
+      - generic [ref=e118]:
+        - navigation "Разделы сайта" [ref=e119]:
+          - paragraph [ref=e120]: Разделы
+          - link "Проекты" [ref=e121] [cursor=pointer]:
+            - /url: "#cases"
+          - link "Услуги и цены" [ref=e122] [cursor=pointer]:
+            - /url: "#services"
+          - link "Наверх" [ref=e123] [cursor=pointer]:
+            - /url: "#top"
+        - navigation "Контакты" [ref=e124]:
+          - paragraph [ref=e125]: Контакты
+          - link "Telegram" [ref=e126] [cursor=pointer]:
+            - /url: https://t.me/victor_aqa
+          - link "hello@example.com" [ref=e127] [cursor=pointer]:
+            - /url: mailto:hello@example.com
+          - link "+7 (000) 000-00-00" [ref=e128] [cursor=pointer]:
+            - /url: tel:+70000000000
+        - generic [ref=e129]:
+          - paragraph [ref=e130]: Студия
+          - paragraph [ref=e131]: "Делаем сайты для малого и среднего бизнеса: без шаблонов, с честными сроками и поддержкой после сдачи."
+      - paragraph [aria-hidden] [ref=e132]: Богатов Dev
+      - generic [ref=e133]:
+        - paragraph [ref=e134]: © 2026 Богатов Dev
+        - paragraph [ref=e135]: Дизайн и вёрстка — вручную, без готовых тем
+  - navigation "Навигация по странице" [ref=e136]:
+    - generic [ref=e137]:
+      - link "Проекты" [ref=e138] [cursor=pointer]:
+        - /url: "#cases"
+      - link "Услуги" [ref=e142] [cursor=pointer]:
+        - /url: "#services"
+      - link "Контакты" [ref=e147] [cursor=pointer]:
+        - /url: "#contacts"
+    - link "Telegram" [ref=e152] [cursor=pointer]:
+      - /url: https://t.me/victor_aqa
