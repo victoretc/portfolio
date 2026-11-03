@@ -407,15 +407,37 @@
   place();
   requestAnimationFrame(tick);
 
-  // Видео в окне бейджа стартует не сразу и без повтора: к концу клипа
-  // человек уходит из кадра, и окно остаётся пустым
+  // Видео в окне бейджа: сначала тянется, потом — с паузой — играет.
+  // Пока грузится, на странице висит чёрный круг-лоадер.
   var photo = card.querySelector('.ly-photo__media');
-  if (photo && !reduced) {
+  var loader = document.querySelector('[data-loader]');
+
+  function hideLoader() {
+    if (!loader || loader.classList.contains('is-done')) return;
+    loader.classList.add('is-done');
     window.setTimeout(function () {
-      var p = photo.play();
-      if (p && typeof p.catch === 'function') p.catch(function () {});
-    }, 2600);
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 300);
   }
+
+  if (photo) {
+    photo.load();
+    var onReady = function () {
+      hideLoader();
+      if (reduced) return;
+      window.setTimeout(function () {
+        var p = photo.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+      }, 2600);
+    };
+    if (photo.readyState >= 3) onReady();
+    else photo.addEventListener('canplay', onReady, { once: true });
+    photo.addEventListener('error', function () { hideLoader(); }, { once: true });
+  } else {
+    hideLoader();
+  }
+  // Страховка: лоадер не должен залипать ни при каких обстоятельствах
+  window.setTimeout(hideLoader, 6000);
 
   var observer = new ResizeObserver(function () {
     if (Math.abs(host.clientWidth - W) < 1 && Math.abs(host.clientHeight - H) < 1) return;

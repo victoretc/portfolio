@@ -1548,7 +1548,40 @@ body { overflow-x: hidden; }
 }
 .project-card__cta:hover svg { color: var(--accent); }
 
-/* ---------- бейдж на всю ширину экрана ---------- */
+/* ---------- загрузка: чёрный круг, пока тянется видео в бейдже ---------- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  touch-action: none;
+}
+.loader__ring {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  border-top-color: #000000;
+  animation: loader-spin 700ms linear infinite;
+}
+.loader.is-done {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader__ring { animation: loader-pulse 1.2s ease-in-out infinite; }
+  @keyframes loader-pulse {
+    50% { opacity: 0.3; }
+  }
+}
+
+/* ---------- бейдж: карточка в стиле первого экрана ---------- */
 .lanyard {
   --ly-card-w: 220px;
   --ly-s: 1;
@@ -1639,8 +1672,8 @@ body { overflow-x: hidden; }
 .ly-photo {
   position: relative;
   flex: none;
-  width: calc(8.4 * var(--u));
-  height: calc(8.4 * var(--u));
+  width: calc(10 * var(--u));
+  height: calc(10 * var(--u));
   overflow: hidden;
   border-radius: calc(1.1 * var(--u));
   /* Контентное изображение: 1px рамка чистым чёрным 10% */
