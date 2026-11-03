@@ -158,6 +158,8 @@
   var strapTex = null, plainTex = null;
   var STEP = 1 / 120, GRAVITY = 2400, ITER = 18;
   var t = 0;
+  // Насколько холст с ремешком поднят к верху страницы.
+  var bleed = 0;
   // Колонка, в которой висит бейдж: по её низу выравнивается карточка.
   var area = host.parentElement;
   var areaH = 0;
@@ -195,7 +197,10 @@
     links = [];
     var cx = W / 2;
     var spread = Math.min(cw * 0.62, W * 0.2);
-    var top = -sw * 2;
+    /* Крепление ремешка — ровно на верхнем краю холста, а холст поднят к
+       верхнему краю страницы: ремешок уходит за экран, а не начинается
+       посреди экрана. */
+    var top = 0;
     var bY = Math.max(sw * 1.2, cardTop - lowLen - ringR);
 
     var aL = add(cx - spread, top, 0);
@@ -247,9 +252,23 @@
     ch = Math.round(cw * 1.5);
     ringR = Math.max(7, Math.round(cw * 0.036));
     clipH = Math.round(cw * 0.1);
-    sw = Math.max(14, Math.round(cw * 0.1));
-    lowLen = sw * 2.2;
+    /* Лента тоньше карточки: она поддерживает бейдж, а не перевешивает его.
+       Геометрия (крепление, длина подвеса, металл) от ширины ленты не
+       зависит — иначе холст «поехал» бы вместе с ней. */
+    sw = Math.max(11, Math.round(cw * 0.07));
+    lowLen = Math.round(cw * 0.22);
     arm = ringR * 2 + clipH + ch * 0.55;
+
+    /* Холст поднимается к верхнему краю страницы: ремешок уходит за край
+       экрана, а не срезается по верхней границе колонки бейджа. Карточка
+       при этом остаётся на месте — её положение компенсируется в targetTop.
+       На телефоне бейдж стоит под заголовком: ремешок ушёл бы по буквам, там
+       подъём не нужен. */
+    bleed = 0;
+    if (area && window.matchMedia('(min-width: 861px)').matches) {
+      bleed = Math.max(0, Math.round(area.getBoundingClientRect().top + (window.scrollY || 0)));
+    }
+    host.style.setProperty('--ly-bleed', bleed + 'px');
 
     host.style.setProperty("--ly-s", (cw / 240).toFixed(4));
     host.style.setProperty("--ly-ring", ringR + "px");
@@ -262,9 +281,10 @@
     inner.style.height = ch + "px";
 
     /* Низ карточки встаёт вровень с низом своей колонки — там же, где
-       заканчивается блок текста под заголовком. */
+       заканчивается блок текста под заголовком. Холст поднят на bleed, поэтому
+       карточку опускаем на столько же — визуально она не двигается. */
     areaH = area ? area.clientHeight : 0;
-    var targetTop = areaH > ch ? areaH - ch : 0;
+    var targetTop = (areaH > ch ? areaH - ch : 0) + bleed;
     layout(targetTop);
     var drop = restDrop();
     layout(targetTop - drop);
@@ -328,7 +348,8 @@
 
     var B = pts[iB], T = pts[iT];
     var ang = Math.atan2(T.x - B.x, T.y - B.y);
-    var u = sw / 20;
+    /* Металл живёт своей величиной — от ширины ленты он не зависит. */
+    var u = Math.max(14, Math.round(cw * 0.1)) / 20;
     ctx.setTransform(dpr, 0, 0, dpr, B.x * dpr, B.y * dpr);
     ctx.rotate(-ang);
     ctx.shadowColor = "rgba(0,0,0,0.3)";

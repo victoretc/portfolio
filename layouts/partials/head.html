@@ -9,8 +9,10 @@
 <meta property="og:description" content="{{ site.Params.description }}">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" href="{{ "fonts/czizh/Czizh%20Body.ttf" | relURL }}" as="font" type="font/ttf" crossorigin>
+<!-- Шрифты свои (SIL OFL): Unbounded — заголовок, Onest — текст.
+     Грузим только кириллицу: она на первом экране, остальное подтянется по мере
+     надобности. Скрипт Czizh (блок «Услуги») — без preload: он ниже первого
+     экрана и не должен забирать канал. -->
+<link rel="preload" href="{{ "fonts/unbounded/Unbounded-cyrillic.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/onest/Onest-cyrillic.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/main.css">

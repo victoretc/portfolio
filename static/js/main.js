@@ -65,8 +65,9 @@
   function waitForFonts() {
     if (!document.fonts || !document.fonts.load) return Promise.resolve();
     var load = Promise.all([
-      document.fonts.load('1rem "Handil Pro"'),
-      document.fonts.load('500 1rem "Golos Text"')
+      // кириллица в тексте запроса — иначе грузится только latin-подмножество
+      document.fonts.load('700 1rem "Unbounded"', 'Богатов'),
+      document.fonts.load('400 1rem "Onest"', 'Сайт')
     ]).catch(function () {});
     return Promise.race([
       load,
