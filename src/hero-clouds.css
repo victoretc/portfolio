@@ -1,0 +1,15 @@
+/* Стили компонента фона. Только утилиты Tailwind и минимум темы:
+   полная тема весит 10 КБ, а компоненту нужны лишь spacing и z-index.
+   Preflight не подключаем — он сбросил бы типографику и отступы страницы,
+   которую собирает Hugo. */
+@layer theme, base, components, utilities;
+/* source(none) отключает авто-поиск по всему проекту: в сборку попадают
+   только классы из двух файлов, перечисленных ниже. */
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+
+@source "../src/hero-clouds.tsx";
+@source "../components/ui/cloud-shader.tsx";
+
+@theme {
+  --spacing: 0.25rem;
+}

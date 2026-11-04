@@ -11,4 +11,22 @@ export default defineConfig({
       "@": fileURLToPath(new URL(".", import.meta.url)),
     },
   },
+  // Фоновые WebGL-эффекты собираются отдельными бандлами прямо в static/app:
+  // Hugo копирует папку в public/app, вёрстка подключает файл по имени.
+  build: {
+    outDir: "static/app",
+    emptyOutDir: false,
+    rollupOptions: {
+      input: {
+        "hero-topography": fileURLToPath(
+          new URL("./src/hero-topography.tsx", import.meta.url),
+        ),
+      },
+      output: {
+        entryFileNames: "[name].js",
+        chunkFileNames: "[name].js",
+        assetFileNames: "[name][extname]",
+      },
+    },
+  },
 })
