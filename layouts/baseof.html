@@ -6,7 +6,9 @@
   <body>
     {{- block "main" . }}{{ end }}
     <script src="js/lanyard.js" defer></script>
-    <script src="js/balloons.js" defer></script>
+    <!-- Эффект шариков отключён: скрипт не подключается, библиотека не качается.
+         Вернуть: снять комментарий с тега и с data-balloons в home.html. -->
+    <!-- <script src="js/balloons.js" defer></script> -->
     <script src="js/main.js" defer></script>
   </body>
 </html>

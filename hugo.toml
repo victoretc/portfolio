@@ -31,7 +31,7 @@ enableRobotsTXT = true
     target = 'static/fonts'
 
 [params]
-  description = 'Сайт, который приводит клиентов, а не украшает интернет.'
+  description = 'Сделаем сайт, который приводит клиентов, а не украшает интернет.'
   email = 'hello@example.com'
   telegram = 'https://t.me/victor_aqa'
   phone = '+7 (000) 000-00-00'

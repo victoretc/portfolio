@@ -59,7 +59,7 @@
           <!-- Марка — в начале блока, кнопка внизу: между ними текст
                (ref: zorigto.ru: иконка и кнопки стоят в разных местах). -->
           <img class="intro-fig intro-fig--flower" src="{{ "img/shape-flower.svg" | relURL }}" alt="" width="622" height="720" loading="eager">
-          <p class="intro-lead">Сайт, который приводит клиентов, а&nbsp;не&nbsp;украшает интернет. Шесть лет в разработке.</p>
+          <p class="intro-lead">Сделаем сайт, который приводит клиентов, а&nbsp;не&nbsp;украшает интернет. Шесть лет в разработке.</p>
           <a class="cta-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
             <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
             <span>Связаться</span>
@@ -203,7 +203,9 @@
 <footer class="footer" id="contacts">
   <div class="wrap footer-inner">
     <div class="footer-top" data-reveal>
-      <p class="footer-lead" data-balloons="default">Расскажите о задаче — ответим в течение рабочего дня</p>
+      <!-- Шарики отключены: триггер закомментирован, скрипт не подключён.
+           Вернуть: снять комментарий с data-balloons и с тега <script> в baseof.html. -->
+      <p class="footer-lead">Расскажите о задаче — ответим в течение рабочего дня</p>
 
       <a class="footer-key" href="https://t.me/victor_aqa">
         <svg class="footer-key__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
@@ -231,7 +233,7 @@
 
       <div class="footer-col footer-col--note" data-reveal style="--i: 2">
         <!-- <p class="footer-col-title">Студия</p> -->
-        <p class="footer-note">Сайт, который приводит клиентов, а не украшает интернет.</p>
+        <p class="footer-note">Сделаем сайт, который приводит клиентов, а не украшает интернет.</p>
       </div>
     </div>
 
