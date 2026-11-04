@@ -13,6 +13,9 @@ export default defineConfig({
   },
   // Фоновые WebGL-эффекты собираются отдельными бандлами прямо в static/app:
   // Hugo копирует папку в public/app, вёрстка подключает файл по имени.
+  // publicDir отключён: иначе Vite копирует весь public/ внутрь outDir,
+  // и статика сайта размножается в static/app/app, static/app/css и т.д.
+  publicDir: false,
   build: {
     outDir: "static/app",
     emptyOutDir: false,
