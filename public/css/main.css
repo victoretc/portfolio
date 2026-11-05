@@ -753,30 +753,68 @@ html.js .callout.is-in .callout-label .callout-char {
   color: rgba(0, 0, 0, 0.45);
 }
 
-/* Индекс работ: две колонки, в каждой номер в поле и текст */
-.work-list {
+/* Бенто-сетка работ: шесть карточек разной ширины.
+   Ритм features-8 — крупная цифра, графика, текст снизу, — но в стиле сайта:
+   белые карточки на белом поле, волосяные линии, без теней и заливок. */
+.work-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(28px, 4.5vw, 64px);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
   margin-top: clamp(16px, 2.2vw, 24px);
+  padding: 0;
+  list-style: none;
 }
-.work-item {
+.work-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+  transition: border-color var(--t-hover) ease;
+}
+.work-card--sm { grid-column: span 2; }
+.work-card--wide { grid-column: span 4; }
+.work-card--half { grid-column: span 3; }
+
+/* Визуальная зона — светлое поле в ритме страницы, а не цветная плашка */
+.work-visual {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  column-gap: clamp(8px, 1.2vw, 14px);
-  align-content: start;
-  padding-block: clamp(18px, 2.4vw, 28px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  place-items: center;
+  min-height: 148px;
+  padding: 18px;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #b4b4ae;
 }
+.work-visual svg {
+  display: block;
+  width: 100%;
+  max-width: 236px;
+  height: auto;
+}
+.work-card--half .work-visual svg { max-width: 300px; }
+.work-phone { max-width: 190px !important; }
+
+.work-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(18px, 2.2vw, 30px);
+  padding: clamp(18px, 2.2vw, 26px);
+  flex: 1;
+}
+.work-text { display: flex; flex-direction: column; gap: 8px; }
 .work-num {
-  font-family: var(--sans);
+  font-family: var(--display);
   font-weight: 600;
-  font-size: 13px;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
+  font-size: clamp(32px, 3.4vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
-  color: rgba(0, 0, 0, 0.32);
-  transition: color 150ms ease;
+  color: rgba(0, 0, 0, 0.16);
+  transition: color var(--t-hover) ease;
 }
 .work-name {
   font-family: var(--sans);
@@ -791,10 +829,52 @@ html.js .callout.is-in .callout-label .callout-char {
   font-size: clamp(15px, 1.2vw, 16px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.6);
-  margin-top: 8px;
 }
+
+/* Широкие карточки: текст слева, графика справа на всю высоту */
+@media (min-width: 1001px) {
+  .work-card--wide { flex-direction: row; }
+  .work-card--wide .work-body { width: 50%; }
+  .work-card--wide .work-visual {
+    order: 2;
+    width: 50%;
+    min-height: 100%;
+    border-bottom: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Шрифтовая проба для карточки «Дизайн под ваш бизнес» */
+.work-specimen { display: grid; gap: clamp(14px, 2vw, 22px); justify-items: start; }
+.work-specimen__face {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(58px, 7vw, 94px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: #0a0a0a;
+}
+.work-specimen__chips { display: flex; align-items: center; }
+.work-specimen__chips span {
+  display: block;
+  width: clamp(24px, 2.4vw, 30px);
+  height: clamp(24px, 2.4vw, 30px);
+  border-radius: 50%;
+  background: var(--chip);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.work-specimen__chips span + span { margin-left: -6px; }
+.work-specimen__chips .is-accent { box-shadow: 0 0 0 4px var(--bg), inset 0 0 0 1px rgba(0, 0, 0, 0.08); }
+
 @media (hover: hover) {
-  .work-item:hover .work-num { color: var(--accent); }
+  .work-card:hover { border-color: rgba(0, 0, 0, 0.24); }
+  .work-card:hover .work-num { color: var(--accent); }
+}
+/* Планшет: широкие карточки на всю строку, малые — по две */
+@media (max-width: 1000px) {
+  .work-card--sm,
+  .work-card--half { grid-column: span 3; }
+  .work-card--wide { grid-column: span 6; }
 }
 
 /* Верх услуг: сама услуга с ценой слева, остальные проекты справа */
@@ -1039,7 +1119,7 @@ html.js .callout.is-in .callout-label .callout-char {
   transition-delay: calc(var(--i, 0) * 80ms);
 }
 /* Список работ раскрывается ступенями по 100ms — редкий вход, не рутинное действие */
-.services .work-item[data-reveal].is-in { transition-delay: calc(var(--i, 0) * 100ms); }
+.services .work-card[data-reveal].is-in { transition-delay: calc(var(--i, 0) * 100ms); }
 /* Первый экран: текст ждёт готовности страницы (шрифты + снятие шторки-лоадера)
    и поднимается ступенями: заголовок → левая колонка → правая колонка.
    Движение — только opacity и transform.
@@ -1157,12 +1237,13 @@ html:not(.js) .loader { display: none; }
   .project-card__stack { flex-wrap: wrap; justify-content: center; }
   .project-card__description { max-width: none; }
 
-  /* Услуги на телефоне: список работ и цена в одну колонку */
+  /* Услуги на телефоне: карточки работ и цена в одну колонку */
   .services-head { margin-bottom: 26px; }
   .services-title { font-size: 30px; }
-  .work-list { grid-template-columns: minmax(0, 1fr); }
-  .work-item { grid-template-columns: 34px minmax(0, 1fr); padding-block: 18px; }
-  .work-num { line-height: 1.9; }
+  .work-grid { grid-template-columns: minmax(0, 1fr); }
+  .work-card--sm,
+  .work-card--wide,
+  .work-card--half { grid-column: auto; }
   .work-note { max-width: none; }
   .price-note { max-width: none; }
 
