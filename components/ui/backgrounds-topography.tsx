@@ -233,7 +233,7 @@ function relax(
   }
 }
 
-function at(pts: Float64Array, start: number, n: number, i: number) {
+function at(start: number, n: number, i: number) {
   return start + ((i + n) % n) * 2
 }
 
@@ -249,14 +249,14 @@ function smooth(
   if (n < 2) return
   if (n > 3) relax(pts, start, n, closed, scratch)
   if (closed && n > 2) {
-    const last = at(pts, start, n, -1)
+    const last = at(start, n, -1)
     path.moveTo(
       (pts[last]! + pts[start]!) / 2,
       (pts[last + 1]! + pts[start + 1]!) / 2,
     )
     for (let i = 0; i < n; i++) {
-      const p = at(pts, start, n, i)
-      const q = at(pts, start, n, i + 1)
+      const p = at(start, n, i)
+      const q = at(start, n, i + 1)
       path.quadraticCurveTo(
         pts[p]!,
         pts[p + 1]!,

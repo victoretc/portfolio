@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Главная on Богатов</title>
-    <link>http://localhost:1414/</link>
+    <link>http://localhost:56171/</link>
     <description>Recent content in Главная on Богатов</description>
     <generator>Hugo</generator>
     <language>ru-ru</language>
-    <atom:link href="http://localhost:1414/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:56171/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
