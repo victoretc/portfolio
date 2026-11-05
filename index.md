@@ -1,5 +1,0 @@
-1. https://21st.dev/community/components/s/text?preview=%2F%40glasscn%2Fcomponents%2Fhighlight-text
-2. https://21st.dev/community/components/s/text?preview=%2F%40manuarora700%2Fcomponents%2Faurora-background
-
-
-

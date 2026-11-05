@@ -1287,7 +1287,13 @@ html:not(.js) .loader { display: none; }
 
 /* ---------- phone (390) ---------- */
 @media (max-width: 760px) {
-  :root { --margin: 16px; --hero-pad-b: clamp(40px, 6vh, 72px); }
+  :root {
+    --margin: 16px;
+    /* Колонка контента на телефоне держит тот же край, что шапка и нижнее
+       меню: иначе 16vw давали 30+ px с каждой стороны вместо 16 */
+    --gutter: calc(var(--margin) * 2);
+    --hero-pad-b: clamp(40px, 6vh, 72px);
+  }
 
   /* Хедер на телефоне: капсула не нужна — плашка сразу во всю ширину */
   .site-head::before,
