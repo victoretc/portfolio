@@ -1,26 +1,34 @@
-// Фон первого экрана: топографические линии (WebGL/канвас из
-// components/ui/backgrounds-topography). Сборка Vite кладёт бандл в static/app,
-// вёрстка подключает app/hero-topography.js относительным путём.
+// Топографические линии (WebGL/канвас из components/ui/backgrounds-topography).
+// Сборка Vite кладёт бандл в static/app, вёрстка подключает app/hero-topography.js.
+//
+// Хостов может быть несколько: первый экран и карточка услуги. Конфиг читаем
+// из data-атрибутов, чтобы каждая зона настраивалась из разметки:
+//   data-line-color="#eaeae5"  цвет линий
+//   data-levels="11"           число уровней рельефа
+//   data-scale="1.9"           масштаб рельефа
+//   data-speed="0.8"           скорость течения
+//   data-interactive="false"   отключить реакцию на курсор
 import { createRoot } from "react-dom/client"
 
 import { TopographyBackground } from "@/components/ui/backgrounds-topography"
 
-const host = document.getElementById("hero-topography")
+function readNumber(value: string | undefined, fallback: number) {
+  const parsed = Number(value)
+  return value !== undefined && Number.isFinite(parsed) ? parsed : fallback
+}
 
-// Цвет линий можно переопределить из вёрстки: data-line-color="#c9c6be".
-// По умолчанию — тёплый графит: тонкая карта рельефа под чёрным текстом.
-const lineColor = host?.dataset.lineColor || "#c9c6be"
+const hosts = Array.from(document.querySelectorAll<HTMLElement>("[data-topography]"))
 
-if (host) {
+for (const host of hosts) {
   createRoot(host).render(
     <TopographyBackground
       className="h-full w-full"
-      lineColor={lineColor}
-      levels={11}
-      speed={0.8}
-      peak={1}
-      scale={1.9}
-      interactive
+      lineColor={host.dataset.lineColor || "#c9c6be"}
+      levels={Math.round(readNumber(host.dataset.levels, 11))}
+      speed={readNumber(host.dataset.speed, 0.8)}
+      peak={readNumber(host.dataset.peak, 1)}
+      scale={readNumber(host.dataset.scale, 1.9)}
+      interactive={host.dataset.interactive !== "false"}
     />,
   )
 }

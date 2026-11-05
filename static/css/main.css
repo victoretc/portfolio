@@ -66,6 +66,8 @@
   --gutter: clamp(40px, 16vw, 280px);
   /* Один отступ для всех блоков: внутри секций и между секциями */
   --gap-block: clamp(40px, 7vh, 72px);
+  /* Низ героя: на десктопе гасится при стыковке с «Проектами» */
+  --intro-pad-b: clamp(28px, 3.4vw, 44px);
   /* Низ героя держит дудл-стрелку — при стыковке секций гасится целиком */
   --hero-pad-b: clamp(96px, 12vh, 140px);
   --sans: "Onest", "Golos Text", "Helvetica Neue", Arial, sans-serif;
@@ -267,8 +269,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- chapters: full-bleed colour fields ---------- */
 .chapter { position: relative; padding-block: var(--gap-block); scroll-margin-top: 64px; }
-/* Секции стыкуются встык: удвоенные падинги соседей сводятся к одному --gap-block */
-.hero + .chapter { margin-top: calc(-1 * var(--hero-pad-b)); }
+/* Секции стыкуются встык: удвоенные падинги соседей сводятся к одному --gap-block.
+   Низ героя (.intro) тоже гасим — иначе к шву добавляется его padding-bottom
+   и «Проекты» отрываются от героя сильнее, чем остальные блоки.
+   На телефоне низ героя держит нижний док, поэтому там отступ не трогаем. */
+@media (min-width: 861px) {
+  .intro + .chapter { margin-top: calc(-1 * var(--intro-pad-b)); }
+}
 .chapter + .chapter,
 .chapter + .footer { margin-top: calc(-1 * var(--gap-block)); }
 
@@ -580,8 +587,9 @@ html.js .callout.is-in .callout-label .callout-char {
 .cases-title {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(30px, 3vw, 40px);
   letter-spacing: -0.015em;
+  line-height: 1.05;
   margin-bottom: var(--gap-block);
 }
 .project-card {
@@ -733,12 +741,13 @@ html.js .callout.is-in .callout-label .callout-char {
   align-items: flex-end;
   justify-content: space-between;
   gap: clamp(16px, 3vw, 40px);
-  margin-bottom: clamp(28px, 4.5vw, 56px);
+  /* Тот же отступ, что у «Проектов» до карточки — заголовки глав в одном ритме */
+  margin-bottom: var(--gap-block);
 }
 .services-title {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(30px, 3vw, 40px);
   letter-spacing: -0.015em;
   line-height: 1.05;
 }
@@ -877,97 +886,215 @@ html.js .callout.is-in .callout-label .callout-char {
   .work-card--wide { grid-column: span 6; }
 }
 
-/* Верх услуг: сама услуга с ценой слева, остальные проекты справа */
+/* Верх услуг: услуга с ценой на всю ширину */
 .services-top {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: clamp(32px, 5vw, 72px);
-  align-items: start;
   margin-bottom: clamp(40px, 6vw, 76px);
 }
-@media (max-width: 860px) {
-  .services-top { grid-template-columns: minmax(0, 1fr); row-gap: clamp(28px, 6vw, 40px); }
-}
 
-/* Цена и сроки — без карточки: название услуги, крупные цифры, пояснение */
-.price-name {
+/* Карточка услуги: светлое поле в ритме work-карточек, волосяная рамка,
+   крупная цена и топографический фон первого экрана. */
+.price-card {
+  --price-bg: #f4f4f1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  background: var(--price-bg);
+  color: #0a0a0a;
+}
+/* Линии живут под контентом; низ карточки растворяется в фоне */
+.price-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 34%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 34%, transparent 96%);
+}
+/* Корень React-фона: канвасу нужен явный размер, иначе он растит
+   высоту сам себя (Tailwind-классов на странице нет) */
+.price-card__bg > div {
+  position: absolute;
+  inset: 0;
+}
+/* Вуаль поверх линий там, где стоит текст, — как на первом экране */
+.price-card__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    #f4f4f1 0%,
+    #f4f4f1 28%,
+    rgb(244 244 241 / 0.68) 46%,
+    rgb(244 244 241 / 0) 66%
+  );
+}
+.price-card__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 4vw, 72px);
+  padding: clamp(24px, 3.4vw, 48px);
+}
+.price-card__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.price-card__name {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(34px, 3.8vw, 48px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: #0a0a0a;
-  margin-top: 4px;
+  font-size: clamp(40px, 4.6vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
-.price-desc {
+.price-card__desc {
+  margin-top: clamp(12px, 1.5vw, 18px);
+  margin-bottom: clamp(20px, 2.4vw, 28px);
+  max-width: 46ch;
   font-family: var(--sans);
   font-size: clamp(15px, 1.2vw, 16.5px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.62);
-  margin-top: 10px;
 }
-.price-label {
+/* Действие в карточке — та же кнопка, что на первом экране, но прижата
+   к нижней линии правой колонки */
+.price-card__cta { margin-top: auto; }
+/* Цена и сроки — правая колонка, отделённая волосяной линией */
+.price-card__deal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-left: clamp(28px, 3.4vw, 56px);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.price-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--sans);
   font-weight: 600;
   font-size: var(--step-small);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(0, 0, 0, 0.45);
-  margin-top: clamp(24px, 3vw, 34px);
 }
-/* Цена и срок в одну строку: цифры слева, пояснение справа */
-.price-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: clamp(16px, 2vw, 28px);
-  margin-top: 6px;
+/* Акцентная точка — тот же розовый, что в карточках работ */
+.price-card__label::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
 }
-.price-value {
+.price-card__value {
   display: flex;
   align-items: baseline;
   gap: 10px;
+  margin-top: clamp(10px, 1.2vw, 16px);
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(52px, 6.4vw, 84px);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(64px, 8.4vw, 108px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
-  color: #0a0a0a;
 }
-.price-value__cur {
+.price-card__cur {
   font-family: var(--sans);
-  font-size: 0.24em;
+  font-size: 0.2em;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: rgba(0, 0, 0, 0.45);
 }
-.price-note {
-  flex: 1 1 220px;
+.price-card__term {
+  margin-top: clamp(12px, 1.5vw, 18px);
+  max-width: 28ch;
   font-family: var(--sans);
   font-size: clamp(14px, 1.2vw, 15.5px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.55);
-  max-width: 26ch;
+}
+.price-card__term strong {
+  font-weight: 600;
+  color: #0a0a0a;
+}
+@media (max-width: 860px) {
+  .price-card__grid { grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 5vw, 32px); }
+  .price-card__deal {
+    padding-left: 0;
+    padding-top: clamp(20px, 4vw, 28px);
+    border-left: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .price-card__bg { opacity: 0.7; }
 }
 
-/* Как работаем */
+/* «А так же» — крупный редакционный абзац под сеткой работ.
+   Заголовок — микро-лейбл с розовой точкой, как у цены; ключевые услуги
+   подсвечены маркером первого экрана. */
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.8vw, 20px);
+  margin-top: clamp(36px, 5vw, 64px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 .how-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(18px, 1.8vw, 24px);
-  letter-spacing: -0.015em;
-  line-height: 1.15;
-  color: #0a0a0a;
+  font-size: var(--step-small);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.45);
+}
+.how-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
 }
 .how-text {
   font-family: var(--sans);
-  font-size: clamp(15px, 1.2vw, 16.5px);
-  line-height: 1.55;
-  color: rgba(0, 0, 0, 0.62);
-  margin-top: 10px;
-  max-width: 46ch;
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  color: #0a0a0a;
+  max-width: 44ch;
+  text-wrap: pretty;
 }
+/* Подсветка услуг — тот же приём, что у слов в заголовке первого экрана */
+.how-mark {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  padding: 0 0.1em;
+  margin: 0 -0.01em;
+}
+.how-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0.1em -0.02em 0.02em;
+  z-index: -1;
+  background: var(--field-2);
+  border-radius: 0.08em;
+  transform: skewY(-1.5deg);
+}
+.how-mark--yellow::before { background: var(--field-3); }
 
 /* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
 .footer {
@@ -1238,14 +1365,12 @@ html:not(.js) .loader { display: none; }
   .project-card__description { max-width: none; }
 
   /* Услуги на телефоне: карточки работ и цена в одну колонку */
-  .services-head { margin-bottom: 26px; }
-  .services-title { font-size: 30px; }
   .work-grid { grid-template-columns: minmax(0, 1fr); }
   .work-card--sm,
   .work-card--wide,
   .work-card--half { grid-column: auto; }
   .work-note { max-width: none; }
-  .price-note { max-width: none; }
+  .price-card__term { max-width: none; }
 
 
   .footer-key { height: clamp(120px, 34vw, 160px); }
@@ -1267,7 +1392,7 @@ body { overflow-x: hidden; }
      чёрный Onest и маркеры в заголовке читаются лучше всего */
   background: #ffffff;
   color: #0a0a0a;
-  padding: clamp(28px, 4.4vw, 56px) 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(28px, 4.4vw, 56px) 0 var(--intro-pad-b);
 }
 /* Фон первого экрана: холст с градиентными волнами под контентом.
    Низ растворяется в белом, чтобы герой переходил в «Проекты» без шва. */

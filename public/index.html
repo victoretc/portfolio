@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-	<meta name="generator" content="Hugo 0.150.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1415&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.150.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1416&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>document.documentElement.classList.add('js');</script>
@@ -38,7 +38,7 @@
 
 <section class="intro" id="top" data-hero>
   
-  <div class="intro-bg" id="hero-topography" data-line-color="#eaeae5" aria-hidden="true"></div>
+  <div class="intro-bg" id="hero-topography" data-topography data-line-color="#eaeae5" aria-hidden="true"></div>
   <div class="intro-wrap">
     <div class="intro-grid">
       <div class="intro-title-cell">
@@ -142,24 +142,31 @@
 
     
     <div class="services-top">
-      <div class="price" data-reveal>
-        <p class="price-name">Лендинг</p>
-        <p class="price-desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+      <article class="price-card" data-reveal>
+        <div class="price-card__bg" id="services-topography" data-topography
+          data-line-color="#cfcabd" data-levels="10" data-scale="1.2"
+          data-speed="0.6" data-interactive="false" aria-hidden="true"></div>
 
-        <p class="price-label">Стоимость и сроки</p>
-        <div class="price-row">
-          <p class="price-value">
-            <span class="price-value__num">900</span>
-            <span class="price-value__cur">BYN</span>
-          </p>
-          <p class="price-note">5 рабочих дней после согласования задачи и получения материалов.</p>
+        <div class="price-card__grid">
+          <div class="price-card__intro">
+            <h3 class="price-card__name">Лендинг</h3>
+            <p class="price-card__desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+            <a class="cta-link price-card__cta" href="https://t.me/victor_aqa" target="_blank" rel="noopener">
+              <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+              <span>Обсудить проект</span>
+            </a>
+          </div>
+
+          <div class="price-card__deal">
+            <p class="price-card__label">Стоимость и сроки</p>
+            <p class="price-card__value">
+              <span class="price-card__num">900</span>
+              <span class="price-card__cur">BYN</span>
+            </p>
+            <p class="price-card__term"><strong>5 рабочих дней</strong> после согласования задачи и получения материалов.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="how" data-reveal style="--i: 1">
-        <h3 class="how-title">А так же</h3>
-        <p class="how-text">Делаем интернет-магазины, Telegram-ботов и сложные системы под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. Напишите, что нужно, — предложим решение и назовём вилку.</p>
-      </div>
+      </article>
     </div>
 
     
@@ -179,7 +186,7 @@
               <rect x="18" y="42" width="112" height="12" rx="3" fill="currentColor" fill-opacity="0.34"/>
               <rect x="18" y="64" width="166" height="6" rx="3" fill="currentColor" fill-opacity="0.18"/>
               <rect x="18" y="76" width="138" height="6" rx="3" fill="currentColor" fill-opacity="0.18"/>
-              <rect x="18" y="96" width="60" height="16" rx="8" fill="var(--accent)" fill-opacity="0.9"/>
+              <rect x="18" y="96" width="60" height="16" rx="8" fill="var(--ink)" fill-opacity="0.9"/>
               <rect x="142" y="42" width="60" height="70" rx="6" stroke="currentColor" stroke-opacity="0.25"/>
             </svg>
           </div>
@@ -198,10 +205,10 @@
             <div class="work-specimen">
               <span class="work-specimen__face">Aa</span>
               <div class="work-specimen__chips">
-                <span style="--chip: var(--field-1)"></span>
-                <span style="--chip: var(--field-3)"></span>
                 <span style="--chip: var(--field-2)"></span>
+                <span style="--chip: var(--field-3)"></span>
                 <span class="is-accent" style="--chip: var(--accent)"></span>
+                <span class="is-ink" style="--chip: var(--ink)"></span>
               </div>
             </div>
           </div>
@@ -226,7 +233,7 @@
               <rect x="74" y="100" width="72" height="52" rx="6" stroke="currentColor" stroke-opacity="0.22"/>
               <rect x="74" y="166" width="72" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
               <rect x="74" y="178" width="60" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="200" width="72" height="20" rx="10" fill="var(--accent)" fill-opacity="0.9"/>
+              <rect x="74" y="200" width="72" height="20" rx="10" fill="var(--ink)" fill-opacity="0.9"/>
               <rect x="74" y="236" width="72" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
               <rect x="74" y="248" width="44" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
               <path d="M46 18v264" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="3 5"/>
@@ -319,6 +326,12 @@
           </div>
         </li>
       </ol>
+
+      
+      <div class="how" data-reveal>
+        <h3 class="how-title">А так же</h3>
+        <p class="how-text">Делаем <span class="how-mark">интернет-магазины</span>, <span class="how-mark how-mark--yellow">Telegram-ботов</span> и <span class="how-mark">сложные системы</span> под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. Напишите, что нужно, — предложим решение и назовём вилку.</p>
+      </div>
     </div>
   </div>
 </section>
