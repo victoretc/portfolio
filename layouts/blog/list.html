@@ -1,0 +1,39 @@
+{{ define "main" }}
+{{ partial "svg-symbols.html" . }}
+
+<main class="blog-page">
+  <section class="blog-hero">
+    <p class="blog-kicker">Блог</p>
+    <h1 class="blog-title">{{ .Params.heading | default .Title }}</h1>
+    {{ with .Params.lead }}<p class="blog-lead">{{ . }}</p>{{ end }}
+  </section>
+
+  <div class="blog-list">
+    {{ range $post := .Pages.ByDate.Reverse }}
+      <article class="post-item">
+        <a class="post-link" href="{{ $post.RelPermalink }}">
+          <p class="post-meta">
+            <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ partial "blog/date.html" $post }}</time>
+            <span class="post-meta__sep" aria-hidden="true">·</span>
+            <span>{{ $post.ReadingTime }} мин чтения</span>
+          </p>
+          <div class="post-text">
+            <h2 class="post-title">{{ $post.Title }}</h2>
+            <p class="post-desc">
+              {{ with $post.Description }}{{ . }}{{ else }}{{ $post.Summary | plainify | truncate 180 }}{{ end }}
+            </p>
+          </div>
+          <span class="post-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+      </article>
+    {{ else }}
+      <p class="blog-empty">Пока нет записей. Первая появится здесь.</p>
+    {{ end }}
+  </div>
+</main>
+
+{{ partial "site-footer.html" . }}
+{{ partial "site-dock.html" . }}
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ partial "svg-symbols.html" . }}
+{{ $blog := site.GetPage "/blog" }}
+{{ $blogURL := cond (ne $blog nil) $blog.RelPermalink ("blog/" | relURL) }}
+
+<main class="blog-page">
+  <article class="article">
+    <header class="article-head">
+      <p class="blog-kicker"><a href="{{ $blogURL }}">Блог</a></p>
+      <h1 class="article-title">{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="article-lead">{{ . }}</p>{{ end }}
+      <p class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "blog/date.html" . }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ .ReadingTime }} мин чтения</span>
+      </p>
+    </header>
+
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+
+    <footer class="article-foot">
+      <div class="article-foot__text">
+        <p class="article-foot__title">Есть задача?</p>
+        <p>Расскажите, что нужно, — предложим решение и назовём вилку.</p>
+      </div>
+      <a class="cta-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
+        <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+        <span>Написать</span>
+      </a>
+    </footer>
+  </article>
+</main>
+
+{{ partial "site-footer.html" . }}
+{{ partial "site-dock.html" . }}
+{{ end }}

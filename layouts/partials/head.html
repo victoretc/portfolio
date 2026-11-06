@@ -4,13 +4,14 @@
      мигнёт (виден → скрыт → появляется). Без JS страница остаётся живой. -->
 <script>document.documentElement.classList.add('js');</script>
 <title>{{ if .IsHome }}{{ site.Title }} — сайты, которые приносят заявки{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-<meta name="description" content="{{ site.Params.description }}">
-<meta property="og:title" content="{{ site.Title }}">
-<meta property="og:description" content="{{ site.Params.description }}">
-<meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="{{ .Description | default site.Params.description }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — сайты, которые приносят заявки{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}">
+<meta property="og:description" content="{{ .Description | default site.Params.description }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{ with .Permalink }}<link rel="canonical" href="{{ . }}">{{ end }}
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
 <!-- Шрифт свой (SIL OFL): Onest — заголовок, дисплей и текст.
      Грузим только кириллицу: она на первом экране, остальное подтянется по мере
      надобности. -->
 <link rel="preload" href="{{ "fonts/onest/Onest-cyrillic.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">

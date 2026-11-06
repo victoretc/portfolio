@@ -1,0 +1,48 @@
+{{- $home := "" -}}
+{{- if not .IsHome }}{{ $home = site.Home.RelPermalink }}{{ end -}}
+<!-- FOOTER — «клавиша» Написать, разделы и контакты -->
+<footer class="footer" id="contacts">
+  <div class="wrap footer-inner">
+    <div class="footer-top" data-reveal>
+      <!-- Шарики отключены: триггер закомментирован, скрипт не подключён.
+           Вернуть: снять комментарий с data-balloons и с тега <script> в baseof.html. -->
+      <p class="footer-lead">Расскажите о задаче — ответим в течение рабочего дня</p>
+
+      <a class="footer-key" href="{{ site.Params.telegram }}">
+        <svg class="footer-key__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+        <span class="footer-key__label">Написать</span>
+      </a>
+
+      <p class="footer-hint">Говорят, что на большую кнопку хочется кликнуть</p>
+    </div>
+
+    <div class="footer-cols">
+      <nav class="footer-col" aria-label="Разделы сайта" data-reveal style="--i: 0">
+        <p class="footer-col-title">Разделы</p>
+        <a href="{{ $home }}#cases">Проекты</a>
+        <a href="{{ $home }}#services">Услуги</a>
+        <a href="#contacts">Контакты</a>
+        <!-- <a href="#top">Наверх</a> -->
+      </nav>
+
+      <nav class="footer-col" aria-label="Контакты" data-reveal style="--i: 1">
+        <p class="footer-col-title">Контакты</p>
+        <a href="{{ site.Params.telegram }}">Telegram</a>
+        <!-- <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>
+        <a href="tel:{{ replaceRE `[^0-9+]` `` site.Params.phone }}">{{ site.Params.phone }}</a> -->
+      </nav>
+
+      <div class="footer-col footer-col--note" data-reveal style="--i: 2">
+        <!-- <p class="footer-col-title">Студия</p> -->
+        <p class="footer-note">Сделаем сайт, который приводит клиентов, а не украшает интернет.</p>
+      </div>
+    </div>
+
+    <p class="footer-mark" aria-hidden="true">Богатов</p>
+
+    <div class="footer-bottom">
+      <p class="footer-meta">© 2026 Богатов</p>
+      <p class="footer-meta">Дизайн и вёрстка — без готовых тем</p>
+    </div>
+  </div>
+</footer>
