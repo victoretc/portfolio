@@ -886,95 +886,65 @@ html.js .callout.is-in .callout-label .callout-char {
   .work-card--wide { grid-column: span 6; }
 }
 
-/* Верх услуг: услуга с ценой на всю ширину */
+/* Верх услуг: услуга — редакционная строка в ритме главы.
+   Без карточки, заливки, фоновой графики и рамок: имя, описание и цена
+   живут на одной типографской полосе, как запись в каталоге. */
 .services-top {
   margin-bottom: clamp(40px, 6vw, 76px);
 }
 
-/* Карточка услуги: светлое поле в ритме work-карточек, волосяная рамка,
-   крупная цена и топографический фон первого экрана. */
-.price-card {
-  --price-bg: #f4f4f1;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 24px;
-  background: var(--price-bg);
-  color: #0a0a0a;
-}
-/* Линии живут под контентом; низ карточки растворяется в фоне */
-.price-card__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 34%, transparent 96%);
-  mask-image: linear-gradient(to bottom, #000 34%, transparent 96%);
-}
-/* Корень React-фона: канвасу нужен явный размер, иначе он растит
-   высоту сам себя (Tailwind-классов на странице нет) */
-.price-card__bg > div {
-  position: absolute;
-  inset: 0;
-}
-/* Вуаль поверх линий там, где стоит текст, — как на первом экране */
-.price-card__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #f4f4f1 0%,
-    #f4f4f1 28%,
-    rgb(244 244 241 / 0.68) 46%,
-    rgb(244 244 241 / 0) 66%
-  );
-}
-.price-card__grid {
-  position: relative;
-  z-index: 1;
+.offer {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(28px, 4vw, 72px);
-  padding: clamp(24px, 3.4vw, 48px);
 }
-.price-card__intro {
+.offer-intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
 }
-.price-card__name {
+.offer-name {
   font-family: var(--display);
   font-weight: 600;
   font-size: clamp(40px, 4.6vw, 62px);
-  line-height: 1;
+  line-height: 1.02;
   letter-spacing: -0.03em;
 }
-.price-card__desc {
+/* Маркер тот же, что в заголовке первого экрана и в блоке «А так же» */
+.offer-mark {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  padding: 0 0.1em;
+  margin: 0 -0.01em;
+}
+.offer-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0.1em -0.02em 0.02em;
+  z-index: -1;
+  background: var(--field-2);
+  border-radius: 0.08em;
+  transform: skewY(-1.5deg);
+}
+.offer-desc {
   margin-top: clamp(12px, 1.5vw, 18px);
-  margin-bottom: clamp(20px, 2.4vw, 28px);
   max-width: 46ch;
   font-family: var(--sans);
-  font-size: clamp(15px, 1.2vw, 16.5px);
+  font-size: clamp(16px, 1.35vw, 18.5px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.62);
 }
-/* Действие в карточке — та же кнопка, что на первом экране, но прижата
-   к нижней линии правой колонки */
-.price-card__cta { margin-top: auto; }
-/* Цена и сроки — правая колонка, отделённая волосяной линией */
-.price-card__deal {
+
+/* Цена и сроки — вторая колонка, без разделителя */
+.offer-deal {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  padding-left: clamp(28px, 3.4vw, 56px);
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  min-width: 0;
 }
-.price-card__label {
+.offer-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -986,7 +956,7 @@ html.js .callout.is-in .callout-label .callout-char {
   color: rgba(0, 0, 0, 0.45);
 }
 /* Акцентная точка — тот же розовый, что в карточках работ */
-.price-card__label::before {
+.offer-label::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -994,51 +964,44 @@ html.js .callout.is-in .callout-label .callout-char {
   border-radius: 50%;
   background: var(--accent);
 }
-.price-card__value {
+.offer-value {
   display: flex;
   align-items: baseline;
   gap: 10px;
   margin-top: clamp(10px, 1.2vw, 16px);
   font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(64px, 8.4vw, 108px);
-  line-height: 0.9;
+  font-weight: 600;
+  font-size: clamp(56px, 7vw, 88px);
+  line-height: 0.92;
   letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
 }
-.price-card__cur {
+.offer-cur {
   font-family: var(--sans);
-  font-size: 0.2em;
-  font-weight: 600;
+  font-size: 0.22em;
+  font-weight: 500;
   letter-spacing: 0.02em;
   color: rgba(0, 0, 0, 0.45);
 }
-.price-card__term {
+.offer-term {
   margin-top: clamp(12px, 1.5vw, 18px);
-  max-width: 28ch;
+  max-width: 30ch;
   font-family: var(--sans);
   font-size: clamp(14px, 1.2vw, 15.5px);
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.55);
 }
-.price-card__term strong {
+.offer-term strong {
   font-weight: 600;
   color: #0a0a0a;
 }
 @media (max-width: 860px) {
-  .price-card__grid { grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 5vw, 32px); }
-  .price-card__deal {
-    padding-left: 0;
-    padding-top: clamp(20px, 4vw, 28px);
-    border-left: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .price-card__bg { opacity: 0.7; }
+  .offer { grid-template-columns: minmax(0, 1fr); gap: clamp(20px, 4vw, 28px); }
 }
 
-/* «А так же» — крупный редакционный абзац под сеткой работ.
-   Заголовок — микро-лейбл с розовой точкой, как у цены; ключевые услуги
-   подсвечены маркером первого экрана. */
+/* «А так же» — финальный абзац услуг в интонации первого экрана:
+   волосяная линия, микро-лейбл с розовой точкой и лид того же кегля
+   и веса, что оффер на главной. */
 .how {
   display: flex;
   flex-direction: column;
@@ -1067,16 +1030,19 @@ html.js .callout.is-in .callout-label .callout-char {
   border-radius: 50%;
   background: var(--accent);
 }
+/* Тот же набор, что у .intro-lead: обычный вес, тот же кегль и трекинг.
+   Крупнее и тяжелее оффер здесь не нужен — это продолжение главной. */
 .how-text {
   font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(22px, 2.4vw, 32px);
-  line-height: 1.32;
-  letter-spacing: -0.015em;
-  color: #0a0a0a;
-  max-width: 44ch;
+  font-weight: 400;
+  font-size: clamp(1.375rem, 1.95vw, 1.75rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #111111;
+  max-width: 46ch;
   text-wrap: pretty;
 }
+
 /* Подсветка услуг — тот же приём, что у слов в заголовке первого экрана */
 .how-mark {
   position: relative;
@@ -1376,7 +1342,8 @@ html:not(.js) .loader { display: none; }
   .work-card--wide,
   .work-card--half { grid-column: auto; }
   .work-note { max-width: none; }
-  .price-card__term { max-width: none; }
+  .offer-term { max-width: none; }
+  .how-text { max-width: none; }
 
 
   .footer-key { height: clamp(120px, 34vw, 160px); }

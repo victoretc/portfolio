@@ -127,33 +127,23 @@
       <h2 class="services-title">Услуги</h2>
     </div>
 
-    <!-- Услуга: карточка в ритме сетки работ. Фон — те же топографические
-         линии, что на первом экране: слева они уходят под текст, справа
-         проявляются за ценой. -->
+    <!-- Услуга — редакционная строка в ритме главы: без карточки, заливки,
+         фоновых линий и рамок. Имя, описание и цена живут на одной
+         типографской полосе, как запись в каталоге. -->
     <div class="services-top">
-      <article class="price-card" data-reveal>
-        <div class="price-card__bg" id="services-topography" data-topography
-          data-line-color="#cfcabd" data-levels="10" data-scale="1.2"
-          data-speed="0.6" data-interactive="false" aria-hidden="true"></div>
+      <article class="offer" data-reveal>
+        <div class="offer-intro">
+          <h3 class="offer-name"><span class="offer-mark">Лендинг</span></h3>
+          <p class="offer-desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+        </div>
 
-        <div class="price-card__grid">
-          <div class="price-card__intro">
-            <h3 class="price-card__name">Лендинг</h3>
-            <p class="price-card__desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
-            <a class="cta-link price-card__cta" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
-              <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
-              <span>Обсудить проект</span>
-            </a>
-          </div>
-
-          <div class="price-card__deal">
-            <p class="price-card__label">Стоимость и сроки</p>
-            <p class="price-card__value">
-              <span class="price-card__num">900</span>
-              <span class="price-card__cur">BYN</span>
-            </p>
-            <p class="price-card__term"><strong>5 рабочих дней</strong> после согласования задачи и получения материалов.</p>
-          </div>
+        <div class="offer-deal">
+          <p class="offer-label">Стоимость и сроки</p>
+          <p class="offer-value">
+            <span class="offer-num">900</span>
+            <span class="offer-cur">BYN</span>
+          </p>
+          <p class="offer-term"><strong>5 рабочих дней</strong> после согласования задачи и получения материалов.</p>
         </div>
       </article>
     </div>
@@ -320,7 +310,8 @@
       </ol>
 
       <!-- Другие услуги — крупный редакционный абзац с маркерами,
-           как в заголовке первого экрана -->
+           как в заголовке первого экрана. Подпись и действие стоят на одной
+           полосе, текст — на кегле оффера главной, без жирного. -->
       <div class="how" data-reveal>
         <h3 class="how-title">А так же</h3>
         <p class="how-text">Делаем <span class="how-mark">интернет-магазины</span>, <span class="how-mark how-mark--yellow">Telegram-ботов</span> и <span class="how-mark">сложные системы</span> под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. Напишите, что нужно, — предложим решение и назовём вилку.</p>
