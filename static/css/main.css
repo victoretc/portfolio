@@ -55,6 +55,15 @@
   --field-3: #fed878;
   --field-4: #6ef8fb;
 
+  /* Палитра design.md — первый экран и нижнее меню */
+  --color-off-black: #0f1012;
+  --color-pure-black: #020201;
+  --color-off-white: #f2f2f4;
+  --color-pure-white: #fdfdfd;
+  --color-steel-gray: #5e5e5e;
+  --color-ash-gray: #8f8f8f;
+  --color-signal-blue: #0071e3;
+
   --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
@@ -1321,186 +1330,147 @@ html:not(.js) .loader { display: none; }
 }
 
 /* =====================================================================
-   ПЕРВЫЙ БЛОК — редизайн по референсу zorigto.ru
-   Остальные секции остаются прежними.
+   ПЕРВЫЙ БЛОК — стилистика design.md (Augen Pro)
+   Клинический off-white, вес 350, signal blue только в акцентах.
    ===================================================================== */
 
 body { overflow-x: hidden; }
 
 .intro {
+  --doodle-w: clamp(150px, 22vw, 380px);
+  --ly-card-w: 200px;
   position: relative;
-  /* Белый лист: фон остаётся текстурой, а не цветным пятном —
-     чёрный Onest и маркеры в заголовке читаются лучше всего */
-  background: #ffffff;
-  color: #0a0a0a;
-  padding: clamp(28px, 4.4vw, 56px) 0 var(--intro-pad-b);
+  background: var(--color-off-white, #f2f2f4);
+  color: var(--color-off-black, #0f1012);
+  padding: clamp(36px, 4.2vw, 56px) 0 clamp(56px, 7vw, 96px);
+  overflow: clip;
 }
-/* Фон первого экрана: холст с градиентными волнами под контентом.
-   Низ растворяется в белом, чтобы герой переходил в «Проекты» без шва. */
-.intro-bg {
+
+/* Дудлы: два абсолютных рейла по краям героя. Координаты и повороты
+   посчитаны заранее (layouts/partials/hero-doodles.html), поэтому
+   рисунок держится при любой высоте секции. */
+.doodle-rail {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--doodle-w);
   z-index: 0;
-  overflow: hidden;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 97%);
-  mask-image: linear-gradient(to bottom, #000 52%, transparent 97%);
+  overflow: hidden;
 }
-.intro-bg > div {
+.doodle-rail--left { left: 0; }
+.doodle-rail--right { right: 0; }
+.doodle-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.doodle {
   position: absolute;
-  inset: 0;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: auto;
+  color: var(--color-off-black, #0f1012);
+  fill: currentColor;
+  opacity: var(--o, 0.22);
+  transform: translate(-50%, -50%) rotate(var(--r));
 }
-/* Над линиями — мягкая белая вуаль там, где стоит текст: под заголовком
-   и колонками линии почти исчезают, по краям экрана остаются видимыми.
-   Так фон читается как фактура, а не как рисунок поверх букв. */
-.intro-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #ffffff 0%,
-    #ffffff 38%,
-    rgba(255, 255, 255, 0.72) 52%,
-    rgba(255, 255, 255, 0) 72%
-  );
+.doodle--blue {
+  color: var(--color-signal-blue, #0071e3);
+  opacity: 0.42;
 }
-/* На телефоне линии плотнее и лезут под текст — приглушаем их */
-@media (max-width: 860px) {
-  .intro-bg { opacity: 0.8; }
-}
+
 .intro-wrap {
   position: relative;
-  z-index: 2;
-  width: min(var(--shell), calc(100% - var(--gutter)));
+  z-index: 1;
+  width: min(900px, calc(100% - 48px));
   margin-inline: auto;
 }
-.intro-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: clamp(16px, 2vw, 24px);
-  align-content: start;
-}
 
-/* Заголовок: кегль считается от ширины своей колонки (container query),
-   поэтому на больших экранах текст ложится в две строки, а не в четыре. */
-.intro-title-cell {
-  grid-column: 1 / 9;
-  container-type: inline-size;
+/* Заголовок: единственный крупный кегль, набран тихим весом 350.
+   Центрирован по просьбе: бейдж «вырастает» из него. */
+.intro-head {
+  position: relative;
+  z-index: 3;
+  text-align: center;
 }
-/* Заголовок — как на zorigto.ru: средний вес, нормальный трекинг,
-   плотный интерлиньяж. Крупный жирный заголовок здесь смотрелся тяжело. */
 .intro-title {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(2rem, 8.5cqw, 3.75rem);
-  line-height: 1.05;
-  letter-spacing: normal;
+  max-width: 20ch;
+  margin-inline: auto;
+  font-family: var(--sans);
+  font-weight: 350;
+  font-size: clamp(2.25rem, 5.6vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   text-wrap: balance;
+  color: var(--color-off-black, #0f1012);
 }
 
-/* Слова «Богатов» и «Бреста» — заливка-маркер и лёгкий наклон.
-   Маркер рисуется псевдоэлементом под текстом: слово остаётся чёрным,
-   а подложка чуть шире и ниже строки, как след от текстовыделителя. */
-.intro-mark {
-  position: relative;
-  display: inline-block;
-  z-index: 0;
-  padding: 0 0.1em;
-  margin: 0 -0.01em;
-}
-.intro-mark::before {
-  content: "";
-  position: absolute;
-  inset: 0.1em -0.02em 0.02em;
-  z-index: -1;
-  background: var(--field-2);
-  border-radius: 0.08em;
-  transform: skewY(-1.5deg);
-}
-.intro-mark--yellow::before { background: var(--field-3); }
-.intro-mark--left { transform: rotate(-1.6deg); }
-.intro-mark--right { transform: rotate(1.6deg); }
-
+/* Колонка бейджа. Карточка выравнивается по низу колонки, а холст
+   с ремешком уходит вверх, к верху страницы, — ремешок проходит за
+   заголовком. Сам холст размыт: верёвки читаются как тень за буквами,
+   карточка остаётся резкой. */
 .intro-badge {
-  grid-column: 9 / 13;
-  grid-row: 1 / 3;
   position: relative;
-  min-height: 480px;
+  z-index: 1;
+  height: clamp(330px, 38svh, 410px);
+  margin-top: clamp(8px, 1.2vw, 18px);
 }
 
-/* Текстовый блок: две колонки под заголовком, как в референсе.
-   Ширина блока совпадает с шириной заголовка — колонки 1–8.
-   Колонки равные: левая граница текста попадает на линию сетки (5-я колонка).
-   Колонки стоят ближе друг к другу: зазор между ними меньше межколонника
-   основной сетки, текст читается одной массой. */
-.intro-info {
-  grid-column: 1 / 9;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: clamp(14px, 1.15vw, 16px);
-  margin-top: clamp(26px, 3.4vw, 48px);
-  align-items: stretch;
-}
-/* Левая колонка: марка → оффер → кнопка. Отступы между тремя элементами
-   одинаковые (justify-content: space-between раздаёт свободное место поровну),
-   а кнопка встаёт на нижнюю линию блока текста справа: колонки растянуты на
-   высоту строки сетки, низ кнопки совпадает с низом последней заметки. */
-.intro-col {
+/* Оффер и кнопка: под бейджем, по центру, одной колонкой. */
+.intro-lead-row {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(18px, 1.6vw, 26px);
-  align-self: stretch;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 24px);
+  margin-top: clamp(20px, 2.4vw, 32px);
+  text-align: center;
 }
-.intro-col > .cta-link { align-self: flex-start; }
-/* Кегли: оффер — главный текст первого экрана, он крупнее и заметок,
-   и подписи кнопки; заметки справа — подпись, мельче оффера. */
 .intro-lead {
+  max-width: 34ch;
   font-family: var(--sans);
-  font-weight: 400;
-  font-size: clamp(1.375rem, 1.95vw, 1.75rem);
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: #111111;
-}
-.intro-note,
-.intro-copy p {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
-  line-height: 1.42;
-  letter-spacing: -0.015em;
-  color: #111111;
-}
-/* Первая заметка начинается на той же линии, что оффер: у всех текстов одна
-   верхняя линия. */
-.intro-note { margin-top: 0; }
-/* Заметки справа: три абзаца разведены поровну и последний встаёт на нижнюю
-   линию блока — туда же, где низ кнопки. */
-.intro-copy {
-  display: grid;
-  gap: clamp(12px, 1.1vw, 16px);
-  align-content: space-between;
+  font-weight: 350;
+  font-size: clamp(1.1875rem, 1.9vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  color: var(--color-off-black, #0f1012);
 }
 
-/* Фигура-марка: стоит в начале блока, кнопка — внизу, между ними текст
-   (ref: zorigto.ru: иконка и кнопки в разных местах блока).
-   Метка намеренно небольшая: это знак, а не второй заголовок.
-   В PNG прозрачные поля сверху (14.6% — 105 из 720) и снизу (15.1%).
-   Верхнее поле убираем минусовым отступом — лепестки встают на верхнюю
-   линию текста; нижнее тоже, иначе между знаком и оффером был бы разрыв
-   больше, чем между оффером и кнопкой. */
-.intro-fig {
-  display: block;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
+/* Три панели: мягкие белые карточки 54px без теней — высота читается
+   сдвигом тона #fdfdfd на #f2f2f4 и волосяной кромкой. */
+.intro-panels {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  margin-top: clamp(56px, 7vw, 96px);
 }
-.intro-fig--flower {
-  --fw: clamp(44px, 4.4vw, 72px);
-  width: var(--fw);
-  margin: calc(var(--fw) * -0.169) 0 calc(var(--fw) * -0.175);
+.intro-panel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2vw, 28px);
+  min-height: 210px;
+  padding: clamp(28px, 2.6vw, 40px);
+  border: 0.5px solid rgba(0, 0, 0, 0.07);
+  border-radius: 54px;
+  background: var(--color-pure-white, #fdfdfd);
+}
+.intro-panel__num {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ash-gray, #8f8f8f);
+}
+.intro-panel p {
+  font-family: var(--sans);
+  font-weight: 350;
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--color-off-black, #0f1012);
 }
 
 /* «Связаться» — главное действие на первом экране (ref: zorigto.ru)
@@ -1558,15 +1528,15 @@ body { overflow-x: hidden; }
   z-index: 200;
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: var(--color-off-white, #f2f2f4);
   touch-action: none;
 }
 .loader__ring {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.14);
-  border-top-color: #000000;
+  border: 2px solid rgba(15, 16, 18, 0.14);
+  border-top-color: var(--color-off-black, #0f1012);
   animation: loader-spin 700ms linear infinite;
 }
 .loader.is-done {
@@ -1589,7 +1559,7 @@ body { overflow-x: hidden; }
    уходит за экран, а не срезается по верхней границе колонки бейджа.
    Значение ставит lanyard.js. */
 .lanyard {
-  --ly-card-w: 220px;
+  --ly-card-w: 200px;
   --ly-s: 1;
   --ly-bleed: 0px;
   --u: calc(16px * var(--ly-s));
@@ -1603,6 +1573,7 @@ body { overflow-x: hidden; }
   pointer-events: none;
   user-select: none;
   touch-action: none;
+  z-index: 0;
 }
 .lanyard-canvas {
   position: absolute;
@@ -1611,10 +1582,15 @@ body { overflow-x: hidden; }
   height: 100%;
   display: block;
   pointer-events: none;
+  /* Ремешок размыт и гаснет к верху: он проступает из-за заголовка,
+     а не начинается резкой линией у края экрана. */
+  filter: blur(8px);
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.35) 14%, #000 34%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.35) 14%, #000 34%);
 }
-/* Карточка бейджа: обычная белая поверхность в тон первого экрана —
-   волосяная кромка и мягкая тень, без глянца и бликов. Кромка — тенью,
-   рамка прозрачная: так она рисуется и в forced-colors. */
+/* Карточка бейджа: белая поверхность в тон системе design.md — волосяная
+   кромка, без тени; кромка задана рамкой, а не тенью. */
 .lanyard-card {
   position: absolute;
   left: 0;
@@ -1625,12 +1601,13 @@ body { overflow-x: hidden; }
   pointer-events: auto;
   will-change: transform;
   /* Радиус = радиус фото + отступ до края карточки */
-  border-radius: calc(2.2 * var(--u));
-  background: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 20px 40px -26px rgba(22, 20, 42, 0.5);
+  border-radius: 26px;
+  background: var(--color-pure-white, #fdfdfd);
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  z-index: 2;
 }
-.lanyard-card:focus-visible { outline: 2px solid #111; outline-offset: 6px; border-radius: 18px; }
+.lanyard-card:focus-visible { outline: 2px solid var(--color-signal-blue, #0071e3); outline-offset: 6px; border-radius: 26px; }
 .lanyard-card:active { cursor: grabbing; }
 
 .ly-clip {
@@ -1642,8 +1619,8 @@ body { overflow-x: hidden; }
   height: calc(2.25 * var(--u));
   transform: translateX(-50%);
   border-radius: calc(0.3 * var(--u));
-  background: linear-gradient(90deg, #f7f3ec 0%, #b6ae9f 46%, #8b8376 56%, #ece6da 100%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(90deg, #e9e9ec 0%, #b4b5ba 46%, #898a90 56%, #dedee2 100%);
+  box-shadow: none;
   z-index: 2;
 }
 /* Внутренний слой карточки. Плоский, без 3D: композитинг видео внутри
@@ -1687,8 +1664,8 @@ body { overflow-x: hidden; }
   outline: 1px solid oklch(0 0 0 / 0.1);
   outline-offset: -1px;
   /* Пока ролик не стартовал — пустое окно, а не цветная заплатка */
-  background: rgba(10, 10, 10, 0.05);
-  box-shadow: 0 12px 24px -16px rgba(20, 18, 40, 0.55);
+  background: rgba(15, 16, 18, 0.05);
+  box-shadow: none;
 }
 .ly-photo__media {
   display: block;
@@ -1696,6 +1673,7 @@ body { overflow-x: hidden; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
+  background: rgba(15, 16, 18, 0.04);
 }
 /* Имя и роль — без плашки: карточка и так светлая, текст читается */
 .ly-plate {
@@ -1704,11 +1682,11 @@ body { overflow-x: hidden; }
 }
 .ly-name {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 350;
   font-size: calc(2.1 * var(--u));
   line-height: 1;
-  letter-spacing: -0.01em;
-  color: #0a0a0a;
+  letter-spacing: -0.025em;
+  color: var(--color-off-black, #0f1012);
 }
 /* Подпись бейджа: роль и студия одной строкой. Шрифт — как во вступлении,
    но мельче: подпись на карточке должна уступать имени. */
@@ -1719,11 +1697,11 @@ body { overflow-x: hidden; }
   bottom: calc(1.7 * var(--u));
   text-align: center;
   font-family: var(--sans);
-  font-weight: 400;
+  font-weight: 350;
   font-size: calc(0.95 * var(--u));
   line-height: 1.4;
-  letter-spacing: 0;
-  color: #111111;
+  letter-spacing: -0.01em;
+  color: var(--color-steel-gray, #5e5e5e);
 }
 .ly-foot::before {
   content: "";
@@ -1748,18 +1726,17 @@ body { overflow-x: hidden; }
 .ly-shade {
   display: none;
 }
-/* ---------- нижнее меню: стеклянная панель (ref: v-a-d-i-m.ru) ---------- */
-/* Тёмное матовое стекло с размытием, навигация ссылками и отдельная
-   пилюля Telegram справа. */
+/* ---------- нижнее меню — в стилистике design.md ---------- */
+/* Светлая плавающая капсула #fdfdfd, волосяная кромка, вес 350 и
+   signal blue только на отдельной пилюле Telegram. Теней нет: высота
+   читается сдвигом тона и волосяной линией. */
 .dock {
-  /* Размеры нижнего меню — одной группой: при правке --dock-item-h
-     панель и пилюля Telegram остаются одной высоты.
-     Радиус панели = радиус пункта (12) + отступ панели (6) + рамка (1) = 19. */
+  /* Радиус панели = радиус пункта (10) + отступ панели (6) = 16. */
   --dock-bar-pad: 6px;
   --dock-item-h: 48px;
-  --dock-item-r: 12px;
-  --dock-bar-r: 19px;
-  --dock-label: 16px;
+  --dock-item-r: 10px;
+  --dock-bar-r: 16px;
+  --dock-label: 15px;
   --dock-gap: 8px;
   --dock-pad-x: 18px;
 
@@ -1769,8 +1746,6 @@ body { overflow-x: hidden; }
   z-index: 60;
   transform: translateX(-50%);
   display: flex;
-  /* stretch: пилюля Telegram растягивается до высоты панели — обе части
-     меню стоят на одной линии */
   align-items: stretch;
   gap: 8px;
 }
@@ -1779,14 +1754,12 @@ body { overflow-x: hidden; }
   align-items: center;
   gap: 2px;
   padding: var(--dock-bar-pad);
-  /* Волосяная кромка стекла — вкладкой в тени, как у капсулы хедера;
-     прозрачная рамка оставлена, чтобы в forced-colors край рисовался */
-  border: 1px solid transparent;
+  border: 0.5px solid rgba(15, 16, 18, 0.12);
   border-radius: var(--dock-bar-r);
-  background: rgba(18, 18, 18, 0.68);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
-  backdrop-filter: blur(24px) saturate(140%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+  background: rgba(253, 253, 253, 0.9);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: none;
 }
 .dock-bar a {
   display: inline-flex;
@@ -1798,120 +1771,111 @@ body { overflow-x: hidden; }
   padding-inline: var(--dock-pad-x);
   padding-inline-start: calc(var(--dock-pad-x) - 2px);
   border-radius: var(--dock-item-r);
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--color-off-black, #0f1012);
   font-family: var(--sans);
   font-size: var(--dock-label);
-  font-weight: 500;
+  font-weight: 350;
+  letter-spacing: -0.02em;
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease-out;
+  transition: background-color 120ms ease, color 120ms ease, transform 150ms ease-out;
 }
-/* Иконка рисуется currentColor, толщина штриха — по весу текста рядом */
+/* Иконка рисуется currentColor, штрих тоньше — под вес 350 */
 .dock-icon {
   width: 1.25em;
   height: 1.25em;
   flex: none;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-/* Иконка нарисована в сетке 24px и уменьшается до 20px: без non-scaling-stroke
-   штрих стал бы 1.33px. Здесь он остаётся ровно 2px, как у текста веса 500. */
 .dock-icon * { vector-effect: non-scaling-stroke; }
 @media (hover: hover) {
-  .dock-bar a:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+  .dock-bar a:hover { background: rgba(15, 16, 18, 0.05); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .dock-bar a:hover { transform: translateY(-1px); }
   .dock-bar a:active { transform: scale(0.96); }
 }
 /* Раздел, который сейчас на экране */
 .dock-bar a.is-active {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
+  background: rgba(15, 16, 18, 0.06);
+  color: var(--color-off-black, #0f1012);
 }
-/* Telegram — отдельная пилюля, как в референсе */
+/* Telegram — голубая контурная пилюля: цвет только в линии и тексте. */
 .dock-cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  /* Высоту задаёт .dock (align-items: stretch) — пилюля вровень с панелью */
   padding-block: 0;
   padding-inline: 22px;
   padding-inline-start: 20px;
-  border: 1px solid transparent;
+  border: 0.5px solid var(--color-signal-blue, #0071e3);
   border-radius: 999px;
-  background-color: rgba(18, 18, 18, 0.68);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
-  backdrop-filter: blur(24px) saturate(140%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
-  color: #ffffff;
+  background-color: rgba(253, 253, 253, 0.9);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  color: var(--color-signal-blue, #0071e3);
   font-family: var(--sans);
   font-size: var(--dock-label);
-  font-weight: 500;
+  font-weight: 350;
+  letter-spacing: -0.02em;
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 150ms ease-out;
+  transition: transform 150ms ease-out, background-color 150ms ease;
 }
-/* Подсветка при наведении — отдельным слоем поверх стекла, как у пунктов
-   меню: так она перетекает, а градиент в background-image не анимируется */
 .dock-cta::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 113, 227, 0.06);
   opacity: 0;
   transition: opacity 150ms ease;
 }
 .dock-cta > * { position: relative; }
 .dock-cta svg { width: 1.2em; height: auto; flex: none; }
+.dock a:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 3px;
+}
 @media (hover: hover) {
   .dock-cta:hover::before { opacity: 1; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .dock-cta:hover { transform: translateY(-1px); }
   .dock-cta:active { transform: scale(0.96); }
 }
 
 .footer { padding-bottom: clamp(120px, 16vh, 168px); }
 
 @media (max-width: 1100px) {
-  /* заголовок занимает 7 колонок — кегль считается от ширины колонки,
-     чтобы текст ложился в две строки */
-  .intro-title-cell { grid-column: 1 / 8; }
-  .intro-title { font-size: clamp(2rem, 8cqw, 2.75rem); }
-  .intro-badge { grid-column: 8 / 13; min-height: 440px; }
-  .intro-info { grid-column: 1 / 8; grid-template-columns: 1fr; row-gap: clamp(24px, 3vw, 32px); }
-  .intro-copy { max-width: 46ch; }
-  .lanyard { --ly-card-w: 200px; }
+  /* На узких экранах рейлы убираем: дудлы не должны лезть под текст. */
+  .doodle-rail { display: none; }
+  .intro-wrap { width: min(920px, calc(100% - 48px)); }
 }
 
 @media (max-width: 860px) {
   /* Отступ снизу героя держит нижнее меню (56 + 12 нижний край) — меньше
      70 строка текста уходила бы под панель. */
-  .intro { padding-top: 28px; padding-bottom: 70px; }
-  .intro-grid { display: flex; flex-direction: column; }
-  .intro-title-cell { order: 1; }
-  .intro-title {
-    font-size: clamp(1.8rem, 8cqw, 2.9rem);
+  .intro { padding-top: 32px; padding-bottom: 84px; }
+  .intro-title { font-size: clamp(2.05rem, 8.6vw, 3rem); max-width: 16ch; }
+  /* Колонка бейджа по высоте экрана, но не меньше карточки (156*1.5)
+     плюс ремешок — иначе карточка наезжает на оффер. */
+  .intro-badge { height: clamp(300px, 42svh, 340px); margin-top: 8px; }
+  .intro-lead-row { margin-top: 24px; gap: 22px; }
+  .intro-lead { font-size: clamp(1.125rem, 4.6vw, 1.375rem); }
+  .intro-panels { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+  .intro-panel {
+    min-height: 0;
+    gap: 16px;
+    padding: 26px 24px;
+    border-radius: 32px;
   }
-  /* Колонка бейджа по высоте экрана, но не меньше карточки плюс ремешок
-     (156*1.5 + 62) — иначе карточка наезжает на оффер. */
-  .intro-badge { order: 2; min-height: clamp(296px, 42svh, 320px); margin-top: 24px; }
-  .intro-info { order: 3; margin-top: clamp(32px, 9vw, 44px); grid-template-columns: 1fr; row-gap: clamp(24px, 4vw, 32px); }
-  .intro-copy { max-width: none; gap: 12px; }
   .lanyard { --ly-card-w: 156px; }
-  /* Марка на телефоне — мельче: не съедает высоту первого экрана. */
-  .intro-fig--flower {
-    --fw: 32px;
-    margin: calc(var(--fw) * -0.169) 0 calc(var(--fw) * -0.175);
-  }
   /* Между героем и «Проектами» — вдвое меньше воздуха */
   .cases { padding-top: 16px; }
   .dock {
@@ -1928,15 +1892,35 @@ body { overflow-x: hidden; }
 }
 
 @media (min-width: 560px) and (max-width: 860px) {
-  .intro-badge { min-height: 430px; }
+  .intro-badge { height: 380px; }
   .lanyard { --ly-card-w: 190px; }
+}
+
+/* Короткие десктопные экраны (ноутбук 1024×768 и ниже): ужимаем вертикаль,
+   чтобы кнопка «Связаться» не уходила под плавающее меню. */
+@media (min-width: 861px) and (max-height: 820px) {
+  .intro { padding-top: 28px; }
+  .intro-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+  .intro-badge { height: 320px; margin-top: 4px; }
+  .intro-lead-row { margin-top: 16px; gap: 14px; }
+  .intro-lead { font-size: clamp(1.0625rem, 1.7vw, 1.25rem); }
+  /* Панели начинаются ниже первого экрана: плавающее меню не должно
+     наезжать на их текст. */
+  .intro-panels { margin-top: 130px; }
+}
+
+@media (min-width: 861px) and (max-height: 720px) {
+  .intro-title { font-size: clamp(1.9rem, 4.2vw, 2.25rem); }
+  .intro-badge { height: 300px; }
+  .lanyard { --ly-card-w: 180px; }
+  .intro-panels { margin-top: 110px; }
 }
 
 /* Низкие экраны (телефон в портрете, 700 и меньше): карточка и колонка
    уменьшаются. Иначе кнопка «Связаться» уходит под плавающее меню —
    на экране 568 px для первого экрана просто не хватает места. */
 @media (max-width: 860px) and (max-height: 700px) {
-  .intro-badge { min-height: 248px; }
+  .intro-badge { height: 258px; }
   .lanyard { --ly-card-w: 124px; }
 }
 

@@ -9,8 +9,6 @@
     <!-- Эффект шариков отключён: скрипт не подключается, библиотека не качается.
          Вернуть: снять комментарий с тега и с data-balloons в home.html. -->
     <!-- <script src="js/balloons.js" defer></script> -->
-    <!-- Топографические фоны (первый экран и карточка услуги): отдельный WebGL-бандл -->
-    {{ if .IsHome }}<script type="module" src="{{ "app/hero-topography.js" | relURL }}"></script>{{ end }}
     <script src="{{ "js/main.js" | relURL }}" defer></script>
   </body>
 </html>

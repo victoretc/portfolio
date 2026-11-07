@@ -6,65 +6,74 @@
 </div>
 
 {{ partial "svg-symbols.html" . }}
+{{ partial "doodle-sprite.html" . }}
 
-<!-- ПЕРВЫЙ БЛОК — по референсу zorigto.ru -->
+<!-- ПЕРВЫЙ БЛОК — в стилистике design.md (Augen Pro): клинический
+     off-white, тихий вес 350, единственный акцент — signal blue.
+     Дудлы из doodles.svg разбросаны по боковым рейлам и приглушены. -->
 <!-- data-hero: первый экран ждёт готовности страницы (шрифты + снятие
-     шторки-лоадера) и появляется ступенями: заголовок → левая колонка →
-     правая колонка. -->
+     шторки-лоадера) и появляется ступенями: заголовок → бейдж → оффер →
+     панели. -->
 <section class="intro" id="top" data-hero>
-  <!-- Топографические линии (WebGL): app/hero-topography.js -->
-  <div class="intro-bg" id="hero-topography" data-topography data-line-color="#eaeae5" aria-hidden="true"></div>
+  {{ partial "hero-doodles.html" . }}
+
   <div class="intro-wrap">
-    <div class="intro-grid">
-      <div class="intro-title-cell">
-        <h1 class="intro-title" data-reveal style="--i: 0"><span class="intro-mark intro-mark--left">Богатов</span>, студия разработки из&nbsp;<span class="intro-mark intro-mark--yellow intro-mark--right">Бреста</span></h1>
-      </div>
+    <!-- Заголовок стоит над ремешком: холст бейджа поднят к верху страницы,
+         размыт и уходит под буквы, поэтому кажется, что бейдж вырастает
+         из текста. -->
+    <header class="intro-head">
+      <h1 class="intro-title" data-reveal style="--i: 0">Богатов, студия разработки из&nbsp;Бреста</h1>
+    </header>
 
-      <div class="intro-badge">
-        <div class="lanyard"
-          data-lanyard
-          data-strap-color="#1a1a1a">
-          <canvas class="lanyard-canvas" data-lanyard-canvas aria-hidden="true"></canvas>
+    <div class="intro-badge">
+      <div class="lanyard"
+        data-lanyard
+        data-strap-color="#1a1a1a">
+        <canvas class="lanyard-canvas" data-lanyard-canvas aria-hidden="true"></canvas>
 
-          <div class="lanyard-card" data-lanyard-card
-            aria-label="Бейдж: Виктор, арт директор студии «Богатов». Потяните, чтобы качнуть.">
-            <div class="ly-clip" aria-hidden="true"></div>
-            <div class="ly-inner" data-lanyard-inner>
-              <div class="ly-face ly-face--front">
-                <div class="ly-slot" aria-hidden="true"></div>
-                <div class="ly-body">
-                  <div class="ly-photo">
-                    <video class="ly-photo__media" src="{{ "video/studio.mp4" | relURL }}" muted playsinline preload="none" width="420" height="420"></video>
-                  </div>
-                  <div class="ly-plate">
-                    <p class="ly-name">Виктор</p>
-                  </div>
+        <div class="lanyard-card" data-lanyard-card
+          aria-label="Бейдж: Виктор, арт директор студии «Богатов». Потяните, чтобы качнуть.">
+          <div class="ly-clip" aria-hidden="true"></div>
+          <div class="ly-inner" data-lanyard-inner>
+            <div class="ly-face ly-face--front">
+              <div class="ly-slot" aria-hidden="true"></div>
+              <div class="ly-body">
+                <div class="ly-photo">
+                  <video class="ly-photo__media" src="{{ "video/studio.mp4" | relURL }}" muted playsinline preload="none" width="420" height="420"></video>
                 </div>
-                <p class="ly-foot">Рукастый Рук, Богатов</p>
+                <div class="ly-plate">
+                  <p class="ly-name">Виктор</p>
+                </div>
               </div>
+              <p class="ly-foot">Рукастый Рук, Богатов</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="intro-info">
-        <div class="intro-col" data-reveal style="--i: 1">
-          <!-- Марка — в начале блока, кнопка внизу: между ними текст
-               (ref: zorigto.ru: иконка и кнопки стоят в разных местах). -->
-          <img class="intro-fig intro-fig--flower" src="{{ "img/shape-flower.svg" | relURL }}" alt="" width="622" height="720" loading="eager">
-          <p class="intro-lead">Сделаем сайт, который приводит клиентов, а&nbsp;не&nbsp;украшает интернет. Шесть лет в разработке.</p>
-          <a class="cta-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
-            <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
-            <span>Связаться</span>
-          </a>
-        </div>
+    <div class="intro-lead-row" data-reveal style="--i: 1">
+      <p class="intro-lead">Сделаем сайт, который приводит клиентов, а&nbsp;не&nbsp;украшает интернет. Шесть лет в разработке.</p>
+      <a class="cta-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
+        <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+        <span>Связаться</span>
+      </a>
+    </div>
 
-        <div class="intro-copy" data-reveal style="--i: 2">
-          <p class="intro-note">Дизайн и тексты пишем под ваш бизнес, а не переписываем из шаблона.</p>
-          <p>Вы общаетесь напрямую с разработчиком и дизайнером — без менеджеров между вами и результатом.</p>
-          <p>Изучаем, кто ваш клиент и что мешает ему нажать «Купить».</p>
-        </div>
-      </div>
+    <!-- Три панели: то, что раньше стояло колонкой заметок. -->
+    <div class="intro-panels">
+      <article class="intro-panel" data-reveal style="--i: 2">
+        <span class="intro-panel__num" aria-hidden="true">01</span>
+        <p>Дизайн и тексты пишем под ваш бизнес, а не переписываем из шаблона.</p>
+      </article>
+      <article class="intro-panel" data-reveal style="--i: 3">
+        <span class="intro-panel__num" aria-hidden="true">02</span>
+        <p>Вы общаетесь напрямую с разработчиком и дизайнером — без менеджеров между вами и результатом.</p>
+      </article>
+      <article class="intro-panel" data-reveal style="--i: 4">
+        <span class="intro-panel__num" aria-hidden="true">03</span>
+        <p>Изучаем, кто ваш клиент и что мешает ему нажать «Купить».</p>
+      </article>
     </div>
   </div>
 </section>

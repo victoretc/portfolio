@@ -160,6 +160,7 @@
   var t = 0;
   // Насколько холст с ремешком поднят к верху страницы.
   var bleed = 0;
+  var lastBleed = -1;
   // Колонка, в которой висит бейдж: по её низу выравнивается карточка.
   var area = host.parentElement;
   var areaH = 0;
@@ -187,7 +188,7 @@
 
   function readWidth() {
     var v = parseFloat(getComputedStyle(host).getPropertyValue("--ly-card-w"));
-    return isFinite(v) && v > 80 ? v : 232;
+    return isFinite(v) && v > 80 ? v : 200;
   }
 
   /* Геометрия ремешка и карточки. cardTop — где по расчёту виснет верх
@@ -259,16 +260,16 @@
     lowLen = Math.round(cw * 0.22);
     arm = ringR * 2 + clipH + ch * 0.55;
 
-    /* Холст поднимается к верхнему краю страницы: ремешок уходит за край
-       экрана, а не срезается по верхней границе колонки бейджа. Карточка
-       при этом остаётся на месте — её положение компенсируется в targetTop.
-       На телефоне бейдж стоит под заголовком: ремешок ушёл бы по буквам, там
-       подъём не нужен. */
+    /* Холст поднимается к верхнему краю страницы: ремешок уходит за текст
+       заголовка и за верх экрана, а не срезается по границе колонки бейджа.
+       Карточка при этом остаётся на месте — её положение компенсируется
+       в targetTop. Так бейдж «вырастает» из заголовка на всех ширинах. */
     bleed = 0;
-    if (area && window.matchMedia('(min-width: 861px)').matches) {
+    if (area) {
       bleed = Math.max(0, Math.round(area.getBoundingClientRect().top + (window.scrollY || 0)));
     }
     host.style.setProperty('--ly-bleed', bleed + 'px');
+    lastBleed = bleed;
 
     host.style.setProperty("--ly-s", (cw / 240).toFixed(4));
     host.style.setProperty("--ly-ring", ringR + "px");
@@ -330,10 +331,10 @@
 
   function metal(x0, y0, x1, y1) {
     var g = ctx.createLinearGradient(x0, y0, x1, y1);
-    g.addColorStop(0, "#f4efe4");
-    g.addColorStop(0.45, "#b9b0a0");
-    g.addColorStop(0.55, "#8f8778");
-    g.addColorStop(1, "#ece6da");
+    g.addColorStop(0, "#ececef");
+    g.addColorStop(0.45, "#b3b4b9");
+    g.addColorStop(0.55, "#85868c");
+    g.addColorStop(1, "#dedee2");
     return g;
   }
 
@@ -461,6 +462,24 @@
   draw();
   place();
   requestAnimationFrame(tick);
+
+  /* Шрифт грузится после первого кадра и меняет высоту заголовка — вместе с
+     ней уезжает вниз колонка бейджа. Пересобираем геометрию, когда шрифты
+     готовы и когда догрузилась страница, иначе карточка висит по старому
+     месту и наезжает на заголовок. */
+  function rebuild() {
+    if (!area) return;
+    var top = Math.round(area.getBoundingClientRect().top + (window.scrollY || 0));
+    if (Math.abs(top - lastBleed) < 1) return;
+    build();
+    draw();
+    place();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(rebuild).catch(function () {});
+  }
+  window.addEventListener('load', rebuild);
+  window.setTimeout(rebuild, 900);
 
   // Видео в окне бейджа: сначала тянется, потом — с паузой — играет.
   // Пока грузится, на странице висит чёрный круг-лоадер.
