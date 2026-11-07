@@ -1,0 +1,100 @@
+{{ define "main" }}
+  {{/* Шапка возврата на главную — тот же partial site-nav, что на главной:
+        логотип по центру страницы на той же высоте (16px), кнопка «назад»
+        внутри общей плашки. Не липкая — уезжает вместе со страницей. */}}
+  {{ partial "site-nav.html" . }}
+
+  <div class="posts-header posts-header--page">
+    <span>{{ i18n "date" }}</span>
+    <span>{{ i18n "title" }}</span>
+    <span>{{ i18n "composition" }}</span>
+  </div>
+
+  <div class="posts-container">
+    <div class="post-item post-item--page">
+      <div class="post-data">{{ .Date.Format "02.01.2006" }}</div>
+
+      {{/* Заголовок — обычный текст. Обложка здесь намеренно не выводится:
+           фотография живёт только на главной (слайд и карточки), а на странице
+           поста она была просто картинкой рядом с текстом без всякой роли. */}}
+      <div class="post-hero-panel">
+        <div class="post-hero-body">
+          <h1>{{ .LinkTitle }}</h1>
+        </div>
+      </div>
+
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+
+
+      <div class="post-composition">
+        <nav class="toc-nav">
+          {{ .TableOfContents }}
+        </nav>
+      {{/* Шаринг живёт в правой колонке под оглавлением и липнет к краю
+           экрана, поэтому кнопки видны, пока читатель листает статью.
+           Две иконки: Telegram — обычная ссылка, копирование — кнопка
+           со сменой иконки; берём .Permalink, а не location.href. */}}
+      {{- $shareUrl := .Permalink -}}
+      {{- $shareText := .Title -}}
+      <div class="share" data-share data-url="{{ $shareUrl }}">
+        <span class="share-label" id="share-title">{{ i18n "share" }}</span>
+        <div class="share-icons">
+          <a class="share-ico-btn" aria-label="Telegram"
+             href="https://t.me/share/url?url={{ $shareUrl | urlquery }}&amp;text={{ $shareText | urlquery }}"
+             target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M22 2 11 13"></path>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </a>
+          <button type="button" class="share-ico-btn" data-copy-link
+                  aria-label="{{ i18n "copy_link" }}"
+                  data-url="{{ $shareUrl }}" data-copied="{{ i18n "copied" }}">
+            <svg class="share-copy-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <svg class="share-check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<div class="read-more-container">
+    <h3 class="read-more-header">{{ i18n "read_more" }}</h3>
+    <div class="read-more-posts">
+        {{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+        {{ $randomPosts := $allPosts | shuffle | first 3 }}
+        {{ range $randomPosts }}
+            {{ if ne .RelPermalink $.RelPermalink }}
+            <a href="{{ .RelPermalink }}" class="read-more-post">
+                <div class="post-data">{{ .Date.Format "02.01.2006" }}</div>
+                <h4>{{ .Title }}</h4>
+            </a>
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
+
+{{/* Плавающая кнопка «наверх»: появляется после 400px прокрутки, пока
+     читатель в глубине статьи. Показом и прокруткой занимается main.js. */}}
+<button type="button" class="to-top" data-to-top>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+    <span>{{ i18n "back_to_top" }}</span>
+</button>
+{{ end }}

@@ -1,0 +1,12 @@
+<footer class="footer-container">
+    <div class="footer-links">
+        <a class="telegram-button footer-button" href="https://t.me/spoon_of_quality/12">Telegram</a>
+        {{ with site.GetPage "/posts/about-me" }}
+        <a class="about-button footer-button" href="{{ .RelPermalink }}">{{ i18n "about" }}</a>
+        {{ end }}
+        <a href="#" class="footer-button yet-button">{{ i18n "back_to_top" }}</a>
+    </div>
+    <div class="footer-copyright">
+        <p>2026</p>
+    </div>
+</footer>

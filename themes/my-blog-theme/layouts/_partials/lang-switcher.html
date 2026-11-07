@@ -1,0 +1,20 @@
+<nav class="lang-switcher lang-switcher--term" aria-label="Language switcher">
+  {{ $langs := site.Home.AllTranslations }}
+  {{ $current := . }}
+  {{ range $i, $lang := $langs }}
+    {{ if eq $lang.Language.Lang site.Language.Lang }}
+      <span class="term-opt term-opt--current" aria-current="true" lang="{{ $lang.Language.Lang }}">{{ $lang.Language.Lang }}</span>
+    {{ else }}
+      {{ $target := $lang.RelPermalink }}
+      {{ with $current.Translations }}
+        {{ range . }}
+          {{ if eq .Language.Lang $lang.Language.Lang }}
+            {{ $target = .RelPermalink }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      <a class="term-opt" data-set-lang="{{ $lang.Language.Lang }}" href="{{ $target }}" lang="{{ $lang.Language.Lang }}">{{ $lang.Language.Lang }}</a>
+    {{ end }}
+    {{ if lt (add $i 1) (len $langs) }}<span class="term-sep">/</span>{{ end }}
+  {{ end }}
+</nav>

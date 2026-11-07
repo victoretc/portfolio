@@ -1,0 +1,9 @@
+{{- $content := .Content -}}
+{{- $noCode := $content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" -}}
+{{- $plain := $noCode | plainify -}}
+{{- $excerpt := $plain | truncate 200 -}}
+{{- if $excerpt -}}
+  {{- $excerpt -}}
+{{- else -}}
+  {{- .Plain | truncate 200 -}}
+{{- end -}}

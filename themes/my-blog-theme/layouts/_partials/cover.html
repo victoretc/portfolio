@@ -1,0 +1,74 @@
+{{- /*
+  Resolves a page's cover image and prints its optimized permalink.
+
+  Resolution order:
+    1. `cover` in frontmatter, a string: a resource inside the page bundle
+       (cover = "photo.jpg") or a project-wide asset
+       (cover = "images/photo.jpg"). This is the explicit way to pick a photo.
+    2. a page-bundle resource named cover-hero.* (article hero) or
+       cover-list.* (homepage card);
+    3. a page-bundle resource named cover.*;
+    4. the shared assets/images/article-cover.png, used until real per-post
+       covers exist.
+
+  Set `cover = false` in frontmatter to opt a post out entirely; the layouts
+  then fall back to the bare color block.
+
+  Usage: {{ partial "cover.html" (dict "page" . "width" 145 "height" 90) }}
+*/ -}}
+
+{{- $page := .page -}}
+{{- $width := .width | default 1600 -}}
+{{- $height := .height | default 1000 -}}
+{{- $variant := .variant | default "" -}}
+
+{{- if ne $page.Params.cover false -}}
+  {{- $image := "" -}}
+
+  {{- /* 1. explicit path from frontmatter */ -}}
+  {{- with $page.Params.cover -}}
+    {{- $image = $page.Resources.GetMatch . -}}
+    {{- if not $image -}}
+      {{- $image = resources.Get (strings.TrimPrefix "/" .) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* 2. variant-specific bundle resource */ -}}
+  {{- if not $image -}}
+    {{- if eq $variant "hero" -}}
+      {{- $image = $page.Resources.GetMatch "{cover-hero,Cover-hero,CoverHero,coverHero}.{jpg,jpeg,png,webp,avif}" -}}
+    {{- end -}}
+    {{- if eq $variant "list" -}}
+      {{- $image = $page.Resources.GetMatch "{cover-list,Cover-list,CoverList,coverList}.{jpg,jpeg,png,webp,avif}" -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* 3. any cover.* in the bundle */ -}}
+  {{- if not $image -}}
+    {{- $image = $page.Resources.GetMatch "{cover,Cover}.{jpg,jpeg,png,webp,avif}" -}}
+  {{- end -}}
+
+  {{- /* 4. shared fallback */ -}}
+  {{- if not $image -}}
+    {{- with resources.Get "images/article-cover.png" -}}
+      {{- $image = . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- with $image -}}
+    {{- $resized := . -}}
+    {{- if and (ge $width 600) (ge $height 400) -}}
+      {{- $resized = .Resize (printf "%dx%d q82 webp" $width $height) -}}
+    {{- else -}}
+      {{- $resized = .Resize (printf "%dx%d webp" $width $height) -}}
+    {{- end -}}
+    <img
+      class="cover-image"
+      src="{{ $resized.RelPermalink }}"
+      width="{{ $resized.Width }}"
+      height="{{ $resized.Height }}"
+      alt="{{ $page.LinkTitle }}"
+      loading="lazy"
+      decoding="async">
+  {{- end -}}
+{{- end -}}

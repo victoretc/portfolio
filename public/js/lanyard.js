@@ -399,6 +399,8 @@
 
   function onDown(e) {
     if (e.button > 0) return;
+    /* Кнопка «вернуть» внутри окна не должна начинать перетаскивание. */
+    if (e.target.closest && e.target.closest('[data-photo-replay]')) return;
     var xy = local(e);
     var T = pts[iT];
     drag = { id: e.pointerId, ox: T.x - xy[0], oy: T.y - xy[1], tx: T.x, ty: T.y, sx: xy[0], sy: xy[1], moved: false };
@@ -484,6 +486,7 @@
   // Видео в окне бейджа: сначала тянется, потом — с паузой — играет.
   // Пока грузится, на странице висит чёрный круг-лоадер.
   var photo = card.querySelector('.ly-photo__media');
+  var replay = card.querySelector('[data-photo-replay]');
   var loader = document.querySelector('[data-loader]');
 
   function hideLoader() {
@@ -511,6 +514,33 @@
     photo.addEventListener('error', function () { hideLoader(); }, { once: true });
   } else {
     hideLoader();
+  }
+
+  /* «Вернуть»: ролик заканчивается пустым кадром — человек ушёл. Кнопка
+     появляется к этому моменту и перезапускает видео с начала. */
+  if (photo && replay) {
+    var replayAt = parseFloat(photo.getAttribute('data-replay-at')) || 0;
+    var replayShown = false;
+    var showReplay = function () {
+      if (replayShown) return;
+      replayShown = true;
+      replay.hidden = false;
+    };
+    var hideReplay = function () {
+      replayShown = false;
+      replay.hidden = true;
+    };
+    photo.addEventListener('timeupdate', function () {
+      if (replayAt && photo.currentTime >= replayAt) showReplay();
+    });
+    photo.addEventListener('ended', showReplay);
+    photo.addEventListener('play', hideReplay);
+    replay.addEventListener('click', function () {
+      hideReplay();
+      try { photo.currentTime = 0; } catch (err) {}
+      var p = photo.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    });
   }
   // Страховка: лоадер не должен залипать ни при каких обстоятельствах
   window.setTimeout(hideLoader, 6000);

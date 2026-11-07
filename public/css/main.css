@@ -75,8 +75,6 @@
   --gutter: clamp(40px, 16vw, 280px);
   /* Один отступ для всех блоков: внутри секций и между секциями */
   --gap-block: clamp(40px, 7vh, 72px);
-  /* Низ героя: на десктопе гасится при стыковке с «Проектами» */
-  --intro-pad-b: clamp(28px, 3.4vw, 44px);
   /* Низ героя держит дудл-стрелку — при стыковке секций гасится целиком */
   --hero-pad-b: clamp(96px, 12vh, 140px);
   --sans: "Onest", "Golos Text", "Helvetica Neue", Arial, sans-serif;
@@ -279,12 +277,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- chapters: full-bleed colour fields ---------- */
 .chapter { position: relative; padding-block: var(--gap-block); scroll-margin-top: 64px; }
 /* Секции стыкуются встык: удвоенные падинги соседей сводятся к одному --gap-block.
-   Низ героя (.intro) тоже гасим — иначе к шву добавляется его padding-bottom
-   и «Проекты» отрываются от героя сильнее, чем остальные блоки.
-   На телефоне низ героя держит нижний док, поэтому там отступ не трогаем. */
-@media (min-width: 861px) {
-  .intro + .chapter { margin-top: calc(-1 * var(--intro-pad-b)); }
-}
+   Первый экран — отдельная плашка: у неё свой низ, поэтому «Сделали» начинается
+   после карточки на обычный отступ секции, без подтягивания вверх. */
 .chapter + .chapter,
 .chapter + .footer { margin-top: calc(-1 * var(--gap-block)); }
 
@@ -1226,6 +1220,8 @@ html:not(.js) .loader { display: none; }
   .cta, .cta:hover, .cta:active { transition: none; }
   .footer-key, .footer-key:hover, .footer-key:active { transition: none; }
   .cta-link, .cta-link:hover, .cta-link:active { transition: none; }
+  /* Фон первого экрана остаётся во всю ширину */
+  .intro-field { animation: none !important; }
 }
 
 /* ---------- phone (390) ---------- */
@@ -1339,11 +1335,54 @@ body { overflow-x: hidden; }
 .intro {
   --doodle-w: clamp(150px, 22vw, 380px);
   --ly-card-w: 200px;
+  /* Ширина «карточки» на скролле = колонка контента сайта (.cases-inner) */
+  --intro-card-max: min(var(--shell), calc(100% - var(--gutter)));
+  /* Радиус как у карточек-поверхностей ниже: project-card__visual-link */
+  --intro-card-radius: clamp(16px, 2vw, 24px);
   position: relative;
-  background: var(--color-off-white, #f2f2f4);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  /* За плашкой открывается белый холст, как у следующей секции. */
+  background: #fff;
   color: var(--color-off-black, #0f1012);
-  padding: clamp(36px, 4.2vw, 56px) 0 clamp(56px, 7vw, 96px);
+  padding: clamp(32px, 3.6vw, 48px) 0 clamp(56px, 7vw, 96px);
   overflow: clip;
+}
+
+/* Плашка-фон первого экрана: сверху во всю ширину, при скролле сжимается
+   до колонки контента и сразу берёт рабочий радиус — как обложка в
+   victors-blog. Таймлайн нативный: без scroll-driven animations остаётся
+   прежний полноэкранный фон. */
+.intro-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin-inline: auto;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--color-off-white, #f2f2f4);
+  pointer-events: none;
+  animation: intro-field-morph linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 60svh;
+}
+/* Радиус включается в первые 1% прокрутки — карточка не проходит через
+   ряд промежуточных «полускруглений». Тень не нужна: плашку отделяет тон. */
+@keyframes intro-field-morph {
+  from {
+    max-width: 100%;
+    border-radius: 0;
+  }
+  1% {
+    border-radius: var(--intro-card-radius);
+  }
+  to {
+    max-width: var(--intro-card-max);
+    border-radius: var(--intro-card-radius);
+  }
 }
 
 /* Дудлы: два абсолютных рейла по краям героя. Координаты и повороты
@@ -1357,9 +1396,16 @@ body { overflow-x: hidden; }
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  /* Дудлы живут у внешнего края и гаснут к центру: за текстом их нет. */
+  -webkit-mask-image: linear-gradient(to right, #000 0 42%, transparent 78%);
+  mask-image: linear-gradient(to right, #000 0 42%, transparent 78%);
 }
 .doodle-rail--left { left: 0; }
-.doodle-rail--right { right: 0; }
+.doodle-rail--right {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000 0 42%, transparent 78%);
+  mask-image: linear-gradient(to left, #000 0 42%, transparent 78%);
+}
 .doodle-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .doodle {
   position: absolute;
@@ -1380,8 +1426,10 @@ body { overflow-x: hidden; }
 .intro-wrap {
   position: relative;
   z-index: 1;
-  width: min(900px, calc(100% - 48px));
-  margin-inline: auto;
+  /* Та же колонка, что у «Проектов» и «Услуг»: плашка на скролле
+     сходится ровно по её краям. */
+  width: min(var(--shell), calc(100% - var(--gutter)));
+  margin: 0 auto;
 }
 
 /* Заголовок: единственный крупный кегль, набран тихим весом 350.
@@ -1403,6 +1451,38 @@ body { overflow-x: hidden; }
   color: var(--color-off-black, #0f1012);
 }
 
+/* Сцена героя: бейдж с оффером в центре, панели — по бокам.
+   Слева две карточки одна под другой, справа одна со сдвигом вниз:
+   получается спокойная диагональ, а не сетка «три в ряд». */
+.intro-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 600px) minmax(0, 200px);
+  justify-content: center;
+  column-gap: clamp(24px, 3.2vw, 40px);
+  align-items: start;
+  margin-top: clamp(8px, 1.4vw, 20px);
+}
+.intro-center {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+.intro-side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 3.4vw, 52px);
+}
+.intro-side--left {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: clamp(40px, 5vw, 76px);
+}
+.intro-side--right {
+  grid-column: 3;
+  grid-row: 1;
+  padding-top: clamp(120px, 14vw, 210px);
+}
+
 /* Колонка бейджа. Карточка выравнивается по низу колонки, а холст
    с ремешком уходит вверх, к верху страницы, — ремешок проходит за
    заголовком. Сам холст размыт: верёвки читаются как тень за буквами,
@@ -1411,103 +1491,179 @@ body { overflow-x: hidden; }
   position: relative;
   z-index: 1;
   height: clamp(330px, 38svh, 410px);
-  margin-top: clamp(8px, 1.2vw, 18px);
 }
 
-/* Оффер и кнопка: под бейджем, по центру, одной колонкой. */
+/* Оффер слева, кнопка справа: одна широкая строка под бейджем. */
 .intro-lead-row {
   position: relative;
+  isolation: isolate;
   z-index: 2;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: clamp(16px, 2.2vw, 24px);
-  margin-top: clamp(20px, 2.4vw, 32px);
-  text-align: center;
+  justify-content: space-between;
+  gap: clamp(20px, 2.4vw, 32px);
+  margin-top: clamp(56px, 6.4vw, 96px);
+  text-align: left;
+}
+/* Мягкая подложка цвета холста: за текстом и кнопкой нет дудлов. */
+.intro-lead-row::before {
+  content: "";
+  position: absolute;
+  inset: -18px -24px;
+  z-index: -1;
+  border-radius: 40px;
+  background: var(--color-off-white, #f2f2f4);
+  filter: blur(20px);
 }
 .intro-lead {
-  max-width: 34ch;
+  max-width: 30ch;
   font-family: var(--sans);
   font-weight: 350;
-  font-size: clamp(1.1875rem, 1.9vw, 1.5rem);
-  line-height: 1.4;
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  line-height: 1.35;
   letter-spacing: -0.025em;
   color: var(--color-off-black, #0f1012);
 }
+.intro-lead-row .cta-link { flex: none; }
 
-/* Три панели: мягкие белые карточки 54px без теней — высота читается
-   сдвигом тона #fdfdfd на #f2f2f4 и волосяной кромкой. */
-.intro-panels {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 1.6vw, 22px);
-  margin-top: clamp(56px, 7vw, 96px);
-}
+/* Заметки на полях: без карточек, заливок и скруглений. Только волосяная
+   линия, голубой номер с коротким штрихом и текст на фоне — как выноски
+   в спецификации, а не плитки. */
 .intro-panel {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 2vw, 28px);
-  min-height: 210px;
-  padding: clamp(28px, 2.6vw, 40px);
-  border: 0.5px solid rgba(0, 0, 0, 0.07);
-  border-radius: 54px;
-  background: var(--color-pure-white, #fdfdfd);
+  gap: clamp(12px, 1.2vw, 16px);
+  padding-top: clamp(14px, 1.4vw, 18px);
+  border-top: 0.5px solid rgba(15, 16, 18, 0.16);
+  background: none;
+  border-radius: 0;
 }
-.intro-panel__num {
+/* Мягкая заплатка цвета фона: текст стоит на чистом холсте, а дудлы
+   растворяются перед ним, не обрезаясь по жёсткой рамке. */
+.intro-panel__veil {
+  position: absolute;
+  inset: -18px -24px;
+  z-index: -1;
+  border-radius: 40px;
+  background: var(--color-off-white, #f2f2f4);
+  filter: blur(18px);
+  pointer-events: none;
+}
+.intro-panel__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-signal-blue, #0071e3);
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ash-gray, #8f8f8f);
+  letter-spacing: 0.1em;
+}
+.intro-panel__tag::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
 }
 .intro-panel p {
+  max-width: 30ch;
   font-family: var(--sans);
   font-weight: 350;
-  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
   line-height: 1.45;
   letter-spacing: -0.015em;
   color: var(--color-off-black, #0f1012);
 }
 
-/* «Связаться» — главное действие на первом экране (ref: zorigto.ru)
-   Кнопка-скруглённый прямоугольник: серая заливка, радиус 24, иконка-самолётик
-   серая. При наведении заливка светлеет, самолётик становится синим; при нажатии
-   заливка темнеет. Движений нет — только цвет, как в референсе. */
+/* На широком экране заметки превращаются в выноски: тонкая линия идёт
+   от текста к бейджу и заканчивается голубой точкой. Так три пункта
+   читаются как подписи к центральному объекту, а не как отдельный список. */
+@media (min-width: 1000px) {
+  .intro-side { gap: 120px; }
+  .intro-side--left { padding-top: 60px; }
+  .intro-side--right { padding-top: 200px; }
+  .intro-panel {
+    --leader: clamp(90px, 13vw, 190px);
+    padding-top: 0;
+    border-top: 0;
+  }
+  .intro-panel__tag::after { display: none; }
+  .intro-panel::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    width: var(--leader);
+    height: 1px;
+    background: rgba(15, 16, 18, 0.28);
+  }
+  .intro-panel::after {
+    content: "";
+    position: absolute;
+    top: 1.5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-signal-blue, #0071e3);
+  }
+  .intro-side--left .intro-panel::before {
+    left: calc(100% + 16px);
+  }
+  .intro-side--left .intro-panel::after {
+    left: calc(100% + 16px + var(--leader) - 3.5px);
+  }
+  .intro-side--right .intro-panel::before {
+    right: calc(100% + 16px);
+  }
+  .intro-side--right .intro-panel::after {
+    right: calc(100% + 16px + var(--leader) - 3.5px);
+  }
+}
+
+/* «Связаться» — единственная голубая контурная кнопка на экране.
+   Размер прежний (56 px), но заливка убрана: в design.md цвет живёт
+   в линии и тексте, а не в фоне. */
 .cta-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   height: 56px;
-  padding: 0 24px;
-  border-radius: 24px;
-  background: rgba(0, 0, 0, 0.08);
-  color: #0a0a0a;
+  padding: 0 30px;
+  border: 0.5px solid var(--color-signal-blue, #0071e3);
+  border-radius: 26px;
+  background: transparent;
+  color: var(--color-signal-blue, #0071e3);
   font-family: var(--sans);
-  font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
-  font-weight: 600;
+  font-size: clamp(1.0625rem, 1.3vw, 1.125rem);
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 250ms cubic-bezier(0, 0, 0.58, 1);
+  transition: border-color 150ms ease, color 150ms ease, transform 150ms ease-out;
 }
 .cta-link svg {
   flex: none;
   width: 24px;
   height: 20px;
-  color: #5d5d5d;
-  transition: color 120ms ease-out;
+  color: currentColor;
+}
+.cta-link:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 3px;
 }
 @media (hover: hover) {
-  .cta-link:hover { background: rgba(0, 0, 0, 0.06); }
-  .cta-link:hover svg { color: #24a1de; }
+  .cta-link:hover {
+    border-color: var(--color-pure-black, #020201);
+    color: var(--color-pure-black, #020201);
+  }
 }
-/* Нажатие — заливка темнее (в референсе 0.098) */
-.cta-link:active { background: rgba(0, 0, 0, 0.1); }
+@media (prefers-reduced-motion: no-preference) {
+  .cta-link:active { transform: scale(0.96); }
+}
 
 /* «Открыть сайт» в карточке проекта — тот же компонент, что «Связаться» на первом
    экране: серый скруглённый прямоугольник, тёмный текст, серая иконка, которая
@@ -1517,7 +1673,17 @@ body { overflow-x: hidden; }
   z-index: 2;
   height: 52px;
   padding: 0 24px;
+  border: 0;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #0a0a0a;
   font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+  font-weight: 600;
+}
+.project-card__cta svg { color: #5d5d5d; }
+.project-card__cta:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #0a0a0a;
 }
 .project-card__cta:hover svg { color: var(--accent); }
 
@@ -1675,6 +1841,37 @@ body { overflow-x: hidden; }
   object-position: 50% 50%;
   background: rgba(15, 16, 18, 0.04);
 }
+/* Возврат человека в кадр: маленький квадрат поверх опустевшего окна.
+   Появляется, когда ролик доходит до момента, где Виктор уже ушёл. */
+.ly-photo__replay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: calc(4.4 * var(--u));
+  height: calc(4.4 * var(--u));
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: calc(1 * var(--u));
+  background: var(--color-pure-white, #fdfdfd);
+  color: var(--color-off-black, #0f1012);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: calc(0.92 * var(--u));
+  line-height: 1;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background-color 150ms ease, transform 150ms ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.ly-photo__replay[hidden] { display: none; }
+@media (hover: hover) {
+  .ly-photo__replay:hover { background: rgba(15, 16, 18, 0.05); }
+}
+.ly-photo__replay:active { transform: translate(-50%, -50%) scale(0.96); }
+.ly-photo__replay:focus-visible { outline: 2px solid var(--color-signal-blue, #0071e3); outline-offset: 2px; }
 /* Имя и роль — без плашки: карточка и так светлая, текст читается */
 .ly-plate {
   width: 100%;
@@ -1804,50 +2001,9 @@ body { overflow-x: hidden; }
   background: rgba(15, 16, 18, 0.06);
   color: var(--color-off-black, #0f1012);
 }
-/* Telegram — голубая контурная пилюля: цвет только в линии и тексте. */
-.dock-cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding-block: 0;
-  padding-inline: 22px;
-  padding-inline-start: 20px;
-  border: 0.5px solid var(--color-signal-blue, #0071e3);
-  border-radius: 999px;
-  background-color: rgba(253, 253, 253, 0.9);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  backdrop-filter: blur(20px) saturate(140%);
-  color: var(--color-signal-blue, #0071e3);
-  font-family: var(--sans);
-  font-size: var(--dock-label);
-  font-weight: 350;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 150ms ease-out, background-color 150ms ease;
-}
-.dock-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(0, 113, 227, 0.06);
-  opacity: 0;
-  transition: opacity 150ms ease;
-}
-.dock-cta > * { position: relative; }
-.dock-cta svg { width: 1.2em; height: auto; flex: none; }
 .dock a:focus-visible {
   outline: 2px solid var(--color-signal-blue, #0071e3);
   outline-offset: 3px;
-}
-@media (hover: hover) {
-  .dock-cta:hover::before { opacity: 1; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .dock-cta:active { transform: scale(0.96); }
 }
 
 .footer { padding-bottom: clamp(120px, 16vh, 168px); }
@@ -1855,26 +2011,46 @@ body { overflow-x: hidden; }
 @media (max-width: 1100px) {
   /* На узких экранах рейлы убираем: дудлы не должны лезть под текст. */
   .doodle-rail { display: none; }
-  .intro-wrap { width: min(920px, calc(100% - 48px)); }
+}
+
+/* Планшет и телефон: центральная колонка идёт первой, панели — ниже.
+   На планшете две панели встают в ряд, третья занимает всю ширину. */
+@media (max-width: 999px) {
+  .intro-stage {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .intro-center {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .intro-side { display: contents; }
+  .intro-panel { grid-column: span 1; }
+  .intro-lead-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: clamp(32px, 5vw, 48px);
+  }
+  .intro-lead { max-width: 34ch; }
+}
+
+@media (max-width: 740px) {
+  .intro-stage { grid-template-columns: 1fr; }
+  .intro-panel { grid-column: 1 / -1; }
 }
 
 @media (max-width: 860px) {
   /* Отступ снизу героя держит нижнее меню (56 + 12 нижний край) — меньше
      70 строка текста уходила бы под панель. */
-  .intro { padding-top: 32px; padding-bottom: 84px; }
+  .intro { padding-top: 24px; padding-bottom: 84px; }
   .intro-title { font-size: clamp(2.05rem, 8.6vw, 3rem); max-width: 16ch; }
   /* Колонка бейджа по высоте экрана, но не меньше карточки (156*1.5)
      плюс ремешок — иначе карточка наезжает на оффер. */
   .intro-badge { height: clamp(300px, 42svh, 340px); margin-top: 8px; }
-  .intro-lead-row { margin-top: 24px; gap: 22px; }
+  .intro-lead-row { margin-top: 32px; gap: 22px; }
   .intro-lead { font-size: clamp(1.125rem, 4.6vw, 1.375rem); }
-  .intro-panels { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
-  .intro-panel {
-    min-height: 0;
-    gap: 16px;
-    padding: 26px 24px;
-    border-radius: 32px;
-  }
   .lanyard { --ly-card-w: 156px; }
   /* Между героем и «Проектами» — вдвое меньше воздуха */
   .cases { padding-top: 16px; }
@@ -1888,7 +2064,6 @@ body { overflow-x: hidden; }
     --dock-pad-x: 14px;
     gap: 6px;
   }
-  .dock-cta { padding-inline: 18px; padding-inline-start: 16px; }
 }
 
 @media (min-width: 560px) and (max-width: 860px) {
@@ -1899,21 +2074,18 @@ body { overflow-x: hidden; }
 /* Короткие десктопные экраны (ноутбук 1024×768 и ниже): ужимаем вертикаль,
    чтобы кнопка «Связаться» не уходила под плавающее меню. */
 @media (min-width: 861px) and (max-height: 820px) {
-  .intro { padding-top: 28px; }
+  .intro { padding-top: 24px; }
   .intro-title { font-size: clamp(2rem, 5vw, 3.5rem); }
-  .intro-badge { height: 320px; margin-top: 4px; }
-  .intro-lead-row { margin-top: 16px; gap: 14px; }
+  .intro-badge { height: 320px; }
+  .intro-lead-row { margin-top: 44px; gap: 14px; }
   .intro-lead { font-size: clamp(1.0625rem, 1.7vw, 1.25rem); }
-  /* Панели начинаются ниже первого экрана: плавающее меню не должно
-     наезжать на их текст. */
-  .intro-panels { margin-top: 130px; }
 }
 
 @media (min-width: 861px) and (max-height: 720px) {
   .intro-title { font-size: clamp(1.9rem, 4.2vw, 2.25rem); }
   .intro-badge { height: 300px; }
   .lanyard { --ly-card-w: 180px; }
-  .intro-panels { margin-top: 110px; }
+  .intro-lead-row { margin-top: 36px; }
 }
 
 /* Низкие экраны (телефон в портрете, 700 и меньше): карточка и колонка
@@ -1935,16 +2107,12 @@ body { overflow-x: hidden; }
     gap: 5px;
     bottom: max(12px, env(safe-area-inset-bottom));
   }
-  /* Telegram: на телефоне остаётся значок, текст уходит в aria-label */
-  .dock-cta { padding-inline: 16px; }
-  .dock-cta span { display: none; }
 }
 
 @media (max-width: 370px) {
   /* Подписи не помещаются — остаются иконки (имя ссылки — в aria-label) */
   .dock-bar a span { display: none; }
   .dock-bar a { padding-inline: 12px; }
-  .dock-cta { padding-inline: 14px; }
 }
 
 /* ---------- БЛОГ ---------- */

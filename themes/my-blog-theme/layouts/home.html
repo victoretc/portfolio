@@ -1,0 +1,278 @@
+{{ define "main" }}
+  {{ .Content }}
+
+  {{ $posts := where site.RegularPages "Type" "posts" }}
+
+  <!-- ВРЕМЕННО ЗАКОММЕНТИРОВАНО: шапка списка «Дата | Название | Время чтения».
+       У каждой карточки своя дата, название и время под фотографией, поэтому
+       эта строка колонок больше не нужна. Не удаляю — возможно понадобится.
+  <div class="posts-header posts-header--list">
+    <span>{{ i18n "date" }}</span>
+    <span>{{ i18n "title" }}</span>
+    <span class="posts-header-right">{{ i18n "reading_time" }}</span>
+  </div>
+  -->
+
+  <!-- БОЛЬШАЯ КАРТОЧКА. Показывается только если в frontmatter поста есть
+       featured = true. Листается стрелками, точками, клавиатурой и свайпом.
+
+       Текст лежит поверх фотографии, поэтому под ним обязана быть подложка:
+       белый шрифт на светлом снимке иначе нечитаем. Затемнение даёт ::after,
+       нарисованный поверх картинки градиентом от прозрачного к чёрному —
+       так тёмная подложка появляется только снизу и не глушит всю фотографию. -->
+  {{ $featured := where $posts "Params.featured" true }}
+  {{ with $featured }}
+    {{/* Точка в этой области — весь список слайдов. Она нужна отдельно,
+         потому что управление лежит внутри .featured-slide, где . уже
+         переключился на текущий пост. */}}
+    {{ $slides := . }}
+    <section class="featured" aria-label="{{ i18n "featured" }}" data-featured>
+      <div class="featured-track" data-featured-track>
+        {{ range $index, $post := $slides }}
+          {{ $cover := partial "cover.html" (dict "page" $post "width" 2000 "height" 1200 "variant" "hero") }}
+          <article class="featured-slide" data-featured-slide>
+            <a class="featured-link" href="{{ $post.RelPermalink }}">
+              {{ with $cover }}
+                <div class="featured-media">{{ . }}</div>
+              {{ end }}
+              <div class="featured-meta">
+                <span class="featured-meta-row">
+                  <span class="featured-date">{{ $post.Date.Format "02.01.2006" }}</span>
+                  <span class="featured-meta-dot" aria-hidden="true"></span>
+                  <span class="featured-time">{{ $post.ReadingTime }} {{ i18n "minutes" $post.ReadingTime }}</span>
+                </span>
+                <h2 class="featured-title">{{ $post.LinkTitle }}</h2>
+              </div>
+            </a>
+
+          </article>
+        {{ end }}
+      </div>
+
+      {{/* Управление одно и лежит поверх фотографии, а не внутри слайда:
+           в каждом слайде оно продублировало бы стрелки, но JS держит ссылку
+           только на первое — вторые стали бы мёртвыми и доступными с клавиатуры.
+           z-index поднимает блок над затемнением, которое само перехватывает
+           клики. */}}
+      <div class="featured-controls">
+        <button
+          type="button"
+          class="featured-arrow"
+          data-featured-prev
+          aria-label="{{ i18n "featured_prev" }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14.5 5.5 8.5 12l6 6.5" fill="none" stroke="currentColor" stroke-width="1.75"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="featured-dots">
+          {{ range $index, $post := $slides }}
+            <button
+              type="button"
+              class="featured-dot{{ if eq $index 0 }} is-active{{ end }}"
+              data-featured-dot="{{ $index }}"
+              aria-label="{{ i18n "featured_slide" }} {{ add $index 1 }}">
+            </button>
+          {{ end }}
+        </div>
+
+        <button
+          type="button"
+          class="featured-arrow"
+          data-featured-next
+          aria-label="{{ i18n "featured_next" }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m9.5 5.5 6 6.5-6 6.5" fill="none" stroke="currentColor" stroke-width="1.75"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      {{/* Хэдер поверх снимка: та же плашка, что и на странице поста
+            (partial site-nav). Идёт последним, чтобы его z-index (40) был выше
+            управления (3) и затемнения (1). */}}
+      {{ partial "site-nav.html" $ }}
+    </section>
+  {{ end }}
+
+  {{/* Поиск, фильтры и категории. Смысл раскладки: три колонки занимает лента
+       постов, четвёртую — панель категорий. Поэтому поиск по ширине равен
+       трём карточкам, а категории «ездят» за ним при скролле. */}}
+  {{ $cats := slice "interesting" "trash" "ai" }}
+  {{ $catLabel := dict "interesting" (i18n "category_interesting") "trash" (i18n "category_trash") "ai" (i18n "category_ai") }}
+
+  <div class="home-layout">
+    {{/* Категории стоят слева, поиск справа: раньше они стояли наоборот, и
+         пришлось перевернуть порядок колонок в CSS. Обе панели sticky и
+         держатся на одной высоте, поэтому при скролле они едут вместе. */}}
+    <aside class="cat-panel" data-cat-panel>
+      <h2 class="cat-panel-title">{{ i18n "categories" }}</h2>
+      <div class="cat-list">
+        {{/* Таблетка «Избранное» — мобильный двойник .fav-toggle из строки
+             поиска. На телефоне та кнопка скрыта, и весь фильтр живёт здесь,
+             первой таблеткой — до категорий, чтобы не прятаться в конце
+             прокручиваемого ряда. data-fav-toggle общий — JS переключает
+             обе кнопки синхронно. data-category намеренно нет: обработчик
+             категорий её не видит. */}}
+        <button type="button" class="cat-item fav-chip" aria-pressed="false" data-fav-toggle>
+          <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+          <span class="cat-name">{{ i18n "favorites" }}</span>
+        </button>
+
+        <button type="button" class="cat-item is-active" aria-pressed="true" data-category="">
+          <span class="cat-name">{{ i18n "category_all" }}</span>
+        </button>
+        {{ range $cats }}
+          {{/* Стрелки нет намеренно: она читается как «здесь что-то откроется»,
+               а это фильтр — он ничего не открывает, только сужает ленту. */}}
+          <button type="button" class="cat-item" aria-pressed="false" data-category="{{ . }}">
+            <span class="cat-name">{{ index $catLabel . }}</span>
+          </button>
+        {{ end }}
+      </div>
+    </aside>
+
+    <div class="home-main">
+      <section class="filters-section" data-filters aria-label="{{ i18n "search" }}">
+        <div class="search-row">
+          <div class="search-col">
+            <div class="search-bar">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="{{ i18n "search" }}"
+                aria-label="{{ i18n "search" }}"
+                autocomplete="off"
+                data-search-input
+              />
+              <button type="button" class="search-btn" aria-label="{{ i18n "search_button" }}" data-search-submit>
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="M21 21l-4.35-4.35" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {{/* Кнопка избранного справа от поиска (только большие экраны —
+               видимость задаёт CSS по min-width: 901px). Она ничего не
+               отправляет: переключает фильтр ленты на сохранённые посты,
+               хранящиеся в localStorage. */}}
+          <button type="button" class="fav-toggle" data-fav-toggle aria-pressed="false"
+            aria-label="{{ i18n "favorites" }}">
+            <span class="fav-toggle-ico">
+              <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="view-toggle" role="group" aria-label="{{ i18n "search_view" }}">
+            <button type="button" class="view-toggle-btn is-active" aria-label="{{ i18n "search_view_grid" }}"
+              aria-pressed="true" data-view="grid">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="7" height="7" rx="2" />
+                <rect x="14" y="3" width="7" height="7" rx="2" />
+                <rect x="3" y="14" width="7" height="7" rx="2" />
+                <rect x="14" y="14" width="7" height="7" rx="2" />
+              </svg>
+            </button>
+            <button type="button" class="view-toggle-btn" aria-label="{{ i18n "search_view_list" }}"
+              aria-pressed="false" data-view="list">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <rect x="3" y="4" width="18" height="4" rx="2" />
+                <rect x="3" y="10" width="18" height="4" rx="2" />
+                <rect x="3" y="16" width="18" height="4" rx="2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {{/* Пустые состояния лежат ПОД панелью поиска, а не внутри неё. Внутри
+           панели 404 на мобильном оказывался выше фишек-категорий (порядок
+           задаёт order в CSS), а липкая панель на десктопе раздувалась вниз.
+           Ширина «как у поля поиска» задаётся max-width в CSS. */}}
+      <div class="no-results" data-no-results hidden>
+        <p class="no-results-code">404</p>
+        <p class="no-results-title">{{ i18n "no_results" }}</p>
+      </div>
+
+      {{/* Отдельный пустой экран для режима избранного: «404» врал бы
+           здесь — посты не потерялись, их просто ещё не сохранили. */}}
+      <div class="fav-empty" data-fav-empty hidden>
+        <p class="fav-empty-title">{{ i18n "fav_empty" }}</p>
+      </div>
+
+      {{/* Featured posts live in the slider above and never repeat in the grid,
+           so they are rendered hidden and JS leaves them that way. The whole
+           list is ranged rather than filtered to keep one template for both. */}}
+      <div class="post-grid" data-post-grid>
+        {{ range $posts }}
+          {{ $cover := partial "cover.html" (dict "page" . "width" 800 "height" 800 "variant" "list") }}
+          {{/* data-post и hidden живут на обёртке, а не на ссылке: фильтр
+               скрывает grid-элемент целиком (ячейка сетки исчезает), а кнопка
+               избранного остаётся соседом ссылки — кнопка внутри <a> была бы
+               невалидным HTML. */}}
+          <div class="post-card-slot" data-post
+            data-title="{{ .LinkTitle }}"
+            data-category="{{ with .Params.category }}{{ . }}{{ end }}"
+            data-featured="{{ if .Params.featured }}1{{ else }}0{{ end }}"
+            data-url="{{ .RelPermalink }}"
+            {{ if .Params.featured }}hidden{{ end }}>
+            <a href="{{ .RelPermalink }}" class="post-card">
+              {{ with $cover }}
+                <div class="post-card-media">{{ . }}</div>
+              {{ end }}
+              <div class="post-card-meta">
+                <span class="post-card-date">{{ .Date.Format "02.01.2006" }}</span>
+                <h2 class="post-card-title">{{ .LinkTitle }}</h2>
+                <span class="post-card-time">{{ .ReadingTime }} {{ i18n "minutes" .ReadingTime }}</span>
+              </div>
+            </a>
+
+            {{/* Сердечко появляется на наведении на карточку (только ≥901px).
+                 aria-pressed и подпись меняет JS по data-label-*. */}}
+            <button type="button" class="post-card-fav" data-fav-btn
+              data-url="{{ .RelPermalink }}"
+              aria-pressed="false"
+              aria-label="{{ i18n "fav_add" }}"
+              data-label-add="{{ i18n "fav_add" }}"
+              data-label-remove="{{ i18n "fav_remove" }}">
+              <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  {{/* Единственная «галочка» избранного: всплывающая надпись, прибитая
+       к верхней кромке окна (16px) по центру, на сплошной подложке —
+       с иконкой-информацией перед текстом. Текст подставляет JS в
+       зависимости от действия — добавили пост или убрали; постоянных
+       отметок на карточках нет, надпись гаснет сама. */}}
+  <div class="fav-toast" role="status" aria-live="polite" data-fav-toast
+    data-text-added="{{ i18n "fav_added" }}"
+    data-text-removed="{{ i18n "fav_removed" }}">
+    <svg class="fav-toast-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M12 11.5v4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <circle cx="12" cy="7.8" r="1.3" fill="currentColor" />
+    </svg>
+    <span class="fav-toast-text" data-toast-text>{{ i18n "fav_added" }}</span>
+  </div>
+{{ end }}

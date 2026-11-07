@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Атрибуция шрифта. Лицензия Handil Pro требует указать автора: название
+     студии и ссылку. Комментарий в CSS не годится — --minify его вырезает,
+     а meta-тег переживает сборку и не влияет на внешний вид страницы. */}}
+<meta name="font-credits" content="Handil Pro by Alifinart Studio — https://behance.net/alifinart">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{ partial "head/seo.html" . }}
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+{{ $css := resources.Get "css/syntax.css" }}
+{{ if $css }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+<link href="{{ "pagefind/pagefind-component-ui.css" | relURL }}" rel="stylesheet">
+<script src="{{ "pagefind/pagefind-component-ui.js" | relURL }}" type="module"></script>
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}
+{{ partial "lang-redirect.html" . }}

@@ -1,0 +1,67 @@
+{{- /* Ссылки hreflang рисует head/seo.html — скрипту ниже они нужны только
+     как источник переведённого URL (селектор [hreflang="ru"|"en"]). */ -}}
+<script>
+(function () {
+  var STORE = 'preferred-lang'
+  var current = '{{ site.Language.Lang }}'
+
+  // First non-empty of navigator.languages with a legacy fallback.
+  function browserLanguages() {
+    var nav = window.navigator
+    if (nav.languages && nav.languages.length) return nav.languages
+    var single = nav.language || nav.browserLanguage || nav.systemLanguage || nav.userLanguage
+    return single ? [single] : []
+  }
+
+  // stored wins; otherwise first language in the preference list that is ru/en,
+  // defaulting to en. Adapted from getFirstBrowserLanguage() by Thomas Enzinger
+  // (github.com/gohugoio/hugo/issues/4279).
+  function desiredLanguage(stored) {
+    if (stored === 'ru' || stored === 'en') return stored
+    var list = browserLanguages()
+    for (var i = 0; i < list.length; i++) {
+      var code = String(list[i] || '').toLowerCase()
+      if (code.indexOf('ru') === 0) return 'ru'
+      if (code.indexOf('en') === 0) return 'en'
+    }
+    return 'en'
+  }
+
+  // Persist a manual choice from the language switcher.
+  document.addEventListener('click', function (e) {
+    var el = e.target
+    while (el && el.getAttribute) {
+      var lang = el.getAttribute('data-set-lang')
+      if (lang) {
+        try { localStorage.setItem(STORE, lang) } catch (err) {}
+        return
+      }
+      el = el.parentNode
+    }
+  })
+
+  // Crawlers get a stable view of each URL instead of the bot's own locale.
+  if (/(bot|crawl|spider|slurp|preview|facebookexternalhit)/i.test(navigator.userAgent)) return
+
+  var stored = ''
+  try { stored = localStorage.getItem(STORE) || '' } catch (err) {}
+
+  var target = desiredLanguage(stored)
+  if (target === current) return
+
+  var alt = document.querySelector('link[rel="alternate"][hreflang="' + target + '"]')
+  if (!alt) return
+
+  // Remember the first auto-detected choice; manual choices are stored on click.
+  if (!stored) {
+    try { localStorage.setItem(STORE, target) } catch (err) {}
+  }
+
+  var url = new URL(alt.href, window.location.href)
+  url.search = window.location.search
+  url.hash = window.location.hash
+  // Path only: hreflang links are absolute (required for SEO) and must not
+  // drag the browser to another origin when previewing on a different host.
+  window.location.replace(url.pathname + url.search + url.hash)
+})()
+</script>

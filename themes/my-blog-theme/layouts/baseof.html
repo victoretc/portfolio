@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="kind-{{ .Kind }}">
+  <!-- ВРЕМЕННО ЗАКОММЕНТИРОВАНО: шапка сайта (заголовок, навигация, поиск).
+       Не удаляю — вернём, когда вернётся навигация.
+  <header>
+    {{ partial "header.html" . }}
+  </header>
+  -->
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <!-- ВРЕМЕННО ЗАКОММЕНТИРОВАНО: подвал (ссылки, копирайт, «наверх»).
+       Не удаляю — вернём, когда понадобится.
+  <footer>
+    {{ partial "footer.html" . }}
+  </footer>
+  -->
+</body>
+</html>

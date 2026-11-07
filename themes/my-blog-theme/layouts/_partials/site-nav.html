@@ -1,0 +1,52 @@
+{{/* Единая хэдер-плашка главной и страницы поста: логотип Drabina ровно по
+     центру плашки, слева переключатель языка (только на главной) и стрелка
+     «назад» (только на посте), справа бургер-меню.
+
+     На главной это компактная дымчатая плашка (fit-content по содержимому)
+     поверх фотографии. На посте та же плашка разворачивается в липкую чёрную
+     полосу во всю ширину контента: левая колонка начинается ровно там,
+     где начинается колонка Date, а бургер занимает зеркальное место справа.
+     Переключателя языка на посте нет — там слева только стрелка.
+
+     Переключатель показывает КОД ДРУГОГО языка (на русской версии — «en»,
+     на английской — «ru»), ведёт на перевод главной, а если его нет — на
+     главную того языка. data-set-lang отдаёт выбор в localStorage, чтобы
+     авто-редирект по Accept-Language не откатывал его. */}}
+<header class="site-nav{{ if .IsPage }} site-nav--back{{ end }}">
+  <div class="site-nav-left">
+    {{ if .IsPage }}
+    <a class="site-nav-back" href="{{ site.Home.RelPermalink }}" aria-label="{{ i18n "home" }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M19 12H5" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m12 19-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    {{ else }}
+    {{- $otherLang := "" -}}
+    {{- $target := site.Home.RelPermalink -}}
+    {{- range site.Home.AllTranslations -}}
+      {{- if ne .Language.Lang site.Language.Lang -}}
+        {{- $otherLang = .Language.Lang -}}
+        {{- $target = .RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
+    <a class="site-nav-lang" href="{{ $target }}" data-set-lang="{{ $otherLang }}"
+       lang="{{ $otherLang }}" hreflang="{{ $otherLang }}"
+       aria-label="{{ i18n "switch_to" }} {{ $otherLang }}">{{ $otherLang }}</a>
+    {{ end }}
+  </div>
+  <a class="site-nav-logo" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }}">{{ i18n "logo" }}</a>
+  <div class="site-nav-menu" data-site-menu>
+    <button type="button" class="site-nav-burger" data-burger
+            aria-expanded="false" aria-controls="site-menu-panel"
+            aria-label="{{ i18n "menu" }}">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav-panel" id="site-menu-panel" data-burger-panel>
+      <a href="https://t.me/spoon_of_quality" target="_blank" rel="noopener">{{ i18n "telegram_menu" }}</a>
+    </nav>
+  </div>
+</header>
