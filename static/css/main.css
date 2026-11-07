@@ -40,6 +40,17 @@
   src: url("../fonts/onest/Onest-latin-ext.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+/* Рукописный акцент: одно слово в оффере. Caveat, вариативный 400-700,
+   кириллица, SIL OFL 1.1 (fonts/caveat/OFL.txt). Только кириллический
+   сабсет: слово русское, лишние 300 КБ латиницы не грузим. */
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/caveat/Caveat-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
 /* Дисплей: заголовок, цена, имя на бейдже. Гарнитура та же, что в тексте, —
    отличает вес и кегль, а не начертание (как в референсе zorigto.ru,
    где и заголовок, и текст набраны одним Nagel). */
@@ -673,7 +684,7 @@ html.js .callout.is-in .callout-label .callout-char {
 .cases-viewport:focus-visible {
   outline: 2px solid var(--color-signal-blue, #0071e3);
   outline-offset: 4px;
-  border-radius: 54px;
+  border-radius: 24px;
 }
 .cases-track {
   display: flex;
@@ -686,7 +697,7 @@ html.js .callout.is-in .callout-label .callout-char {
    (концентричность). */
 .project-card {
   --cases-card-pad: clamp(12px, 1.4vw, 20px);
-  --cases-card-radius: clamp(28px, 4vw, 54px);
+  --cases-card-radius: clamp(16px, 2.4vw, 24px);
   flex: 0 0 100%;
   scroll-snap-align: start;
   display: flex;
@@ -866,7 +877,7 @@ html.js .callout.is-in .callout-label .callout-char {
   gap: clamp(32px, 4vw, 56px);
   padding: clamp(32px, 4.4vw, 56px);
   border: 0.5px solid rgba(0, 0, 0, 0.06);
-  border-radius: 54px;
+  border-radius: 24px;
   background: var(--color-pure-white, #fdfdfd);
 }
 .offer-main {
@@ -972,7 +983,7 @@ html.js .callout.is-in .callout-label .callout-char {
   min-width: 0;
   overflow: hidden;
   border: 0.5px solid rgba(0, 0, 0, 0.07);
-  border-radius: 54px;
+  border-radius: 24px;
   background: var(--color-pure-white, #fdfdfd);
 }
 .work-card--sm { grid-column: span 2; }
@@ -1098,7 +1109,7 @@ html.js .callout.is-in .callout-label .callout-char {
   margin-top: 16px;
   padding: clamp(28px, 3.5vw, 44px) clamp(24px, 4.4vw, 56px);
   border: 0.5px solid rgba(0, 0, 0, 0.06);
-  border-radius: 54px;
+  border-radius: 24px;
   background: var(--color-pure-white, #fdfdfd);
 }
 .how-text {
@@ -1144,8 +1155,8 @@ html.js .callout.is-in .callout-label .callout-char {
   .work-card--half { grid-column: span 3; }
   .work-card--wide { grid-column: span 6; }
   .offer,
-  .how { border-radius: 40px; }
-  .work-card { border-radius: 44px; }
+  .how { border-radius: 20px; }
+  .work-card { border-radius: 20px; }
 }
 
 @media (max-width: 900px) {
@@ -1177,8 +1188,8 @@ html.js .callout.is-in .callout-label .callout-char {
 @media (max-width: 600px) {
   .services { padding-block: 64px; }
   .offer,
-  .how { padding: 28px 24px; border-radius: 32px; }
-  .work-card { border-radius: 32px; }
+  .how { padding: 28px 24px; border-radius: 16px; }
+  .work-card { border-radius: 16px; }
   .offer-deal { flex-direction: column; gap: 24px; }
 }
 
@@ -1337,7 +1348,7 @@ html.js .callout.is-in .callout-label .callout-char {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: clamp(18px, 2vw, 34px);
+  gap: clamp(0px, 0.5vw, 8px);
   pointer-events: none;
 }
 .footer-plant {
@@ -1348,7 +1359,6 @@ html.js .callout.is-in .callout-label .callout-char {
   filter: saturate(0.92);
 }
 .footer-plant--pink { --h: clamp(190px, 17vw, 252px); }
-.footer-plant--hyacinth { --h: clamp(180px, 16vw, 238px); }
 .footer-plant--cream { --h: clamp(170px, 15vw, 224px); }
 @media (max-width: 1100px) {
   /* На узких экранах клумба наезжает на кнопку — оставляем только текст. */
@@ -1607,10 +1617,33 @@ body { overflow-x: hidden; }
   fill: currentColor;
   opacity: var(--o, 0.22);
   transform: translate(-50%, -50%) rotate(var(--r));
+  transition: color 160ms ease, opacity 160ms ease;
+  /* Рейл не ловит курсор, но сам рисунок — да: только по закрашенным
+     областям, а не по пустому прямоугольнику viewBox. */
+  pointer-events: visiblePainted;
 }
 .doodle--blue {
   color: var(--color-signal-blue, #0071e3);
   opacity: 0.42;
+}
+/* Цвета на наведении — из палитры цветов сайта (footer-plant):
+   гиацинт, крем, пион, лист, янтарь и signal blue. Рисунки идут
+   подряд, поэтому оттенки чередуются по кругу и соседи не сливаются. */
+.doodle:nth-of-type(6n + 1) { --doodle-hover: #5465ae; }
+.doodle:nth-of-type(6n + 2) { --doodle-hover: #dc8433; }
+.doodle:nth-of-type(6n + 3) { --doodle-hover: #c86eac; }
+.doodle:nth-of-type(6n + 4) { --doodle-hover: #638a4e; }
+.doodle:nth-of-type(6n + 5) { --doodle-hover: #f4b442; }
+.doodle:nth-of-type(6n + 6) { --doodle-hover: #0071e3; }
+/* На тач-экранах :hover срабатывает от касания и оставляет цвет
+   «залипшим» — включаем реакцию только там, где есть курсор. */
+@media (hover: hover) and (pointer: fine) {
+  /* Поднимаем плотность: цвет на 0.2 прозрачности читается как грязь. */
+  .doodle:hover { color: var(--doodle-hover); opacity: 0.55; }
+}
+/* Смена цвета — не движение: плавность оставляем, но сокращаем. */
+@media (prefers-reduced-motion: reduce) {
+  .doodle { transition-duration: 60ms; }
 }
 
 .intro-wrap {
@@ -1713,6 +1746,15 @@ body { overflow-x: hidden; }
   line-height: 1.35;
   letter-spacing: -0.025em;
   color: var(--color-off-black, #0f1012);
+}
+/* Одно слово рукописным: у Caveat крупный x-height, но росчерки выше
+   строчных — кегль чуть больше, чтобы слово не выглядело мелким. */
+.intro-lead__hand {
+  font-family: "Caveat", "Onest", cursive;
+  font-weight: 500;
+  font-size: 1.24em;
+  line-height: 1;
+  letter-spacing: 0.005em;
 }
 .intro-lead-row .cta-link { flex: none; }
 
