@@ -94,43 +94,66 @@
   </div>
 </section>
 
-<!-- 2. CASES — video projects, black field (ref: lborisovv.ru), starts on 2nd screen -->
+<!-- 2. CASES — «Сделали» в стилистике design.md (Augen Pro):
+     off-white холст, белые карточки 54px с волосяной рамкой, тихий вес 350,
+     signal blue только в контурах ссылок и стрелок.
+     Карточки лежат в горизонтальной ленте: когда проектов станет больше,
+     листаются стрелками или свайпом. -->
 <section class="chapter cases" id="cases">
   <div class="cases-inner">
-    <h2 class="cases-title">Сделали</h2>
-
-    <article class="project-card">
-      <div class="project-card__inner">
-        <a class="project-card__visual-link" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener" aria-label="Открыть сайт «Читка»">
-          <video class="project-card__visual" src="{{ "video/first-case.mp4" | relURL }}" autoplay muted loop playsinline preload="metadata" width="1600" height="920" aria-label="Демо каталога книжных клубов Читка"></video>
-          <div class="project-card__blur" aria-hidden="true">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="project-card__tint" aria-hidden="true"></div>
-        </a>
-
-        <div class="project-card__text">
-          <div class="project-card__title-group">
-            <h3 class="project-card__title">Читка</h3>
-            <p class="project-card__description">Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.</p>
-            <p class="project-card__stack">
-              <span class="project-card__stack-label">Стэк:</span>
-              <span class="project-card__stack-value">Hugo + GitHub Pages</span>
-            </p>
-          </div>
-
-          <a class="cta-link project-card__cta" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener">
-            <svg class="cta-link__icon" width="22" height="22" aria-hidden="true"><use href="#ext-link"/></svg>
-            <span>Открыть сайт</span>
-          </a>
-        </div>
+    <header class="cases-head">
+      <div class="cases-heading">
+        <h2 class="cases-title">Сделали</h2>
       </div>
-    </article>
+
+      <!-- Стрелки появляются из JS, только если лента действительно шире
+           колонки. Без JS карточки всё равно листаются свайпом и трекпадом. -->
+      <div class="cases-nav" data-carousel-nav hidden>
+        <button class="cases-arrow" type="button" data-carousel-prev aria-label="Предыдущий проект" aria-controls="cases-track">
+          <svg width="20" height="20" aria-hidden="true"><use href="#arrow-left"/></svg>
+        </button>
+        <button class="cases-arrow" type="button" data-carousel-next aria-label="Следующий проект" aria-controls="cases-track">
+          <svg width="20" height="20" aria-hidden="true"><use href="#arrow-right"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="cases-viewport" data-carousel role="group" aria-label="Проекты студии">
+      <div class="cases-track" id="cases-track" data-carousel-track>
+        <article class="project-card">
+          <div class="project-card__inner">
+            <a class="project-card__visual-link" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener" aria-label="Открыть сайт «Читка»">
+              <video class="project-card__visual" src="{{ "video/first-case.mp4" | relURL }}" autoplay muted loop playsinline preload="metadata" width="1600" height="920" aria-label="Демо каталога книжных клубов Читка"></video>
+              <div class="project-card__blur" aria-hidden="true">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="project-card__tint" aria-hidden="true"></div>
+            </a>
+
+            <div class="project-card__text">
+              <div class="project-card__title-group">
+                <h3 class="project-card__title">Читка</h3>
+                <p class="project-card__description">Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.</p>
+                <p class="project-card__stack">
+                  <span class="project-card__stack-label">Стэк</span>
+                  <span class="project-card__stack-value">Hugo + GitHub Pages</span>
+                </p>
+              </div>
+
+              <a class="cta-link project-card__cta" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener">
+                <svg class="cta-link__icon" width="22" height="22" aria-hidden="true"><use href="#ext-link"/></svg>
+                <span>Открыть сайт</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 

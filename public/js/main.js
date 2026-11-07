@@ -93,6 +93,55 @@
     dock.classList.add('is-in');
   }
 
+  // --- cases carousel ----------------------------------------------------
+  // Лента «Сделали» листается по одной карточке. Стрелки показываем только
+  // когда карточек действительно больше, чем помещается в колонку.
+  var carousels = Array.prototype.slice.call(document.querySelectorAll('[data-carousel]'));
+  carousels.forEach(function (viewport) {
+    var section = viewport.closest ? viewport.closest('.cases') : null;
+    if (!section) return;
+
+    var track = viewport.querySelector('[data-carousel-track]');
+    var nav = section.querySelector('[data-carousel-nav]');
+    var prev = section.querySelector('[data-carousel-prev]');
+    var next = section.querySelector('[data-carousel-next]');
+    if (!track || !prev || !next) return;
+
+    function maxScroll() { return viewport.scrollWidth - viewport.clientWidth; }
+    function step() {
+      var cards = track.children;
+      if (cards.length < 2) return viewport.clientWidth;
+      return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    }
+    function sync() {
+      var max = maxScroll();
+      var overflow = max > 1;
+      if (nav) nav.hidden = !overflow;
+      viewport.tabIndex = overflow ? 0 : -1;
+      prev.disabled = !overflow || viewport.scrollLeft <= 1;
+      next.disabled = !overflow || viewport.scrollLeft >= max - 1;
+    }
+    function go(dir) {
+      viewport.scrollBy({ left: dir * step(), behavior: reduced ? 'auto' : 'smooth' });
+    }
+
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    viewport.addEventListener('scroll', sync, { passive: true });
+    viewport.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    });
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(sync);
+      ro.observe(viewport);
+      ro.observe(track);
+    } else {
+      window.addEventListener('resize', sync);
+    }
+    sync();
+  });
+
   // --- dock: highlight the section in view -------------------------------
   // Только внутренние якоря: внешняя ссылка (Telegram) не является секцией.
   var dockLinks = Array.prototype.slice.call(document.querySelectorAll('.dock a[href^="#"]'));

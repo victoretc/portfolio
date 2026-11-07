@@ -580,51 +580,146 @@ html.js .callout.is-in .callout-label .callout-char {
   html.js .callout.is-in .callout-label .callout-char { animation: none; }
 }
 
-/* 2. CASES — белое поле, как первый экран: видео растворяется в фоне,
-   под ним — название проекта и кнопка */
-.cases { background: #ffffff; color: #000000; padding-block: var(--gap-block); }
+/* 2. CASES — «Сделали» в стилистике design.md (Augen Pro):
+   белый холст, карточки 54px с волосяной рамкой, тихий вес 350,
+   signal blue только в контурах ссылок и стрелок. */
+.cases {
+  background: #fff;
+  color: var(--color-off-black, #0f1012);
+  /* Снизу — половина ритма секции: карточка не прилипает к краю
+     off-white поля «Услуг», вторая половина зазора — верхнее поле услуг. */
+  padding-block: clamp(80px, 10vw, 112px) var(--gap-block);
+}
 .cases-inner {
   width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
 }
-.cases-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(30px, 3vw, 40px);
-  letter-spacing: -0.015em;
-  line-height: 1.05;
-  margin-bottom: var(--gap-block);
+
+/* Шапка секции: тихий надзаголовок + «Сделали» 27px весом 350.
+   Стрелки стоят справа на одной базовой линии с заголовком. */
+.cases-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 3.4vw, 44px);
 }
-.project-card {
+.cases-heading {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
+}
+/* Заголовки секций — один кегль и один тихий вес: «Сделали» и «Услуги»
+   читаются как равноправные разделы, а не как заголовок и подзаголовок. */
+.cases-title,
+.services-title {
+  font-family: var(--sans);
+  font-weight: 350;
+  font-size: clamp(1.375rem, 2.1vw, 1.6875rem); /* 22 → 27px */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-off-black, #0f1012);
+}
+
+/* Стрелки листания — контурные пилюли, как ссылки из design.md:
+   цвет живёт в 0.5px линии и глифе, заливки нет. */
+.cases-nav { display: flex; gap: 10px; }
+.cases-nav[hidden] { display: none; }
+.cases-arrow {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0.5px solid var(--color-signal-blue, #0071e3);
+  border-radius: 26px;
+  background: transparent;
+  color: var(--color-signal-blue, #0071e3);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 150ms ease, color 150ms ease, transform 150ms var(--ease-out);
+}
+.cases-arrow svg { width: 20px; height: 20px; }
+.cases-arrow:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 3px;
+}
+@media (hover: hover) {
+  .cases-arrow:not(:disabled):hover {
+    border-color: var(--color-pure-black, #020201);
+    color: var(--color-pure-black, #020201);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cases-arrow:not(:disabled):active { transform: scale(0.96); }
+}
+.cases-arrow:disabled {
+  border-color: rgba(15, 16, 18, 0.12);
+  color: var(--color-ash-gray, #8f8f8f);
+  cursor: default;
+}
+
+/* Горизонтальная лента: одна карточка на экран, scroll-snap по краям.
+   Полоса прокрутки скрыта — листают стрелки, свайп или трекпад. */
+.cases-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.cases-viewport::-webkit-scrollbar { display: none; }
+.cases-viewport:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 4px;
+  border-radius: 54px;
+}
+.cases-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* Карточка проекта — белая поверхность на белом холсте; край держит
+   волосяная рамка. Радиус видео = внешний радиус минус паддинг карточки
+   (концентричность). */
+.project-card {
+  --cases-card-pad: clamp(12px, 1.4vw, 20px);
+  --cases-card-radius: clamp(28px, 4vw, 54px);
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: var(--cases-card-pad);
+  border: 0.5px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--cases-card-radius);
+  background: var(--color-pure-white, #fdfdfd);
+  color: var(--color-off-black, #0f1012);
 }
 .project-card__inner {
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: var(--shell);
 }
 .project-card__visual-link {
   position: relative;
   display: block;
   width: 100%;
-  border-radius: clamp(16px, 2vw, 24px);
+  border-radius: calc(var(--cases-card-radius) - var(--cases-card-pad));
   overflow: hidden;
   outline: 1px solid oklch(0 0 0 / 0.1);
   outline-offset: -1px;
+  -webkit-tap-highlight-color: transparent;
 }
 .project-card__visual {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 1600 / 920; /* native ratio of the desktop recording — nothing is cropped */
-  background: #eeecea;
+  background: var(--color-off-white, #f2f2f4);
 }
-/* Нижний край видео тает в белый фон: размытие каскадом + белая подложка */
+/* Нижний край видео тает в белый фон карточки: размытие каскадом + белая подложка */
 .project-card__tint {
   position: absolute;
   left: 0;
@@ -632,7 +727,7 @@ html.js .callout.is-in .callout-label .callout-char {
   bottom: 0;
   height: 30%;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 86%);
+  background: linear-gradient(to bottom, rgba(253, 253, 253, 0) 0%, var(--color-pure-white, #fdfdfd) 86%);
 }
 .project-card__blur {
   position: absolute;
@@ -684,66 +779,68 @@ html.js .callout.is-in .callout-label .callout-char {
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
 }
 .project-card__text {
-  position: relative;
-  width: 100%;
-  margin-top: 0;
-  padding: clamp(20px, 2.4vw, 32px) 0 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 32px;
+  padding: clamp(20px, 2.4vw, 32px) clamp(8px, 1.2vw, 24px) clamp(8px, 1vw, 16px);
 }
 .project-card__title-group {
-  position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  width: 100%;
+  flex: 1 1 42ch;
+  min-width: 0;
 }
 .project-card__title {
   font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(32px, 3.6vw, 40px);
-  letter-spacing: -0.015em;
-  line-height: 1.1;
-  text-align: center;
+  font-weight: 350;
+  font-size: clamp(1.25rem, 1.9vw, 1.6875rem); /* 20 → 27px */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-off-black, #0f1012);
 }
 .project-card__description {
+  max-width: 58ch;
   font-family: var(--sans);
-  font-size: clamp(16px, 1.6vw, 18px);
-  line-height: 1.47;
-  color: rgba(0, 0, 0, 0.7);
-  text-align: center;
-  max-width: 56ch;
+  font-weight: 350;
+  font-size: clamp(1rem, 1.1vw, 1.0625rem); /* 16 → 17px */
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--color-steel-gray, #5e5e5e);
+  text-align: left;
+  text-wrap: pretty;
 }
 .project-card__stack {
-  position: relative;
-  z-index: 2;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 10px;
+  gap: 6px;
   font-family: var(--sans);
-  font-size: clamp(15px, 1.3vw, 18px);
-  color: #000000;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-steel-gray, #5e5e5e);
 }
-.project-card__stack-label { color: rgba(0, 0, 0, 0.6); }
+.project-card__stack-label { color: var(--color-ash-gray, #8f8f8f); }
+.project-card__cta { flex: none; }
 
 /* 4. SERVICES — старая бенто-идея в палитре design.md:
    off-white поле, белые карточки 54px, тихий вес 350, голубой акцент.
    Цветные маркеры и иллюстрации заменены на нейтральные заливки и blue. */
-.chapter.services {
-  /* Отступ от кнопки «Открыть сайт» до off-white поля услуг */
-  margin-top: clamp(24px, 3.4vw, 40px);
-}
+/* Перед услугами — такой же воздух, как между hero и «Сделали»:
+   секции не стыкуются встык, зазор делят нижнее поле «Сделали»
+   и верхнее поле блока услуг. */
+.chapter.services { margin-top: 0; }
 /* Подвал не подтягиваем под услуги: между секцией и заголовком
    «Расскажите о задаче» должен остаться воздух. */
 .services + .footer { margin-top: 0; }
 .services {
   background: var(--color-off-white, #f2f2f4);
   color: var(--color-off-black, #0f1012);
-  padding-block: clamp(80px, 10vw, 112px);
+  padding-block: var(--gap-block);
 }
 .services-inner {
   width: min(var(--shell), calc(100% - var(--gutter)));
@@ -752,14 +849,6 @@ html.js .callout.is-in .callout-label .callout-char {
 
 /* Заголовок — в том же ритме, что «Проекты» */
 .services-head { margin-bottom: var(--gap-block); }
-.services-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(30px, 3vw, 40px);
-  letter-spacing: -0.015em;
-  line-height: 1.05;
-  color: var(--color-off-black, #0f1012);
-}
 .services-eyebrow {
   font-family: var(--sans);
   font-size: 10px;
@@ -855,8 +944,10 @@ html.js .callout.is-in .callout-label .callout-char {
   color: var(--color-off-black, #0f1012);
 }
 
-/* Состав работы: снова бенто, но в новой палитре */
-.services-work { margin-top: 22px; }
+/* Состав работы: снова бенто, но в новой палитре.
+   Отступ от оффера — половина ритма секции: подзаголовок дышит,
+   но не отрывается от карточки, к которой относится. */
+.services-work { margin-top: clamp(32px, 3.4vw, 48px); }
 .services-subhead { margin-bottom: clamp(20px, 2.6vw, 28px); }
 .services-sub {
   margin: 0;
@@ -1091,15 +1182,16 @@ html.js .callout.is-in .callout-label .callout-char {
   .offer-deal { flex-direction: column; gap: 24px; }
 }
 
-/* FOOTER — «клавиша» Написать, колонки разделов и контактов, знак внизу */
+/* FOOTER — контактный блок, разделы и контакты, знак внизу.
+   Верхний блок собран по design.md: тихий вес 350, кегль 27px,
+   единственный акцент — signal blue в контуре большой кнопки. */
 .footer {
-  /* Единый ритм подвала: одинаковые отступы между блоками —
-     от лида до кнопки, от кнопки до подписи, от подписи до колонок */
-  --gap-foot: clamp(28px, 4.2vh, 48px);
+  /* Ритм подвала совпадает с секциями: тот же gap, что между блоками */
+  --gap-foot: var(--gap-block, clamp(40px, 7vh, 72px));
   background: #ffffff;
-  color: #0a0a0a;
-  padding: clamp(80px, 9vw, 112px) 0 clamp(28px, 4vh, 48px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-off-black, #0f1012);
+  padding: var(--gap-block) 0 clamp(28px, 4vh, 48px);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.06);
   scroll-margin-top: 64px;
 }
 .footer-inner {
@@ -1109,119 +1201,158 @@ html.js .callout.is-in .callout-label .callout-char {
   margin-inline: auto;
   padding-inline: 0;
 }
-/* Лид футера — одна строка в Golos Text 500: без отдельного акцента внутри абзаца */
+.footer-top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  /* Низ верхнего блока = волосяная линия перед колонками: от неё
+     растут цветы, поэтому зазор перенесён из margin в padding. */
+  padding-bottom: var(--gap-foot);
+}
+/* Лид футера — 27px весом 350: иерархию держит кегль, а не жирность. */
 .footer-lead {
+  max-width: 32ch;
   font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(24px, 3vw, 44px);
-  line-height: 1.15;
+  font-weight: 350;
+  font-size: clamp(1.375rem, 2.2vw, 1.6875rem); /* 22 → 27px */
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  max-width: 26ch;
+  color: var(--color-off-black, #0f1012);
   text-wrap: balance;
 }
-/* «Написать» — та же кнопка, что «Связаться» на главной, только крупная:
-   серая заливка, радиус 24, тёмный текст, серый самолётик (на наведении — синий) */
+/* «Написать» — большая контурная пилюля из design.md: 0.5px signal blue,
+   прозрачная заливка, радиус 26. Размер остаётся крупным — это главное
+   действие страницы, но цвет живёт в линии и тексте, а не в фоне. */
 .footer-key {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Кегли и зазор масштабируются вместе с кнопкой — как на главной */
-  --key-label: clamp(34px, 5.4vw, 96px);
-  --key-icon: clamp(30px, 4.8vw, 84px);
-  gap: 0.33em;
-  width: 100%;
-  margin-top: var(--gap-foot);
-  height: clamp(110px, 17vw, 220px);
-  border-radius: 24px;
-  background: rgba(0, 0, 0, 0.08);
-  color: #0a0a0a;
-  font-size: var(--key-label);
+  gap: 10px;
+  width: min(100%, 560px);
+  height: clamp(72px, 8vw, 96px);
+  margin-top: clamp(22px, 2.4vw, 30px);
+  border: 0.5px solid var(--color-signal-blue, #0071e3);
+  border-radius: 26px;
+  background: transparent;
+  color: var(--color-signal-blue, #0071e3);
+  font-size: clamp(1.25rem, 2.4vw, 1.6875rem); /* 20 → 27px */
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 250ms cubic-bezier(0, 0, 0.58, 1);
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease, transform 150ms var(--ease-out);
 }
-@media (hover: hover) {
-  .footer-key:hover { background: rgba(0, 0, 0, 0.06); }
-}
-/* Нажатие — заливка темнее (как на главной) */
-.footer-key:active { background: rgba(0, 0, 0, 0.1); }
 .footer-key__label {
-  position: relative;
-  z-index: 1;
   font-family: var(--sans);
-  font-weight: 600;
+  font-weight: 350;
   font-size: 1em;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: #0a0a0a;
+  color: currentColor;
 }
-/* Значок Telegram — тот же самолётик, что на кнопке «Связаться» на главной:
-   серый, на наведении становится синим. Размер — от кегля подписи, как на главной. */
 .footer-key__icon {
-  position: relative;
-  z-index: 1;
   flex: none;
   width: 0.92em;
   height: auto;
-  font-size: var(--key-icon);
-  color: #5d5d5d;
-  transition: color 120ms ease-out;
+  color: currentColor;
+  transition: color 150ms ease;
 }
 @media (hover: hover) {
-  .footer-key:hover .footer-key__icon { color: #24a1de; }
+  .footer-key:hover {
+    border-color: var(--color-pure-black, #020201);
+    color: var(--color-pure-black, #020201);
+    background: rgba(12, 13, 15, 0.03);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .footer-key:active { transform: scale(0.96); }
+}
+.footer-key:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 3px;
 }
 
-/* Подпись под большой кнопкой */
+/* Подпись под кнопкой — тихий caption, не конкурирует с действием. */
 .footer-hint {
-  margin-top: var(--gap-foot);
+  margin-top: 14px;
   font-family: var(--sans);
-  font-size: var(--step-body);
-  line-height: 1.45;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.55);
+  font-weight: 350;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--color-steel-gray, #5e5e5e);
 }
 .footer-cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(24px, 4vw, 56px);
-  margin-top: var(--gap-foot);
-  padding-top: var(--gap-foot);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 0;
+  padding-top: clamp(24px, 3vw, 40px);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.06);
 }
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .footer-col-title {
   font-family: var(--sans);
-  font-weight: 600;
+  font-weight: 400;
   font-size: var(--step-small);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--color-ash-gray, #8f8f8f);
 }
 .footer-col a {
   font-family: var(--sans);
-  font-weight: 600;
+  font-weight: 350;
   font-size: clamp(16px, 1.4vw, 19px);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
-  color: #0a0a0a;
+  color: var(--color-off-black, #0f1012);
   transition: color var(--t-hover) ease;
 }
 @media (hover: hover) {
-  .footer-col a:hover { color: rgba(0, 0, 0, 0.6); }
+  .footer-col a:hover { color: var(--color-steel-gray, #5e5e5e); }
 }
 .footer-note {
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.55;
-  color: rgba(0, 0, 0, 0.62);
+  color: var(--color-steel-gray, #5e5e5e);
   max-width: 34ch;
 }
 .footer-mark {
-  font-family: var(--display); font-weight: 700;
+  font-family: var(--display);
+  font-weight: 400;
   font-size: clamp(40px, 10vw, 148px);
-  letter-spacing: -0.03em; line-height: 0.9;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
   text-transform: uppercase;
+  color: var(--color-off-black, #0f1012);
   margin: var(--gap-foot) 0 0;
+}
+/* Клумба справа от лида: растения из Flowers for Figma растут от
+   волосяной линии под верхним блоком футера. */
+
+.footer-bed {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: clamp(18px, 2vw, 34px);
+  pointer-events: none;
+}
+.footer-plant {
+  display: block;
+  width: auto;
+  height: var(--h);
+  opacity: 0.96;
+  filter: saturate(0.92);
+}
+.footer-plant--pink { --h: clamp(190px, 17vw, 252px); }
+.footer-plant--hyacinth { --h: clamp(180px, 16vw, 238px); }
+.footer-plant--cream { --h: clamp(170px, 15vw, 224px); }
+@media (max-width: 1100px) {
+  /* На узких экранах клумба наезжает на кнопку — оставляем только текст. */
+  .footer-bed { display: none; }
 }
 .footer-bottom {
   display: flex;
@@ -1229,9 +1360,9 @@ html.js .callout.is-in .callout-label .callout-char {
   justify-content: space-between;
   gap: 8px clamp(16px, 3vw, 32px);
   padding-top: var(--gap-foot);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.06);
 }
-.footer-meta { font-size: var(--step-small); line-height: 1.5; color: rgba(0, 0, 0, 0.5); margin: 0; max-width: 60ch; }
+.footer-meta { font-size: var(--step-small); line-height: 1.5; color: var(--color-steel-gray, #5e5e5e); margin: 0; max-width: 60ch; }
 
 /* ---------- motion ---------- */
 .js [data-reveal] { opacity: 0; transform: translateY(24px); }
@@ -1361,9 +1492,11 @@ html:not(.js) .loader { display: none; }
   .cta { height: clamp(140px, 40vw, 190px); border-radius: 20px; }
   .cta-label { font-size: clamp(34px, 9vw, 44px); }
 
-  .project-card__text { margin-top: -90px; padding: 104px 0 28px; gap: 18px; }
-  .project-card__title-group { padding-inline: var(--margin); }
-  .project-card__stack { flex-wrap: wrap; justify-content: center; }
+  .cases-head { align-items: center; }
+  .cases-arrow { width: 44px; height: 44px; }
+  .project-card__text { padding: 20px 4px 8px; gap: 18px; }
+  .project-card__title-group { padding-inline: 0; }
+  .project-card__stack { flex-wrap: wrap; }
   .project-card__description { max-width: none; }
 
   /* Услуги на телефоне: карточки работ и цена в одну колонку */
@@ -1372,9 +1505,10 @@ html:not(.js) .loader { display: none; }
   .how-text { max-width: none; }
 
 
-  .footer-key { height: clamp(120px, 34vw, 160px); }
+  .footer-key { height: clamp(68px, 16vw, 80px); }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
   .footer-mark { font-size: clamp(40px, 17vw, 68px); }
+  .footer-bed { display: none; }
   .footer-bottom { flex-direction: column; }
 }
 
@@ -1393,8 +1527,11 @@ body { overflow-x: hidden; }
   /* Радиус как у карточек-поверхностей ниже: project-card__visual-link */
   --intro-card-radius: clamp(16px, 2vw, 24px);
   position: relative;
+  /* Свободную высоту делим поровну: на высоких экранах лид с кнопкой
+     не отрывается от нижнего меню. */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   min-height: 100svh;
   /* За плашкой открывается белый холст, как у следующей секции. */
@@ -2088,6 +2225,13 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 860px) {
+  /* На телефоне поле героя остаётся во всю ширину экрана: сжатие в карточку
+     оставляет по 16px белых полос по краям, и фон выглядит обрезанным. */
+  .intro-field {
+    animation: none;
+    max-width: 100%;
+    border-radius: 0;
+  }
   /* Отступ снизу героя держит нижнее меню (56 + 12 нижний край) — меньше
      70 строка текста уходила бы под панель. */
   .intro { padding-top: 24px; padding-bottom: 84px; }
