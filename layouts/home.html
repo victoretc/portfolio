@@ -134,46 +134,46 @@
   </div>
 </section>
 
-<!-- 4. SERVICES — плоский редакционный блок в ритме первого экрана:
-     белое поле, сначала услуга с ценой, потом сетка работ и блок «А так же».
-     Без тёмных карточек и витринных сеток: только типографика и волосяные линии. -->
+<!-- 4. SERVICES — старая бенто-идея в палитре design.md:
+     off-white поле, белые карточки 54px, тихий вес 350, голубой акцент.
+     Графика шагов осталась, но зелёный/жёлтый/розовый заменены на
+     нейтральные заливки и signal blue. -->
 <section class="chapter services" id="services">
   <div class="services-inner">
-    <div class="services-head" data-reveal>
+    <header class="services-head" data-reveal>
       <h2 class="services-title">Услуги</h2>
-    </div>
+    </header>
 
-    <!-- Услуга — редакционная строка в ритме главы: без карточки, заливки,
-         фоновых линий и рамок. Имя, описание и цена живут на одной
-         типографской полосе, как запись в каталоге. -->
-    <div class="services-top">
-      <article class="offer" data-reveal>
-        <div class="offer-intro">
-          <h3 class="offer-name"><span class="offer-mark">Лендинг</span></h3>
-          <p class="offer-desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+    <article class="offer" data-reveal>
+      <div class="offer-main">
+        <h3 class="offer-name">Лендинг</h3>
+        <p class="offer-desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
+        <a class="text-link offer-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
+          Обсудить проект
+          <svg class="text-link__icon" width="18" height="18" aria-hidden="true"><use href="#ext-link"/></svg>
+        </a>
+      </div>
+
+      <div class="offer-deal">
+        <div class="offer-deal-block">
+          <p class="services-eyebrow">Стоимость</p>
+          <p class="offer-value"><span class="offer-num">900</span><span class="offer-cur">BYN</span></p>
         </div>
-
-        <div class="offer-deal">
-          <p class="offer-value">
-            <span class="offer-num">900</span>
-            <span class="offer-cur">BYN</span>
-          </p>
+        <div class="offer-deal-block">
+          <p class="services-eyebrow">Срок</p>
           <p class="offer-term"><strong>5 рабочих дней</strong> после согласования задачи и получения материалов.</p>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
 
-    <!-- Что входит в работу: бенто-сетка, шесть шагов.
-         Ритм как в features-8: крупная цифра, тонкая графика в верхней зоне,
-         заголовок и пояснение снизу. Стиль — свой: белое поле, волосяные
-         линии, Onest и розовый акцент вместо цветных карточек. -->
     <div class="services-work">
-      <p class="services-sub" data-reveal>Что входит в работу</p>
+      <header class="services-subhead" data-reveal>
+        <h3 class="services-sub">Что входит в работу</h3>
+      </header>
 
       <ol class="work-grid">
         <li class="work-card work-card--sm" data-reveal style="--i: 0">
           <div class="work-visual" aria-hidden="true">
-            <!-- Каркас страницы: блоки стоят в порядке вопросов -->
             <svg viewBox="0 0 220 130" fill="none">
               <rect x="0.75" y="0.75" width="218.5" height="128.5" rx="12" stroke="currentColor" stroke-opacity="0.45"/>
               <path d="M1 27h218" stroke="currentColor" stroke-opacity="0.3"/>
@@ -190,7 +190,7 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">01</span>
             <div class="work-text">
-              <h3 class="work-name">Структура страницы</h3>
+              <h4 class="work-name">Структура страницы</h4>
               <p class="work-note">Разбираемся, какие вопросы есть у ваших клиентов, и выстраиваем блоки в том порядке, в котором они их задают.</p>
             </div>
           </div>
@@ -198,7 +198,6 @@
 
         <li class="work-card work-card--wide" data-reveal style="--i: 1">
           <div class="work-visual" aria-hidden="true">
-            <!-- Шрифтовая проба и палитра — дизайн из сферы клиента -->
             <div class="work-specimen">
               <span class="work-specimen__face">Aa</span>
               <div class="work-specimen__chips">
@@ -212,7 +211,7 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">02</span>
             <div class="work-text">
-              <h3 class="work-name">Дизайн под ваш бизнес</h3>
+              <h4 class="work-name">Дизайн под ваш бизнес</h4>
               <p class="work-note">Типографика, цвет, изображения и акценты — из вашей сферы, а не из шаблона. Дизайном занимается дизайнер, а не разработчик между делом.</p>
             </div>
           </div>
@@ -220,7 +219,6 @@
 
         <li class="work-card work-card--wide" data-reveal style="--i: 2">
           <div class="work-visual" aria-hidden="true">
-            <!-- Телефон в размер: проверка на реальной ширине -->
             <svg class="work-phone" viewBox="0 0 220 300" fill="none">
               <rect x="62" y="18" width="96" height="264" rx="20" stroke="currentColor" stroke-opacity="0.5"/>
               <rect x="95" y="28" width="30" height="5" rx="2.5" fill="currentColor" fill-opacity="0.32"/>
@@ -242,7 +240,7 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">03</span>
             <div class="work-text">
-              <h3 class="work-name">Мобильная версия</h3>
+              <h4 class="work-name">Мобильная версия</h4>
               <p class="work-note">Проверяем на реальных телефонах: читаемость текста, размер кнопок, скорость загрузки.</p>
             </div>
           </div>
@@ -250,7 +248,6 @@
 
         <li class="work-card work-card--sm" data-reveal style="--i: 3">
           <div class="work-visual" aria-hidden="true">
-            <!-- Поисковая выдача: заголовок, описание, рост позиций -->
             <svg viewBox="0 0 220 130" fill="none">
               <rect x="10" y="12" width="172" height="30" rx="15" stroke="currentColor" stroke-opacity="0.45"/>
               <circle cx="28" cy="27" r="6" stroke="currentColor" stroke-opacity="0.6"/>
@@ -269,7 +266,7 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">04</span>
             <div class="work-text">
-              <h3 class="work-name">Базовое SEO</h3>
+              <h4 class="work-name">Базовое SEO</h4>
               <p class="work-note">Заголовок и описание страницы, структура заголовков, технические файлы для поисковиков.</p>
             </div>
           </div>
@@ -277,7 +274,6 @@
 
         <li class="work-card work-card--half" data-reveal style="--i: 4">
           <div class="work-visual" aria-hidden="true">
-            <!-- Окно браузера и код: сборка страницы -->
             <svg viewBox="0 0 240 150" fill="none">
               <rect x="10.75" y="12.75" width="218.5" height="124.5" rx="12" stroke="currentColor" stroke-opacity="0.45"/>
               <path d="M11 38h218" stroke="currentColor" stroke-opacity="0.3"/>
@@ -296,7 +292,7 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">05</span>
             <div class="work-text">
-              <h3 class="work-name">Разработка и вёрстка</h3>
+              <h4 class="work-name">Разработка и вёрстка</h4>
               <p class="work-note">Собираем страницу, подключаем аналитику, проверяем ссылки и отправку формы.</p>
             </div>
           </div>
@@ -304,7 +300,6 @@
 
         <li class="work-card work-card--half" data-reveal style="--i: 5">
           <div class="work-visual" aria-hidden="true">
-            <!-- Кривая запуска: сайт уходит в публикацию -->
             <svg viewBox="0 0 240 150" fill="none">
               <path d="M14 126h212" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="3 5"/>
               <path d="M14 126c34-1 54-8 74-28 18-18 30-24 48-28 24-6 44-24 60-48V126H14Z" fill="var(--accent)" fill-opacity="0.07"/>
@@ -317,18 +312,15 @@
           <div class="work-body">
             <span class="work-num" aria-hidden="true">06</span>
             <div class="work-text">
-              <h3 class="work-name">Запуск</h3>
+              <h4 class="work-name">Запуск</h4>
               <p class="work-note">Помогаем с доменом и хостингом, публикуем сайт и показываем, как им пользоваться.</p>
             </div>
           </div>
         </li>
       </ol>
 
-      <!-- Другие услуги — крупный редакционный абзац с маркерами,
-           как в заголовке первого экрана. Подпись и действие стоят на одной
-           полосе, текст — на кегле оффера главной, без жирного. -->
       <div class="how" data-reveal>
-        <p class="how-text">Делаем <span class="how-mark">интернет-магазины</span>, <span class="how-mark how-mark--yellow">Telegram-ботов</span> и <span class="how-mark">сложные системы</span> под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. Напишите, что нужно, — предложим решение и назовём вилку.</p>
+        <p class="how-text">Делаем интернет-магазины, Telegram-ботов и сложные системы под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. <a class="text-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">Напишите, что нужно</a> — предложим решение и назовём вилку.</p>
       </div>
     </div>
   </div>
