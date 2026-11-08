@@ -1384,16 +1384,40 @@ html.js .callout.is-in .callout-label .callout-char {
 /* Список работ раскрывается ступенями по 100ms — редкий вход, не рутинное действие */
 .services .work-card[data-reveal].is-in { transition-delay: calc(var(--i, 0) * 80ms); }
 /* Первый экран: текст ждёт готовности страницы (шрифты + снятие шторки-лоадера)
-   и поднимается ступенями: заголовок → левая колонка → правая колонка.
-   Движение — только opacity и transform.
-   Сдвиг задаём только в начальном состоянии (:not(.is-in)), иначе это правило
-   перебило бы transform:none из общего .is-in. */
-.js .intro [data-reveal]:not(.is-in) { transform: translateY(14px); }
-.js .intro .intro-title:not(.is-in) { transform: translateY(20px); }
+   и собирается из периферии к центру — заголовок → бейдж → оффер → боковые
+   заметки. Заметки приходят с внешних сторон, поэтому движение сходится к
+   бейджу, а не идёт одной волной снизу.
+   Движение — только opacity и transform. Сдвиг задаём только в начальном
+   состоянии (:not(.is-in)), иначе это правило перебило бы transform:none из
+   общего .is-in. */
+.js .intro [data-reveal]:not(.is-in) { transform: translateY(22px); }
+.js .intro .intro-title:not(.is-in) { transform: translateY(34px); }
+.js .intro .intro-side--left .intro-panel:not(.is-in) { transform: translate3d(-14px, 26px, 0); }
+.js .intro .intro-side--right .intro-panel:not(.is-in) { transform: translate3d(14px, 26px, 0); }
 .js .intro [data-reveal].is-in {
-  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 70ms);
+  /* Медленнее и длиннее скролл-ревила: первый экран показывают один раз,
+     и он должен успевать «сесть», а не моргнуть. */
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 110ms);
 }
+/* Бейдж висит на ремешке: он не всплывает, а опускается на место и чуть
+   доворачивается — как груз на ленте, который отпустили. Точка вращения
+   выше карточки, поэтому качается низ, а не весь блок. */
+.js .intro-badge {
+  opacity: 0;
+  transform: translateY(-14px) rotate(-1.4deg);
+  transform-origin: 50% -160px;
+}
+.js .intro.is-in .intro-badge {
+  opacity: 1;
+  transform: none;
+  transition: opacity 800ms var(--ease-out) 120ms, transform 1100ms var(--ease-out) 120ms;
+}
+/* Дудлы — фоновая графика: проступают последними, когда текст уже стоит.
+   Вход только по opacity: у рисунков своя цветовая реакция на курсор. */
+.js .intro:not(.is-in) .doodle-rail { opacity: 0; }
+.js .intro.is-in .doodle-rail { animation: rail-in 1400ms var(--ease-out) 420ms both; }
+@keyframes rail-in { from { opacity: 0; } to { opacity: 1; } }
 /* Нижнее меню не выскакивает из-под шторки лоадера, а доходит вместе с текстом */
 .js .dock { opacity: 0; pointer-events: none; transition: opacity 250ms var(--ease-out); }
 .js .dock.is-in { opacity: 1; pointer-events: auto; transition: opacity 250ms var(--ease-out) 200ms; }
@@ -1412,6 +1436,9 @@ html:not(.js) .loader { display: none; }
   .js .dock { opacity: 0 !important; pointer-events: none !important; }
   .js .dock.is-in { opacity: 1 !important; pointer-events: auto !important; transition: none !important; }
   .js .hero-script, .js .hero-title, .js .hero-lead, .js .hero-actions { animation: none !important; }
+  /* Первый экран: движение убрано, остаётся мгновенная смена состояния */
+  .js .intro-badge { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .js .intro .doodle-rail, .js .intro.is-in .doodle-rail { opacity: 1 !important; animation: none !important; }
   .head-cta, .head-cta:active { transform: none !important; transition: none; }
   /* Движение убрано, остаются состояние и кросс-фейд панели */
   .head-burger span, .site-head::before { transition: none; }
@@ -1929,7 +1956,8 @@ body { overflow-x: hidden; }
 .loader.is-done {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms ease;
+  /* Шторка растворяется, а не гаснет рывком: под ней уже собирается первый экран */
+  transition: opacity 420ms var(--ease-out);
 }
 @keyframes loader-spin {
   to { transform: rotate(360deg); }

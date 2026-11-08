@@ -164,6 +164,8 @@
   // Колонка, в которой висит бейдж: по её низу выравнивается карточка.
   var area = host.parentElement;
   var areaH = 0;
+  // Толчок ремешка даём один раз — при первой сборке геометрии.
+  var kicked = false;
   var look = {
     text: host.getAttribute("data-strap-text") || "",
     label: host.getAttribute("data-strap-label") || "",
@@ -242,6 +244,20 @@
     return dy;
   }
 
+  /* Верх колонки бейджа в координатах документа — без анимации входа.
+     Бейдж «опускается» на место транзишеном, и трансформация двигает его
+     getBoundingClientRect. Если замерить в этот момент, ремешок получит
+     неверный bleed и вся подвеска дёрнется на пересборке. Снимаем инлайновый
+     transform на время чтения: раскладка при этом не меняется, а браузер не
+     успевает отрисовать промежуточный кадр. */
+  function layoutTop(el) {
+    var inline = el.style.transform;
+    el.style.transform = "none";
+    var top = el.getBoundingClientRect().top + (window.scrollY || 0);
+    el.style.transform = inline;
+    return top;
+  }
+
   function build() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = Math.max(1, host.clientWidth);
@@ -266,7 +282,7 @@
        в targetTop. Так бейдж «вырастает» из заголовка на всех ширинах. */
     bleed = 0;
     if (area) {
-      bleed = Math.max(0, Math.round(area.getBoundingClientRect().top + (window.scrollY || 0)));
+      bleed = Math.max(0, Math.round(layoutTop(area)));
     }
     host.style.setProperty('--ly-bleed', bleed + 'px');
     lastBleed = bleed;
@@ -297,10 +313,13 @@
         integrate(pts, STEP, GRAVITY, 0.98);
         solve(pts, links, ITER);
       }
-    } else {
-      // Лёгкий толчок ремешка — бейдж слегка покачивается при загрузке
+    } else if (!kicked) {
+      // Лёгкий толчок ремешка — бейдж слегка покачивается при загрузке.
+      // Только при первой сборке: пересборки (шрифты, load, ресайз) не должны
+      // толкать ленту заново, иначе бейдж раскачивается повторно.
       pts[iC].x += cw * 0.55;
       pts[iC].px = pts[iC].x - 2;
+      kicked = true;
     }
   }
 
@@ -471,7 +490,7 @@
      месту и наезжает на заголовок. */
   function rebuild() {
     if (!area) return;
-    var top = Math.round(area.getBoundingClientRect().top + (window.scrollY || 0));
+    var top = Math.round(layoutTop(area));
     if (Math.abs(top - lastBleed) < 1) return;
     build();
     draw();
@@ -496,7 +515,7 @@
     document.dispatchEvent(new CustomEvent('site:veil'));
     window.setTimeout(function () {
       if (loader.parentNode) loader.parentNode.removeChild(loader);
-    }, 300);
+    }, 460);
   }
 
   if (photo) {

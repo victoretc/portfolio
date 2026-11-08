@@ -86,10 +86,13 @@
       // маленькая пауза, чтобы текст начал подниматься из-под гаснущей шторки
       setTimeout(function () {
         heroTargets.forEach(function (el) { el.classList.add('is-in'); });
+        // Секция тоже получает класс: по нему появляются бейдж и дудлы.
+        if (hero) hero.classList.add('is-in');
         if (dock) dock.classList.add('is-in');
       }, 60);
     });
   } else if (dock) {
+    if (hero) hero.classList.add('is-in');
     dock.classList.add('is-in');
   }
 

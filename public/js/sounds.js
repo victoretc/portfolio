@@ -28,11 +28,3 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// Наведение — только мышью и только на пункты нижнего меню: на тач-экранах
-// pointerenter срабатывает от касания и дал бы лишний звук перед кликом.
-Array.prototype.forEach.call(document.querySelectorAll('.dock a'), function (a) {
-  a.addEventListener('pointerenter', function (e) {
-    if (e.pointerType !== 'mouse') return;
-    playUISound('hover', 0.5);
-  });
-});
