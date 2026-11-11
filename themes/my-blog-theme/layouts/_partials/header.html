@@ -4,12 +4,12 @@
   {{ if .IsPage }}
   <a class="main-page-button yet-button" href="{{ .Site.Home.RelPermalink }}">{{ i18n "home" }}</a>
 {{ end }}
-  <a class="telegram-button" href="https://t.me/spoon_of_quality/12">Telegram</a>
+  <a class="telegram-button" href="https://t.me/victor_bogatov">Telegram</a>
   {{ with site.GetPage "/posts/about-me" }}
   <a class="about-button" href="{{ .RelPermalink }}">{{ i18n "about" }}</a>
   {{ end }}
   {{ if not .IsPage }}
-  <a class="yet-button" href="https://t.me/spoon_of_quality/12">{{ i18n "another_button" }}</a>
+  <a class="yet-button" href="https://t.me/victor_bogatov">{{ i18n "another_button" }}</a>
   {{ end }}
   {{ partial "lang-switcher.html" . }}
   <pagefind-config base-url="{{ "" | relURL }}" bundle-path="{{ "pagefind/" | relURL }}"></pagefind-config>
