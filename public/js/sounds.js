@@ -17,9 +17,7 @@ document.addEventListener('click', function (e) {
   var el = controlFor(e.target);
   if (!el) return;
 
-  if (el.matches('[data-carousel-prev], [data-carousel-next]')) {
-    playUISound('tick');
-  } else if (el.matches(primary)) {
+  if (el.matches(primary)) {
     playUISound('tap');
   } else if (el.closest('.dock')) {
     playUISound('select');

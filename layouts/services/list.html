@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ partial "svg-symbols.html" . }}
+
+<main class="svc-page">
+  <section class="svc-hero">
+    <p class="svc-crumb">Услуги</p>
+    <h1 class="svc-title">{{ .Params.heading | default .Title }}</h1>
+    {{ with .Params.lead }}<p class="svc-lead">{{ . }}</p>{{ end }}
+  </section>
+
+  <section class="svc-block svc-block--cards">
+    <div class="svc-grid">
+      {{ range $i, $p := .Pages.ByWeight }}
+        {{ partial "service-card.html" (dict "p" $p "i" $i) }}
+      {{ end }}
+    </div>
+  </section>
+</main>
+
+{{ partial "site-footer.html" . }}
+{{ partial "site-dock.html" . }}
+{{ end }}

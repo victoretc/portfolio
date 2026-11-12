@@ -1,0 +1,48 @@
+{{- /* Карточка проекта для бенто-сетки «Сделали».
+       Ожидает dict: p — запись из data/projects.yaml, i — номер для
+       ступенчатого появления.
+
+       Вся плитка — ссылка: кадр и подпись ведут на живой сайт.
+       Внутри — название проекта, строка о нём по-русски и стек.
+       Никаких кнопок, рамок и надзаголовков: форму задаёт кадр.
+
+       Размер плитки задаёт поле size в данных:
+         half — половина блока (3 колонки): кадр сверху, текст снизу
+         wide — полоса во всю ширину: текст слева, кадр справа */ -}}
+{{- $p := .p -}}
+{{- $i := .i | default 0 -}}
+{{- if eq $p.size "wide" }}
+  <a class="project-card project-card--wide" href="{{ $p.url }}" target="_blank" rel="noopener"
+     data-reveal style="--i: {{ $i }}"
+     aria-label="{{ $p.Title }} — {{ $p.description }} Открыть сайт">
+    <span class="project-card__text">
+      <span class="project-card__title">{{ $p.title }}</span>
+      <span class="project-card__description">{{ $p.description }}</span>
+      {{ with $p.stack }}<span class="project-card__stack">{{ . }}</span>{{ end }}
+    </span>
+    <span class="project-card__visual" style="--media-ratio: {{ $p.media.ratio | default `1600 / 920` | safeCSS }}">
+      {{ if eq $p.media.type "video" }}
+        <video class="project-card__media" src="{{ $p.media.src | relURL }}" autoplay muted loop playsinline preload="metadata" width="{{ $p.media.width }}" height="{{ $p.media.height }}" aria-label="{{ $p.media.alt }}"></video>
+      {{ else }}
+        <img class="project-card__media" src="{{ $p.media.src | relURL }}" alt="{{ $p.media.alt }}" width="{{ $p.media.width }}" height="{{ $p.media.height }}" loading="lazy" decoding="async">
+      {{ end }}
+    </span>
+  </a>
+{{- else }}
+  <a class="project-card project-card--{{ $p.size | default "half" }}" href="{{ $p.url }}" target="_blank" rel="noopener"
+     data-reveal style="--i: {{ $i }}"
+     aria-label="{{ $p.Title }} — {{ $p.description }} Открыть сайт">
+    <span class="project-card__visual" style="--media-ratio: {{ $p.media.ratio | default `1600 / 920` | safeCSS }}">
+      {{ if eq $p.media.type "video" }}
+        <video class="project-card__media" src="{{ $p.media.src | relURL }}" autoplay muted loop playsinline preload="metadata" width="{{ $p.media.width }}" height="{{ $p.media.height }}" aria-label="{{ $p.media.alt }}"></video>
+      {{ else }}
+        <img class="project-card__media" src="{{ $p.media.src | relURL }}" alt="{{ $p.media.alt }}" width="{{ $p.media.width }}" height="{{ $p.media.height }}" loading="lazy" decoding="async">
+      {{ end }}
+    </span>
+    <span class="project-card__text">
+      <span class="project-card__title">{{ $p.title }}</span>
+      <span class="project-card__description">{{ $p.description }}</span>
+      {{ with $p.stack }}<span class="project-card__stack">{{ . }}</span>{{ end }}
+    </span>
+  </a>
+{{- end }}

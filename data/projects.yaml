@@ -1,0 +1,64 @@
+# Проекты студии — блок «Сделали» на главной.
+#
+# size задаёт место плитки в бенто-сетке запасного варианта (без JS):
+#   half — половина блока (3 из 6 колонок): кадр сверху, текст снизу
+#   wide — полоса во всю ширину (6 из 6 колонок): текст слева, кадр справа
+#
+# Название блога в «Сделали» — по-русски, «Ложка качества» (решение
+# владельца студии, 2026-11-12). На самом сайте блог называется
+# «Spoon of Quality» — и в русской, и в английской версии.
+#
+# description — короткая строка о проекте: что это за проект. Одна и та же
+# строка стоит под карточкой в кольце и под плиткой в сетке без скрипта.
+#
+# media.src — путь внутри static/ (relURL подставляется в шаблоне).
+# media.type — video | image. Видео крутится в молча, картинка — обычный img.
+# media.poster — кадр из ролика: показывается, пока видео не готово, и когда
+#                у посетителя выключено движение. У картинок это она сама:
+#                сцена кольца берёт текстуру из poster, а не из src.
+# media.width/height — размеры файла, чтобы браузер зарезервировал место.
+# media.ratio — пропорции кадра в плитке. У видео и картинок одно и то же
+#               значение, чтобы плитки в ряду были одного размера.
+- title: Читка
+  size: half
+  url: https://victoretc.github.io/book-club-static/
+  description: "каталог книжных клубов для тех кому скучно читать одному"
+  stack: Hugo + GitHub Pages
+  media:
+    type: video
+    src: video/first-case.mp4
+    poster: img/projects/chitka.jpg
+    width: 1600
+    height: 920
+    ratio: "1600 / 920"
+    alt: Демо каталога книжных клубов «Читка»
+
+- title: АйТи Скул
+  size: half
+  url: https://victoretc.github.io/itschoolmvp/
+  description: "IT-курсы для детей 6–17 лет"
+  stack: Hugo + GitHub Pages
+  media:
+    type: image
+    src: img/projects/itschool.jpg
+    # Постер для кольца: без него кадр в сцене остаётся пустым —
+    # сцена берёт текстуру из картинки, а не из src.
+    poster: img/projects/itschool.jpg
+    width: 1600
+    height: 920
+    ratio: "1600 / 920"
+    alt: "Сайт школы программирования «АйТи Скул»: курсы, преподаватели и запись на занятие"
+
+- title: Ложка качества
+  size: wide
+  url: https://victoretc.github.io/victors-blog/
+  description: "экспертный блог для тестировщиков"
+  stack: Hugo + GitHub Pages
+  media:
+    type: video
+    src: video/victors-blog.mp4
+    poster: img/projects/spoon.jpg
+    width: 1600
+    height: 920
+    ratio: "1600 / 920"
+    alt: "Блог о качестве «Spoon of Quality»: тесты, логирование шагов и генераторы данных"

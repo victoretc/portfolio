@@ -26,6 +26,7 @@
         <p class="footer-col-title">Разделы</p>
         <a href="{{ $home }}#cases">Сделали</a>
         <a href="{{ $home }}#services">Услуги</a>
+        {{ with site.GetPage "/services" }}<a href="{{ .RelPermalink }}">Все услуги</a>{{ end }}
         <a href="#contacts">Контакты</a>
         <!-- <a href="#top">Наверх</a> -->
       </nav>

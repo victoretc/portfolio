@@ -24,6 +24,9 @@ export default defineConfig({
         "hero-topography": fileURLToPath(
           new URL("./src/hero-topography.tsx", import.meta.url),
         ),
+        "cases-carousel": fileURLToPath(
+          new URL("./src/cases-carousel.tsx", import.meta.url),
+        ),
       },
       output: {
         entryFileNames: "[name].js",

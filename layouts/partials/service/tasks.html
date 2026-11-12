@@ -1,0 +1,32 @@
+{{- /* Задачи, которые закрывает студия.
+       name — как пункт читается в тексте на главной.
+       service — страница услуги, на которую пункт уйдёт ссылкой.
+       Пусто, если отдельной страницы нет: пункт останется текстом.
+
+       Пока ссылки нет: в тексте пункт выделен цветом (класс services-task),
+       чтобы его можно было прочитать как ссылку. Когда понадобится —
+       <span class="services-task"> меняется на <a class="text-link services-task"
+       href="{{ (site.GetPage (printf "/services/%s" $t.service)).RelPermalink }}">. */ -}}
+{{- return (slice
+  (dict
+    "name" "аудит сайта"
+    "service" "audit")
+  (dict
+    "name" "одностраничники"
+    "service" "onepage")
+  (dict
+    "name" "многостраничники"
+    "service" "multipage")
+  (dict
+    "name" "интернет-магазины"
+    "service" "shop")
+  (dict
+    "name" "Telegram-боты"
+    "service" "telegram-bot")
+  (dict
+    "name" "внедрение CRM"
+    "service" "")
+  (dict
+    "name" "веб- и мобильные приложения"
+    "service" "")
+) -}}

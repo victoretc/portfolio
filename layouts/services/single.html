@@ -1,0 +1,122 @@
+{{ define "main" }}
+{{ partial "svg-symbols.html" . }}
+{{ $hub := site.GetPage "/services" }}
+{{ $hubURL := cond (ne $hub nil) $hub.RelPermalink ("services/" | relURL) }}
+
+<main class="svc-page">
+  <section class="svc-hero">
+    <p class="svc-crumb">
+      <a href="{{ $hubURL }}">Услуги</a>
+      <span aria-hidden="true">/</span>
+      <span>{{ .Title }}</span>
+    </p>
+
+    {{ with .Params.eyebrow }}<p class="svc-eyebrow">{{ . }}</p>{{ end }}
+    <h1 class="svc-title">{{ .Title }}</h1>
+    {{ with .Params.lead }}<p class="svc-lead">{{ . }}</p>{{ end }}
+
+    <div class="svc-deal" data-reveal>
+      <div class="svc-deal__block">
+        <p class="services-eyebrow">Стоимость</p>
+        <p class="svc-price">
+          <span class="svc-price__num">от {{ .Params.price }}</span>
+          <span class="svc-price__cur">BYN</span>
+        </p>
+      </div>
+      <div class="svc-deal__block">
+        <p class="services-eyebrow">Срок</p>
+        <p class="svc-term"><strong>{{ .Params.term }}</strong> после согласования задачи и получения материалов.</p>
+      </div>
+      <a class="cta-link svc-deal__cta" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
+        <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+        <span>Обсудить проект</span>
+      </a>
+    </div>
+  </section>
+
+  {{ with .Params.for_who }}
+  <section class="svc-block" data-reveal>
+    <h2 class="svc-block__title">Кому подойдёт</h2>
+    <ul class="svc-list">
+      {{ range . }}<li class="svc-list__item">{{ . }}</li>{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with .Params.includes }}
+  <section class="svc-block" data-reveal>
+    <h2 class="svc-block__title">Что входит в работу</h2>
+    <ol class="svc-includes">
+      {{ range $i, $it := . }}
+      <li class="svc-include">
+        <span class="svc-include__num">{{ printf "%02d" (add $i 1) }}</span>
+        <h3 class="svc-include__name">{{ $it.title }}</h3>
+        <p class="svc-include__note">{{ $it.note }}</p>
+      </li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+
+  {{ with .Params.excludes }}
+  <section class="svc-block" data-reveal>
+    <h2 class="svc-block__title">Чего в этой цене нет</h2>
+    <ul class="svc-excludes">
+      {{ range . }}<li class="svc-exclude">{{ . }}</li>{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section class="svc-block" data-reveal>
+    <h2 class="svc-block__title">Как мы работаем</h2>
+    <ol class="svc-steps">
+      {{ $steps := partial "service/steps.html" . }}
+      {{ range $i, $step := $steps }}
+        <li class="svc-step">
+          <span class="svc-step__num">{{ printf "%02d" (add $i 1) }}</span>
+          <h3 class="svc-step__name">{{ $step.name }}</h3>
+          <p class="svc-step__note">{{ $step.note }}</p>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+
+  {{ with .Params.faq }}
+  <section class="svc-block" data-reveal>
+    <h2 class="svc-block__title">Частые вопросы</h2>
+    <div class="svc-faq">
+      {{ range . }}
+      <details class="svc-faq__item">
+        <summary class="svc-faq__q">
+          <span>{{ .q }}</span>
+          <span class="svc-faq__mark" aria-hidden="true">
+            <svg class="svc-faq__icon svc-faq__icon--plus" width="20" height="20" viewBox="0 0 20 20">
+              <path d="M10 3.5v13M3.5 10h13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="svc-faq__icon svc-faq__icon--cross" width="20" height="20" viewBox="0 0 20 20">
+              <path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </summary>
+        <p class="svc-faq__a">{{ .a }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="svc-cta" data-reveal>
+    <div class="svc-cta__text">
+      <p class="svc-cta__title">{{ .Title }} — от {{ .Params.price }} BYN</p>
+      <p class="svc-cta__note">Расскажите о задаче: ответим в течение рабочего дня и назовём точную цену.</p>
+    </div>
+    <a class="cta-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
+      <svg class="cta-link__icon" width="24" height="20" aria-hidden="true"><use href="#tg-plane"/></svg>
+      <span>Обсудить проект</span>
+    </a>
+  </section>
+</main>
+
+{{ partial "site-footer.html" . }}
+{{ partial "site-dock.html" . }}
+{{ end }}

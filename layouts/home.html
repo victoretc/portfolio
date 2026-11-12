@@ -87,7 +87,7 @@
         <article class="intro-panel" data-reveal style="--i: 3">
           <span class="intro-panel__veil" aria-hidden="true"></span>
           <span class="intro-panel__tag" aria-hidden="true">03</span>
-          <p>Изучаем, кто ваш клиент и что мешает ему нажать «Купить».</p>
+          <p>Собираем сайт, который работает: формы, каталог, оплата, интеграции.</p>
         </article>
       </div>
     </div>
@@ -95,261 +95,97 @@
 </section>
 
 <!-- 2. CASES — «Сделали» в стилистике design.md (Augen Pro):
-     off-white холст, белые карточки 54px с волосяной рамкой, тихий вес 350,
-     signal blue только в контурах ссылок и стрелок.
-     Карточки лежат в горизонтальной ленте: когда проектов станет больше,
-     листаются стрелками или свайпом. -->
+     сцена кольца во всю ширину экрана: карточки — записи экрана без текста,
+     боковые уходят в перспективу и обрезаются краем экрана.
+     Данные — из data/projects.yaml, страница отдаёт их скрипту в JSON.
+     Без JS остаётся бенто-сетка ниже: она же запасной вариант. -->
 <section class="chapter cases" id="cases">
   <div class="cases-inner">
     <header class="cases-head">
-      <div class="cases-heading">
-        <h2 class="cases-title">Сделали</h2>
-      </div>
-
-      <!-- Стрелки появляются из JS, только если лента действительно шире
-           колонки. Без JS карточки всё равно листаются свайпом и трекпадом. -->
-      <div class="cases-nav" data-carousel-nav hidden>
-        <button class="cases-arrow" type="button" data-carousel-prev aria-label="Предыдущий проект" aria-controls="cases-track">
-          <svg width="20" height="20" aria-hidden="true"><use href="#arrow-left"/></svg>
-        </button>
-        <button class="cases-arrow" type="button" data-carousel-next aria-label="Следующий проект" aria-controls="cases-track">
-          <svg width="20" height="20" aria-hidden="true"><use href="#arrow-right"/></svg>
-        </button>
-      </div>
+      <h2 class="cases-title">Сделали</h2>
     </header>
+  </div>
 
-    <div class="cases-viewport" data-carousel role="group" aria-label="Проекты студии">
-      <div class="cases-track" id="cases-track" data-carousel-track>
-        <article class="project-card">
-          <div class="project-card__inner">
-            <a class="project-card__visual-link" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener" aria-label="Открыть сайт «Читка»">
-              <video class="project-card__visual" src="{{ "video/first-case.mp4" | relURL }}" autoplay muted loop playsinline preload="metadata" width="1600" height="920" aria-label="Демо каталога книжных клубов Читка"></video>
-              <div class="project-card__blur" aria-hidden="true">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <div class="project-card__tint" aria-hidden="true"></div>
-            </a>
+  {{- /* Данные для кольца: тот же YAML, что и у сетки. Пути внутри static/. */ -}}
+  {{- $cases := slice -}}
+  {{- range site.Data.projects -}}
+    {{- $cases = $cases | append (dict
+          "title" .title
+          "url" .url
+          "description" .description
+          "stack" .stack
+          "media" (dict
+            "type" .media.type
+            "src" (.media.src | relURL)
+            "poster" (cond (isset .media "poster") (.media.poster | relURL) "")
+            "alt" .media.alt)) -}}
+  {{- end -}}
+  <script type="application/json" id="cases-data">{{ $cases | jsonify | safeJS }}</script>
 
-            <div class="project-card__text">
-              <div class="project-card__title-group">
-                <h3 class="project-card__title">Читка</h3>
-                <p class="project-card__description">Каталог книжных клубов. Читаешь книгу и не с кем обсудить — найди клуб по названию или создай клуб за пару минут.</p>
-                <p class="project-card__stack">
-                  <span class="project-card__stack-label">Стэк</span>
-                  <span class="project-card__stack-value">Hugo + GitHub Pages</span>
-                </p>
-              </div>
+  <!-- Сцена на всю ширину экрана: без панели, рамки и скругления. -->
+  <div class="cases-carousel" data-cases-carousel data-reveal></div>
 
-              <a class="cta-link project-card__cta" href="https://victoretc.github.io/book-club-static/" target="_blank" rel="noopener">
-                <svg class="cta-link__icon" width="22" height="22" aria-hidden="true"><use href="#ext-link"/></svg>
-                <span>Открыть сайт</span>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
+  <div class="cases-inner">
+    <p class="cases-lead">И многое другое!</p>
+
+    <div class="cases-grid" data-cases-grid>
+      {{ range $i, $p := site.Data.projects }}
+        {{ partial "project-card.html" (dict "p" $p "i" $i) }}
+      {{ end }}
     </div>
   </div>
 </section>
 
-<!-- 4. SERVICES — старая бенто-идея в палитре design.md:
-     off-white поле, белые карточки 54px, тихий вес 350, голубой акцент.
-     Графика шагов осталась, но зелёный/жёлтый/розовый заменены на
-     нейтральные заливки и signal blue. -->
+<!-- 4. SERVICES — блок услуг текстом:
+     off-white поле, тихий вес 350, голубой акцент.
+     Цен на главной нет: клиент приходит с задачей и бюджетом,
+     а решение подбираем мы. Задачи — ссылками на страницы услуг
+     (links.html), пока они без адресов.
+     Карточки услуг с ценами живут на /services/. -->
 <section class="chapter services" id="services">
   <div class="services-inner">
     <header class="services-head" data-reveal>
       <h2 class="services-title">Услуги</h2>
+      <p class="services-lead">Закрываем задачи по автоматизации малого и среднего бизнеса. Расскажите о своей цели и бюджете на её реализацию&nbsp;— подберём подходящее решение.</p>
     </header>
 
-    <article class="offer" data-reveal>
-      <div class="offer-main">
-        <h3 class="offer-name">Одностраничник</h3>
-        <p class="offer-desc">Дизайн и разработка сайта под конкретную услугу или акцию — под вашу задачу, а не из готовой темы.</p>
-        <a class="text-link offer-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">
-          Обсудить проект
-          <svg class="text-link__icon" width="18" height="18" aria-hidden="true"><use href="#ext-link"/></svg>
-        </a>
-      </div>
+    <!-- Задачи: каждая — ссылка на свою страницу услуги.
+         Пока без адресов: пункт выделен цветом, чтобы читался как ссылка. -->
+    <div class="services-scope" data-reveal>
+      {{ $tasks := partial "service/tasks.html" . }}
+      <p class="services-tasks">Что закрываем: {{ range $i, $t := $tasks }}<span class="services-task">{{ $t.name }}</span>{{ if lt (add $i 1) (len $tasks) }}, {{ end }}{{ end }}.</p>
 
-      <div class="offer-deal">
-        <div class="offer-deal-block">
-          <p class="services-eyebrow">Стоимость</p>
-          <p class="offer-value"><span class="offer-num">900</span><span class="offer-cur">BYN</span></p>
-        </div>
-        <div class="offer-deal-block">
-          <p class="services-eyebrow">Срок</p>
-          <p class="offer-term"><strong>5 рабочих дней</strong> после согласования задачи и получения материалов.</p>
-        </div>
-      </div>
-    </article>
+      <p class="services-note"><a class="text-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">Напишите, что нужно</a> — ответим в течение рабочего дня.</p>
+    </div>
 
     <div class="services-work">
       <header class="services-subhead" data-reveal>
-        <h3 class="services-sub">Что входит в работу</h3>
+        <h3 class="services-sub">Как мы работаем</h3>
       </header>
 
       <ol class="work-grid">
-        <li class="work-card work-card--sm" data-reveal style="--i: 0">
-          <div class="work-visual" aria-hidden="true">
-            <svg viewBox="0 0 220 130" fill="none">
-              <rect x="0.75" y="0.75" width="218.5" height="128.5" rx="12" stroke="currentColor" stroke-opacity="0.45"/>
-              <path d="M1 27h218" stroke="currentColor" stroke-opacity="0.3"/>
-              <circle cx="12" cy="14" r="2" fill="currentColor" fill-opacity="0.45"/>
-              <circle cx="19" cy="14" r="2" fill="currentColor" fill-opacity="0.45"/>
-              <circle cx="26" cy="14" r="2" fill="currentColor" fill-opacity="0.45"/>
-              <rect x="18" y="42" width="112" height="12" rx="3" fill="var(--field-2)"/>
-              <rect x="18" y="64" width="166" height="6" rx="3" fill="currentColor" fill-opacity="0.18"/>
-              <rect x="18" y="76" width="138" height="6" rx="3" fill="currentColor" fill-opacity="0.18"/>
-              <rect x="18" y="96" width="60" height="16" rx="8" fill="var(--ink)" fill-opacity="0.9"/>
-              <rect x="142" y="42" width="60" height="70" rx="6" stroke="currentColor" stroke-opacity="0.25"/>
-            </svg>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">01</span>
-            <div class="work-text">
-              <h4 class="work-name">Структура страницы</h4>
-              <p class="work-note">Разбираемся, какие вопросы есть у ваших клиентов, и выстраиваем блоки в том порядке, в котором они их задают.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="work-card work-card--wide" data-reveal style="--i: 1">
-          <div class="work-visual" aria-hidden="true">
-            <div class="work-specimen">
-              <span class="work-specimen__face">Aa</span>
-              <div class="work-specimen__chips">
-                <span style="--chip: var(--field-2)"></span>
-                <span style="--chip: var(--field-3)"></span>
-                <span class="is-accent" style="--chip: var(--accent)"></span>
-                <span class="is-ink" style="--chip: var(--ink)"></span>
+        {{ $steps := partial "service/steps.html" . }}
+        {{ range $i, $step := $steps }}
+          <li class="work-card work-card--{{ $step.span }}" data-reveal style="--i: {{ $i }}">
+            <div class="work-visual" aria-hidden="true">{{ partial "service/step-visual.html" $i }}</div>
+            <div class="work-body">
+              <span class="work-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+              <div class="work-text">
+                <h4 class="work-name">{{ $step.name }}</h4>
+                <p class="work-note">{{ $step.note }}</p>
               </div>
             </div>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">02</span>
-            <div class="work-text">
-              <h4 class="work-name">Дизайн под ваш бизнес</h4>
-              <p class="work-note">Типографика, цвет, изображения и акценты — из вашей сферы, а не из шаблона. Дизайном занимается дизайнер, а не разработчик между делом.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="work-card work-card--wide" data-reveal style="--i: 2">
-          <div class="work-visual" aria-hidden="true">
-            <svg class="work-phone" viewBox="0 0 220 300" fill="none">
-              <rect x="62" y="18" width="96" height="264" rx="20" stroke="currentColor" stroke-opacity="0.5"/>
-              <rect x="95" y="28" width="30" height="5" rx="2.5" fill="currentColor" fill-opacity="0.32"/>
-              <rect x="74" y="48" width="72" height="10" rx="3" fill="currentColor" fill-opacity="0.32"/>
-              <rect x="74" y="68" width="72" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="80" width="54" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="100" width="72" height="52" rx="6" fill="var(--field-2)" fill-opacity="0.7"/>
-              <rect x="74" y="166" width="72" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="178" width="60" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="200" width="72" height="20" rx="10" fill="var(--ink)" fill-opacity="0.9"/>
-              <rect x="74" y="236" width="72" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="74" y="248" width="44" height="6" rx="3" fill="currentColor" fill-opacity="0.16"/>
-              <path d="M46 18v264" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="3 5"/>
-              <path d="M42 18h8M42 282h8" stroke="currentColor" stroke-opacity="0.45"/>
-              <path d="M186 66v168" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="3 5"/>
-              <path d="M182 66h8M182 234h8" stroke="currentColor" stroke-opacity="0.45"/>
-            </svg>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">03</span>
-            <div class="work-text">
-              <h4 class="work-name">Мобильная версия</h4>
-              <p class="work-note">Проверяем на реальных телефонах: читаемость текста, размер кнопок, скорость загрузки.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="work-card work-card--sm" data-reveal style="--i: 3">
-          <div class="work-visual" aria-hidden="true">
-            <svg viewBox="0 0 220 130" fill="none">
-              <rect x="10" y="12" width="172" height="30" rx="15" stroke="currentColor" stroke-opacity="0.45"/>
-              <circle cx="28" cy="27" r="6" stroke="currentColor" stroke-opacity="0.6"/>
-              <path d="m33 32 5 5" stroke="currentColor" stroke-opacity="0.6"/>
-              <path d="M46 27h76" stroke="currentColor" stroke-opacity="0.3"/>
-              <rect x="10" y="58" width="26" height="26" rx="6" stroke="currentColor" stroke-opacity="0.3"/>
-              <rect x="44" y="60" width="98" height="7" rx="3.5" fill="var(--field-3)"/>
-              <rect x="44" y="73" width="150" height="5" rx="2.5" fill="currentColor" fill-opacity="0.16"/>
-              <rect x="10" y="96" width="26" height="26" rx="6" stroke="currentColor" stroke-opacity="0.3"/>
-              <rect x="44" y="98" width="84" height="7" rx="3.5" fill="currentColor" fill-opacity="0.22"/>
-              <rect x="44" y="111" width="126" height="5" rx="2.5" fill="currentColor" fill-opacity="0.14"/>
-              <path d="m192 86 8-8 6 5 8-14" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="214" cy="69" r="3" fill="var(--accent)"/>
-            </svg>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">04</span>
-            <div class="work-text">
-              <h4 class="work-name">Базовое SEO</h4>
-              <p class="work-note">Заголовок и описание страницы, структура заголовков, технические файлы для поисковиков.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="work-card work-card--half" data-reveal style="--i: 4">
-          <div class="work-visual" aria-hidden="true">
-            <svg viewBox="0 0 240 150" fill="none">
-              <rect x="10.75" y="12.75" width="218.5" height="124.5" rx="12" stroke="currentColor" stroke-opacity="0.45"/>
-              <path d="M11 38h218" stroke="currentColor" stroke-opacity="0.3"/>
-              <circle cx="24" cy="25" r="2.5" fill="currentColor" fill-opacity="0.4"/>
-              <circle cx="33" cy="25" r="2.5" fill="currentColor" fill-opacity="0.4"/>
-              <circle cx="42" cy="25" r="2.5" fill="currentColor" fill-opacity="0.4"/>
-              <rect x="28" y="56" width="42" height="6" rx="3" fill="var(--field-3)"/>
-              <rect x="28" y="70" width="58" height="6" rx="3" fill="currentColor" fill-opacity="0.14"/>
-              <rect x="28" y="92" width="30" height="6" rx="3" fill="currentColor" fill-opacity="0.2"/>
-              <rect x="28" y="106" width="46" height="6" rx="3" fill="currentColor" fill-opacity="0.14"/>
-              <path d="M116 62 102 76l14 14" stroke="currentColor" stroke-opacity="0.75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M126 62l14 14-14 14" stroke="currentColor" stroke-opacity="0.75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="m126 58-8 36" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">05</span>
-            <div class="work-text">
-              <h4 class="work-name">Разработка и вёрстка</h4>
-              <p class="work-note">Собираем страницу, подключаем аналитику, проверяем ссылки и отправку формы.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="work-card work-card--half" data-reveal style="--i: 5">
-          <div class="work-visual" aria-hidden="true">
-            <svg viewBox="0 0 240 150" fill="none">
-              <path d="M14 126h212" stroke="currentColor" stroke-opacity="0.22" stroke-dasharray="3 5"/>
-              <path d="M14 126c34-1 54-8 74-28 18-18 30-24 48-28 24-6 44-24 60-48V126H14Z" fill="var(--accent)" fill-opacity="0.07"/>
-              <path d="M14 126c34-1 54-8 74-28 18-18 30-24 48-28 24-6 44-24 60-48" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M14 126c30-2 48-12 64-30" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="3 5"/>
-              <circle cx="196" cy="22" r="7" stroke="var(--accent)" stroke-opacity="0.35"/>
-              <circle cx="196" cy="22" r="3" fill="var(--accent)"/>
-            </svg>
-          </div>
-          <div class="work-body">
-            <span class="work-num" aria-hidden="true">06</span>
-            <div class="work-text">
-              <h4 class="work-name">Запуск</h4>
-              <p class="work-note">Помогаем с доменом и хостингом, публикуем сайт и показываем, как им пользоваться.</p>
-            </div>
-          </div>
-        </li>
+          </li>
+        {{ end }}
       </ol>
-
-      <div class="how" data-reveal>
-        <p class="how-text">Делаем интернет-магазины, Telegram-ботов и сложные системы под задачу. Такие проекты считаем индивидуально: объём, срок и цена зависят от логики. <a class="text-link" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">Напишите, что нужно</a> — предложим решение и назовём вилку.</p>
-      </div>
     </div>
   </div>
 </section>
 
 {{ partial "site-footer.html" . }}
 {{ partial "site-dock.html" . }}
+
+<!-- Кольцо карточек в блоке «Сделали»: WebGL-сцена, собранная в static/app. -->
+<script type="module" src="{{ "app/cases-carousel.js" | relURL }}"></script>
 
 {{ end }}

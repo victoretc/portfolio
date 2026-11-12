@@ -1,0 +1,23 @@
+{{- /* Карточка услуги. Ожидает dict: p — страница услуги, i — номер для
+       ступенчатого появления. Вся карточка — ссылка: попасть можно и по
+       названию, и по цене, и по стрелке.
+       Порядок: ситуация (для кого) → название → что делаем → цена и срок. */ -}}
+{{- $p := .p -}}
+{{- $i := .i | default 0 -}}
+<a class="svc-card" href="{{ $p.RelPermalink }}" data-reveal style="--i: {{ $i }}"
+   aria-label="{{ $p.Title }} — от {{ $p.Params.price }} BYN, {{ $p.Params.term }}">
+  {{ with $p.Params.eyebrow }}<span class="svc-eyebrow">{{ . }}</span>{{ end }}
+  <span class="svc-card__head">
+    <span class="svc-card__name">{{ $p.Title }}</span>
+    <svg class="svc-card__arrow" width="20" height="20" aria-hidden="true"><use href="#arrow-right"/></svg>
+  </span>
+  <span class="svc-card__lead">{{ $p.Params.lead }}</span>
+  <span class="svc-card__deal">
+    <span class="svc-card__price">
+      <span class="svc-card__num">от {{ $p.Params.price }}</span>
+      <span class="svc-card__cur">BYN</span>
+    </span>
+    <span class="svc-card__dot" aria-hidden="true">·</span>
+    <span class="svc-card__term">{{ $p.Params.term }}</span>
+  </span>
+</a>
