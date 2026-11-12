@@ -23,7 +23,6 @@
   size: half
   url: https://victoretc.github.io/book-club-static/
   description: "каталог книжных клубов для тех кому скучно читать одному"
-  stack: Hugo + GitHub Pages
   media:
     type: video
     src: video/first-case.mp4
@@ -37,7 +36,6 @@
   size: half
   url: https://victoretc.github.io/itschoolmvp/
   description: "IT-курсы для детей 6–17 лет"
-  stack: Hugo + GitHub Pages
   media:
     type: image
     src: img/projects/itschool.jpg
@@ -53,7 +51,6 @@
   size: wide
   url: https://victoretc.github.io/victors-blog/
   description: "экспертный блог для тестировщиков"
-  stack: Hugo + GitHub Pages
   media:
     type: video
     src: video/victors-blog.mp4

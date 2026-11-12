@@ -3,8 +3,10 @@
        ступенчатого появления.
 
        Вся плитка — ссылка: кадр и подпись ведут на живой сайт.
-       Внутри — название проекта, строка о нём по-русски и стек.
-       Никаких кнопок, рамок и надзаголовков: форму задаёт кадр.
+       Плитка — белая поверхность с тонкой рамкой, в ней кадр и подпись:
+       название и круглая стрелка в первой строке, строка о проекте и стек
+       под ней. Стрелка стоит на каждой плитке: это статичная подсказка,
+       что карточка ведёт на сайт, а не только цвет названия при наведении.
 
        Размер плитки задаёт поле size в данных:
          half — половина блока (3 колонки): кадр сверху, текст снизу
@@ -16,9 +18,13 @@
      data-reveal style="--i: {{ $i }}"
      aria-label="{{ $p.Title }} — {{ $p.description }} Открыть сайт">
     <span class="project-card__text">
-      <span class="project-card__title">{{ $p.title }}</span>
+      <span class="project-card__head">
+        <span class="project-card__title">{{ $p.title }}</span>
+        <span class="project-card__arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><use href="#ext-link"/></svg>
+        </span>
+      </span>
       <span class="project-card__description">{{ $p.description }}</span>
-      {{ with $p.stack }}<span class="project-card__stack">{{ . }}</span>{{ end }}
     </span>
     <span class="project-card__visual" style="--media-ratio: {{ $p.media.ratio | default `1600 / 920` | safeCSS }}">
       {{ if eq $p.media.type "video" }}
@@ -40,9 +46,13 @@
       {{ end }}
     </span>
     <span class="project-card__text">
-      <span class="project-card__title">{{ $p.title }}</span>
+      <span class="project-card__head">
+        <span class="project-card__title">{{ $p.title }}</span>
+        <span class="project-card__arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><use href="#ext-link"/></svg>
+        </span>
+      </span>
       <span class="project-card__description">{{ $p.description }}</span>
-      {{ with $p.stack }}<span class="project-card__stack">{{ . }}</span>{{ end }}
     </span>
   </a>
 {{- end }}

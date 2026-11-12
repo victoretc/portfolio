@@ -6,9 +6,10 @@
 // Адаптация студии «Богатов» (11.2026). Геометрия кольца, кривая прокрутки
 // и WebGL-рендер остались как в оригинале. Изменена «начинка» карточки
 // и управление:
-//   • карточка проекта в стилистике design.md: белая поверхность, кадр
-//     сверху (живое видео с экрана или постер) и короткая строка под ним —
-//     вместо меша из 42 цветов;
+//   • карточка проекта в стилистике design.md: белая поверхность с волосяной
+//     рамкой, кадр сверху (живое видео с экрана или постер) и подпись, где
+//     слева название и короткая строка о проекте, справа — круглая стрелка
+//     «открыть сайт»; вместо меша из 42 цветов;
 //   • кольцо настраивается: сколько карточек в обороте и насколько широко
 //     они разнесены (spacing) — соседние уходят вбок и гаснут в перспективе;
 //   • клик и наведение по передней карточке — через колбэки.
@@ -52,8 +53,6 @@ export interface WarpCard {
   labels?: string[];
   /** Project card: who the project is for and what is inside. */
   description?: string;
-  /** Project card: the stack, as a small caption under the description. */
-  stack?: string;
   /** Project card: the frame. */
   media?: WarpCardMedia;
 }
@@ -159,7 +158,7 @@ const CW = 256;
 const CH = 232; // the card: the frame of a project (16:10) and a caption under it
 const FRAME_H = 160; // the frame keeps the 16:10 of the recordings
 const CAPTION_H = CH - FRAME_H; // the strip under the frame: the name and one line
-const CR = 10;
+const CR = 12;
 /** Height of the stage in stage units: the card plus air above and below. */
 const STAGE_H = 262;
 const FOCAL = 734.103;
@@ -545,11 +544,45 @@ function paintProjectFrame(cv: HTMLCanvasElement, source: WarpMediaSource) {
   }
 }
 
-/** Sizes of the caption lines in stage units: the cap height of each line. */
-type CaptionCap = { title: number; desc: number; stack: number }
+/** Sizes of the caption lines in stage units: the cap height of each line,
+    plus `ui` — how many stage units one CSS pixel takes, for the chrome
+    (the hairline edge and the round arrow) that must keep its screen size. */
+type CaptionCap = { title: number; desc: number; ui: number }
 
-/** The caption strip: repainted only on resize or when the name turns blue. */
-function paintProjectCaption(cv: HTMLCanvasElement, card: WarpCard, family: string, hover: boolean, cap: CaptionCap) {
+/** The round «open the site» arrow at the top right of the caption. It stays
+    on every card as the static cue that the card is a link. */
+function paintCardArrow(ctx: CanvasRenderingContext2D, cx: number, cy: number, size: number, ui: number) {
+  const r = size / 2;
+  // the ring stays a one-pixel hairline; the glyph is a touch heavier, as an
+  // icon should track the weight of the text beside it
+  const ring = Math.max(0.5, ui);
+  ctx.strokeStyle = "rgba(15, 16, 18, 0.16)";
+  ctx.lineWidth = ring;
+  ctx.beginPath();
+  ctx.arc(cx, cy, Math.max(1, r - ring / 2), 0, Math.PI * 2);
+  ctx.stroke();
+  // the glyph: a diagonal shaft with a corner head, drawn in the card's ink
+  const a = r * 0.42;
+  const h = r * 0.62;
+  ctx.strokeStyle = "rgba(15, 16, 18, 0.62)";
+  ctx.lineWidth = Math.max(0.65, ui * 1.3);
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  ctx.moveTo(cx - a, cy + a);
+  ctx.lineTo(cx + a, cy - a);
+  ctx.moveTo(cx + a - h, cy - a);
+  ctx.lineTo(cx + a, cy - a);
+  ctx.lineTo(cx + a, cy - a + h);
+  ctx.stroke();
+  ctx.lineCap = "butt";
+  ctx.lineJoin = "miter";
+}
+
+/** The caption strip: repainted only on resize or when the name turns blue.
+    The strip is the white body of the card: the name and the round arrow sit
+    on the first row, the description below it. */
+function paintProjectCaption(cv: HTMLCanvasElement, card: WarpCard, family: string, cap: CaptionCap) {
   const w = cv.width;
   const h = cv.height;
   const ctx = cv.getContext("2d");
@@ -557,16 +590,16 @@ function paintProjectCaption(cv: HTMLCanvasElement, card: WarpCard, family: stri
   const k = w / CW;
   const frameH = frameHeight(w);
 
-  // the caption: a strip under the frame with the name, a short line about
-  // the project and the stack
-  ctx.fillStyle = "#f2f2f4";
+  // the card body: pure white, brighter than the canvas, as the design system
+  // lifts surfaces by tone rather than by shadow
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = "#fdfdfd";
   ctx.fillRect(0, frameH, w, h - frameH);
   // a hairline separates the frame from the caption: the card reads as one thing
-  ctx.fillStyle = "rgba(15, 16, 18, 0.12)";
+  ctx.fillStyle = "rgba(15, 16, 18, 0.08)";
   ctx.fillRect(0, frameH, w, Math.max(1, Math.round(k * 0.5)));
   const name = (card.title || "").trim();
   const text = (card.description || "").trim();
-  const stack = cap.stack > 0 ? (card.stack || "").trim().toUpperCase() : "";
   if (!name && !text) return;
   let label = name;
 
@@ -577,52 +610,54 @@ function paintProjectCaption(cv: HTMLCanvasElement, card: WarpCard, family: stri
   // the text is bigger relative to it, so the sizes shrink until it fits.
   const padX = 16;
   const availW = CW - padX * 2;
+  // the arrow keeps the size of a control on screen, but shrinks with the
+  // card: on a phone a 30px circle would take half the caption
+  const arrowPx = Math.max(20, Math.min(30, (CW / cap.ui) * 0.075));
   const gap = 4;
-  const stackGap = 10;
   let scale = 1;
   let nameSize = 0;
   let size = 0;
-  let stackFont = 0;
   let nameLH = 0;
   let lh = 0;
-  let stackLH = 0;
-  let stackLabel = stack;
   let lines: string[] = [];
   let block = 0;
+  let arrow = 0;
+  let titleW = availW;
   for (;;) {
     nameSize = sizeForCap(ctx, 400, family, cap.title * scale, "Ч");
     size = sizeForCap(ctx, 350, family, cap.desc * scale, "к");
-    stackFont = stack ? sizeForCap(ctx, 400, family, cap.stack * scale, "H") : 0;
-    // a long name loses a little size instead of running past the card
+    arrow = arrowPx * cap.ui * scale;
+    titleW = availW - arrow - 10 * cap.ui * scale;
+    // a long name loses a little size instead of running past the arrow
     if (name) {
       setFace(ctx, 400, nameSize, family, -0.02);
-      while (nameSize > 8 && ctx.measureText(label).width > availW) {
+      while (nameSize > 8 && ctx.measureText(label).width > titleW) {
         nameSize *= 0.94;
         setFace(ctx, 400, nameSize, family, -0.02);
       }
-      if (ctx.measureText(label).width > availW) label = ellipsizeLine(ctx, label, availW);
+      if (ctx.measureText(label).width > titleW) label = ellipsizeLine(ctx, label, titleW);
     }
     setFace(ctx, 350, size, family, -0.005);
     lines = text ? wrapBalanced(ctx, text, availW, 2) : [];
-    if (stack) {
-      setFace(ctx, 400, stackFont, family, 0.08);
-      if (ctx.measureText(stackLabel).width > availW) stackLabel = ellipsizeLine(ctx, stackLabel, availW);
-    }
-    nameLH = name ? nameSize * 1.12 : 0;
+    // the arrow may be taller than the line of the name: the row takes the
+    // taller of the two so nothing overlaps the description
+    nameLH = name ? Math.max(nameSize * 1.12, arrow) : 0;
     lh = size * 1.4;
-    stackLH = stack ? stackFont * 1.15 : 0;
-    block = nameLH + (name && lines.length ? gap : 0) + lines.length * lh + (stack ? stackGap + stackLH : 0);
-    if (block <= CAPTION_H - 6 || scale <= 0.72) break;
+    block = nameLH + (name && lines.length ? gap : 0) + lines.length * lh;
+    if (block <= CAPTION_H - 10 || scale <= 0.72) break;
     scale *= 0.94;
   }
 
   // the caption sits in the middle of the strip, not against its edges
   const top = FRAME_H + (CAPTION_H - block) / 2;
   const x = Math.round(padX * k) / k;
+  const titleBaseline = top + (nameSize * 0.9 + (nameLH - nameSize * 1.12) / 2);
   if (name) {
     setFace(ctx, 400, nameSize, family, -0.02);
-    ctx.fillStyle = hover ? "#0071e3" : "#0f1012";
-    ctx.fillText(label, x, Math.round((top + nameSize * 0.9) * k) / k);
+    ctx.fillStyle = "#0f1012";
+    ctx.fillText(label, x, Math.round(titleBaseline * k) / k);
+    // the action sits on the name's optical centre, so the row reads as one line
+    paintCardArrow(ctx, CW - padX - arrow / 2, top + nameLH / 2, arrow, cap.ui * scale);
   }
   // the line about the project: the first baseline centres the cap height in
   // its line box, so the two lines keep an even rhythm
@@ -630,28 +665,40 @@ function paintProjectCaption(cv: HTMLCanvasElement, card: WarpCard, family: stri
   setFace(ctx, 350, size, family, -0.005);
   ctx.fillStyle = "#5e5e5e";
   lines.forEach((ln, i) => ctx.fillText(ln, x, Math.round((first + i * lh) * k) / k));
-  if (stack) {
-    // the stack is a quiet eyebrow under the description, as on the grid card
-    const stackTop = top + nameLH + (name && lines.length ? gap : 0) + lines.length * lh + stackGap;
-    setFace(ctx, 400, stackFont, family, 0.08);
-    ctx.fillStyle = "#5e5e5e";
-    ctx.fillText(stackLabel, x, Math.round((stackTop + stackFont * 0.8) * k) / k);
-  }
+}
+
+/** The hairline edge of the card: structure, not depth — the design system
+    draws edges with borders and lifts surfaces with white, never with shadow. */
+function strokeProjectEdge(ctx: CanvasRenderingContext2D, cv: HTMLCanvasElement, cap: CaptionCap) {
+  const k = cv.width / CW;
+  const lw = Math.max(1, cap.ui * k); // one CSS pixel at the current texture scale
+  const r = Math.max(0, CR * k - lw / 2);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.beginPath();
+  ctx.roundRect(lw / 2, lw / 2, cv.width - lw, cv.height - lw, r);
+  ctx.strokeStyle = "rgba(15, 16, 18, 0.10)";
+  ctx.lineWidth = lw;
+  ctx.stroke();
 }
 
 /** Project card: the recording on top and a caption under it, in one texture. */
-function paintProjectCard(cv: HTMLCanvasElement, card: WarpCard, family: string, source: WarpMediaSource, hover: boolean, cap: CaptionCap) {
+function paintProjectCard(cv: HTMLCanvasElement, card: WarpCard, family: string, source: WarpMediaSource, cap: CaptionCap) {
   const ctx = cv.getContext("2d");
   if (!ctx) return;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, cv.width, cv.height);
+  // the card is a surface, not a bare frame: white under the recording and
+  // the caption, so the rounded corners and the edge read against the stage
+  ctx.fillStyle = "#fdfdfd";
+  ctx.fillRect(0, 0, cv.width, cv.height);
   paintProjectFrame(cv, source);
-  paintProjectCaption(cv, card, family, hover, cap);
+  paintProjectCaption(cv, card, family, cap);
+  strokeProjectEdge(ctx, cv, cap);
 }
 
-function paintCard(cv: HTMLCanvasElement, card: WarpCard, family: string, source: WarpMediaSource, hover: boolean, cap: CaptionCap) {
+function paintCard(cv: HTMLCanvasElement, card: WarpCard, family: string, source: WarpMediaSource, cap: CaptionCap) {
   if (card.media) {
-    paintProjectCard(cv, card, family, source, hover, cap);
+    paintProjectCard(cv, card, family, source, cap);
     return;
   }
   const w = cv.width;
@@ -1421,12 +1468,12 @@ export function WarpCarousel({
       const cardW = CW * perUnit;
       const titlePx = Math.max(15.5, Math.min(27, cardW * 0.048));
       const descPx = Math.max(10.5, Math.min(15.5, cardW * 0.028));
-      // the stack line only appears when the card is wide enough to hold it
-      const stackPx = cardW >= 360 ? Math.max(9.5, Math.min(11, cardW * 0.011)) : 0;
       return {
         title: (titlePx * 0.71) / perUnit,
         desc: (descPx * 0.71) / perUnit,
-        stack: (stackPx * 0.71) / perUnit,
+        // stage units per CSS pixel: the card edge and the arrow keep their
+        // weight and size on a phone as on a desktop
+        ui: 1 / perUnit,
       };
     };
 
@@ -1435,19 +1482,19 @@ export function WarpCarousel({
         const cv = document.createElement("canvas");
         cv.width = w;
         cv.height = Math.round((w * CH) / CW);
-        paintCard(cv, card, font, sourceFor(i), false, captionCap());
+        paintCard(cv, card, font, sourceFor(i), captionCap());
         return cv;
       });
       texW = w;
       if (gls) uploadCards(gls, cardCanvases);
     };
 
-    /** Repaints one card in place: a new frame of the video, a poster that
-        loaded, or the name turning blue on hover. */
+    /** Repaints one card in place: a new frame of the video or a poster that
+        loaded. */
     const repaintLayer = (i: number) => {
       const cv = cardCanvases[i];
       if (!cv) return;
-      paintCard(cv, list[i], font, sourceFor(i), hoverRef.current && i === frontRef.current, captionCap());
+      paintCard(cv, list[i], font, sourceFor(i), captionCap());
       if (gls) uploadLayer(gls, cv, i);
       dirty = true;
     };
@@ -1658,13 +1705,12 @@ export function WarpCarousel({
       if (disposed) return;
       const { P, Pb, mix } = progressAt(now);
       frontRef.current = mod(Math.round(P), N);
-      // наведение на переднюю карточку: название становится голубым
+      // наведение на переднюю карточку меняет только курсор: сама карточка
+      // при наведении не перерисовывается
       const wantHover = hoverAt();
       if (wantHover !== hoverRef.current) {
         hoverRef.current = wantHover;
-        repaintLayer(frontRef.current);
         wrap.style.cursor = wantHover ? "pointer" : "grab";
-        dirty = true;
       }
       // новые кадры роликов перерисовываются и уходят в текстуру пачкой
       const painted = updateFrames(now);
@@ -1916,7 +1962,7 @@ export function WarpCarousel({
   const front = list[mod(current, N)];
   const liveText = front
     ? front.media
-      ? `${front.title}. ${front.description || ""} ${front.stack || ""}`
+      ? `${front.title}. ${front.description || ""}`
       : `${front.title.replace("\n", " ")}: ${front.value}${front.unit || ""}. ${front.footer || ""}`
     : "";
   return (
@@ -1943,6 +1989,7 @@ export function WarpCarousel({
         touchAction: "pan-y",
         userSelect: "none",
         cursor: "grab",
+        WebkitTapHighlightColor: "transparent",
         outline: "none",
         ...style,
       }}

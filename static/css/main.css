@@ -653,6 +653,23 @@ html.js .callout.is-in .callout-label .callout-char {
 /* Пока скрипт не встал — блока нет: сетка ниже остаётся единственным
    содержимым секции. */
 .cases-carousel:empty { display: none; }
+
+/* Телефон: вместо кольца — нативная лента карточек со свайпом и снапом.
+   Высоту задаёт содержимое, а не clamp сцены; край ленты выровнен по полям
+   страницы, поэтому первая карточка встаёт под заголовком. */
+.cases-carousel.cases-carousel--strip { height: auto; }
+.cases-strip {
+  display: flex;
+  gap: clamp(12px, 3.4vw, 18px);
+  padding-inline: var(--margin);
+  padding-block: 2px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margin);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.cases-strip::-webkit-scrollbar { display: none; }
 /* Запасная сетка (без JS) отодвинута от кольца строкой под ним. */
 .cases-grid { margin-top: clamp(20px, 2.4vw, 32px); }
 
@@ -669,14 +686,22 @@ html.js .callout.is-in .callout-label .callout-char {
   row-gap: var(--cases-gap);
 }
 
-/* Плитка: без рамки и подложки. Форму задаёт кадр, текст стоит под ним
-   прямо на поле страницы. Вся плитка — ссылка. */
+/* Плитка: белая поверхность с тонкой рамкой, кадр лежит внутри с отступом.
+   Рамка — структура, а не тень: система поднимает поверхность тоном
+   (#fdfdfd на белом поле) и волосяной линией, теней нет.
+   Вся плитка — ссылка; стрелка в первой строке — статичная подсказка. */
 .project-card {
-  --cases-card-radius: clamp(20px, 2.4vw, 32px);
+  --cases-card-radius: clamp(22px, 2.4vw, 34px);
+  /* отступ кадра от края плитки: радиус кадра = радиус плитки − отступ */
+  --cases-card-inset: clamp(8px, 0.9vw, 12px);
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 1.4vw, 18px);
+  gap: clamp(12px, 1.2vw, 16px);
   min-width: 0;
+  padding: var(--cases-card-inset) var(--cases-card-inset) clamp(14px, 1.5vw, 20px);
+  background: var(--color-pure-white, #fdfdfd);
+  border: 1px solid rgba(15, 16, 18, 0.09);
+  border-radius: var(--cases-card-radius);
   color: var(--color-off-black, #0f1012);
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -694,14 +719,16 @@ html.js .callout.is-in .callout-label .callout-char {
   margin-top: var(--cases-gap);
 }
 
-/* Кадр: скруглённая ниша, пропорции из данных. Видео и картинки одного
-   соотношения, поэтому в ряду ничего не режется и плитки ровные. */
+/* Кадр: скруглённая ниша, пропорции из данных. Радиус на отступ меньше
+   радиуса плитки — вложенные поверхности концентричны, без «зазора».
+   Видео и картинки одного соотношения, поэтому в ряду ничего не режется
+   и плитки ровные. */
 .project-card__visual {
   position: relative;
   display: block;
   width: 100%;
   aspect-ratio: var(--media-ratio, 1600 / 920);
-  border-radius: var(--cases-card-radius);
+  border-radius: calc(var(--cases-card-radius) - var(--cases-card-inset));
   overflow: hidden;
   background: var(--color-off-white, #f2f2f4);
 }
@@ -720,13 +747,20 @@ img.project-card__media {
   outline-offset: -1px;
 }
 
-/* Подпись под кадром: название — главный элемент плитки, под ним одна
-   строка о проекте. */
+/* Подпись под кадром: название и круглая стрелка в первой строке, под ними
+   одна строка о проекте и стек. Стрелка не появляется на наведении —
+   она стоит всегда, иначе о ссылке сообщал бы только цвет. */
 .project-card__text {
   display: flex;
   flex-direction: column;
   gap: 8px;
   max-width: 46ch;
+}
+.project-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 .project-card__title {
   font-family: var(--sans);
@@ -737,6 +771,23 @@ img.project-card__media {
   color: var(--color-off-black, #0f1012);
   text-wrap: balance;
   transition: color 150ms ease;
+}
+/* Круглая стрелка «открыть сайт»: 30px, волосяная рамка, как тег-пилюля.
+   На наведении становится голубой вместе с названием — цвет, не движение. */
+.project-card__arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(15, 16, 18, 0.16);
+  border-radius: 9999px;
+  color: rgba(15, 16, 18, 0.62);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+.project-card__arrow svg {
+  display: block;
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1);
 }
 .project-card--wide .project-card__title {
   font-size: clamp(1.75rem, 3vw, 2.5rem); /* 28 → 40px */
@@ -750,19 +801,21 @@ img.project-card__media {
   color: var(--color-steel-gray, #5e5e5e);
   text-wrap: pretty;
 }
-.project-card__stack {
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-ash-gray, #8f8f8f);
-}
 /* Кадр не двигается: увеличение скриншота выглядит как дефект.
-   Наведение читается по цвету названия — это и есть статичный сигнал. */
+   Наведение читается по цвету названия и стрелки — это статичные сигналы;
+   стрелка ещё и подаётся на 1px по диагонали, но только при движении. */
 @media (hover: hover) {
-  .project-card:hover .project-card__title {
+  .project-card:hover .project-card__title,
+  .project-card:hover .project-card__arrow {
     color: var(--color-signal-blue, #0071e3);
+  }
+  .project-card:hover .project-card__arrow {
+    border-color: rgba(0, 113, 227, 0.45);
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover .project-card__arrow svg {
+    transform: translate(1px, -1px);
   }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -815,6 +868,28 @@ img.project-card__media {
   .project-card:active { transform: none; }
 }
 
+/* Карточка ленты: чуть уже экрана, чтобы следующая выглядывала краем.
+   На телефоне у неё свой масштаб: поля шире, чем на десктопе, кадр и текст
+   стоят на одной линии, мета (стек) отделена волосяной линией — подпись
+   читается как паспорт проекта, а не как обрезанный десктопный низ. */
+.project-card--strip {
+  flex: 0 0 min(86vw, 420px);
+  scroll-snap-align: start;
+  gap: 16px;
+  padding-bottom: 18px;
+  --cases-card-inset: 12px;
+}
+/* радиус задан двумя классами: правило для узких экранов ниже перебило бы
+   одиночный селектор; 24 − 12 = 12 — кадр остаётся концентричным */
+.project-card.project-card--strip { --cases-card-radius: 24px; }
+.project-card--strip .project-card__head { gap: 12px; }
+.project-card--strip .project-card__title {
+  font-size: clamp(1.375rem, 5.6vw, 1.625rem); /* 22 → 26px */
+}
+.project-card--strip .project-card__description {
+  font-size: 1rem; /* 16px: подпись на телефоне читается без прищура */
+  line-height: 1.45;
+}
 /* 4. SERVICES — старая бенто-идея в палитре design.md:
    off-white поле, белые карточки 54px, тихий вес 350, голубой акцент.
    Цветные маркеры и иллюстрации заменены на нейтральные заливки и blue. */
