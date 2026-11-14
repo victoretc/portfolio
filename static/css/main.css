@@ -903,12 +903,12 @@ img.project-card__media {
 .services {
   background: var(--color-off-white, #f2f2f4);
   color: var(--color-off-black, #0f1012);
-  padding-block: var(--gap-block);
+  /* Лента прибита к началу блока: сверху паддинга нет, снизу —
+     воздух перед подвалом. */
+  padding-block: 0 var(--gap-block);
 }
 .services-inner {
-  /* Интервал между абзацами блока услуг: лид → список задач →
-     примечание. Три абзаца идут с одинаковым отступом и читаются
-     как один текст. */
+  /* Интервал между лидом и примечанием: они идут одним текстом. */
   --services-gap: clamp(20px, 2.4vw, 28px);
   width: min(var(--shell), calc(100% - var(--gutter)));
   margin-inline: auto;
@@ -1022,9 +1022,9 @@ img.project-card__media {
   margin: 0;
   font-family: var(--sans);
   font-weight: 350;
-  font-size: clamp(1.5rem, 2.2vw, 1.6875rem);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.375rem, 2.1vw, 1.6875rem); /* как «Услуги» */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--color-off-black, #0f1012);
 }
 .work-grid {
@@ -2290,6 +2290,127 @@ body { overflow-x: hidden; }
   outline-offset: 3px;
 }
 
+/* ---------- плашка о приватности — в стилистике design.md ---------- */
+/* Плашка встаёт на место нижнего меню — в ту же полосу хрома, поэтому
+   не перекрывает контент: меню на это время скрыто, а плашка занимает
+   его место. Капсула #fdfdfd, волосяная кромка, вес 350, signal blue
+   только в линейной иконке. */
+.privacy-note {
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 60;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 4px 4px 4px 16px;
+  border: 0.5px solid rgba(15, 16, 18, 0.12);
+  border-radius: 9999px;
+  background: var(--color-pure-white, #fdfdfd);
+  box-shadow: none;
+  color: var(--color-off-black, #0f1012);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Без JS плашку не показываем: кнопка не сработает, меню остаётся на месте. */
+.js .privacy-note { display: flex; opacity: 0; pointer-events: none; }
+/* Иконка — currentColor, штрих под вес 350 */
+.privacy-note__icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: var(--color-signal-blue, #0071e3);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.privacy-note__icon * { vector-effect: non-scaling-stroke; }
+.privacy-note__text { margin: 0; }
+/* Кнопка — Floating CTA Pill из design.md: тихая заливка, тёмный текст,
+   вес 400 на 13px. Не крестик: подтверждение словом. */
+.privacy-note__thanks {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(15, 16, 18, 0.05);
+  color: var(--color-off-black, #0f1012);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease;
+}
+@media (hover: hover) {
+  .privacy-note__thanks:hover { background: rgba(15, 16, 18, 0.09); }
+}
+.privacy-note__thanks:focus-visible {
+  outline: 2px solid var(--color-signal-blue, #0071e3);
+  outline-offset: 2px;
+}
+/* Пока плашка висит, нижнее меню уступает ей место: два элемента в одной
+   полосе перекрыли бы друг друга. После «Спасибо» меню возвращается. */
+.js body:has(.privacy-note) .dock { display: none; }
+/* Появление — редкое событие, поэтому движение: opacity + подъём.
+   Без JS плашка не показывается, меню на месте. */
+.js .privacy-note.is-in { opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .privacy-note {
+    transform: translate(-50%, 8px);
+    filter: blur(4px);
+    transition:
+      opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+      transform 300ms cubic-bezier(0.2, 0, 0, 1),
+      filter 300ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .js .privacy-note.is-in {
+    transform: translate(-50%, 0);
+    filter: none;
+  }
+  /* Уход короче и мельче входа: 150ms, уход на 12px вверх */
+  .privacy-note.is-out {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+    filter: blur(4px);
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out,
+      filter 150ms ease-out;
+  }
+  .privacy-note__thanks:enabled:active { transform: scale(0.96); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .privacy-note { transition: opacity 300ms ease-out; }
+  .privacy-note.is-out { opacity: 0; transition: opacity 150ms ease-out; }
+}
+@media (max-width: 560px) {
+  .privacy-note {
+    bottom: max(12px, env(safe-area-inset-bottom));
+    gap: 10px;
+    padding: 3px 3px 3px 13px;
+    font-size: 13px;
+  }
+  .privacy-note__thanks {
+    height: 34px;
+    padding: 0 13px;
+  }
+}
+
 .footer { padding-bottom: clamp(120px, 16vh, 168px); }
 
 @media (max-width: 1100px) {
@@ -2822,15 +2943,14 @@ body { overflow-x: hidden; }
   color: var(--color-steel-gray, #5e5e5e);
 }
 
-/* Тихие абзацы блока услуг — лид и примечание: один кегль, один
-   интерлиньяж, один трекинг. Раньше у примечания был свой шаг
-   (16 → 17px), и рядом с лидом это читалось как разные шрифты.
-   Список задач оставлен на шаг крупнее — это якорь раздела. */
+/* Тихие абзацы блока услуг — лид и примечание: один кегль,
+   один интерлиньяж, один трекинг. Кегль на шаг крупнее основного:
+   блок читается как вводный текст раздела, а не как сноска. */
 .services-lead,
 .services-note {
   font-family: var(--sans);
   font-weight: 350;
-  font-size: clamp(1rem, 1.3vw, 1.125rem); /* 16 → 18px */
+  font-size: clamp(1.125rem, 1.35vw, 1.25rem); /* 18 → 20px */
   line-height: 1.5;
   letter-spacing: -0.015em;
   color: var(--color-steel-gray, #5e5e5e);
@@ -2843,38 +2963,66 @@ body { overflow-x: hidden; }
   max-width: 52ch;
 }
 
-/* Блок услуг на главной — текстом: список задач и пояснения.
-   Пункты задач выделены цветом: когда появятся адреса страниц услуг,
-   те же места станут ссылками. */
-.services-scope {
-  margin-top: var(--services-gap);
+/* Кинетическая лента во всю ширину: крупные слова идут полосой,
+   синие звёзды разделяют. Лента декоративная; для скринридеров
+   в первой колонке лежит обычный список. */
+.services-marquee {
+  border-block: 1px solid rgba(15, 16, 18, 0.08);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
 }
-.services-tasks {
-  max-width: 68ch;
+/* Лента идёт до заголовка — как переход от «Сделали» к услугам.
+   После неё — воздух до «Услуги». */
+.services-marquee + .services-inner {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.services-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: services-marquee 42s linear infinite;
+}
+.services-marquee__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  padding-block: clamp(16px, 2vw, 26px);
+}
+.services-marquee__item {
   font-family: var(--sans);
   font-weight: 350;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem); /* 18 → 22px */
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 2vw, 2rem); /* 24 → 32px */
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--color-off-black, #0f1012);
-  text-wrap: pretty;
+  white-space: nowrap;
 }
-/* Пункт задачи: пока это не ссылка, но выглядит как ссылка —
-   тот же signal blue, что у ссылок design.md. */
-.services-task {
-  color: var(--color-signal-blue, #0071e3);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  text-decoration-color: transparent;
-  transition: text-decoration-color 150ms ease;
+.services-marquee__item--more {
+  color: var(--color-steel-gray, #5e5e5e);
+}
+.services-marquee__star {
+  flex: none;
+  width: clamp(7px, 0.75vw, 10px);
+  height: clamp(7px, 0.75vw, 10px);
+  margin-inline: clamp(16px, 1.8vw, 28px);
+  background: var(--color-signal-blue, #0071e3);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+}
+@keyframes services-marquee {
+  to { transform: translateX(-50%); }
 }
 @media (hover: hover) {
-  .services-task:hover { text-decoration-color: currentColor; }
+  .services-marquee:hover .services-marquee__track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-marquee { overflow-x: auto; scrollbar-width: none; }
+  .services-marquee::-webkit-scrollbar { display: none; }
+  .services-marquee__track { animation: none; }
+  .services-marquee__group[data-clone] { display: none; }
 }
 .services-note {
   margin-top: var(--services-gap);
-  max-width: 68ch;
+  max-width: 52ch;
 }
 
 /* ---------- страница услуги ---------- */

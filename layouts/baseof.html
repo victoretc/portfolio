@@ -4,6 +4,7 @@
     {{- partial "head.html" . }}
   </head>
   <body>
+    {{- partial "privacy-note.html" . }}
     {{- block "main" . }}{{ end }}
     <script src="{{ "js/lanyard.js" | relURL }}" defer></script>
     <!-- Эффект шариков отключён: скрипт не подключается, библиотека не качается.

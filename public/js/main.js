@@ -119,4 +119,51 @@
     }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  // --- плашка о приватности ---------------------------------------------
+  // Плашка встаёт в полосу нижнего меню и на время скрывает его (CSS :has),
+  // поэтому контент не перекрывается. Закрытие запоминаем: второй раз не мешаем.
+  var note = document.querySelector('[data-privacy-note]');
+  if (note) {
+    var noteKey = 'privacy-note-dismissed';
+    var dismissed = false;
+    try { dismissed = window.localStorage.getItem(noteKey) === '1'; } catch (e) {}
+
+    if (dismissed) {
+      note.parentNode.removeChild(note);
+    } else {
+      var thanks = note.querySelector('[data-privacy-note-thanks]');
+      var hiding = false;
+
+      var showNote = function () {
+        setTimeout(function () { note.classList.add('is-in'); }, 700);
+      };
+      if (document.readyState === 'complete') {
+        showNote();
+      } else {
+        window.addEventListener('load', showNote, { once: true });
+      }
+
+      var hideNote = function () {
+        if (hiding) return;
+        hiding = true;
+        try { window.localStorage.setItem(noteKey, '1'); } catch (e) {}
+        note.classList.remove('is-in');
+        note.classList.add('is-out');
+        // Меню возвращается на место плашки сразу после её ухода.
+        if (dock) dock.classList.add('is-in');
+
+        var finish = function () {
+          if (note.parentNode) note.parentNode.removeChild(note);
+        };
+        note.addEventListener('transitionend', finish, { once: true });
+        setTimeout(finish, 400); // страховка: transitionend может не прийти
+      };
+
+      if (thanks) thanks.addEventListener('click', hideNote);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && note.classList.contains('is-in')) hideNote();
+      });
+    }
+  }
 })();
