@@ -47,6 +47,19 @@
     ratio: "1600 / 920"
     alt: "Сайт школы программирования «АйТи Скул»: курсы, преподаватели и запись на занятие"
 
+- title: ILO Club
+  size: wide
+  url: https://victoretc.github.io/iloclub/
+  description: "падел-корт в Ратомке: бронирование и тренеры"
+  media:
+    type: video
+    src: video/iloclub.mp4
+    poster: img/projects/iloclub.jpg
+    width: 1600
+    height: 920
+    ratio: "1600 / 920"
+    alt: "Сайт падел-клуба ILO Club: бронирование корта, тренеры и цены"
+
 - title: Ложка качества
   size: wide
   url: https://victoretc.github.io/victors-blog/
