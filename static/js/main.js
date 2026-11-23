@@ -121,8 +121,10 @@
   }
 
   // --- плашка о приватности ---------------------------------------------
-  // Плашка встаёт в полосу нижнего меню и на время скрывает его (CSS :has),
-  // поэтому контент не перекрывается. Закрытие запоминаем: второй раз не мешаем.
+  // Плашка стоит над нижним меню — меню остаётся на месте и работает.
+  // Показываем сразу, без задержки: сообщение о приватности должно быть
+  // видно на первом экране, а не ждать. Закрытие запоминаем: второй раз
+  // не мешаем.
   var note = document.querySelector('[data-privacy-note]');
   if (note) {
     var noteKey = 'privacy-note-dismissed';
@@ -135,14 +137,7 @@
       var thanks = note.querySelector('[data-privacy-note-thanks]');
       var hiding = false;
 
-      var showNote = function () {
-        setTimeout(function () { note.classList.add('is-in'); }, 700);
-      };
-      if (document.readyState === 'complete') {
-        showNote();
-      } else {
-        window.addEventListener('load', showNote, { once: true });
-      }
+      note.classList.add('is-in');
 
       var hideNote = function () {
         if (hiding) return;
@@ -150,8 +145,6 @@
         try { window.localStorage.setItem(noteKey, '1'); } catch (e) {}
         note.classList.remove('is-in');
         note.classList.add('is-out');
-        // Меню возвращается на место плашки сразу после её ухода.
-        if (dock) dock.classList.add('is-in');
 
         var finish = function () {
           if (note.parentNode) note.parentNode.removeChild(note);
