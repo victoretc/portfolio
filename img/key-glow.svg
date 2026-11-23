@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" width="1628" height="1013" viewBox="0 0 1628 1013" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Vector 5" filter="url(#key-glow-blur)">
+<path d="M190.52 239.387C93.4011 292.826 174 566.256 226.439 696.291C239.928 706.445 273.726 730.492 301.006 745.455C335.107 764.159 326.922 745.455 491.969 821.873C657.017 898.291 645.65 801.032 838.432 821.873C1031.21 842.714 930.731 795.154 1031.21 850.196C1131.7 905.238 1167.16 814.392 1277.19 821.873C1387.22 829.355 1332.21 696.291 1440.88 714.995C1549.54 733.699 1418.14 307.789 1379.49 239.387C1340.85 170.985 1050.76 273.588 974.38 239.387C897.994 205.186 618.369 206.789 503.336 161.366C388.304 115.943 311.918 172.588 190.52 239.387Z" stroke="white" stroke-opacity="0.3" stroke-width="42"/>
+</g>
+<defs>
+<filter id="key-glow-blur" x="-1.90735e-06" y="-7.62939e-06" width="1628" height="1013" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="62" result="effect1_foregroundBlur_0_4"/>
+</filter>
+</defs>
+</svg>
